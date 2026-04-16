@@ -9,51 +9,67 @@ import styles from "../uiux/page.module.css";
 const graphicsProjects = [
     {
         id: "g1",
-        title: "Brand Identity — Vyntra",
-        category: "Branding",
-        icon: "🎨",
-        image: "/images/projects/crypto.png",
-        description: "Complete brand identity design for a fintech startup"
+        title: "Premium Advertising",
+        category: "Advertising",
+        icon: "✨",
+        image: "/images/projects/premium_ad.png",
+        description: "High-end cinematic advertising visual"
     },
     {
         id: "g2",
-        title: "Neon Poster Series",
-        category: "Illustration",
-        icon: "✨",
-        image: "/images/projects/neon.png",
-        description: "Vibrant neon-themed poster collection"
+        title: "Luxury Villa Render",
+        category: "Architectural",
+        icon: "🏡",
+        image: "/images/projects/luxury_villa.png",
+        description: "Ultra realistic architectural visualization"
     },
     {
         id: "g3",
-        title: "Portfolio Artwork",
-        category: "Digital Art",
-        icon: "🖼️",
-        image: "/images/projects/portfolio.png",
-        description: "Creative portfolio visual compositions"
+        title: "Dynamic Sports Poster",
+        category: "Poster Design",
+        icon: "⚡",
+        image: "/images/projects/dynamic_sports.png",
+        description: "Energetic and powerful sports composition"
     },
     {
         id: "g4",
-        title: "Fitness Brand Graphics",
-        category: "Branding",
-        icon: "💪",
-        image: "/images/projects/fitness.png",
-        description: "Visual identity for a fitness brand"
+        title: "Minimal Editorial Poster",
+        category: "Editorial",
+        icon: "📖",
+        image: "/images/projects/minimal_editorial.png",
+        description: "Refined modern restaurant branding style"
     },
     {
         id: "g5",
-        title: "Eco Travel Visuals",
+        title: "Indian Festival Celebration",
         category: "Illustration",
-        icon: "🌿",
-        image: "/images/projects/ecotravel.png",
-        description: "Eco-conscious travel themed illustrations"
+        icon: "🎉",
+        image: "/images/projects/indian_festival.png",
+        description: "Vibrant and cultural celebratory visual"
     },
     {
         id: "g6",
-        title: "Fintech Dashboard Art",
-        category: "Digital Art",
-        icon: "📊",
-        image: "/images/projects/fintech.png",
-        description: "Artistic dashboard UI compositions"
+        title: "Global Health Visual",
+        category: "Conceptual",
+        icon: "🌍",
+        image: "/images/projects/global_health.png",
+        description: "High realism medical awareness campaign style"
+    },
+    {
+        id: "g7",
+        title: "Corporate Branding Mockup",
+        category: "Branding",
+        icon: "🏢",
+        image: "/images/projects/corporate_branding.png",
+        description: "Minimal tech brand identity presentation"
+    },
+    {
+        id: "g8",
+        title: "Product Packaging Design",
+        category: "Packaging",
+        icon: "📦",
+        image: "/images/projects/product_packaging.png",
+        description: "Modern minimal style retail ready packaging"
     }
 ];
 

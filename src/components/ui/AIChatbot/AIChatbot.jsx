@@ -16,6 +16,7 @@ Projects:
 - ADT Solution: Global EOR, Payroll & HR Solutions web platform
 - Myrik: Ride booking & grocery delivery mobile app
 - Bhaiyaa Super App: Hyperlocal delivery app for India
+- WORQ: Social Freelance Network - Discover, Connect, Hire, Get Paid (Android & iOS)
 - Futuristic Guitar: Product design for smart guitar interface
 - Wearables Tech: Smart pet wearable technology
 - Dehradun Zoo: UI/UX design for zoo website
@@ -32,6 +33,83 @@ Contact: Yashsrivastava7008@gmail.com
 Location: Bangalore, India
 
 Be friendly, helpful, and concise. Guide visitors to explore Yash's work or contact him for projects. Keep responses brief (2-3 sentences max).`;
+
+// Gemini API key (public-facing portfolio chatbot with limited context)
+const API_KEY = process.env.NEXT_PUBLIC_GEMINI_API_KEY;
+const API_BASE = "https://generativelanguage.googleapis.com/v1beta/models";
+const MODELS = ["gemini-2.0-flash-lite", "gemini-2.0-flash"];
+
+async function callGemini(userMessage, chatHistory) {
+    // Build conversation history for Gemini
+    const contents = [];
+    
+    // Add conversation history
+    for (const msg of chatHistory) {
+        if (msg.role === "assistant") {
+            contents.push({ role: "model", parts: [{ text: msg.content }] });
+        } else if (msg.role === "user") {
+            contents.push({ role: "user", parts: [{ text: msg.content }] });
+        }
+    }
+    
+    // Add current user message
+    contents.push({ role: "user", parts: [{ text: userMessage }] });
+
+    const requestBody = JSON.stringify({
+        system_instruction: {
+            parts: [{ text: SYSTEM_PROMPT }]
+        },
+        contents,
+        generationConfig: {
+            temperature: 0.7,
+            maxOutputTokens: 256,
+            topP: 0.9,
+        },
+        safetySettings: [
+            { category: "HARM_CATEGORY_HARASSMENT", threshold: "BLOCK_ONLY_HIGH" },
+            { category: "HARM_CATEGORY_HATE_SPEECH", threshold: "BLOCK_ONLY_HIGH" },
+            { category: "HARM_CATEGORY_SEXUALLY_EXPLICIT", threshold: "BLOCK_ONLY_HIGH" },
+            { category: "HARM_CATEGORY_DANGEROUS_CONTENT", threshold: "BLOCK_ONLY_HIGH" },
+        ]
+    });
+
+    // Try each model with retry logic
+    for (const model of MODELS) {
+        for (let attempt = 0; attempt < 2; attempt++) {
+            try {
+                const response = await fetch(`${API_BASE}/${model}:generateContent?key=${API_KEY}`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: requestBody,
+                });
+
+                if (response.status === 429) {
+                    // Rate limited — wait and retry or try next model
+                    await new Promise(r => setTimeout(r, (attempt + 1) * 1500));
+                    continue;
+                }
+
+                if (!response.ok) {
+                    throw new Error(`Gemini API error: ${response.status}`);
+                }
+
+                const data = await response.json();
+                const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+                
+                if (!text) {
+                    throw new Error("No response from Gemini");
+                }
+                
+                return text;
+            } catch (error) {
+                if (attempt === 1) continue; // Try next model
+                await new Promise(r => setTimeout(r, 1000));
+            }
+        }
+    }
+
+    throw new Error("All models failed");
+}
 
 export default function AIChatbot() {
     const [isOpen, setIsOpen] = useState(false);
@@ -60,32 +138,19 @@ export default function AIChatbot() {
         setIsLoading(true);
 
         try {
-            const response = await fetch("/api/chat", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    message: userMessage,
-                    history: messages
-                }),
-            });
-
-            const data = await response.json();
-
-            if (data.error) {
-                setMessages(prev => [...prev, {
-                    role: "assistant",
-                    content: "Sorry, I'm having trouble responding. Please try again!"
-                }]);
-            } else {
-                setMessages(prev => [...prev, {
-                    role: "assistant",
-                    content: data.response
-                }]);
-            }
-        } catch (error) {
+            const responseText = await callGemini(userMessage, messages);
             setMessages(prev => [...prev, {
                 role: "assistant",
-                content: "Oops! Something went wrong. Please try again."
+                content: responseText
+            }]);
+        } catch (error) {
+            console.error("Chatbot error:", error);
+            const isRateLimit = error.message?.includes("429") || error.message?.includes("All models failed");
+            setMessages(prev => [...prev, {
+                role: "assistant",
+                content: isRateLimit
+                    ? "I'm getting too many requests right now. Please try again in a minute, or feel free to reach out directly at Yashsrivastava7008@gmail.com! 📧"
+                    : "Oops! Something went wrong. Please try again or contact Yash at Yashsrivastava7008@gmail.com."
             }]);
         } finally {
             setIsLoading(false);
@@ -122,7 +187,7 @@ export default function AIChatbot() {
                             <div className={styles.headerInfo}>
                                 <Bot size={20} />
                                 <div>
-                                    <h4>Yash's AI Assistant</h4>
+                                    <h4>Yash&apos;s AI Assistant</h4>
                                     <span>Powered by Gemini</span>
                                 </div>
                             </div>
