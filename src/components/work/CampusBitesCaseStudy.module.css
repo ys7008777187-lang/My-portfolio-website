@@ -1,0 +1,884 @@
+/* ============================================================
+   CAMPUS BITES — Premium Product Case Study
+   Style: Light warm neutral + Orange (#FF7A00) accent
+   ============================================================ */
+
+/* ---- BASE / CONTAINER ---- */
+.container {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: #1a1a2e;
+    background: #fdfcfa;
+    overflow: hidden;
+    position: relative;
+}
+
+/* ============================================================
+   1. HERO SECTION — Three-device composition
+   ============================================================ */
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 5% 80px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.heroBgGradient {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 80% 60% at 50% 40%, rgba(255,122,0,0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 40% at 20% 80%, rgba(255,160,60,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 80% 20%, rgba(255,200,120,0.06) 0%, transparent 60%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Floating blur blobs */
+.heroBlob1, .heroBlob2, .heroBlob3 {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    z-index: 0;
+    pointer-events: none;
+    animation: blobFloat 8s ease-in-out infinite alternate;
+}
+.heroBlob1 {
+    width: 500px; height: 500px;
+    background: rgba(255,122,0,0.12);
+    top: 5%; left: -10%;
+}
+.heroBlob2 {
+    width: 400px; height: 400px;
+    background: rgba(255,180,80,0.1);
+    bottom: 10%; right: -5%;
+    animation-delay: 2s;
+}
+.heroBlob3 {
+    width: 300px; height: 300px;
+    background: rgba(255,160,60,0.08);
+    top: 50%; left: 60%;
+    animation-delay: 4s;
+}
+
+@keyframes blobFloat {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(20px, -30px) scale(1.05); }
+}
+
+.heroContent {
+    position: relative;
+    z-index: 10;
+    max-width: 760px;
+    margin-bottom: 60px;
+}
+
+.heroBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 20px;
+    border-radius: 100px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    background: rgba(255,122,0,0.08);
+    color: #FF7A00;
+    border: 1px solid rgba(255,122,0,0.15);
+    margin-bottom: 28px;
+}
+
+.heroTitle {
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    font-weight: 900;
+    line-height: 1.05;
+    margin-bottom: 20px;
+    letter-spacing: -0.03em;
+    color: #1a1a2e;
+}
+
+.heroTitleAccent {
+    background: linear-gradient(135deg, #FF7A00, #FF9F45);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.heroSubtitle {
+    font-size: clamp(1.05rem, 2vw, 1.3rem);
+    color: #6b7280;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto 36px;
+}
+
+.heroMeta {
+    display: inline-flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 16px 40px;
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(20px);
+    border-radius: 100px;
+    border: 1px solid rgba(0,0,0,0.06);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+}
+
+.heroMetaItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.heroMetaLabel {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #9ca3af;
+    font-weight: 500;
+}
+
+.heroMetaValue {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #1a1a2e;
+}
+
+/* ---- Hero Device Stack ---- */
+.heroDeviceStack {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 1100px;
+    height: 500px;
+    margin: 0 auto;
+}
+
+.devicePhone {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%) rotate(-4deg);
+    width: 200px;
+    z-index: 30;
+    border-radius: 28px;
+    overflow: hidden;
+    border: 6px solid #1a1a2e;
+    background: #1a1a2e;
+    box-shadow:
+        0 30px 60px rgba(0,0,0,0.18),
+        0 0 0 1px rgba(255,255,255,0.1) inset;
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.devicePhone:hover {
+    transform: translateX(-50%) rotate(-2deg) translateY(-12px);
+}
+.devicePhone img {
+    width: 100%;
+    display: block;
+}
+
+.deviceTablet {
+    position: absolute;
+    left: 5%;
+    bottom: 20px;
+    transform: rotate(2deg);
+    width: 400px;
+    z-index: 20;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 5px solid #2d2d3f;
+    background: #2d2d3f;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.deviceTablet:hover {
+    transform: rotate(1deg) translateY(-10px);
+}
+.deviceTablet img {
+    width: 100%;
+    display: block;
+}
+
+.deviceLaptop {
+    position: absolute;
+    right: 2%;
+    bottom: 30px;
+    transform: rotate(-1deg);
+    width: 520px;
+    z-index: 10;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 4px solid #333;
+    background: #333;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.12);
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.deviceLaptop:hover {
+    transform: rotate(0deg) translateY(-8px);
+}
+.deviceLaptop img {
+    width: 100%;
+    display: block;
+}
+
+/* ---- Floating micro-elements ---- */
+.floatingCard {
+    position: absolute;
+    z-index: 40;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(12px);
+    border-radius: 14px;
+    padding: 12px 18px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    border: 1px solid rgba(0,0,0,0.05);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #1a1a2e;
+    animation: floatBounce 4s ease-in-out infinite alternate;
+}
+.floatingCard:nth-child(2) { animation-delay: 1.5s; }
+.floatingCard:nth-child(3) { animation-delay: 3s; }
+
+.floatingCardIcon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+@keyframes floatBounce {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-14px); }
+}
+
+/* ============================================================
+   2. SHARED SECTION STYLES
+   ============================================================ */
+.contentWrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+.section {
+    padding: 100px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.sectionHeader {
+    text-align: center;
+    margin-bottom: 64px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sectionBadge {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    background: rgba(255,122,0,0.08);
+    color: #FF7A00;
+    border: 1px solid rgba(255,122,0,0.12);
+    margin-bottom: 20px;
+}
+
+.sectionTitle {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 20px;
+    letter-spacing: -0.02em;
+    color: #1a1a2e;
+}
+
+.sectionText {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #6b7280;
+    max-width: 700px;
+}
+
+/* ============================================================
+   3. PROBLEM & SOLUTION CARDS
+   ============================================================ */
+.grid2Col {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+
+.grid3Col {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.problemCard {
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 20px;
+    padding: 32px;
+    transition: all 0.35s ease;
+    position: relative;
+    overflow: hidden;
+}
+.problemCard::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px; height: 100%;
+    background: linear-gradient(180deg, #FF7A00, #FFB347);
+    border-radius: 4px 0 0 4px;
+}
+.problemCard:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 50px rgba(255,122,0,0.08);
+}
+
+.problemIcon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(255,122,0,0.08);
+    color: #FF7A00;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.problemTitle {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-bottom: 8px;
+}
+
+.problemDesc {
+    font-size: 0.95rem;
+    color: #6b7280;
+    line-height: 1.6;
+}
+
+.solutionCard {
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 20px;
+    padding: 36px;
+    text-align: center;
+    transition: all 0.35s ease;
+}
+.solutionCard:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 50px rgba(255,122,0,0.08);
+    border-color: rgba(255,122,0,0.15);
+}
+
+.solutionIcon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #FF7A00, #FFB347);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+    box-shadow: 0 8px 24px rgba(255,122,0,0.2);
+}
+
+.solutionTitle {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-bottom: 10px;
+}
+
+.solutionDesc {
+    font-size: 0.95rem;
+    color: #6b7280;
+    line-height: 1.6;
+}
+
+/* ============================================================
+   4. FLOW VISUALIZATION
+   ============================================================ */
+.flowSection {
+    padding: 80px 0;
+    background: linear-gradient(180deg, #fdfcfa 0%, #f8f5f0 100%);
+}
+
+.flowContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    flex-wrap: wrap;
+    padding: 40px 0;
+}
+
+.flowNode {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+    min-width: 120px;
+}
+
+.flowNodeCircle {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: #fff;
+    border: 2px solid rgba(255,122,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FF7A00;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+.flowNodeCircle:hover {
+    background: #FF7A00;
+    color: #fff;
+    border-color: #FF7A00;
+    transform: scale(1.1);
+    box-shadow: 0 8px 30px rgba(255,122,0,0.25);
+}
+
+.flowNodeLabel {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #1a1a2e;
+}
+
+.flowNodeSub {
+    font-size: 0.75rem;
+    color: #9ca3af;
+}
+
+.flowConnector {
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, rgba(255,122,0,0.3), rgba(255,122,0,0.1));
+    position: relative;
+    margin-bottom: 40px;
+}
+.flowConnector::after {
+    content: '';
+    position: absolute;
+    right: -4px; top: -3px;
+    width: 8px; height: 8px;
+    border-right: 2px solid #FF7A00;
+    border-top: 2px solid #FF7A00;
+    transform: rotate(45deg);
+}
+
+/* ============================================================
+   5. INTERACTIVE STORE & ADMIN TABS (IPAD MOCKUP)
+   ============================================================ */
+.dashboardSection {
+    padding: 100px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.dashboardTabsWrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ipadMockup {
+    background: #e5e7eb;
+    border-radius: 28px;
+    padding: 12px 12px 18px 12px;
+    box-shadow: 
+        0 40px 80px rgba(0,0,0,0.1),
+        inset 0 0 0 1px rgba(255,255,255,1);
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto 32px;
+    border: 6px solid #f9fafb;
+}
+
+.ipadScreen {
+    background: #fdfcfa;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+}
+
+.tabBarInside {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    background: #ffffff;
+    padding: 16px;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    flex-wrap: wrap;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+    z-index: 2;
+}
+
+.tabButtonInside {
+    padding: 10px 24px;
+    border: none;
+    background: transparent;
+    border-radius: 100px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #6b7280;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+.tabButtonInside:hover {
+    color: #1a1a2e;
+    background: rgba(0,0,0,0.04);
+}
+
+.tabButtonInsideActive {
+    composes: tabButtonInside;
+    background: #fff8f0;
+    color: #FF7A00;
+}
+
+.tabContentInside {
+    position: relative;
+    width: 100%;
+    background: #f3f4f6;
+}
+
+.tabScreenInside {
+    width: 100%;
+    overflow: hidden;
+}
+
+.tabScreenInside img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.tabScreenLabel {
+    text-align: center;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-bottom: 8px;
+}
+
+.tabScreenDesc {
+    text-align: center;
+    font-size: 0.95rem;
+    color: #6b7280;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ============================================================
+   6. MOBILE APP SHOWCASE (Small Mockup Style)
+   ============================================================ */
+.mobileShowcase {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 32px;
+    padding: 40px 0;
+    flex-wrap: wrap;
+}
+
+.mobileScreen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.phoneMockup {
+    width: 220px;
+    border-radius: 32px;
+    overflow: hidden;
+    border: 6px solid #1a1a2e;
+    background: #1a1a2e;
+    box-shadow:
+        0 20px 50px rgba(0,0,0,0.12),
+        0 0 0 1px rgba(255,255,255,0.08) inset;
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.phoneMockup:hover {
+    transform: translateY(-12px);
+}
+.phoneMockup img {
+    width: 100%;
+    display: block;
+}
+
+.phoneLabel {
+    margin-top: 20px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1a1a2e;
+}
+
+.phoneAnnotation {
+    margin-top: 4px;
+    font-size: 0.85rem;
+    color: #FF7A00;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* ============================================================
+   7. EDGE CASES
+   ============================================================ */
+.edgeCaseGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.edgeCaseCard {
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.06);
+    border-left: 4px solid #FF7A00;
+    border-radius: 0 16px 16px 0;
+    padding: 28px 32px;
+    transition: all 0.3s ease;
+}
+.edgeCaseCard:hover {
+    transform: translateX(6px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+}
+
+.edgeCaseTitle {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.edgeCaseDesc {
+    font-size: 0.9rem;
+    color: #6b7280;
+    line-height: 1.6;
+}
+
+/* ============================================================
+   8. BUSINESS IMPACT
+   ============================================================ */
+.impactGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+
+.impactCol {
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 20px;
+    padding: 36px;
+    transition: all 0.35s ease;
+}
+.impactCol:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.06);
+}
+
+.impactHeader {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #FF7A00;
+    padding-bottom: 16px;
+    border-bottom: 2px solid rgba(255,122,0,0.1);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.impactList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.impactList li {
+    padding: 8px 0;
+    font-size: 0.95rem;
+    color: #4b5563;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    line-height: 1.5;
+}
+
+.impactCheck {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(255,122,0,0.08);
+    color: #FF7A00;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* ============================================================
+   9. FUTURE ENHANCEMENTS
+   ============================================================ */
+.futureGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.futureCard {
+    background: linear-gradient(135deg, rgba(255,122,0,0.04), rgba(255,200,120,0.02));
+    border: 1px solid rgba(255,122,0,0.1);
+    border-radius: 16px;
+    padding: 28px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+.futureCard:hover {
+    transform: translateY(-4px);
+    border-color: #FF7A00;
+    box-shadow: 0 12px 30px rgba(255,122,0,0.08);
+}
+
+.futureIcon {
+    color: #FF7A00;
+    margin-bottom: 12px;
+}
+
+.futureTitle {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #1a1a2e;
+}
+
+/* ============================================================
+   10. CONCLUSION
+   ============================================================ */
+.conclusionSection {
+    padding: 100px 0;
+    text-align: center;
+    background: linear-gradient(180deg, #fdfcfa 0%, #fff5eb 100%);
+}
+
+.conclusionTitle {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 900;
+    color: #1a1a2e;
+    margin-bottom: 24px;
+}
+
+.conclusionText {
+    font-size: 1.1rem;
+    color: #6b7280;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 1024px) {
+    .heroDeviceStack {
+        height: 400px;
+    }
+    .deviceLaptop { width: 400px; }
+    .deviceTablet { width: 320px; }
+    .devicePhone { width: 160px; }
+}
+
+@media (max-width: 768px) {
+    .grid2Col, .grid3Col, .impactGrid, .edgeCaseGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .heroDeviceStack {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+    }
+    .devicePhone, .deviceTablet, .deviceLaptop {
+        position: relative;
+        left: auto; right: auto; bottom: auto;
+        transform: none;
+    }
+    .devicePhone { width: 180px; }
+    .deviceTablet { width: 90%; max-width: 400px; }
+    .deviceLaptop { width: 95%; max-width: 500px; }
+    .devicePhone:hover, .deviceTablet:hover, .deviceLaptop:hover {
+        transform: translateY(-8px);
+    }
+
+    .flowContainer {
+        flex-direction: column;
+        gap: 8px;
+    }
+    .flowConnector {
+        width: 2px;
+        height: 40px;
+        margin-bottom: 0;
+    }
+    .flowConnector::after {
+        right: -3px; top: auto; bottom: -4px;
+        transform: rotate(135deg);
+    }
+
+    .tabBar {
+        gap: 2px;
+        padding: 4px;
+    }
+    .tabButton, .tabButtonActive {
+        padding: 8px 14px;
+        font-size: 0.8rem;
+    }
+
+    .mobileShowcase {
+        gap: 20px;
+    }
+    .phoneMockup {
+        width: 160px;
+    }
+
+    .heroTitle {
+        font-size: 2.2rem;
+    }
+}

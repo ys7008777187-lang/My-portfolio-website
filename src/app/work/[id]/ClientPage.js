@@ -11,6 +11,7 @@ import BhaiyaaCaseStudy from "../../../components/work/BhaiyaaCaseStudy";
 import MyrikCaseStudy from "../../../components/work/MyrikCaseStudy";
 import ADTCaseStudy from "../../../components/work/ADTCaseStudy";
 import WorqCaseStudy from "../../../components/work/WorqCaseStudy";
+import CampusBitesCaseStudy from "../../../components/work/CampusBitesCaseStudy";
 
 export default function ProjectPage({ id }) {
     // Check if it's the ADT Solution
@@ -67,6 +68,20 @@ export default function ProjectPage({ id }) {
                     </Link>
                 </div>
                 <WorqCaseStudy />
+                <ContactCTA />
+            </main>
+        );
+    }
+
+    if (id === '8') {
+        return (
+            <main className={styles.main}>
+                <div style={{ padding: '20px 5%', maxWidth: '1200px', margin: '0 auto', paddingTop: '100px' }}>
+                    <Link href="/work" className={styles.backLink}>
+                        <ArrowLeft size={20} /> Back to Work
+                    </Link>
+                </div>
+                <CampusBitesCaseStudy />
                 <ContactCTA />
             </main>
         );

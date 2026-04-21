@@ -1,45 +1,196 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowLeft, ArrowUpRight, X } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, X, ChevronDown } from "lucide-react";
 import ContactCTA from "../../../components/home/ContactCTA/ContactCTA";
+import CreativeBook from "../../../components/ui/CreativeBook/CreativeBook";
 import styles from "../uiux/page.module.css";
 
 const graphicsProjects = [
     {
+        id: "the-nexus-point-issue-2",
+        title: "The Nexus Point: Issue 2",
+        category: "Chitranga",
+        icon: "📖",
+        image: "/images/artworks/the-nexus-point-issue-2/Cover.png",
+        images: [
+            "/images/artworks/the-nexus-point-issue-2/Cover.png",
+            "/images/artworks/the-nexus-point-issue-2/1.png",
+            "/images/artworks/the-nexus-point-issue-2/2.png",
+            "/images/artworks/the-nexus-point-issue-2/3.png",
+            "/images/artworks/the-nexus-point-issue-2/4.png",
+            "/images/artworks/the-nexus-point-issue-2/5.png",
+            "/images/artworks/the-nexus-point-issue-2/6.png",
+            "/images/artworks/the-nexus-point-issue-2/7.png",
+            "/images/artworks/the-nexus-point-issue-2/8.png",
+            "/images/artworks/the-nexus-point-issue-2/9.png",
+            "/images/artworks/the-nexus-point-issue-2/10.png",
+            "/images/artworks/the-nexus-point-issue-2/11.png",
+            "/images/artworks/the-nexus-point-issue-2/12.png",
+            "/images/artworks/the-nexus-point-issue-2/13.png",
+            "/images/artworks/the-nexus-point-issue-2/14.png",
+            "/images/artworks/the-nexus-point-issue-2/15.png",
+            "/images/artworks/the-nexus-point-issue-2/16.png",
+            "/images/artworks/the-nexus-point-issue-2/17.png",
+            "/images/artworks/the-nexus-point-issue-2/18.png",
+            "/images/artworks/the-nexus-point-issue-2/19.png",
+            "/images/artworks/the-nexus-point-issue-2/20.png",
+            "/images/artworks/the-nexus-point-issue-2/Back Cover (2).png"
+        ],
+        isCarouselBook: true,
+        isComic: true,
+        isNew: true,
+        description: "Issue 2 of The Nexus Point Chitranga"
+    },
+    {
+        id: "the-nexus-point-book",
+        title: "The Nexus Point: Issue 1",
+        category: "Chitranga",
+        icon: "📖",
+        image: "/images/artworks/the-nexus-point/0.png",
+        images: [
+            "/images/artworks/the-nexus-point/0.png",
+            "/images/artworks/the-nexus-point/1.png",
+            "/images/artworks/the-nexus-point/2.png",
+            "/images/artworks/the-nexus-point/3.png",
+            "/images/artworks/the-nexus-point/4.png",
+            "/images/artworks/the-nexus-point/6.png",
+            "/images/artworks/the-nexus-point/7.png",
+            "/images/artworks/the-nexus-point/8.png",
+            "/images/artworks/the-nexus-point/9.png",
+            "/images/artworks/the-nexus-point/10.png",
+            "/images/artworks/the-nexus-point/11.png",
+            "/images/artworks/the-nexus-point/12.png",
+            "/images/artworks/the-nexus-point/13.png",
+            "/images/artworks/the-nexus-point/14.png",
+            "/images/artworks/the-nexus-point/15.png",
+            "/images/artworks/the-nexus-point/16.png",
+            "/images/artworks/the-nexus-point/17.png",
+            "/images/artworks/the-nexus-point/18.png",
+            "/images/artworks/the-nexus-point/19.png",
+            "/images/artworks/the-nexus-point/20.png",
+            "/images/artworks/the-nexus-point/21.png",
+            "/images/artworks/the-nexus-point/23.png",
+            "/images/artworks/the-nexus-point/24.png",
+            "/images/artworks/the-nexus-point/25.png",
+            "/images/artworks/the-nexus-point/26.png",
+            "/images/artworks/the-nexus-point/28.png",
+            "/images/artworks/the-nexus-point/29.png",
+            "/images/artworks/the-nexus-point/30.png",
+            "/images/artworks/the-nexus-point/31.png",
+            "/images/artworks/the-nexus-point/32.png",
+            "/images/artworks/the-nexus-point/33.png",
+            "/images/artworks/the-nexus-point/34.png",
+            "/images/artworks/the-nexus-point/Back Cover (2).png"
+        ],
+        isCarouselBook: true,
+        isComic: true,
+        description: "An interactive Chitranga / comic presentation"
+    },
+    {
+        id: "fifth-layer-book",
+        title: "Fifth Layer Foundation",
+        category: "Visual Storytelling",
+        icon: "📖",
+        image: "/images/artworks/fifth-layer/frame 1.png",
+        images: [
+            "/images/artworks/fifth-layer/frame 1.png",
+            "/images/artworks/fifth-layer/frame 2.png",
+            "/images/artworks/fifth-layer/frame 3.png",
+            "/images/artworks/fifth-layer/frame 4.png",
+            "/images/artworks/fifth-layer/frame 5.png",
+            "/images/artworks/fifth-layer/frame 6.png",
+            "/images/artworks/fifth-layer/frame 7.png",
+            "/images/artworks/fifth-layer/frame 8.png",
+            "/images/artworks/fifth-layer/frame 9.png",
+            "/images/artworks/fifth-layer/frame 10.png"
+        ],
+        isCarouselBook: true,
+        description: "An interactive editorial story book presentation"
+    },
+    {
+        id: "comic-magazine-book",
+        title: "Comic Magazine",
+        category: "Visual Storytelling",
+        icon: "📖",
+        image: "/images/artworks/comic-magazine/cover.png",
+        images: [
+            "/images/artworks/comic-magazine/cover.png",
+            "/images/artworks/comic-magazine/Page 1.png",
+            "/images/artworks/comic-magazine/Page 2.png",
+            "/images/artworks/comic-magazine/Page 3.png",
+            "/images/artworks/comic-magazine/Page 4.png",
+            "/images/artworks/comic-magazine/Page 5.png",
+            "/images/artworks/comic-magazine/Page 6.png",
+            "/images/artworks/comic-magazine/Page 7.png",
+            "/images/artworks/comic-magazine/Page 8.png",
+            "/images/artworks/comic-magazine/Page 9.png",
+            "/images/artworks/comic-magazine/Page 10.png",
+            "/images/artworks/comic-magazine/page 11.png",
+            "/images/artworks/comic-magazine/page 12.png",
+            "/images/artworks/comic-magazine/Page 13.png",
+            "/images/artworks/comic-magazine/Page 14.png",
+            "/images/artworks/comic-magazine/page15.png",
+            "/images/artworks/comic-magazine/back-cover.png"
+        ],
+        isCarouselBook: true,
+        description: "An interactive comic book presentation"
+    },
+    {
+        id: "fashion-campaign",
+        title: "Fashion",
+        category: "Artwork",
+        icon: "🎨",
+        image: "/images/artworks/fashion-1.jpg",
+        images: [
+            "/images/artworks/fashion-1.jpg",
+            "/images/artworks/fashion-2.jpg"
+        ],
+        description: "Fashion Promotional Campaign Graphics"
+    },
+    {
+        id: "og0",
+        title: "White Lotus",
+        category: "Artwork",
+        icon: "🎨",
+        image: "/images/artworks/Frame 18.jpg",
+        images: [
+            "/images/artworks/Hoarding.jpg",
+            "/images/artworks/Frame 18.jpg",
+            "/images/artworks/Hoarding 2.jpg",
+            "/images/artworks/Whatsapp.jpg",
+            "/images/artworks/Performance AD.jpg",
+            "/images/artworks/Instagram 1.jpg",
+            "/images/artworks/Instagram 2.jpg",
+            "/images/artworks/Instagram 3.jpg",
+            "/images/artworks/Instagram 4.jpg"
+        ],
+        description: "Original artwork: White Lotus Gallery"
+    },
+    {
         id: "og1",
-        title: "10154603",
+        title: "Packaging Design",
         category: "Artwork",
         icon: "🎨",
         image: "/images/artworks/10154603.jpg",
-        description: "Original artwork: 10154603"
+        images: [
+            "/images/artworks/10154603.jpg",
+            "/images/artworks/9938169.jpg"
+        ],
+        description: "Original artwork: Packaging Design Gallery"
     },
     {
         id: "og2",
-        title: "10818",
+        title: "Branding",
         category: "Artwork",
         icon: "🎨",
         image: "/images/artworks/10818.jpg",
-        description: "Original artwork: 10818"
+        description: "Original artwork: Branding"
     },
-    {
-        id: "og3",
-        title: "9938169",
-        category: "Artwork",
-        icon: "🎨",
-        image: "/images/artworks/9938169.jpg",
-        description: "Original artwork: 9938169"
-    },
-    {
-        id: "og4",
-        title: "A4 - 2",
-        category: "Artwork",
-        icon: "🎨",
-        image: "/images/artworks/A4 - 2.jpg",
-        description: "Original artwork: A4 - 2"
-    },
+
+
     {
         id: "og5",
         title: "Aaduri",
@@ -58,75 +209,43 @@ const graphicsProjects = [
     },
     {
         id: "og7",
-        title: "Baisakhi Creatives",
+        title: "Baisakhi Posters",
         category: "Artwork",
         icon: "🎨",
         image: "/images/artworks/Baisakhi Creatives.jpg",
-        description: "Original artwork: Baisakhi Creatives"
-    },
-    {
-        id: "og8",
-        title: "Baishaki poster",
-        category: "Artwork",
-        icon: "🎨",
-        image: "/images/artworks/Baishaki poster.jpg",
-        description: "Original artwork: Baishaki poster"
-    },
-    {
-        id: "og9",
-        title: "Baishaki Postet",
-        category: "Artwork",
-        icon: "🎨",
-        image: "/images/artworks/Baishaki Postet.jpg",
-        description: "Original artwork: Baishaki Postet"
+        images: [
+            "/images/artworks/Baisakhi Creatives.jpg",
+            "/images/artworks/Baishaki poster.jpg",
+            "/images/artworks/Baishaki Postet.jpg"
+        ],
+        description: "Original artwork: Baisakhi Posters Collection"
     },
     {
         id: "og10",
-        title: "Coffee Table book-01",
+        title: "Coffee Table Book",
         category: "Artwork",
         icon: "🎨",
         image: "/images/artworks/Coffee Table book-01.jpg",
-        description: "Original artwork: Coffee Table book-01"
+        images: [
+            "/images/artworks/Coffee Table book-01.jpg",
+            "/images/artworks/Coffee Table book-02.jpg",
+            "/images/artworks/Coffee Table book-03.jpg",
+            "/images/artworks/Coffee Table book-04.jpg",
+            "/images/artworks/Coffee Table book-05.jpg",
+            "/images/artworks/coffee-table-back-cover.png"
+        ],
+        isCarouselBook: true,
+        bookFormat: "landscape",
+        description: "Original artwork: Coffee Table Book (Multiple Pages)"
     },
+
     {
-        id: "og11",
-        title: "Coffee Table book-02",
+        id: "og18",
+        title: "Hoarding",
         category: "Artwork",
         icon: "🎨",
-        image: "/images/artworks/Coffee Table book-02.jpg",
-        description: "Original artwork: Coffee Table book-02"
-    },
-    {
-        id: "og12",
-        title: "Coffee Table book-03",
-        category: "Artwork",
-        icon: "🎨",
-        image: "/images/artworks/Coffee Table book-03.jpg",
-        description: "Original artwork: Coffee Table book-03"
-    },
-    {
-        id: "og13",
-        title: "Coffee Table book-04",
-        category: "Artwork",
-        icon: "🎨",
-        image: "/images/artworks/Coffee Table book-04.jpg",
-        description: "Original artwork: Coffee Table book-04"
-    },
-    {
-        id: "og14",
-        title: "Coffee Table book-05",
-        category: "Artwork",
-        icon: "🎨",
-        image: "/images/artworks/Coffee Table book-05.jpg",
-        description: "Original artwork: Coffee Table book-05"
-    },
-    {
-        id: "og15",
-        title: "Frame 18",
-        category: "Artwork",
-        icon: "🎨",
-        image: "/images/artworks/Frame 18.jpg",
-        description: "Original artwork: Frame 18"
+        image: "/images/artworks/Hoarding.jpg",
+        description: "Original artwork: Hoarding"
     },
     {
         id: "og16",
@@ -137,60 +256,17 @@ const graphicsProjects = [
         description: "Original artwork: Galleria Furniture 2"
     },
     {
-        id: "og17",
-        title: "Hoarding 2",
-        category: "Artwork",
-        icon: "🎨",
-        image: "/images/artworks/Hoarding 2.jpg",
-        description: "Original artwork: Hoarding 2"
-    },
-    {
-        id: "og18",
-        title: "Hoarding",
-        category: "Artwork",
-        icon: "🎨",
-        image: "/images/artworks/Hoarding.jpg",
-        description: "Original artwork: Hoarding"
-    },
-    {
-        id: "og19",
-        title: "Instagram 1",
-        category: "Artwork",
-        icon: "🎨",
-        image: "/images/artworks/Instagram 1.jpg",
-        description: "Original artwork: Instagram 1"
-    },
-    {
-        id: "og20",
-        title: "Instagram 2",
-        category: "Artwork",
-        icon: "🎨",
-        image: "/images/artworks/Instagram 2.jpg",
-        description: "Original artwork: Instagram 2"
-    },
-    {
-        id: "og21",
-        title: "Instagram 3",
-        category: "Artwork",
-        icon: "🎨",
-        image: "/images/artworks/Instagram 3.jpg",
-        description: "Original artwork: Instagram 3"
-    },
-    {
-        id: "og22",
-        title: "Instagram 4",
-        category: "Artwork",
-        icon: "🎨",
-        image: "/images/artworks/Instagram 4.jpg",
-        description: "Original artwork: Instagram 4"
-    },
-    {
         id: "og23",
-        title: "KING",
+        title: "IPL Posters",
         category: "Artwork",
         icon: "🎨",
         image: "/images/artworks/KING.png",
-        description: "Original artwork: KING"
+        images: [
+            "/images/artworks/KING.png",
+            "/images/artworks/RCB.png",
+            "/images/artworks/A4 - 2.jpg"
+        ],
+        description: "Original artwork: IPL Posters Gallery"
     },
     {
         id: "og24",
@@ -200,22 +276,8 @@ const graphicsProjects = [
         image: "/images/artworks/Naga Creatives (1005 x 1920).png",
         description: "Original artwork: Naga Creatives (1005 x 1920)"
     },
-    {
-        id: "og25",
-        title: "Performance AD",
-        category: "Artwork",
-        icon: "🎨",
-        image: "/images/artworks/Performance AD.jpg",
-        description: "Original artwork: Performance AD"
-    },
-    {
-        id: "og26",
-        title: "RCB",
-        category: "Artwork",
-        icon: "🎨",
-        image: "/images/artworks/RCB.png",
-        description: "Original artwork: RCB"
-    },
+
+
     {
         id: "og27",
         title: "The park",
@@ -224,34 +286,29 @@ const graphicsProjects = [
         image: "/images/artworks/The park.jpeg",
         description: "Original artwork: The park"
     },
-    {
-        id: "og28",
-        title: "Whatsapp",
-        category: "Artwork",
-        icon: "🎨",
-        image: "/images/artworks/Whatsapp.jpg",
-        description: "Original artwork: Whatsapp"
-    },
+
     {
         id: "og29",
-        title: "WHD",
-        category: "Artwork",
-        icon: "🎨",
-        image: "/images/artworks/WHD.jpg",
-        description: "Original artwork: WHD"
-    },
-    {
-        id: "og30",
-        title: "World Health Day",
+        title: "World Health Day Posters",
         category: "Artwork",
         icon: "🎨",
         image: "/images/artworks/World Health Day.jpg",
-        description: "Original artwork: World Health Day"
+        images: [
+            "/images/artworks/World Health Day.jpg",
+            "/images/artworks/WHD.jpg"
+        ],
+        description: "Original artwork: World Health Day Collection"
     }
 ];
 
 export default function GraphicsPage() {
     const [selectedProject, setSelectedProject] = useState(null);
+    const [hasScrolledGallery, setHasScrolledGallery] = useState(false);
+
+    // Reset scroll indicator when project changes
+    useEffect(() => {
+        if (selectedProject) setHasScrolledGallery(false);
+    }, [selectedProject]);
 
     return (
         <main className={styles.main}>
@@ -325,6 +382,9 @@ export default function GraphicsPage() {
                                             <ArrowUpRight size={22} />
                                         </motion.div>
                                     </div>
+                                    {project.isNew && (
+                                        <span className={styles.newBadge}>NEW</span>
+                                    )}
                                 </div>
 
                                 <div className={styles.cardContent}>
@@ -361,13 +421,64 @@ export default function GraphicsPage() {
                             <button className={styles.lightboxClose} onClick={() => setSelectedProject(null)}>
                                 <X size={24} />
                             </button>
-                            <Image
-                                src={selectedProject.image}
-                                alt={selectedProject.title}
-                                fill
-                                unoptimized
-                                className={styles.lightboxImage}
-                            />
+
+                            <div className={styles.lightboxHeader}>
+                                <h2>{selectedProject.title}</h2>
+                                {selectedProject.description && <p>{selectedProject.description}</p>}
+                            </div>
+
+                            <div className={styles.lightboxBody}>
+                                {selectedProject.isCarouselBook ? (
+                                    <CreativeBook images={selectedProject.images} title={selectedProject.title} isComic={selectedProject.isComic} bookFormat={selectedProject.bookFormat || "square"} />
+                                ) : selectedProject.images && selectedProject.images.length > 0 ? (
+                                    <>
+                                        <div 
+                                            className={styles.lightboxGallery}
+                                            onScroll={(e) => {
+                                                if (e.target.scrollTop > 50 && !hasScrolledGallery) {
+                                                    setHasScrolledGallery(true);
+                                                }
+                                            }}
+                                        >
+                                            {selectedProject.images.map((imgSrc, i) => (
+                                                <div key={i} className={styles.lightboxGalleryItem}>
+                                                    <Image
+                                                        src={imgSrc}
+                                                        alt={`${selectedProject.title} ${i + 1}`}
+                                                        fill
+                                                        unoptimized
+                                                        className={styles.lightboxImage}
+                                                    />
+                                                </div>
+                                            ))}
+                                        </div>
+                                        
+                                        <AnimatePresence>
+                                            {!hasScrolledGallery && selectedProject.images.length > 1 && (
+                                                <motion.div 
+                                                    className={styles.scrollHint}
+                                                    initial={{ opacity: 0, y: 10 }}
+                                                    animate={{ opacity: 1, y: 0 }}
+                                                    exit={{ opacity: 0, y: 10 }}
+                                                >
+                                                    <span>Scroll for more</span>
+                                                    <ChevronDown size={20} className={styles.bounceIcon} />
+                                                </motion.div>
+                                            )}
+                                        </AnimatePresence>
+                                    </>
+                                ) : (
+                                    <div className={styles.lightboxSingleItem}>
+                                        <Image
+                                            src={selectedProject.image}
+                                            alt={selectedProject.title}
+                                            fill
+                                            unoptimized
+                                            className={styles.lightboxImage}
+                                        />
+                                    </div>
+                                )}
+                            </div>
                         </motion.div>
                     </motion.div>
                 )}

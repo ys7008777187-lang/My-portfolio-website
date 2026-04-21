@@ -290,24 +290,61 @@
 .lightboxOverlay {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.85);
+    background: rgba(0, 0, 0, 0.92);
     z-index: 1000;
     display: flex;
     align-items: center;
     justify-content: center;
     backdrop-filter: blur(12px);
-    padding: 2rem;
+    padding: 1rem;
 }
 
 .lightboxContent {
     position: relative;
-    max-width: 90vw;
-    max-height: 85vh;
+    max-width: 95vw;
+    max-height: 96vh;
     width: 100%;
     height: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
+    background: transparent;
+}
+
+.lightboxHeader {
+    width: 100%;
+    text-align: center;
+    padding-bottom: 0.75rem;
+    color: white;
+    flex-shrink: 0;
+}
+
+.lightboxHeader h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.lightboxHeader p {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.lightboxBody {
+    position: relative;
+    width: 100%;
+    flex: 1;
+    min-height: 0;
+    display: flex;
     justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.lightboxSingleItem {
+    position: relative;
+    width: 100%;
+    height: 100%;
 }
 
 .lightboxImage {
@@ -317,9 +354,9 @@
 }
 
 .lightboxClose {
-    position: absolute;
-    top: -3rem;
-    right: 0;
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
     background: transparent;
     border: none;
     color: white;
@@ -343,6 +380,95 @@
         padding: 1rem;
     }
     .lightboxClose {
-        top: -2.5rem;
+        top: 1rem;
+        right: 1rem;
+    }
+}
+
+.lightboxGallery {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    padding: 1rem 0;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.lightboxGallery::-webkit-scrollbar {
+    display: none;
+}
+
+.lightboxGalleryItem {
+    position: relative;
+    width: 100%;
+    min-height: 85vh;
+}
+
+.scrollHint {
+    position: absolute;
+    bottom: 3rem;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.8rem;
+    pointer-events: none;
+    z-index: 100;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    padding: 0.75rem 1.5rem;
+    border-radius: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.bounceIcon {
+    animation: scrollBounce 2s infinite ease-in-out;
+}
+
+@keyframes scrollBounce {
+    0%, 100% {
+        transform: translateY(-3px);
+    }
+    50% {
+        transform: translateY(3px);
+    }
+}
+
+/* NEW Badge */
+.newBadge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 5;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #fff;
+    background: linear-gradient(135deg, #ff6c8c 0%, #c850c0 50%, #6c8cff 100%);
+    box-shadow: 0 2px 12px rgba(200, 80, 192, 0.4);
+    animation: badgePulse 2s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+    0%, 100% {
+        box-shadow: 0 2px 12px rgba(200, 80, 192, 0.4);
+        transform: scale(1);
+    }
+    50% {
+        box-shadow: 0 4px 20px rgba(200, 80, 192, 0.6);
+        transform: scale(1.05);
     }
 }

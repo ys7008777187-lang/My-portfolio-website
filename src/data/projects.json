@@ -1,5 +1,14 @@
 [
   {
+    "id": 8,
+    "title": "Campus Bites",
+    "category": "UX Case Study",
+    "icon": "🍔",
+    "status": "Published",
+    "image": "/images/campusbites/thumbnail.png",
+    "link": ""
+  },
+  {
     "id": 1,
     "title": "ADT Solution",
     "category": "UI/UX Design",

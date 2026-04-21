@@ -1,59 +1,53 @@
 "use client";
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { ArrowLeft, Play } from "lucide-react";
+import { ArrowLeft, Play, X, ArrowUpRight } from "lucide-react";
 import ContactCTA from "../../../components/home/ContactCTA/ContactCTA";
 import styles from "../uiux/page.module.css";
 
 const videoProjects = [
     {
         id: "v1",
-        title: "Product Showcase Reel",
-        category: "Motion Graphics",
+        title: "ADT Solution Showcase",
+        category: "Video Editing",
         icon: "🎬",
-        description: "Dynamic product reveal animation",
-        videoSrc: null,
-        thumbnail: "/images/projects/guitar.png"
+        description: "Comprehensive product demonstration and feature highlight",
+        videoSrc: "/videos/adt-video.mp4",
+        thumbnail: "/images/projects/adt.jpg"
     },
     {
         id: "v2",
-        title: "Brand Introduction",
-        category: "Video Editing",
-        icon: "🎥",
-        description: "Cinematic brand story video",
-        videoSrc: null,
-        thumbnail: "/images/projects/wearables.png"
+        title: "Logo Motion Loader",
+        category: "Motion Graphics",
+        icon: "✨",
+        description: "Smooth, stylized animated logo sequence",
+        videoSrc: "/videos/logo-loader.gif",
+        thumbnail: "/videos/logo-loader.gif"
     },
     {
         id: "v3",
-        title: "Social Media Reel",
-        category: "Reels",
-        icon: "📱",
-        description: "Engaging social media content",
-        videoSrc: null,
-        thumbnail: "/images/projects/zoo.png"
+        title: "Packaging Motion",
+        category: "Motion Graphics",
+        icon: "📦",
+        description: "Dynamic product packaging animation",
+        videoSrc: "/videos/packaging-motion.mp4",
+        thumbnail: "/videos/packaging-motion.mp4"
     },
     {
         id: "v4",
-        title: "App Demo Video",
+        title: "Shoe Motion",
         category: "Motion Graphics",
-        icon: "📲",
-        description: "Interactive app walkthrough animation",
-        videoSrc: null,
-        thumbnail: "/images/projects/crypto.png"
-    },
-    {
-        id: "v5",
-        title: "Event Highlight Reel",
-        category: "Video Editing",
-        icon: "🎞️",
-        description: "Professional event coverage edit",
-        videoSrc: null,
-        thumbnail: "/images/projects/neon.png"
+        icon: "👟",
+        description: "Stylish footwear motion presentation",
+        videoSrc: "/videos/shoes-motion.mp4",
+        thumbnail: "/videos/shoes-motion.mp4"
     }
 ];
 
 export default function VideoEditsPage() {
+    const [selectedProject, setSelectedProject] = useState(null);
+
     return (
         <main className={styles.main}>
             <div className={styles.container}>
@@ -108,20 +102,37 @@ export default function VideoEditsPage() {
                                 }
                             }}
                         >
-                            <div className={styles.cardLink}>
+                            <div className={styles.cardLink} onClick={() => setSelectedProject(project)} style={{ cursor: "pointer" }}>
                                 <div className={styles.videoWrapper}>
                                     {/* Thumbnail with play overlay */}
-                                    <img
-                                        src={project.thumbnail}
-                                        alt={project.title}
-                                        style={{
-                                            width: '100%',
-                                            height: '100%',
-                                            objectFit: 'cover',
-                                            position: 'absolute',
-                                            inset: 0
-                                        }}
-                                    />
+                                    {project.thumbnail && project.thumbnail.endsWith('.mp4') ? (
+                                        <video
+                                            src={project.thumbnail}
+                                            autoPlay
+                                            loop
+                                            muted
+                                            playsInline
+                                            style={{
+                                                width: '100%',
+                                                height: '100%',
+                                                objectFit: 'cover',
+                                                position: 'absolute',
+                                                inset: 0
+                                            }}
+                                        />
+                                    ) : (
+                                        <img
+                                            src={project.thumbnail}
+                                            alt={project.title}
+                                            style={{
+                                                width: '100%',
+                                                height: '100%',
+                                                objectFit: 'cover',
+                                                position: 'absolute',
+                                                inset: 0
+                                            }}
+                                        />
+                                    )}
                                     <div className={styles.videoOverlay}>
                                         <motion.div
                                             className={styles.playBtn}
@@ -145,6 +156,59 @@ export default function VideoEditsPage() {
                     ))}
                 </motion.div>
             </div>
+
+            <AnimatePresence>
+                {selectedProject && (
+                    <motion.div
+                        className={styles.lightboxOverlay}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        onClick={() => setSelectedProject(null)}
+                    >
+                        <motion.div
+                            className={styles.lightboxContent}
+                            initial={{ scale: 0.9, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            exit={{ scale: 0.9, opacity: 0 }}
+                            onClick={(e) => e.stopPropagation()}
+                            transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                        >
+                            <button className={styles.lightboxClose} onClick={() => setSelectedProject(null)}>
+                                <X size={24} />
+                            </button>
+
+                            <div className={styles.lightboxHeader}>
+                                <h2>{selectedProject.title}</h2>
+                                {selectedProject.description && <p>{selectedProject.description}</p>}
+                            </div>
+
+                            <div className={styles.lightboxBody}>
+                                <div className={styles.lightboxSingleItem}>
+                                    {selectedProject.videoSrc && selectedProject.videoSrc.endsWith('.mp4') ? (
+                                        <video
+                                            src={selectedProject.videoSrc}
+                                            controls
+                                            autoPlay
+                                            playsInline
+                                            className={styles.lightboxImage}
+                                            style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                                        />
+                                    ) : (
+                                        <img
+                                            src={selectedProject.videoSrc}
+                                            alt={selectedProject.title}
+                                            className={styles.lightboxImage}
+                                            style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                                        />
+                                    )}
+                                </div>
+                            </div>
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
             <ContactCTA />
         </main>
     );
