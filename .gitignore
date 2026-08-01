@@ -44,3 +44,9 @@ next-env.d.ts
 
 # Local Netlify folder
 .netlify
+
+# local tool / AI assistant state
+.agents/
+.claude/
+.vscode/
+*.code-workspace
