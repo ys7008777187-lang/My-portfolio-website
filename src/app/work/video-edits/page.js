@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { ArrowLeft, Play, X, ArrowUpRight } from "lucide-react";
 import ContactCTA from "../../../components/home/ContactCTA/ContactCTA";
+import { getAssetUrl } from "../../../lib/assetUrl";
 import styles from "../uiux/page.module.css";
 
 const videoProjects = [
@@ -107,7 +108,7 @@ export default function VideoEditsPage() {
                                     {/* Thumbnail with play overlay */}
                                     {project.thumbnail && project.thumbnail.endsWith('.mp4') ? (
                                         <video
-                                            src={project.thumbnail}
+                                            src={getAssetUrl(project.thumbnail)}
                                             autoPlay
                                             loop
                                             muted
@@ -122,7 +123,7 @@ export default function VideoEditsPage() {
                                         />
                                     ) : (
                                         <img
-                                            src={project.thumbnail}
+                                            src={getAssetUrl(project.thumbnail)}
                                             alt={project.title}
                                             style={{
                                                 width: '100%',
@@ -187,7 +188,7 @@ export default function VideoEditsPage() {
                                 <div className={styles.lightboxSingleItem}>
                                     {selectedProject.videoSrc && selectedProject.videoSrc.endsWith('.mp4') ? (
                                         <video
-                                            src={selectedProject.videoSrc}
+                                            src={getAssetUrl(selectedProject.videoSrc)}
                                             controls
                                             autoPlay
                                             playsInline
@@ -196,7 +197,7 @@ export default function VideoEditsPage() {
                                         />
                                     ) : (
                                         <img
-                                            src={selectedProject.videoSrc}
+                                            src={getAssetUrl(selectedProject.videoSrc)}
                                             alt={selectedProject.title}
                                             className={styles.lightboxImage}
                                             style={{ width: '100%', height: '100%', objectFit: 'contain' }}

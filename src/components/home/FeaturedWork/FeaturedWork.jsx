@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { getAssetUrl } from "../../../lib/assetUrl";
 import Link from "next/link";
 import Button from "../../ui/Button/Button";
 import styles from "./FeaturedWork.module.css";
@@ -20,7 +21,7 @@ export default function FeaturedWork() {
                 title: p.title,
                 category: p.category,
                 description: p.category + " project", // Fallback description
-                image: p.image || '/images/placeholder.jpg',
+                image: getAssetUrl(p.image || '/images/placeholder.jpg'),
                 color: '#1E3A5F',
                 tags: [p.category, "Design"], // Fallback tags
                 externalUrl: p.link

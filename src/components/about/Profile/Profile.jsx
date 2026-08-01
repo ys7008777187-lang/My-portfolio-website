@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { getAssetUrl } from "../../../lib/assetUrl";
 import styles from "./Profile.module.css";
 import { MapPin, Mail, Briefcase } from "lucide-react";
 import profileData from "../../../data/profile.json";
@@ -29,7 +30,7 @@ export default function Profile() {
                         <div className={styles.imageBg}></div>
                         <div className={styles.imageFrame}>
                             <Image
-                                src={profile.image || "/images/profile.jpg"}
+                                src={getAssetUrl(profile.image || "/images/profile.jpg")}
                                 alt={profile.name}
                                 fill
                                 style={{ objectFit: "cover" }}

@@ -8,6 +8,7 @@ import {
     BarChart3, Settings, ShoppingBag, Users, Wallet,
     Brain, CalendarClock, TrendingUp, Award, Sparkles
 } from 'lucide-react';
+import { getAssetUrl } from "../../lib/assetUrl";
 import styles from "./CampusBitesCaseStudy.module.css";
 
 const fadeInUp = {
@@ -76,7 +77,7 @@ function DashboardTabs({ tabs, defaultTab }) {
                                 transition={{ duration: 0.35, ease: "easeOut" }}
                             >
                                 <div className={styles.tabScreenInside}>
-                                    <img src={current.src} alt={current.label} />
+                                    <img src={getAssetUrl(current.src)} alt={current.label} />
                                 </div>
                             </motion.div>
                         </AnimatePresence>
@@ -178,17 +179,17 @@ export default function CampusBitesCaseStudy() {
 
                     {/* Laptop — Admin Dashboard */}
                     <div className={styles.deviceLaptop}>
-                        <img src="/images/campusbites/Admin Dashboard.png" alt="Admin Dashboard" />
+                        <img src={getAssetUrl("/images/campusbites/Admin Dashboard.png")} alt="Admin Dashboard" />
                     </div>
 
                     {/* Tablet — Store Dashboard */}
                     <div className={styles.deviceTablet}>
-                        <img src="/images/campusbites/Store Dashboard.png" alt="Store Dashboard" />
+                        <img src={getAssetUrl("/images/campusbites/Store Dashboard.png")} alt="Store Dashboard" />
                     </div>
 
                     {/* Phone — User App */}
                     <div className={styles.devicePhone}>
-                        <img src="/images/campusbites/Food cout listing .png" alt="Mobile App" />
+                        <img src={getAssetUrl("/images/campusbites/Food cout listing .png")} alt="Mobile App" />
                     </div>
                 </motion.div>
             </section>
@@ -353,7 +354,7 @@ export default function CampusBitesCaseStudy() {
                                 transition={{ delay: i * 0.08, duration: 0.5 }}
                             >
                                 <div className={styles.phoneMockup}>
-                                    <img src={item.src} alt={item.label} />
+                                    <img src={getAssetUrl(item.src)} alt={item.label} />
                                 </div>
                                 <div className={styles.phoneLabel}>{item.label}</div>
                                 <div className={styles.phoneAnnotation}>

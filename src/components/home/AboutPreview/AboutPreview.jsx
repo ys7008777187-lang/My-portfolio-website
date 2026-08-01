@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { getAssetUrl } from "../../../lib/assetUrl";
 import Button from "../../ui/Button/Button";
 import styles from "./AboutPreview.module.css";
 import profileData from "../../../data/profile.json";
@@ -36,7 +37,7 @@ export default function AboutPreview() {
                             <div className={styles.imageBg}></div>
                             <div className={styles.imageFrame}>
                                 <Image
-                                    src={profile.image || "/images/profile.jpg"}
+                                    src={getAssetUrl(profile.image || "/images/profile.jpg")}
                                     alt={profile.name}
                                     fill
                                     style={{ objectFit: "cover" }}

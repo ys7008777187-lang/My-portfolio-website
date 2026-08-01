@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import ContactCTA from "../../../components/home/ContactCTA/ContactCTA";
+import { getAssetUrl } from "../../../lib/assetUrl";
 import styles from "./page.module.css";
 import projectsData from "../../../data/projects.json";
 
@@ -73,7 +74,7 @@ export default function UIUXPage() {
                                 <a {...linkProps} className={styles.cardLink}>
                                     <div className={styles.imageWrapper}>
                                         <Image
-                                            src={project.image || '/images/placeholder.jpg'}
+                                            src={getAssetUrl(project.image || '/images/placeholder.jpg')}
                                             alt={project.title}
                                             fill
                                             unoptimized

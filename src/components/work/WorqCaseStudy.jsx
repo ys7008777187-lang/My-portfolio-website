@@ -8,6 +8,7 @@ import {
     Settings, UserCheck, CreditCard, FileText, Filter, Award,
     TrendingUp, Heart, Send, Calendar, Globe, Compass
 } from 'lucide-react';
+import { getAssetUrl } from "../../lib/assetUrl";
 import styles from "./WorqCaseStudy.module.css";
 
 const fadeInUp = {
@@ -21,7 +22,7 @@ const stagger = {
 
 const PhoneMockup = ({ src, alt }) => (
     <div className={styles.phoneMockup}>
-        <img src={src} alt={alt} />
+        <img src={getAssetUrl(src)} alt={alt} />
     </div>
 );
 

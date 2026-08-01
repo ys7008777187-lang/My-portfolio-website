@@ -18,6 +18,7 @@
     "react-pageflip": "^2.0.3"
   },
   "devDependencies": {
+    "dotenv": "^17.4.2",
     "eslint": "^9",
     "eslint-config-next": "16.1.1"
   }

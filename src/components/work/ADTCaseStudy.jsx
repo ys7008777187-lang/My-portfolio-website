@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import {
     Target, LineChart, ShieldCheck, Users, Pointer, Layers, Eye, MoveRight, CheckCircle2, AlertCircle, ArrowUpRight, Zap, RefreshCcw, LayoutDashboard
 } from 'lucide-react';
+import { getAssetUrl } from "../../lib/assetUrl";
 import styles from "./ADTCaseStudy.module.css";
 
 const fadeInUp = { hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } };
@@ -45,7 +46,7 @@ export default function ADTCaseStudy() {
                         <div className={styles.heroMockupContainer}>
                             <div className={styles.laptopMockup} style={{marginTop: '0', marginBottom: '0', width: '100%', maxWidth: 'none'}}>
                                 <div className={styles.heroLaptopScreen}>
-                                    <img src="/images/ADT/Home.jpg" alt="ADT Solution Landing Page" />
+                                    <img src={getAssetUrl("/images/ADT/Home.jpg")} alt="ADT Solution Landing Page" />
                                 </div>
                             </div>
                         </div>
@@ -171,7 +172,7 @@ export default function ADTCaseStudy() {
                             {/* Visual Flow Injection: ABOUT US LAPTOP */}
                             <div className={styles.laptopMockup} style={{marginTop: '32px', margin: '32px auto 0', maxWidth: '100%'}}>
                                 <div className={styles.laptopScreen}>
-                                    <img src="/images/ADT/About us.jpg" alt="Content Re-write" />
+                                    <img src={getAssetUrl("/images/ADT/About us.jpg")} alt="Content Re-write" />
                                 </div>
                             </div>
                             <p className={styles.imageCaption}>Strategic Content Rewrite</p>
@@ -194,7 +195,7 @@ export default function ADTCaseStudy() {
                         <div className={styles.imageWrapper} style={{background: 'transparent', border: 'none', padding: 0}}>
                             <div className={styles.laptopMockup} style={{marginTop: '0px', width: '100%'}}>
                                 <div className={styles.laptopScreen}>
-                                    <img src="/images/ADT/Payroll.jpg" alt="ADT Global Payroll UI" />
+                                    <img src={getAssetUrl("/images/ADT/Payroll.jpg")} alt="ADT Global Payroll UI" />
                                 </div>
                             </div>
                             <p className={styles.imageCaption}>Global Payroll Flow</p>
@@ -202,7 +203,7 @@ export default function ADTCaseStudy() {
                         <div className={styles.imageWrapper} style={{background: 'transparent', border: 'none', padding: 0}}>
                             <div className={styles.laptopMockup} style={{marginTop: '0px', width: '100%'}}>
                                 <div className={styles.laptopScreen}>
-                                    <img src="/images/ADT/EOR.jpg" alt="ADT Employer of Record UI" />
+                                    <img src={getAssetUrl("/images/ADT/EOR.jpg")} alt="ADT Employer of Record UI" />
                                 </div>
                             </div>
                             <p className={styles.imageCaption}>EOR Dashboard</p>
@@ -210,7 +211,7 @@ export default function ADTCaseStudy() {
                         <div className={styles.imageWrapper} style={{background: 'transparent', border: 'none', padding: 0}}>
                             <div className={styles.laptopMockup} style={{marginTop: '0px', width: '100%'}}>
                                 <div className={styles.laptopScreen}>
-                                    <img src="/images/ADT/Immigration.jpg" alt="ADT Immigration Flow" />
+                                    <img src={getAssetUrl("/images/ADT/Immigration.jpg")} alt="ADT Immigration Flow" />
                                 </div>
                             </div>
                             <p className={styles.imageCaption}>Immigration Management</p>
@@ -254,7 +255,7 @@ export default function ADTCaseStudy() {
                             {/* Visual Flow Injection: PRICING LAPTOP */}
                             <div className={styles.laptopMockup} style={{marginTop: '32px', margin: '32px auto 0', maxWidth: '100%'}}>
                                 <div className={styles.laptopScreen}>
-                                    <img src="/images/ADT/Pricing.jpg" alt="ADT Pricing Tables Redesigned" />
+                                    <img src={getAssetUrl("/images/ADT/Pricing.jpg")} alt="ADT Pricing Tables Redesigned" />
                                 </div>
                             </div>
                         </div>

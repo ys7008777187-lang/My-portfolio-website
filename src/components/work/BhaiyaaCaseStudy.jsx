@@ -8,6 +8,7 @@ import {
     HeartPulse, UtensilsCrossed, CalendarHeart, MessageSquare,
     Eye, ShieldCheck, Target, Lightbulb, RotateCcw, Award
 } from 'lucide-react';
+import { getAssetUrl } from "../../lib/assetUrl";
 import styles from "./BhaiyaaCaseStudy.module.css";
 
 const fadeInUp = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5 } } };
@@ -50,10 +51,10 @@ export default function BhaiyaaCaseStudy() {
                     className={styles.heroMockupWrapper}
                 >
                     <div className={`${styles.heroMockup} ${styles.mockupBack}`}>
-                        <img src="/images/bhaiyaa/new_screen_3.jpg" alt="Bhaiyaa Mart Screen" />
+                        <img src={getAssetUrl("/images/bhaiyaa/new_screen_3.jpg")} alt="Bhaiyaa Mart Screen" />
                     </div>
                     <div className={`${styles.heroMockup} ${styles.mockupFront}`}>
-                        <img src="/images/bhaiyaa/new_screen_1.jpg" alt="Bhaiyaa Home Screen" />
+                        <img src={getAssetUrl("/images/bhaiyaa/new_screen_1.jpg")} alt="Bhaiyaa Home Screen" />
                     </div>
                 </motion.div>
             </section>
@@ -251,7 +252,7 @@ export default function BhaiyaaCaseStudy() {
                             { src: '/images/bhaiyaa/new_screen_5.jpg', alt: 'Checkout' },
                         ].map((screen, i) => (
                             <div key={i} className={styles.mockupCard}>
-                                <img src={screen.src} alt={screen.alt} className={styles.mockupImage} />
+                                <img src={getAssetUrl(screen.src)} alt={screen.alt} className={styles.mockupImage} />
                             </div>
                         ))}
                     </div>
