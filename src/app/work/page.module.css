@@ -542,7 +542,7 @@
     .titleLine2 { font-size: 4rem; }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
     .masthead {
         flex-direction: column;
         gap: 2rem;
