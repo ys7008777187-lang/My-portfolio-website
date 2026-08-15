@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import styles from "./page.module.css";
 import { Mail, MapPin, Phone, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
 
-
 export default function Contact() {
     const [formState, setFormState] = useState("idle"); // idle, loading, success, error
     const [formData, setFormData] = useState({
@@ -23,14 +22,13 @@ export default function Contact() {
         setFormState("loading");
 
         try {
-            // Send to Web3Forms (original)
             const response = await fetch("https://api.web3forms.com/submit", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    access_key: "9997c1dd-5b7c-433e-8b57-5fbc315f3bf5",
+                    access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "9997c1dd-5b7c-433e-8b57-5fbc315f3bf5",
                     from_name: formData.name,
                     email: formData.email,
                     subject: `Portfolio Contact: ${formData.reason}`,
@@ -38,8 +36,6 @@ export default function Contact() {
                     reason: formData.reason,
                 }),
             });
-
-
 
             const result = await response.json();
             if (result.success) {
@@ -61,9 +57,17 @@ export default function Contact() {
                         className={styles.info}
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.6 }}
+                        transition={{ duration: 0.4 }}
                     >
-                        <h1 className={styles.title}>Let's start a project together.</h1>
+                        <div className={styles.issueBanner}>
+                            <span className={styles.issueLabel}>ISSUE</span>
+                            <span className={styles.issueNum}>#04</span>
+                            <span className={styles.issueSep}>—</span>
+                            <span className={styles.issueTitle}>LET'S CONNECT</span>
+                        </div>
+                        <h1 className={styles.title}>
+                            Let's start a project together.
+                        </h1>
                         <p className={styles.subtitle}>
                             Interested in working together? I'm currently open for freelance projects and full-time opportunities.
                         </p>
@@ -97,7 +101,7 @@ export default function Contact() {
                         className={styles.form}
                         initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.6, delay: 0.2 }}
+                        transition={{ duration: 0.4, delay: 0.1 }}
                         onSubmit={handleSubmit}
                     >
                         {formState === "success" ? (
@@ -116,7 +120,7 @@ export default function Contact() {
                         ) : (
                             <>
                                 <div className={styles.formGroup}>
-                                    <label htmlFor="name" className={styles.label}>Name</label>
+                                    <label htmlFor="name" className={styles.formLabel}>Name</label>
                                     <input
                                         type="text"
                                         id="name"
@@ -129,7 +133,7 @@ export default function Contact() {
                                     />
                                 </div>
                                 <div className={styles.formGroup}>
-                                    <label htmlFor="email" className={styles.label}>Email</label>
+                                    <label htmlFor="email" className={styles.formLabel}>Email</label>
                                     <input
                                         type="email"
                                         id="email"
@@ -142,7 +146,7 @@ export default function Contact() {
                                     />
                                 </div>
                                 <div className={styles.formGroup}>
-                                    <label htmlFor="reason" className={styles.label}>Reason for Contact</label>
+                                    <label htmlFor="reason" className={styles.formLabel}>Reason for Contact</label>
                                     <select
                                         id="reason"
                                         name="reason"
@@ -159,7 +163,7 @@ export default function Contact() {
                                     </select>
                                 </div>
                                 <div className={styles.formGroup}>
-                                    <label htmlFor="message" className={styles.label}>Message</label>
+                                    <label htmlFor="message" className={styles.formLabel}>Message</label>
                                     <textarea
                                         id="message"
                                         name="message"

@@ -7,19 +7,21 @@
     "date": "2025-01-06",
     "status": "Published",
     "icon": "📱",
-    "image": "/images/blog/mobile-design.png",
-    "readTime": "7 min read"
+    "image": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80",
+    "readTime": "7 min read",
+    "content": "<p>When we design for the mobile screen, we are designing for intimacy. A smartphone is the most personal device a human owns. Every tap, swipe, and scroll should feel like an extension of the user's intent.</p><img src='https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80' alt='Mobile Design' /><blockquote>The best interface is invisible. It gets out of the way and lets the user accomplish their goal.</blockquote><p>We often get caught up in flashy animations and complex gradients, but the true art of mobile design lies in clarity. Contrast, typography, and spacing are your primary tools. Use them wisely.</p><p>Consider the 'thumb zone' - the area of a screen easily accessible by a user's thumb when holding the device with one hand. Placing primary actions in this zone reduces cognitive and physical load.</p><blockquote>Designing for mobile isn't about shrinking the desktop experience. It's about distilling the essence of the task.</blockquote><p>To conclude, always test on real devices. An interface that looks beautiful on a 27-inch 4K monitor might be completely unusable on a sunny day waiting for a bus. Design for reality.</p>"
   },
   {
     "id": 1736191200003,
-    "title": "Designing for Accessibility: A Complete Guide",
+    "title": "Designing for Accessibility",
     "excerpt": "Learn how to create inclusive digital experiences that work for everyone, including WCAG guidelines and best practices.",
     "category": "Accessibility",
     "date": "2025-01-05",
     "status": "Published",
     "icon": "♿",
-    "image": "/images/blog/accessibility.png",
-    "readTime": "8 min read"
+    "image": "https://images.unsplash.com/photo-1573164713988-8665fc963095?w=800&q=80",
+    "readTime": "8 min read",
+    "content": "<p>Accessibility (a11y) is not a feature you add at the end of a project; it's a fundamental requirement. Designing for accessibility means designing for everyone, regardless of their abilities or situational constraints.</p><img src='https://images.unsplash.com/photo-1573164713988-8665fc963095?w=800&q=80' alt='Accessibility tools' /><blockquote>Many designers view accessibility as a constraint that limits creativity. In reality, it challenges us to create cleaner, more semantic interfaces.</blockquote><p>Start with contrast. The WCAG requires a contrast ratio of at least 4.5:1 for normal text. This isn't just for users with visual impairments; it helps everyone reading a screen in bright sunlight.</p><p>Next, consider focus states. If a user is navigating via keyboard, they need to know exactly which element has focus. Never set 'outline: none' without providing a distinct visual alternative.</p><blockquote>Inclusivity drives innovation. Designing for extreme cases often yields solutions that benefit the masses.</blockquote><p>Remember that accessibility is an ongoing journey. Regular audits, automated testing, and, most importantly, testing with users who have disabilities, are crucial for a truly inclusive product.</p>"
   },
   {
     "id": 1736191200004,
@@ -29,8 +31,9 @@
     "date": "2025-01-04",
     "status": "Published",
     "icon": "🧩",
-    "image": "/images/blog/design-systems.png",
-    "readTime": "6 min read"
+    "image": "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=800&q=80",
+    "readTime": "6 min read",
+    "content": "<p>A design system is more than just a UI kit or a component library; it is a shared language. When a team speaks the same language, collaboration becomes seamless and products become cohesive.</p><img src='https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=800&q=80' alt='Design System components' /><blockquote>Without a system, you are just painting screens. With a system, you are architecting a product.</blockquote><p>The foundation of any good design system starts with design tokens: the indivisible pieces of your design such as colors, typography, and spacing. By defining these early, you ensure absolute consistency across platforms.</p><p>Once tokens are set, build components atomically. Start with buttons, inputs, and icons (atoms), then combine them into search bars and cards (molecules). This methodology ensures everything fits perfectly together.</p><blockquote>A system that doesn't evolve is a dead system. Build it to adapt.</blockquote><p>Documentation is the heartbeat of your system. If a component isn't documented with clear usage guidelines, it doesn't truly exist for the rest of your team. Treat documentation as a first-class citizen.</p>"
   },
   {
     "id": 1736191200005,
@@ -40,7 +43,8 @@
     "date": "2025-01-03",
     "status": "Published",
     "icon": "🔍",
-    "image": "/images/blog/user-research.png",
-    "readTime": "6 min read"
+    "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+    "readTime": "6 min read",
+    "content": "<p>You cannot design a solution if you don't fully understand the problem. User research is the flashlight in the dark cave of product development, illuminating the path forward.</p><img src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80' alt='User Research mapping' /><blockquote>Empathy is our primary tool. We must step out of our own shoes and into those of our users.</blockquote><p>Qualitative research answers the 'why', while quantitative answers the 'what'. Both are necessary. An analytics dashboard might tell you users are dropping off at checkout, but only a user interview will tell you they found the shipping options confusing.</p><p>When conducting interviews, ask open-ended questions. Don't ask, 'Did you like this feature?' Ask, 'Tell me about the last time you tried to do this task.'</p><blockquote>Listen to what users say, but pay closer attention to what they do.</blockquote><p>Synthesizing research into actionable artifacts like personas, journey maps, and empathy maps ensures that the voice of the user remains central throughout the entire design and development lifecycle.</p>"
   }
 ]

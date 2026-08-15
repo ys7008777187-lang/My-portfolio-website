@@ -1,10 +1,8 @@
 "use client";
-import { useEffect } from "react";
 import Hero from "../components/home/Hero/Hero";
 import Services from "../components/home/Services/Services";
 import FeaturedWork from "../components/home/FeaturedWork/FeaturedWork";
 import Journey from "../components/home/Journey/Journey";
-import AboutPreview from "../components/home/AboutPreview/AboutPreview";
 import ContactCTA from "../components/home/ContactCTA/ContactCTA";
 
 
@@ -14,10 +12,9 @@ export default function Home() {
   return (
     <main>
       <Hero />
-      <Services />
       <FeaturedWork />
+      <Services />
       <Journey />
-      <AboutPreview />
       <ContactCTA />
     </main>
   );

@@ -16,7 +16,7 @@ export default function ProjectCard({ project }) {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.25 }}
             className={styles.card}
         >
             <a {...linkProps} className={styles.link}>
@@ -45,7 +45,7 @@ export default function ProjectCard({ project }) {
                         <span className={styles.category}>{project.category} • {project.role}</span>
                     </div>
                     <div className={styles.icon}>
-                        <ArrowUpRight size={24} />
+                        <ArrowUpRight size={28} />
                     </div>
                 </div>
             </a>

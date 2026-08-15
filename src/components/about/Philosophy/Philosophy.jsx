@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import ScrollVaporText from "../../ui/ScrollVaporText/ScrollVaporText";
 import styles from "./Philosophy.module.css";
 
 const principles = [
@@ -12,7 +13,7 @@ const principles = [
 export default function Philosophy() {
     return (
         <section className={styles.section}>
-            <h2 className={styles.heading}>Design Philosophy</h2>
+            <ScrollVaporText text="Design Philosophy" as="h2" className={styles.heading} />
             <div className={styles.grid}>
                 {principles.map((item, index) => (
                     <motion.div
@@ -20,7 +21,7 @@ export default function Philosophy() {
                         className={styles.card}
                         initial={{ opacity: 0, scale: 0.95 }}
                         whileInView={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: index * 0.1, duration: 0.5 }}
+                        transition={{ delay: index * 0.06, duration: 0.35 }}
                     >
                         <span className={styles.number}>0{index + 1}</span>
                         <h3 className={styles.title}>{item.title}</h3>

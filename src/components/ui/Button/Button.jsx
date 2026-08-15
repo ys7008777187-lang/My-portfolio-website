@@ -21,7 +21,7 @@ export default function Button({
         >
             <span className={styles.content}>{children}</span>
             <span className={styles.iconWrapper}>
-                <ArrowRight className={styles.icon} size={18} />
+                <ArrowRight className={styles.icon} size={20} />
             </span>
         </Component>
     );

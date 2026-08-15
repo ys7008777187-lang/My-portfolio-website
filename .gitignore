@@ -50,3 +50,17 @@ next-env.d.ts
 .claude/
 .vscode/
 *.code-workspace
+
+# Ignore huge media files
+*.mp4
+*.webm
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.gif
+*.glb
+*.gltf
+public/images/
+public/videos/
+public/models/

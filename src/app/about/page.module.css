@@ -1,6 +1,6 @@
 .main {
     min-height: 100vh;
-    padding-top: 80px;
+    padding-top: clamp(6rem, 10vw, 8rem);
     /* Offset for navbar */
     overflow-x: hidden;
 }

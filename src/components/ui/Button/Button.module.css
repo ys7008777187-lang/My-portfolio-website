@@ -1,60 +1,66 @@
 .button {
     display: inline-flex;
     align-items: center;
-    gap: var(--spacing-sm);
-    padding: var(--spacing-md) var(--spacing-xl);
-    font-size: var(--font-size-base);
+    gap: var(--spacing-sm, 0.5rem);
+    padding: var(--spacing-md, 0.75rem) var(--spacing-xl, 1.5rem);
+    font-size: var(--font-size-base, 1rem);
     font-weight: 500;
-    border-radius: var(--radius-full);
-    transition: var(--transition-base);
+    border-radius: 0;
+    transition: transform var(--transition-fast, 120ms), box-shadow var(--transition-fast, 120ms);
     cursor: pointer;
     text-decoration: none;
-    border: none;
+    border: var(--border-width, 3px) solid var(--color-comic-border, #000);
+    box-shadow: var(--shadow-sm, 3px 3px 0 #000);
+    font-family: var(--font-bangers, cursive);
+    letter-spacing: 1px;
     outline: none;
+    transform: skewX(-6deg);
+    text-transform: uppercase;
+}
+
+.button:hover {
+    transform: skewX(-6deg) translate(-2px, -2px);
+    box-shadow: var(--shadow-lg, 8px 8px 0 #000);
+}
+
+.button:active {
+    transform: skewX(-6deg) translate(0, 0);
+    box-shadow: var(--shadow-sm, 3px 3px 0 #000);
 }
 
 /* Primary Variant */
 .primary {
-    background: var(--gradient-accent);
-    color: var(--color-bg-primary);
-}
-
-.primary:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-glow);
-}
-
-.primary:active {
-    transform: translateY(0);
+    background: var(--color-comic-yellow, #FFCC00);
+    color: #000;
 }
 
 /* Secondary Variant */
 .secondary {
-    background: transparent;
-    color: var(--color-text-primary);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: var(--color-bg-secondary, #2C2C2C);
+    color: #fff;
 }
 
 .secondary:hover {
-    background: var(--color-bg-glass);
-    border-color: rgba(255, 255, 255, 0.3);
+    background: var(--color-bg-secondary, #2C2C2C);
 }
 
 /* Icon */
 .content {
     display: flex;
     align-items: center;
+    transform: skewX(6deg); /* un-skew text */
 }
 
 .iconWrapper {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: var(--transition-fast);
+    transition: var(--transition-fast, 120ms);
+    transform: skewX(6deg); /* un-skew icon */
 }
 
 .icon {
-    transition: var(--transition-fast);
+    transition: transform var(--transition-fast, 120ms);
 }
 
 .button:hover .icon {
@@ -63,17 +69,17 @@
 
 /* Sizes */
 .small {
-    padding: var(--spacing-sm) var(--spacing-lg);
-    font-size: var(--font-size-sm);
+    padding: var(--spacing-sm, 0.5rem) var(--spacing-lg, 1rem);
+    font-size: var(--font-size-sm, 0.875rem);
 }
 
 .large {
-    padding: var(--spacing-lg) var(--spacing-2xl);
-    font-size: var(--font-size-lg);
+    padding: var(--spacing-lg, 1rem) var(--spacing-2xl, 2rem);
+    font-size: var(--font-size-lg, 1.125rem);
 }
 
 /* Focus State */
 .button:focus-visible {
-    outline: 2px solid var(--color-accent);
+    outline: 2px solid var(--color-comic-border, #000);
     outline-offset: 4px;
 }

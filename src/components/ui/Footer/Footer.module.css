@@ -1,7 +1,7 @@
 .footer {
     padding: var(--spacing-5xl) 0 var(--spacing-2xl);
-    background: var(--color-bg-primary);
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    background: var(--color-bg-secondary);
+    border-top: var(--border-width) solid var(--color-comic-border);
 }
 
 .container {
@@ -16,7 +16,7 @@
     grid-template-columns: 1fr 2fr;
     gap: var(--spacing-4xl);
     padding-bottom: var(--spacing-3xl);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: var(--border-width) solid var(--color-comic-border);
 }
 
 /* Brand */
@@ -38,24 +38,35 @@
     justify-content: center;
     width: 48px;
     height: 48px;
-    background: var(--gradient-accent);
-    border-radius: var(--radius-md);
-    font-family: var(--font-bebas), sans-serif;
+    background: var(--color-comic-yellow);
+    border: var(--border-width) solid var(--color-comic-border);
+    border-radius: 0;
+    font-family: var(--font-bangers, cursive);
     font-size: 1.5rem;
     letter-spacing: 0.05em;
-    color: var(--color-bg-primary);
+    color: #000;
+    box-shadow: var(--shadow-sm);
 }
 
 .logoText {
-    font-size: var(--font-size-lg);
-    font-weight: 600;
+    font-family: var(--font-bangers, cursive);
+    font-size: 1.5rem;
+    color: var(--color-text-primary);
+    letter-spacing: 0.05em;
+    -webkit-text-stroke: 1px var(--color-comic-border);
 }
 
 .tagline {
-    font-size: var(--font-size-base);
-    color: var(--color-text-secondary);
+    font-family: var(--font-comic-neue, cursive);
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--color-text-primary);
     max-width: 280px;
-    line-height: 1.6;
+    line-height: 1.4;
+    background: var(--color-comic-cyan);
+    padding: 0.5rem;
+    border: var(--border-width) solid var(--color-comic-border);
+    transform: rotate(-1deg);
 }
 
 /* Links Grid */
@@ -72,11 +83,12 @@
 }
 
 .columnTitle {
-    font-size: var(--font-size-sm);
-    font-weight: 600;
+    font-family: var(--font-bangers, cursive);
+    font-size: 1.5rem;
     color: var(--color-text-primary);
     text-transform: uppercase;
     letter-spacing: 0.1em;
+    text-shadow: 1px 1px 0px var(--color-comic-border);
 }
 
 .linkList {
@@ -86,13 +98,15 @@
 }
 
 .link {
-    font-size: var(--font-size-base);
-    color: var(--color-text-secondary);
+    font-family: var(--font-comic-neue, cursive);
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--color-text-primary);
     transition: var(--transition-fast);
 }
 
 .link:hover {
-    color: var(--color-accent);
+    color: var(--color-comic-red);
 }
 
 /* Social Links */
@@ -100,13 +114,15 @@
     display: flex;
     align-items: center;
     gap: var(--spacing-sm);
-    font-size: var(--font-size-base);
-    color: var(--color-text-secondary);
+    font-family: var(--font-comic-neue, cursive);
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--color-text-primary);
     transition: var(--transition-fast);
 }
 
 .socialLink:hover {
-    color: var(--color-accent);
+    color: var(--color-comic-yellow);
 }
 
 .externalIcon {
@@ -125,18 +141,22 @@
     display: flex;
     align-items: center;
     gap: var(--spacing-sm);
-    font-size: var(--font-size-base);
-    color: var(--color-accent);
+    font-family: var(--font-comic-neue, cursive);
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--color-comic-blue);
     transition: var(--transition-fast);
 }
 
 .emailLink:hover {
-    color: var(--color-accent-hover);
+    color: var(--color-comic-red);
 }
 
 .location {
-    font-size: var(--font-size-sm);
-    color: var(--color-text-muted);
+    font-family: var(--font-comic-neue, cursive);
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--color-text-primary);
 }
 
 /* Bottom Section */
@@ -150,17 +170,21 @@
 }
 
 .copyright {
-    font-size: var(--font-size-sm);
-    color: var(--color-text-muted);
+    font-family: var(--font-comic-neue, cursive);
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--color-text-primary);
 }
 
 .credits {
-    font-size: var(--font-size-sm);
-    color: var(--color-text-muted);
+    font-family: var(--font-comic-neue, cursive);
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--color-text-primary);
 }
 
 .heart {
-    color: #ff6b6b;
+    color: var(--color-comic-red);
 }
 
 /* Responsive */

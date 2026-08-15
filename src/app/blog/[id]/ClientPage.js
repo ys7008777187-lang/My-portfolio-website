@@ -57,8 +57,8 @@ export default function BlogPost({ id }) {
 
     const { scrollYProgress } = useScroll();
     const scaleX = useSpring(scrollYProgress, {
-        stiffness: 100,
-        damping: 30,
+        stiffness: 150,
+        damping: 25,
         restDelta: 0.001
     });
 
@@ -69,13 +69,13 @@ export default function BlogPost({ id }) {
 
             <div className={styles.container}>
                 <Link href="/blog" className={styles.backLink}>
-                    <ArrowLeft size={20} /> Back to Insights
+                    <ArrowLeft size={24} /> Back to Issues
                 </Link>
 
                 <header className={styles.header}>
                     <div className={styles.meta}>
-                        <span className={styles.metaItem}><Calendar size={16} /> {post.date}</span>
-                        <span className={styles.metaItem}><Clock size={16} /> {post.readTime}</span>
+                        <span className={styles.metaItem}>ISSUE #{id.toString().slice(-2)}</span>
+                        <span className={styles.metaItem}><Calendar size={18} /> {post.date}</span>
                     </div>
                     <h1 className={styles.title}>{post.title}</h1>
                 </header>
@@ -86,9 +86,13 @@ export default function BlogPost({ id }) {
                 />
 
                 <div className={styles.tags}>
-                    <span>#Motion</span>
-                    <span>#UXDesign</span>
-                    <span>#WebDevelopment</span>
+                    {(post.tags || ['Design', 'UX', 'Creative']).map((tag) => (
+                        <span key={tag}>{tag}</span>
+                    ))}
+                </div>
+                
+                <div className={styles.tbcBox}>
+                    TO BE CONTINUED...
                 </div>
             </div>
 

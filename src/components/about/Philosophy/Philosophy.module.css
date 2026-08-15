@@ -1,48 +1,92 @@
 .section {
-    padding: 6rem 1.5rem;
+    padding: clamp(4rem, 8vw, 6.5rem) clamp(1rem, 4vw, 2rem);
     max-width: 1200px;
     margin: 0 auto;
+    background-image: repeating-linear-gradient(-55deg, transparent, transparent 8px, rgba(108,140,255,0.01) 8px, rgba(108,140,255,0.01) 9px), radial-gradient(circle, rgba(108,140,255,0.02) 1px, transparent 1px);
+    background-size: auto, 10px 10px;
 }
 
 .heading {
     font-size: 2rem;
     margin-bottom: 3rem;
-    color: var(--text-primary);
+    color: #fff;
     text-align: center;
+    font-family: var(--font-bangers, cursive);
+    letter-spacing: 0.05em;
+    -webkit-text-stroke: 1px var(--color-comic-border);
+    text-shadow: 3px 3px 0px var(--color-comic-border);
 }
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2.5rem;
 }
 
 .card {
-    padding: 2rem;
-    background: rgba(108, 140, 255, 0.03);
-    /* Subtle accent tint */
-    border-radius: 12px;
-    border: 1px solid rgba(108, 140, 255, 0.1);
+    padding: 2.5rem 1.5rem;
+    background: #fdfaf6;
+    background-image: radial-gradient(rgba(0,0,0,0.06) 1.5px, transparent 1.5px);
+    background-size: 10px 10px;
+    border: 4px solid var(--color-comic-border);
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 1rem;
+    box-shadow: 8px 8px 0 var(--color-comic-border);
+    transition: transform 0.2s, box-shadow 0.2s;
+    transform: rotate(-1deg);
+    position: relative;
 }
 
+.card:nth-child(2n) {
+    transform: rotate(1.5deg);
+}
+.card:nth-child(3n) {
+    transform: rotate(-0.5deg);
+}
+
+.card:hover {
+    transform: translate(-4px, -4px) scale(1.02);
+    box-shadow: 12px 12px 0 var(--color-comic-border);
+    z-index: 2;
+}
+
+/* Alternating bright colors for the number badges */
+.card:nth-child(1) .number { background: #ff90e8; }
+.card:nth-child(2) .number { background: #ffc900; }
+.card:nth-child(3) .number { background: #00e5ff; }
+.card:nth-child(4) .number { background: #ff4911; color: #fff; }
+
 .number {
-    font-family: monospace;
-    color: var(--accent-primary);
-    font-size: 0.9rem;
-    opacity: 0.7;
+    font-family: var(--font-bangers, cursive);
+    color: #111;
+    font-size: 1.5rem;
+    padding: 6px 14px;
+    display: inline-block;
+    align-self: flex-start;
+    border: 3px solid var(--color-comic-border);
+    box-shadow: 3px 3px 0 var(--color-comic-border);
     margin-bottom: 0.5rem;
+    transform: rotate(-3deg);
 }
 
 .title {
-    font-size: 1.2rem;
-    color: var(--text-primary);
+    font-size: 1.8rem;
+    color: #111;
+    font-family: var(--font-bangers, cursive);
+    letter-spacing: 0.05em;
+    margin: 0;
+    line-height: 1.1;
+    text-transform: uppercase;
+    -webkit-text-stroke: 0;
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.15);
 }
 
 .desc {
-    font-size: 0.95rem;
-    color: var(--text-secondary);
-    line-height: 1.5;
+    font-size: 1.05rem;
+    color: #222;
+    font-family: var(--font-comic-neue, sans-serif);
+    font-weight: 800;
+    line-height: 1.6;
+    margin: 0;
 }

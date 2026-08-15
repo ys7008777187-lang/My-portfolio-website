@@ -1,14 +1,21 @@
+/* ============================================================
+   COMIC / CYBERPUNK NAVBAR STYLES
+   ============================================================ */
+
 .header {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    z-index: var(--z-fixed);
-    padding: var(--spacing-lg) 0;
-    transition: transform 0.3s ease-in-out, background-color 0.3s ease, padding 0.3s ease;
-    background: rgba(10, 10, 10, 0.98);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    z-index: 1000;
+    padding: 16px 0;
+    transition: 
+        transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+        background-color 0.3s ease,
+        border-color 0.3s ease,
+        padding 0.3s ease;
+    background: transparent;
+    user-select: none;
 }
 
 .header.hidden {
@@ -16,148 +23,230 @@
 }
 
 .header.scrolled {
-    background: var(--color-bg-card);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--color-border);
-    padding: var(--spacing-md) 0;
+    background: rgba(26, 26, 26, 0.92);
+    backdrop-filter: blur(14px);
+    border-bottom: var(--border-width) solid var(--color-comic-border);
+    padding: 10px 0;
+    box-shadow: 0 5px 0px var(--color-comic-border);
 }
 
 .nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 1280px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 0 var(--spacing-xl);
+    padding: 0 clamp(1rem, 4vw, 2rem);
 }
 
-/* Logo */
-.logo {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-md);
-    font-weight: 600;
-    font-size: var(--font-size-lg);
-}
-
-.logoIcon {
+/* ============================================================
+   COMIC STARBURST LOGO (YS)
+   ============================================================ */
+.logoBadge {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 48px;
-    height: 48px;
-    background: var(--gradient-accent);
-    border-radius: var(--radius-md);
-    font-family: var(--font-bebas), sans-serif;
-    font-size: 1.5rem;
-    letter-spacing: 0.05em;
-    color: var(--color-bg-primary);
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.logoBadge:hover {
+    transform: scale(1.1) rotate(-3deg);
+}
+
+.starburstBorder {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    background: var(--color-bg-primary);
+    border: var(--border-width) solid var(--color-comic-border);
+    /* Jagged comic starburst polygon */
+    clip-path: polygon(
+        50% 0%, 63% 18%, 85% 10%, 82% 33%, 100% 42%,
+        88% 62%, 96% 85%, 72% 82%, 58% 100%, 42% 86%,
+        20% 95%, 22% 70%, 0% 58%, 15% 40%, 4% 16%,
+        30% 22%
+    );
+    box-shadow: var(--shadow-sm);
+    transition: all 0.25s ease;
+}
+
+.logoBadge:hover .starburstBorder {
+    border-color: var(--color-comic-yellow);
+    background: var(--color-bg-secondary);
+    box-shadow: var(--shadow-md);
 }
 
 .logoText {
-    color: var(--color-text-primary);
+    font-family: var(--font-anton), var(--font-bangers), 'Impact', sans-serif;
+    font-size: 1.35rem;
+    font-weight: 900;
+    letter-spacing: 1px;
+    color: var(--color-comic-yellow);
+    text-shadow: 2px 2px 0 var(--color-comic-border);
+    transform: skewX(-4deg);
 }
 
-/* Nav Links */
+/* ============================================================
+   CENTER NAVIGATION LINKS
+   ============================================================ */
 .navLinks {
     display: flex;
     align-items: center;
-    gap: var(--spacing-lg);
+    gap: 32px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navItemWrapper {
+    position: relative;
 }
 
 .navLink {
     position: relative;
-    font-size: var(--font-size-base);
-    font-weight: 500;
+    display: inline-block;
+    font-family: var(--font-bangers, cursive);
+    font-size: 0.88rem;
+    font-weight: 800;
+    letter-spacing: 2px;
     color: var(--color-text-secondary);
-    padding: var(--spacing-sm) 0;
-    transition: var(--transition-fast);
+    text-decoration: none;
+    padding: 6px 4px;
+    text-transform: uppercase;
+    transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .navLink:hover {
-    color: var(--color-text-primary);
+    color: #ffffff;
+    transform: translateY(-1px);
 }
 
-.navLink::after {
-    content: "";
+.navLinkActive {
+    color: var(--color-comic-yellow) !important;
+    text-shadow: 2px 2px 0 var(--color-comic-border);
+}
+
+.activeUnderline {
     position: absolute;
-    bottom: 0;
+    bottom: -3px;
     left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--gradient-accent);
-    transition: var(--transition-fast);
+    right: 0;
+    height: 3px;
+    background: var(--color-comic-yellow);
+    border-radius: 1px;
+    box-shadow: none;
 }
 
-.navLink:hover::after {
-    width: 100%;
-}
-
-/* Actions Container */
+/* ============================================================
+   ACTIONS & LET'S CONNECT SPEECH BUBBLE
+   ============================================================ */
 .actions {
     display: flex;
     align-items: center;
-    gap: var(--spacing-sm);
+    gap: 16px;
 }
 
-/* CTA Button */
-.ctaButton {
+.connectBubble {
+    position: relative;
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    padding: 0.5rem 1.25rem;
-    background: var(--color-bg-glass);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: var(--radius-full);
-    font-size: var(--font-size-sm);
-    font-weight: 500;
-    color: var(--color-text-primary);
-    transition: all var(--transition-base);
+    gap: 6px;
+    padding: 7px 16px;
+    background: var(--color-comic-yellow);
+    border: var(--border-width) solid var(--color-comic-border);
+    border-radius: 0px;
+    color: var(--color-comic-border);
+    font-family: var(--font-bangers, cursive);
+    font-size: 0.78rem;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    text-decoration: none;
+    transform: skewX(-8deg);
+    cursor: pointer;
+    box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.8);
+    transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.ctaButton:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-glow);
+.connectBubble:hover {
+    border-color: var(--color-comic-border);
+    color: var(--color-comic-border);
+    transform: skewX(-8deg) scale(1.05) translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.bubbleText {
+    transform: skewX(8deg);
+}
+
+.bubbleBurst {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 18px;
+    height: 18px;
+    background: var(--color-comic-yellow);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    box-shadow: none;
+}
+
+.sparkleIcon {
+    stroke-width: 2.5;
+}
+
+.bubbleTail {
+    position: absolute;
+    bottom: -7px;
+    right: 14px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 7px 7px 0 0;
+    border-color: #ffffff transparent transparent transparent;
+}
+
+.connectBubble:hover .bubbleTail {
+    border-color: var(--color-comic-yellow) transparent transparent transparent;
 }
 
 /* Mobile Toggle */
 .mobileToggle {
     display: none;
-    color: var(--color-text-primary);
-    z-index: 201;
-    /* Ensure above mobile menu */
+    color: #ffffff;
+    z-index: 1001;
     position: relative;
-    padding: var(--spacing-xs);
-    border-radius: var(--radius-md);
-    transition: var(--transition-fast);
+    padding: 6px;
+    background: var(--color-bg-secondary);
+    border: var(--border-width) solid var(--color-comic-border);
+    box-shadow: var(--shadow-sm);
+    border-radius: 0px;
+    cursor: pointer;
 }
 
 .mobileToggle:hover {
-    background: var(--color-bg-glass);
+    border-color: var(--color-comic-yellow);
+    color: var(--color-comic-yellow);
 }
 
 /* Mobile Menu */
 .mobileMenu {
-    display: none;
     position: fixed;
     inset: 0;
     height: 100vh;
-    background: var(--color-bg-secondary);
-    z-index: 200;
+    height: 100dvh;
+    background: var(--color-bg-primary);
+    z-index: 1000;
     padding-top: 100px;
-    /* Space for header */
-}
-
-/* Add backdrop pattern/gradient */
-.mobileMenu::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-        radial-gradient(circle at 100% 0%, rgba(108, 140, 255, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 0% 100%, rgba(0, 229, 168, 0.05) 0%, transparent 50%);
-    pointer-events: none;
+    display: flex;
+    flex-direction: column;
 }
 
 .mobileLinks {
@@ -165,52 +254,55 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: var(--spacing-xl);
-    padding: var(--spacing-xl);
-    height: 100%;
+    gap: 28px;
+    padding: 24px;
+    height: 70%;
 }
 
 .mobileLink {
-    font-size: var(--font-size-3xl);
-    font-weight: 700;
-    color: var(--color-text-secondary);
-    transition: var(--transition-base);
-    letter-spacing: -0.02em;
+    font-family: var(--font-bangers, cursive);
+    font-size: 2rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s ease, transform 0.2s ease;
 }
 
-.mobileLink:hover {
-    color: var(--color-text-primary);
-    transform: scale(1.05);
+.mobileLink:hover,
+.mobileLinkActive {
+    color: var(--color-comic-yellow);
+    transform: scale(1.08);
 }
 
-/* Mobile CTA Button styling within menu if needed */
 .mobileCta {
-    margin-top: var(--spacing-xl);
-    padding: var(--spacing-md) var(--spacing-2xl);
-    background: var(--gradient-accent);
-    border-radius: var(--radius-full);
-    color: var(--color-bg-primary);
-    font-weight: 600;
-    font-size: var(--font-size-lg);
+    margin-top: 24px;
+    padding: 14px 32px;
+    background: var(--color-comic-yellow);
+    color: #000000;
+    font-family: var(--font-inter), sans-serif;
+    font-weight: 900;
+    font-size: 1rem;
+    letter-spacing: 1.5px;
+    text-decoration: none;
+    border: 2px solid #000;
+    transform: skewX(-8deg);
+    box-shadow: var(--shadow-sm);
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-
+/* ============================================================
+   RESPONSIVE MEDIA QUERIES
+   ============================================================ */
+@media (max-width: 860px) {
     .navLinks,
-    .ctaButton {
+    .connectBubble {
         display: none;
     }
 
     .mobileToggle {
         display: flex;
-    }
-
-    .mobileMenu {
-        display: block;
-    }
-
-    .logoText {
-        display: none;
+        align-items: center;
+        justify-content: center;
     }
 }

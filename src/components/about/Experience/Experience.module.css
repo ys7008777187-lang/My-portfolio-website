@@ -1,16 +1,27 @@
+/* ═══════════════════════════════════════════════ */
+/*  Experience — Instax Flip-to-Popup              */
+/* ═══════════════════════════════════════════════ */
+
 .section {
-    padding: var(--spacing-4xl) 0;
+    padding: clamp(4rem, 8vw, 6.5rem) 0;
+    position: relative;
+    background-color: var(--color-bg-primary);
+    overflow: hidden;
+    z-index: 1;
 }
 
 .container {
-    max-width: 900px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 0 var(--spacing-xl);
+    padding: 0 clamp(1rem, 4vw, 2rem);
+    position: relative;
+    z-index: 2;
 }
 
-/* Header */
+/* ── Header ── */
 .header {
-    margin-bottom: var(--spacing-3xl);
+    margin-bottom: var(--spacing-4xl);
+    text-align: center;
 }
 
 .label {
@@ -18,164 +29,612 @@
     font-size: var(--font-size-sm);
     color: var(--color-accent);
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.15em;
+    font-weight: 600;
     margin-bottom: var(--spacing-sm);
+    font-family: var(--font-bangers, cursive);
 }
 
 .title {
-    font-size: clamp(var(--font-size-2xl), 4vw, var(--font-size-4xl));
-    font-weight: 700;
-    letter-spacing: -0.02em;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    color: var(--color-text-primary);
+    font-family: var(--font-bangers, cursive);
+    text-shadow: 3px 3px 0 var(--color-comic-border);
 }
 
-/* Timeline */
-.timeline {
+.subtitle {
+    font-size: var(--font-size-base);
+    color: var(--color-text-muted);
+    margin-top: var(--spacing-md);
+    font-family: var(--font-comic-neue, cursive);
+    font-weight: 700;
+}
+
+/* ═══════════════════════════════════════════════ */
+/*  Physical Window Frame                          */
+/* ═══════════════════════════════════════════════ */
+.physicalWindow {
+    position: relative;
+    max-width: 1200px;
+    margin: 3rem auto 0;
+    /* Physical window frame styling */
+    background-color: var(--color-bg-secondary);
+    border: 12px solid #fdfaf6; /* Thick wooden/painted frame */
+    outline: 8px solid var(--color-comic-border);
+    box-shadow: 
+        inset 0 20px 40px rgba(0,0,0,0.6), /* heavy inner shadow for dark room depth */
+        12px 12px 0 rgba(0,0,0,0.15); 
+    overflow: hidden;
+    /* Cinematic City Background */
+    background-image: url('/images/comic-city-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* Darken background slightly to make cards pop */
+}
+
+/* Add an inner dark overlay to the window */
+.physicalWindow::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0.6) 100%);
+    z-index: 0;
+}
+
+/* ═══════════════════════════════════════════════ */
+/*  Wire Section                                   */
+/* ═══════════════════════════════════════════════ */
+.wireSection {
+    position: relative;
+    padding: 2rem 0; /* Breathing room inside window */
+    cursor: grab;
+}
+
+.wireSection:active {
+    cursor: grabbing;
+}
+
+.scrollTrack {
+    position: relative;
+    overflow: hidden; /* Rely on Framer Motion drag instead of native scroll */
+    padding-top: 30px;
+    padding-bottom: var(--spacing-3xl);
+}
+
+.wire {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    min-width: 150%;
+    height: var(--border-width, 3px);
+    background: var(--color-comic-border);
+    z-index: 1;
+}
+
+.nail {
+    position: absolute;
+    top: -6px;
+    width: 14px;
+    height: 14px;
+    border-radius: 0px;
+    background: var(--color-comic-yellow);
+    border: var(--border-width, 3px) solid var(--color-comic-border);
+    box-shadow: 2px 2px 0 var(--color-comic-border);
+}
+
+.sfxText {
+    position: absolute;
+    bottom: -40px;
+    font-family: var(--font-bangers, cursive);
+    font-size: 1.8rem;
+    font-style: italic;
+    letter-spacing: 0.05em;
+    z-index: 10;
+    text-shadow: 2px 2px 0 var(--color-comic-border);
+    opacity: 0;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.hangingUnit:hover .sfxText {
+    opacity: 1;
+}
+
+/* ═══════════════════════════════════════════════ */
+/*  Cards Row                                      */
+/* ═══════════════════════════════════════════════ */
+.cardsRow {
+    display: flex;
+    gap: 50px;
+    padding: 0 40px;
+    width: max-content;
+    margin: 0 auto;
+    justify-content: flex-start;
+}
+
+.hangingUnit {
+    flex-shrink: 0;
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-md);
-}
-
-/* Card */
-.card {
-    background: var(--color-bg-glass);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: var(--radius-xl);
-    overflow: hidden;
-    transition: var(--transition-base);
-}
-
-.card:hover {
-    border-color: rgba(108, 140, 255, 0.2);
-}
-
-.card.expanded {
-    border-color: rgba(108, 140, 255, 0.3);
-    background: rgba(108, 140, 255, 0.05);
-}
-
-.cardHeader {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: var(--spacing-xl);
+}
+
+.swayWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform-origin: top center;
+    will-change: transform;
+}
+
+.string {
+    width: var(--border-width, 3px);
+    height: 25px;
+    background: var(--color-comic-border);
+}
+
+.clip {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: -3px;
+    z-index: 2;
+}
+
+.clipBody {
+    width: 10px;
+    height: 18px;
+    background: #fff;
+    border: var(--border-width, 3px) solid var(--color-comic-border);
+    border-radius: 0px;
+}
+
+.clipJaw {
+    width: 22px;
+    height: 6px;
+    background: #fff;
+    border: var(--border-width, 3px) solid var(--color-comic-border);
+    border-radius: 0px;
+}
+
+/* ═══════════════════════════════════════════════ */
+/*  Instax Card (on wire)                          */
+/* ═══════════════════════════════════════════════ */
+.instaxCard {
+    width: 220px;
+    background: var(--color-bg-secondary);
+    border: var(--border-width, 3px) solid var(--color-comic-border);
+    border-radius: 0px;
+    padding: 12px 12px 0 12px;
+    cursor: pointer;
     text-align: left;
-    color: inherit;
+    font-family: inherit;
+    position: relative;
+    box-shadow: var(--shadow-md, 5px 5px 0 var(--color-comic-border));
+    transition: transform var(--transition-base, 200ms ease), box-shadow var(--transition-base, 200ms ease);
 }
 
-.cardLeft {
-    display: flex;
-    align-items: flex-start;
-    gap: var(--spacing-lg);
+.instaxCard:hover {
+    transform: translateY(-8px) scale(1.02) rotate(-2deg);
+    box-shadow: var(--shadow-lg, 8px 8px 0 var(--color-comic-border));
+    z-index: 5;
 }
 
-.iconWrapper {
-    width: 48px;
-    height: 48px;
+.photoArea {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 0px;
+    border: var(--border-width, 3px) solid var(--color-comic-border);
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: var(--gradient-card);
-    border: 1px solid rgba(108, 140, 255, 0.2);
-    border-radius: var(--radius-lg);
-    color: var(--color-accent);
-    flex-shrink: 0;
+    gap: 6px;
+    padding: 18px 14px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 3px 3px 0 rgba(0,0,0,0.1);
 }
 
-.cardInfo {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-xs);
+.photoAccent {
+    font-size: 32px;
+    margin-bottom: 4px;
+    filter: drop-shadow(2px 2px 0px rgba(0,0,0,0.5));
 }
 
-.company {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-sm);
-    font-size: var(--font-size-lg);
-    font-weight: 600;
-    flex-wrap: wrap;
+.photoCompany {
+    font-size: 18px;
+    font-weight: 400;
+    color: #111;
+    background-color: #fff;
+    padding: 4px 10px;
+    border: 2px solid var(--color-comic-border);
+    box-shadow: 2px 2px 0 var(--color-comic-border);
+    text-align: center;
+    line-height: 1.1;
+    z-index: 2;
+    font-family: var(--font-anton, sans-serif);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.photoRole {
+    font-size: 13px;
+    color: #111;
+    font-weight: 800;
+    text-align: center;
+    z-index: 2;
+    margin: 0;
+    font-family: var(--font-comic-neue, cursive);
+    background-color: rgba(255,255,255,0.7);
+    padding: 2px 6px;
+    border: 2px solid var(--color-comic-border);
+    transform: skewX(-5deg);
 }
 
 .currentBadge {
-    padding: 2px 8px;
-    background: var(--color-highlight);
-    color: var(--color-bg-primary);
-    border-radius: var(--radius-full);
-    font-size: var(--font-size-xs);
-    font-weight: 600;
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 0px;
+    border: 2px solid var(--color-comic-border);
+    background: var(--color-comic-green);
+    font-size: 10px;
+    font-weight: 800;
+    color: #111;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 6px;
+    z-index: 2;
+    transform: rotate(-3deg) skewX(-5deg);
+    box-shadow: 2px 2px 0 var(--color-comic-border);
 }
 
-.role {
-    font-size: var(--font-size-base);
-    color: var(--color-text-secondary);
-}
-
-.meta {
+.caption {
+    padding: 12px 4px 24px;
     display: flex;
-    gap: var(--spacing-lg);
-    flex-wrap: wrap;
-    margin-top: var(--spacing-xs);
+    flex-direction: column;
+    gap: 4px;
 }
 
-.metaItem {
+.captionDate,
+.captionLocation {
     display: flex;
     align-items: center;
-    gap: var(--spacing-xs);
-    font-size: var(--font-size-sm);
-    color: var(--color-text-muted);
+    gap: 6px;
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    font-weight: 700;
+    font-family: var(--font-comic-neue, cursive);
 }
 
-.chevron {
+.instaxBrand {
+    position: absolute;
+    bottom: 8px;
+    right: 12px;
+    font-size: 9px;
+    font-weight: 900;
     color: var(--color-text-secondary);
-    flex-shrink: 0;
+    letter-spacing: 0.15em;
+    text-transform: lowercase;
+}
+
+/* ═══════════════════════════════════════════════ */
+/*  POPUP OVERLAY                                  */
+/* ═══════════════════════════════════════════════ */
+.overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(4px);
+}
+
+/* ═══════════════════════════════════════════════ */
+/*  FLIP CARD (popup stage)                        */
+/* ═══════════════════════════════════════════════ */
+.popupStage {
+    perspective: 1500px;
+}
+
+.flipCard {
+    position: relative;
+    width: 560px;
+    min-height: 480px;
+    transform-style: preserve-3d;
+    will-change: transform;
+}
+
+/* Both faces */
+.flipFace {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+/* Front face — mini Instax (shown while scale is small) */
+.flipFront {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.miniInstax {
+    width: 220px;
+    background: var(--color-bg-secondary);
+    border-radius: 0px;
+    border: var(--border-width, 3px) solid var(--color-comic-border);
+    padding: 12px;
+    box-shadow: var(--shadow-lg, 8px 8px 0 var(--color-comic-border));
+}
+
+.miniPhoto {
+    aspect-ratio: 1;
+    border-radius: 0px;
+    border: var(--border-width, 3px) solid var(--color-comic-border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 16px;
+}
+
+.miniIcon {
+    font-size: 36px;
+}
+
+.miniName {
+    font-size: 15px;
+    font-weight: 800;
+    color: #111;
+    background-color: #fff;
+    padding: 4px 8px;
+    border: 2px solid var(--color-comic-border);
+    box-shadow: 2px 2px 0 var(--color-comic-border);
+    text-align: center;
+    font-family: var(--font-bangers, cursive);
+    letter-spacing: 0.05em;
+    transform: rotate(-1deg);
+}
+
+.miniCaption {
+    text-align: center;
+    padding: 10px 4px 18px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--color-text-secondary);
+    font-family: var(--font-comic-neue, cursive);
+}
+
+/* Back face — the popup detail card */
+.flipBack {
+    transform: rotateY(180deg);
+}
+
+.popupCard {
+    width: 100%;
+    min-height: 480px;
+    background-color: #fdfaf6; /* comic paper color */
+    background-image: radial-gradient(rgba(0,0,0,0.08) 1.5px, transparent 1.5px);
+    background-size: 8px 8px;
+    border: var(--border-width, 3px) solid var(--color-comic-border);
+    border-radius: 0px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-xl, 12px 12px 0 var(--color-comic-border));
+}
+
+/* Close button */
+.closeBtn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 36px;
+    height: 36px;
+    border-radius: 0px;
+    border: var(--border-width, 3px) solid var(--color-comic-border);
+    background: var(--color-comic-yellow);
+    color: #111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    z-index: 10;
+    box-shadow: 3px 3px 0 var(--color-comic-border);
+}
+
+.closeBtn:hover {
+    background: var(--color-comic-red);
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0 var(--color-comic-border);
+}
+
+/* Accent bar at top */
+.popupAccent {
+    height: 16px;
+    width: 100%;
+    border-bottom: var(--border-width, 3px) solid var(--color-comic-border);
 }
 
 /* Content */
-.cardContent {
-    overflow: hidden;
-}
-
-.highlights {
-    padding: 0 var(--spacing-xl) var(--spacing-xl);
-    padding-left: calc(var(--spacing-xl) + 48px + var(--spacing-lg));
+.popupContent {
+    padding: 32px 40px 40px;
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-sm);
+    gap: 20px;
 }
 
-.highlight {
+.popupHeader {
     display: flex;
     align-items: flex-start;
-    gap: var(--spacing-sm);
-    font-size: var(--font-size-base);
-    color: var(--color-text-secondary);
-    line-height: 1.6;
+    gap: 16px;
+}
+
+.popupIcon {
+    font-size: 42px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    filter: drop-shadow(2px 2px 0px rgba(0,0,0,0.2));
+}
+
+.popupCompany {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 1.1;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    font-family: var(--font-bangers, cursive);
+    letter-spacing: 0.05em;
+    color: #111 !important;
+    text-shadow: 2px 2px 0px rgba(0,0,0,0.15);
+}
+
+.popupCurrentTag {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 0px;
+    border: 2px solid var(--color-comic-border);
+    background: var(--color-comic-green);
+    font-size: 14px;
+    font-weight: 800;
+    color: #111;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    transform: rotate(-3deg) skewX(-5deg);
+    box-shadow: 2px 2px 0 var(--color-comic-border);
+}
+
+.popupRole {
+    font-size: 18px;
+    color: #333;
+    margin: 8px 0 0;
+    font-family: var(--font-bangers, cursive);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.popupMeta {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.popupMeta span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    color: #444;
+    font-family: var(--font-comic-neue, cursive);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+}
+
+.popupDivider {
+    height: var(--border-width, 3px);
+    width: 100%;
+    border-radius: 0px;
+    background: var(--color-comic-border) !important;
+}
+
+.popupHighlights {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.popupHighlights li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 16px;
+    color: #222;
+    line-height: 1.5;
+    font-family: var(--font-family, sans-serif);
+    font-weight: 600;
+    letter-spacing: 0.02em;
 }
 
 .bullet {
-    width: 6px;
-    height: 6px;
-    background: var(--color-accent);
-    border-radius: 50%;
-    margin-top: 8px;
-    flex-shrink: 0;
+    width: 14px;
+    height: 14px;
+    min-width: 14px;
+    border-radius: 0px;
+    border: 2px solid var(--color-comic-border);
+    margin-top: 4px;
+    opacity: 1;
+    background: var(--color-comic-yellow);
+    transform: rotate(45deg);
+    box-shadow: 2px 2px 0 var(--color-comic-border);
 }
 
-/* Responsive */
-@media (max-width: 640px) {
-    .cardLeft {
-        flex-direction: column;
-        gap: var(--spacing-md);
+/* ═══════════════════════════════════════════════ */
+/*  Responsive                                     */
+/* ═══════════════════════════════════════════════ */
+@media (max-width: 768px) {
+    .cardsRow {
+        gap: 32px;
+        padding: 0 24px;
+        justify-content: flex-start;
     }
 
-    .highlights {
-        padding-left: var(--spacing-xl);
+    .instaxCard {
+        width: 190px;
     }
 
-    .meta {
-        flex-direction: column;
-        gap: var(--spacing-xs);
+    .flipCard {
+        width: 340px;
+        min-height: 350px;
+    }
+
+    .popupContent {
+        padding: 22px 24px 24px;
+    }
+
+    .popupCompany {
+        font-size: 24px;
+    }
+
+    .popupHighlights li {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cardsRow {
+        gap: 24px;
+        padding: 0 16px;
+    }
+
+    .instaxCard {
+        width: 170px;
+        padding: 10px 10px 0 10px;
+    }
+
+    .flipCard {
+        width: 300px;
+        min-height: 300px;
+    }
+
+    .popupContent {
+        padding: 18px 20px 20px;
     }
 }

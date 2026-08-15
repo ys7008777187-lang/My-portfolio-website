@@ -1,0 +1,131 @@
+/* ===== VAPOR TEXT — Reverse Explosion (GPU-Optimized) ===== */
+
+.vaporWrap {
+    display: inline;
+}
+
+.vaporChar {
+    display: inline-block;
+    /* GPU-composited properties only */
+    will-change: transform, opacity, filter;
+    /* Default: home position */
+    transform: translate(var(--tx, 0px), var(--ty, 0px)) rotate(var(--rot, 0deg)) scale(var(--sc, 1));
+    transform-origin: center center;
+}
+
+.vaporSpace {
+    display: inline-block;
+    width: 0.3em;
+}
+
+/* ===== PHASE: IDLE — invisible ===== */
+.idle {
+    opacity: 0;
+    filter: blur(18px);
+    transform: translate(var(--tx), var(--ty)) rotate(var(--rot)) scale(var(--sc));
+}
+
+/* ===== PHASE: SCATTERED — visible at exploded position ===== */
+.scattered {
+    opacity: 0.3;
+    filter: blur(14px);
+    transform: translate(var(--tx), var(--ty)) rotate(var(--rot)) scale(var(--sc));
+    color: rgba(129, 140, 248, 0.9);
+    text-shadow:
+        0 0 20px rgba(99, 102, 241, 0.6),
+        0 0 50px rgba(99, 102, 241, 0.2);
+    /* Quick fade-in */
+    transition: opacity 0.2s ease-out;
+}
+
+/* ===== PHASE: FLYING — moving to home position ===== */
+.flying {
+    opacity: 0.85;
+    filter: blur(4px);
+    transform: translate(0px, 0px) rotate(0deg) scale(1.05);
+    color: rgba(129, 140, 248, 0.95);
+    text-shadow:
+        0 0 25px rgba(99, 102, 241, 0.7),
+        0 0 50px rgba(99, 102, 241, 0.3);
+    /* The main fly-in transition — cubic-bezier for "snappy deceleration" */
+    transition:
+        transform calc(0.55s / var(--speed, 1)) cubic-bezier(0.22, 1, 0.36, 1),
+        opacity calc(0.35s / var(--speed, 1)) ease-out,
+        filter calc(0.45s / var(--speed, 1)) ease-out,
+        color calc(0.2s / var(--speed, 1)) ease,
+        text-shadow calc(0.3s / var(--speed, 1)) ease;
+}
+
+/* ===== PHASE: FLASH — landed, glow burst ===== */
+.flash {
+    opacity: 1;
+    filter: blur(0px);
+    transform: translate(0px, 0px) rotate(0deg) scale(1.04);
+    color: #fff;
+    text-shadow:
+        0 0 35px rgba(99, 102, 241, 0.9),
+        0 0 70px rgba(99, 102, 241, 0.4),
+        0 0 120px rgba(59, 130, 246, 0.2);
+    transition:
+        transform calc(0.15s / var(--speed, 1)) ease-out,
+        filter calc(0.15s / var(--speed, 1)) ease-out,
+        opacity calc(0.1s / var(--speed, 1)) ease-out,
+        color calc(0.1s / var(--speed, 1)) ease,
+        text-shadow calc(0.1s / var(--speed, 1)) ease;
+}
+
+/* ===== PHASE: DONE — settled ===== */
+.done {
+    opacity: 1;
+    filter: none;
+    transform: translate(0px, 0px) rotate(0deg) scale(1);
+    color: inherit;
+    text-shadow: none;
+    transition:
+        transform calc(0.25s / var(--speed, 1)) ease-out,
+        text-shadow calc(0.5s / var(--speed, 1)) ease-out,
+        color calc(0.3s / var(--speed, 1)) ease;
+}
+
+/* ===== PHASE: GLITCHING — time distortion glitch ===== */
+@keyframes timeDistortion {
+    0% { transform: translate(0, 0) skew(0deg) scale(1); text-shadow: 0 0 0 rgba(255, 255, 255, 0); filter: none; color: inherit; }
+    8% { transform: translate(-4px, 2px) skew(-12deg) scale(1.05); text-shadow: -4px 0 0 rgba(255, 0, 0, 0.8), 4px 0 0 rgba(0, 255, 255, 0.8); filter: blur(1px); color: #fff; }
+    12% { transform: translate(3px, -2px) skew(12deg) scale(0.95); text-shadow: 4px 0 0 rgba(255, 0, 0, 0.8), -4px 0 0 rgba(0, 255, 255, 0.8); filter: hue-rotate(90deg); color: #fff; }
+    16% { transform: translate(0, 0) skew(0deg) scale(1); text-shadow: 0 0 0 rgba(255, 255, 255, 0); filter: none; color: inherit; }
+    
+    45% { transform: translate(0, 0) skew(0deg) scale(1); text-shadow: 0 0 0 rgba(255, 255, 255, 0); filter: none; color: inherit; }
+    48% { transform: translate(-5px, 0) skew(20deg) scale(1.1) scaleY(0.8); text-shadow: -8px 0 10px rgba(255, 0, 0, 0.9), 8px 0 10px rgba(0, 255, 255, 0.9); filter: blur(2px) contrast(1.5); color: #fff; }
+    52% { transform: translate(5px, 0) skew(-20deg) scale(0.9) scaleY(1.2); text-shadow: 8px 0 10px rgba(255, 0, 0, 0.9), -8px 0 10px rgba(0, 255, 255, 0.9); filter: blur(1px); color: #fff; }
+    55% { transform: translate(0, 0) skew(0deg) scale(1); text-shadow: 0 0 0 rgba(255, 255, 255, 0); filter: none; color: inherit; }
+    
+    82% { transform: translate(0, 0) skew(0deg) scale(1); text-shadow: 0 0 0 rgba(255, 255, 255, 0); filter: none; color: inherit; }
+    86% { transform: translate(-2px, -3px) skew(-8deg) scale(1.02); text-shadow: -3px 0 0 rgba(255, 0, 255, 0.8), 3px 0 0 rgba(0, 255, 0, 0.8); filter: saturate(2); color: #fff; }
+    90% { transform: translate(2px, 3px) skew(8deg) scale(0.98); text-shadow: 3px 0 0 rgba(255, 0, 255, 0.8), -3px 0 0 rgba(0, 255, 0, 0.8); filter: blur(0.5px) saturate(2); color: #fff; }
+    94% { transform: translate(0, 0) skew(0deg) scale(1); text-shadow: 0 0 0 rgba(255, 255, 255, 0); filter: none; color: inherit; }
+    100% { transform: translate(0, 0) skew(0deg) scale(1); text-shadow: 0 0 0 rgba(255, 255, 255, 0); filter: none; color: inherit; }
+}
+
+.glitching {
+    animation: timeDistortion 1s linear infinite;
+    animation-delay: var(--g-delay, 0s);
+    transition: none; /* No transition for instantaneous glitch */
+}
+
+/* ===== REDUCED MOTION ===== */
+@media (prefers-reduced-motion: reduce) {
+    .vaporChar {
+        will-change: auto;
+        transform: none !important;
+        filter: none !important;
+        opacity: 1 !important;
+        transition: none !important;
+    }
+
+    .scattered,
+    .flying,
+    .flash {
+        color: inherit;
+        text-shadow: none;
+    }
+}

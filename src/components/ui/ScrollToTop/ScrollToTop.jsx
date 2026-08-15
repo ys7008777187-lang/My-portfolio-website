@@ -36,11 +36,10 @@ export default function ScrollToTop() {
                     initial={{ opacity: 0, scale: 0.5 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.5 }}
-                    whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     aria-label="Scroll to top"
                 >
-                    <ArrowUp size={20} />
+                    <ArrowUp size={20} strokeWidth={3} />
                 </motion.button>
             )}
         </AnimatePresence>

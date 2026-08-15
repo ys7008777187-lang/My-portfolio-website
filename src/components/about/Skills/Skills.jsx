@@ -1,6 +1,6 @@
 "use client";
-import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import ScrollVaporText from "../../ui/ScrollVaporText/ScrollVaporText";
 import styles from "./Skills.module.css";
 import {
     Figma, Code, Search, Palette, Layers, Accessibility,
@@ -28,36 +28,49 @@ const defaultCategories = [
     "Analytics & QA"
 ];
 
+const categoryColors = {
+    "Design Tools": "#3b82f6", // Blue
+    "Frontend": "#f59e0b", // Yellow/Orange
+    "Product & Research": "#ef4444", // Red
+    "UI & Interaction": "#a855f7", // Purple
+    "Prototyping & Handoff": "#22c55e", // Green
+    "Accessibility": "#d97706", // Brown/Orange
+    "Analytics & QA": "#0ea5e9" // Cyan
+};
+
 const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
         opacity: 1,
-        transition: { staggerChildren: 0.08, delayChildren: 0.1 }
+        transition: { staggerChildren: 0.06, delayChildren: 0.05 }
     }
 };
 
 const itemVariants = {
-    hidden: { opacity: 0, y: 15 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.4 } }
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.35, ease: "easeOut" } }
 };
 
 export default function Skills() {
-    const [skillCategories, setSkillCategories] = useState([]);
+    // Process static data directly instead of using useEffect to prevent framer-motion rendering issues
+    const skillCategories = defaultCategories.map(catTitle => {
+        let illustration = null;
+        if (catTitle === "Design Tools") {
+            illustration = "/images/skills/design_tools_v2.jpg";
+        } else if (catTitle === "Analytics & QA") {
+            illustration = "/images/skills/analytics_v2.jpg";
+        }
 
-    useEffect(() => {
-        // Group skills by category
-        const grouped = defaultCategories.map(catTitle => {
-            return {
-                title: catTitle,
-                icon: iconMap[catTitle] || Zap,
-                skills: skillsData
-                    .filter(item => item.category === catTitle)
-                    .map(item => item.name)
-            };
-        }).filter(cat => cat.skills.length > 0); // Only show categories with skills
+        return {
+            title: catTitle,
+            icon: iconMap[catTitle] || Zap,
+            skills: skillsData
+                .filter(item => item.category === catTitle)
+                .map(item => item.name),
+            illustration
+        };
+    }).filter(cat => cat.skills.length > 0);
 
-        setSkillCategories(grouped);
-    }, []);
     return (
         <section className={styles.section}>
             <div className={styles.container}>
@@ -65,10 +78,10 @@ export default function Skills() {
                     className={styles.header}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: true, margin: "-100px" }}
                 >
                     <span className={styles.label}>Skills & Tools</span>
-                    <h2 className={styles.title}>What I Work With</h2>
+                    <ScrollVaporText text="What I Work With" as="h2" className={styles.title} />
                 </motion.div>
 
                 <motion.div
@@ -76,30 +89,42 @@ export default function Skills() {
                     variants={containerVariants}
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, amount: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
                 >
-                    {skillCategories.map((category, index) => (
-                        <motion.div
-                            key={category.title}
-                            className={styles.card}
-                            variants={itemVariants}
-                            whileHover={{ y: -4 }}
-                        >
-                            <div className={styles.cardHeader}>
-                                <div className={styles.iconWrapper}>
-                                    <category.icon size={20} />
+                    {skillCategories.map((category, index) => {
+                        const themeColor = categoryColors[category.title] || "#ff3b30";
+                        return (
+                            <motion.div
+                                key={category.title}
+                                className={styles.card}
+                                variants={itemVariants}
+                                style={{ '--theme-color': themeColor }}
+                            >
+                                <div className={styles.cardTop}>
+                                    <div className={styles.iconWrapper}>
+                                        {/* Pure CSS motion lines around the icon */}
+                                        <div className={styles.motionLines}></div>
+                                        <category.icon size={28} color="#fff" strokeWidth={1.5} />
+                                    </div>
+                                    <div className={styles.categoryTitleBg}>
+                                        <h3 className={styles.categoryTitle}>{category.title}</h3>
+                                    </div>
                                 </div>
-                                <h3 className={styles.categoryTitle}>{category.title}</h3>
-                            </div>
-                            <div className={styles.skills}>
-                                {category.skills.map(skill => (
-                                    <span key={skill} className={styles.skill}>
-                                        {skill}
-                                    </span>
-                                ))}
-                            </div>
-                        </motion.div>
-                    ))}
+                                <ul className={styles.skillsList}>
+                                    {category.skills.map(skill => (
+                                        <li key={skill} className={styles.skillItem}>
+                                            {skill}
+                                        </li>
+                                    ))}
+                                </ul>
+                                {category.illustration && (
+                                    <div className={styles.illustrationWrapper}>
+                                        <img src={category.illustration} alt={`${category.title} illustration`} className={styles.illustration} />
+                                    </div>
+                                )}
+                            </motion.div>
+                        );
+                    })}
                 </motion.div>
             </div>
         </section>

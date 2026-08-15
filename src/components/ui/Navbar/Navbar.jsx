@@ -1,25 +1,47 @@
 "use client";
+
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import styles from "./Navbar.module.css";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Sparkles } from "lucide-react";
 import ThemeToggle from "../ThemeToggle/ThemeToggle";
-import Logo from "../Logo/Logo";
+import { useRef } from "react";
 
 const navLinks = [
-    { href: "/", label: "Home" },
-    { href: "/about", label: "About" },
-    { href: "/work", label: "Work" },
-    { href: "/blog", label: "Blog" },
-    { href: "/contact", label: "Contact" },
+    { href: "/", label: "HOME" },
+    { href: "/about", label: "ABOUT" },
+    { href: "/work", label: "WORK" },
+    { href: "/blog", label: "BLOG" },
+    { href: "/contact", label: "CONTACT" },
 ];
 
+function NavItem({ link, isActive }) {
+    const ref = useRef(null);
+    return (
+        <li ref={ref} className={styles.navItemWrapper}>
+            <Link 
+                href={link.href} 
+                className={`${styles.navLink} ${isActive ? styles.navLinkActive : ""}`}
+            >
+                <span>{link.label}</span>
+                {isActive && (
+                    <motion.div 
+                        className={styles.activeUnderline} 
+                        layoutId="activeNavUnderline"
+                        transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                    />
+                )}
+            </Link>
+        </li>
+    );
+}
+
 export default function Navbar() {
+    const pathname = usePathname();
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileOpen, setIsMobileOpen] = useState(false);
-
     const [isVisible, setIsVisible] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
 
@@ -28,47 +50,54 @@ export default function Navbar() {
             const currentScrollY = window.scrollY;
 
             // Determine if scrolling up or down
-            if (currentScrollY > lastScrollY && currentScrollY > 100) {
+            if (currentScrollY > lastScrollY && currentScrollY > 120) {
                 setIsVisible(false); // Scrolling down & past threshold -> Hide
             } else {
                 setIsVisible(true); // Scrolling up or at top -> Show
             }
 
-            setIsScrolled(currentScrollY > 50);
+            setIsScrolled(currentScrollY > 40);
             setLastScrollY(currentScrollY);
         };
 
-        window.addEventListener("scroll", handleScroll);
+        window.addEventListener("scroll", handleScroll, { passive: true });
         return () => window.removeEventListener("scroll", handleScroll);
     }, [lastScrollY]);
 
     return (
         <motion.header
             className={`${styles.header} ${isScrolled ? styles.scrolled : ""} ${!isVisible ? styles.hidden : ""}`}
-            initial={{ y: -100 }}
-            animate={{ y: 0 }}
-            transition={{ duration: 0.5 }}
+            initial={{ y: -80, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.4 }}
         >
             <nav className={styles.nav}>
-                {/* Logo */}
-                <Logo />
+                {/* Comic Starburst Logo (YS) */}
+                <Link href="/" className={styles.logoBadge} aria-label="Yash Srivastava Home">
+                    <div className={styles.starburstBorder}>
+                        <span className={styles.logoText}>YS</span>
+                    </div>
+                </Link>
 
                 {/* Desktop Navigation */}
                 <ul className={styles.navLinks}>
-                    {navLinks.map((link) => (
-                        <li key={link.href}>
-                            <Link href={link.href} className={styles.navLink}>
-                                {link.label}
-                            </Link>
-                        </li>
-                    ))}
+                    {navLinks.map((link) => {
+                        const isActive = pathname === link.href || (link.href !== "/" && pathname.startsWith(link.href));
+                        return (
+                            <NavItem key={link.href} link={link} isActive={isActive} />
+                        );
+                    })}
                 </ul>
 
-                {/* Actions */}
+                {/* Actions: LET'S CONNECT Speech Bubble CTA & Theme Toggle */}
                 <div className={styles.actions}>
-                    {/* CTA Button */}
-                    <Link href="/contact" className={styles.ctaButton}>
-                        Let's Talk
+                    {/* Comic Speech Bubble CTA */}
+                    <Link href="/contact" className={styles.connectBubble}>
+                        <span className={styles.bubbleText}>LET&apos;S CONNECT</span>
+                        <div className={styles.bubbleBurst}>
+                            <Sparkles size={13} className={styles.sparkleIcon} />
+                        </div>
+                        <div className={styles.bubbleTail} />
                     </Link>
 
                     {/* Theme Toggle */}
@@ -93,38 +122,41 @@ export default function Navbar() {
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
-                        transition={{ duration: 0.3 }}
+                        transition={{ duration: 0.2 }}
                     >
                         <div className={styles.mobileLinks}>
-                            {navLinks.map((link, index) => (
-                                <motion.div
-                                    key={link.href}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: 0.1 + index * 0.1 }}
-                                >
-                                    <Link
-                                        href={link.href}
-                                        className={styles.mobileLink}
-                                        onClick={() => setIsMobileOpen(false)}
+                            {navLinks.map((link, index) => {
+                                const isActive = pathname === link.href;
+                                return (
+                                    <motion.div
+                                        key={link.href}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: 0.05 + index * 0.05 }}
                                     >
-                                        {link.label}
-                                    </Link>
-                                </motion.div>
-                            ))}
+                                        <Link
+                                            href={link.href}
+                                            className={`${styles.mobileLink} ${isActive ? styles.mobileLinkActive : ""}`}
+                                            onClick={() => setIsMobileOpen(false)}
+                                        >
+                                            {link.label}
+                                        </Link>
+                                    </motion.div>
+                                );
+                            })}
 
                             {/* Mobile CTA */}
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.1 + navLinks.length * 0.1 }}
+                                transition={{ delay: 0.05 + navLinks.length * 0.05 }}
                             >
                                 <Link
                                     href="/contact"
                                     className={styles.mobileCta}
                                     onClick={() => setIsMobileOpen(false)}
                                 >
-                                    Let's Talk
+                                    LET&apos;S CONNECT
                                 </Link>
                             </motion.div>
                         </div>

@@ -1,116 +1,190 @@
 "use client";
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+
+import { useState, useEffect, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import styles from "./Journey.module.css";
 
-const milestones = [
-    {
-        year: "2026",
-        title: "LPU — Assistant Professor",
-        description: "Joined Lovely Professional University to guide the next generation of designers.",
-        highlight: true
-    },
-    {
-        year: "2025",
-        title: "OpenDhi — Bhaiyaa",
-        description: "Crafted micro-animations and strengthened design systems.",
-        highlight: false
-    },
-    {
-        year: "2024",
-        title: "Freelancing",
-        description: "Started freelance work for global clients including UK brands.",
-        highlight: true
-    },
-    {
-        year: "2024",
-        title: "First Internships",
-        description: "CollegeDekho & Myrik — hands-on UX design experience.",
-        highlight: false
-    },
-    {
-        year: "2022",
-        title: "Masters in Design",
-        description: "Joined DIT University for M.Des with focus on UX.",
-        highlight: true
-    },
-    {
-        year: "2021",
-        title: "Graduated BA",
-        description: "Completed Bachelors and discovered passion for design.",
-        highlight: false
-    },
-    {
-        year: "2018",
-        title: "Started BA",
-        description: "Began Bachelor of Arts at Sambalpur University.",
-        highlight: false
-    }
-];
+import { getAssetUrl } from "../../../lib/assetUrl";
 
 export default function Journey() {
-    const containerRef = useRef(null);
-    const { scrollXProgress } = useScroll({ container: containerRef });
+  const [activeIndex, setActiveIndex] = useState(0);
+  const totalProjects = 4;
 
-    return (
-        <section className={styles.section}>
-            <div className={styles.header}>
-                <motion.span
-                    className={styles.label}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                >
-                    My Journey
-                </motion.span>
-                <motion.h2
-                    className={styles.title}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.1 }}
-                >
-                    The path that brought me here
-                </motion.h2>
-            </div>
+  // Auto-cycle every 3 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % totalProjects);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [activeIndex]);
 
-            <div className={styles.timelineWrapper} ref={containerRef}>
-                <div className={styles.timeline}>
-                    {milestones.map((milestone, index) => (
-                        <motion.div
-                            key={`${milestone.year}-${milestone.title}`}
-                            className={`${styles.milestone} ${milestone.highlight ? styles.highlight : ""}`}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.1, duration: 0.5 }}
-                        >
-                            <div className={styles.yearBadge}>
-                                <span>{milestone.year}</span>
-                            </div>
-                            <div className={styles.card}>
-                                <h3 className={styles.cardTitle}>{milestone.title}</h3>
-                                <p className={styles.cardDescription}>{milestone.description}</p>
-                            </div>
-                            <div className={styles.connector}>
-                                <div className={styles.dot}></div>
-                                <div className={styles.line}></div>
-                            </div>
-                        </motion.div>
+  const projects = [
+    {
+      title: "BHAIYAA SUPER APP",
+      description: "A super app that brings community, services and convenience together.",
+      role: "UI/UX Design",
+      year: "2024",
+      focus: ["Ps", "Ae", "Figma"],
+      image: "/images/projects/bhaiyaa.png", // Newly uploaded local file
+      annotations: [
+        { text: "Personalized Dashboard", position: "top" },
+        { text: "Easy Access to Services", position: "middle" },
+        { text: "Contextual Recommendations", position: "bottom" },
+      ]
+    },
+    {
+      title: "CAMPUS BITES",
+      description: "A seamless food delivery experience designed exclusively for university campuses.",
+      role: "UX Case Study",
+      year: "2023",
+      focus: ["Figma", "Prototyping"],
+      image: getAssetUrl("/images/campusbites/Store Dashboard.png"),
+      annotations: [
+        { text: "Streamlined Ordering", position: "top" },
+        { text: "Live Order Tracking", position: "middle" },
+        { text: "Campus Integration", position: "bottom" },
+      ]
+    },
+    {
+      title: "BASECAMP REDESIGN",
+      description: "Modernizing the project management experience with a fresh, intuitive interface.",
+      role: "UI/UX Redesign",
+      year: "2023",
+      focus: ["Figma", "Wireframing"],
+      image: getAssetUrl("/images/basecamp/dashboard.webp"),
+      annotations: [
+        { text: "Clean Interface", position: "top" },
+        { text: "Improved Navigation", position: "middle" },
+        { text: "Task Management", position: "bottom" },
+      ]
+    },
+    {
+      title: "ADT SOLUTION",
+      description: "An enterprise dashboard for security and monitoring management.",
+      role: "UI/UX Design",
+      year: "2022",
+      focus: ["Ps", "Figma"],
+      image: getAssetUrl("/images/ADT/Home.jpg"),
+      annotations: [
+        { text: "Data Visualization", position: "top" },
+        { text: "Real-time Alerts", position: "middle" },
+        { text: "Admin Controls", position: "bottom" },
+      ]
+    }
+  ];
+
+  const currentProject = projects[activeIndex];
+
+  return (
+    <section className={styles.section} id="journey">
+      <div className={styles.container}>
+        <motion.div
+          className={styles.header}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className={styles.sectionNumber}>4.</div>
+          <h2 className={styles.title}>INTERACTIVE PROJECT EXPERIENCE</h2>
+          <p className={styles.subtitle}>Detailed case study with annotations, flows and motion.</p>
+        </motion.div>
+
+        <motion.div
+          className={styles.card}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8 }}
+        >
+          <AnimatePresence mode="wait">
+            <motion.div 
+              key={activeIndex}
+              className={styles.cardContent}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.4 }}
+            >
+              <div className={styles.leftColumn}>
+                <h3 className={styles.projectTitle}>{currentProject.title}</h3>
+                <p className={styles.projectDesc}>
+                  {currentProject.description}
+                </p>
+                
+                <div className={styles.detailsGrid}>
+                  <div className={styles.detailItem}>
+                    <span className={styles.detailLabel}>ROLE</span>
+                    <span className={styles.detailValue}>{currentProject.role}</span>
+                  </div>
+                  <div className={styles.detailItem}>
+                    <span className={styles.detailLabel}>YEAR</span>
+                    <span className={styles.detailValue}>{currentProject.year}</span>
+                  </div>
+                  <div className={styles.detailItem}>
+                    <span className={styles.detailLabel}>FOCUS</span>
+                    <div className={styles.tools}>
+                      {currentProject.focus.map(tool => {
+                        let dotClass = styles.figmaDot;
+                        if (tool === 'Ps') dotClass = styles.psDot;
+                        if (tool === 'Ae') dotClass = styles.aeDot;
+                        
+                        return (
+                          <div key={tool} className={styles.toolItem}>
+                            <span className={`${styles.dot} ${dotClass}`}></span> {tool}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className={styles.rightColumn}>
+                <div className={`${styles.imageWrapper} ${currentProject.title.includes("BHAIYAA") || currentProject.title.includes("CAMPUS BITES") ? styles.mockupWrapper : ''}`}>
+                  <Image
+                    src={currentProject.image}
+                    alt={currentProject.title}
+                    width={600}
+                    height={800}
+                    className={`${styles.image} ${currentProject.title.includes("BHAIYAA") || currentProject.title.includes("CAMPUS BITES") ? styles.mockupImage : ''}`}
+                    unoptimized
+                  />
+                  
+                  <div className={styles.annotations}>
+                    {currentProject.annotations.map((annotation, index) => (
+                      <motion.div
+                        key={`${activeIndex}-${index}`}
+                        className={`${styles.annotation} ${styles[annotation.position]}`}
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.4, delay: 0.3 + index * 0.15 }}
+                      >
+                        <div className={styles.annotationLine}></div>
+                        <div className={styles.annotationText}>{annotation.text}</div>
+                      </motion.div>
                     ))}
+                  </div>
                 </div>
-            </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
 
-            {/* Progress indicator */}
-            <div className={styles.progressWrapper}>
-                <div className={styles.progressTrack}>
-                    <motion.div
-                        className={styles.progressBar}
-                        style={{ scaleX: scrollXProgress }}
-                    />
+          <div className={styles.cardBottom}>
+            <div className={styles.navigator}>
+              {[1, 2, 3, 4].map((step, index) => (
+                <div key={step} className={styles.navStepContainer} onClick={() => setActiveIndex(index)}>
+                  <div className={`${styles.navDot} ${activeIndex === index ? styles.activeDot : ''}`}>
+                    0{step}
+                  </div>
+                  {index < 3 && <div className={styles.navLine}></div>}
                 </div>
-                <span className={styles.scrollHint}>Scroll horizontally →</span>
+              ))}
             </div>
-        </section>
-    );
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
 }

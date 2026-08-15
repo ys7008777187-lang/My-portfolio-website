@@ -84,7 +84,28 @@
 
 
 
-/* Hard cover styles if needed */
 .coverPage {
     background-color: #1a1a1a;
+}
+
+/* Crop baked-in title (top) and page number (bottom) from comic pages.
+   Uses inset positioning so the image overflows and the header/footer
+   bands fall outside the visible .pageContent container. */
+.cropPageInfo {
+    /* Shrink visible area inward — top 4% and bottom 3.5% are cropped */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.cropPageInfo img {
+    object-fit: cover !important;
+    /* Slightly scale up so the top title and bottom page-number are pushed
+       outside the overflow:hidden container */
+    top: -3.5% !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 107% !important;
 }

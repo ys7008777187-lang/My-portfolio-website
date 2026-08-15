@@ -1,6 +1,10 @@
 .main {
     min-height: 100vh;
-    padding-top: 120px;
+    padding: clamp(6rem, 10vw, 8rem) 0 4rem;
+    background-color: #fdfaf6; /* comic paper color */
+    background-image: radial-gradient(rgba(0,0,0,0.08) 1.5px, transparent 1.5px);
+    background-size: 8px 8px;
+    color: #111;
 }
 
 .progressBar {
@@ -8,37 +12,64 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 4px;
-    background: var(--accent-primary);
+    height: 6px;
+    background: var(--color-comic-yellow);
+    border-bottom: 3px solid var(--color-comic-border);
     transform-origin: 0%;
     z-index: 1001;
 }
 
 .container {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
-    padding: 0 1.5rem;
+    padding: 0 clamp(1rem, 4vw, 2rem);
+    position: relative;
 }
 
 .backLink {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    color: var(--text-secondary);
+    color: #111;
+    font-family: var(--font-bangers, cursive);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
     margin-bottom: 3rem;
+    font-size: 1.2rem;
     font-weight: 500;
-    transition: color 0.3s ease;
+    padding: 8px 16px;
+    background: #fff;
+    border: 3px solid var(--color-comic-border);
+    box-shadow: 4px 4px 0 var(--color-comic-border);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
 .backLink:hover {
-    color: var(--text-primary);
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 var(--color-comic-border);
+    background: var(--color-comic-yellow);
 }
 
 .header {
     text-align: center;
     margin-bottom: 4rem;
     padding-bottom: 4rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 4px solid var(--color-comic-border);
+    position: relative;
+}
+
+/* Comic header accent */
+.header::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 12px;
+    background: var(--color-comic-blue);
+    border: 3px solid var(--color-comic-border);
+    z-index: 1;
 }
 
 .meta {
@@ -46,8 +77,16 @@
     justify-content: center;
     gap: 2rem;
     margin-bottom: 1.5rem;
-    color: var(--accent-primary);
-    font-size: 0.9rem;
+    color: #111;
+    font-size: 1rem;
+    font-family: var(--font-comic-neue, cursive);
+    font-weight: 800;
+    background: var(--color-comic-yellow);
+    display: inline-flex;
+    padding: 6px 16px;
+    border: 3px solid var(--color-comic-border);
+    box-shadow: 3px 3px 0 var(--color-comic-border);
+    transform: rotate(-1deg);
 }
 
 .metaItem {
@@ -57,45 +96,175 @@
 }
 
 .title {
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    line-height: 1.2;
-    color: var(--text-primary);
+    font-family: var(--font-bangers, cursive);
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    line-height: 1;
+    color: var(--color-comic-yellow);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    -webkit-text-stroke: 3px var(--color-comic-border);
+    text-shadow: 5px 5px 0px var(--color-comic-border), 8px 8px 0px rgba(0,0,0,0.2);
+    margin: 0;
+    transform: rotate(-2deg);
 }
 
+/* ─── COMIC GRID CONTENT ─── */
 .content {
-    color: var(--text-secondary);
-    font-size: 1.15rem;
-    line-height: 1.8;
-}
-
-.content h3 {
-    color: var(--text-primary);
-    font-size: 1.8rem;
-    margin: 3rem 0 1rem;
-}
-
-.content p {
-    margin-bottom: 1.5rem;
-}
-
-.content ul {
-    margin-bottom: 1.5rem;
-    padding-left: 1.5rem;
-}
-
-.content li {
-    margin-bottom: 0.5rem;
-}
-
-.tags {
-    margin-top: 4rem;
-    padding-top: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: #111;
+    font-family: var(--font-comic-neue, cursive);
+    font-weight: 700;
+    font-size: 1.25rem;
+    line-height: 1.6;
+    
     display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+/* Base Comic Panel for Paragraphs */
+.content p {
+    background: #fff;
+    border: 4px solid var(--color-comic-border);
+    padding: 1.5rem 2rem;
+    box-shadow: 6px 6px 0 var(--color-comic-border);
+    margin: 0;
+    position: relative;
+    z-index: 2;
+    transition: transform 0.2s ease;
+}
+
+.content p:hover {
+    transform: translateY(-2px) rotate(0.5deg);
+}
+
+/* Alternating Panel Rotations and Backgrounds */
+.content p:nth-of-type(odd) {
+    transform: rotate(-1deg);
+    background: #fff;
+}
+
+.content p:nth-of-type(even) {
+    transform: rotate(1deg);
+    background: #f0f7ff; /* light comic blue tint */
+}
+
+/* Speech Bubbles for Blockquotes */
+.content blockquote {
+    position: relative;
+    background: var(--color-comic-yellow);
+    border: 4px solid var(--color-comic-border);
+    padding: 2rem;
+    margin: 1rem 3rem 2rem 1rem;
+    font-family: var(--font-bangers, cursive);
+    font-size: 2rem;
+    line-height: 1.2;
+    letter-spacing: 0.05em;
+    text-align: center;
+    color: #111;
+    border-radius: 40px; /* bubbly look */
+    box-shadow: 8px 8px 0 var(--color-comic-border);
+    transform: rotate(-2deg);
+}
+
+/* Speech Bubble Tail */
+.content blockquote::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 20%;
+    width: 30px;
+    height: 30px;
+    background: var(--color-comic-yellow);
+    border-bottom: 4px solid var(--color-comic-border);
+    border-right: 4px solid var(--color-comic-border);
+    border-bottom-right-radius: 40px;
+    transform: skewX(-20deg) rotate(45deg);
+    z-index: -1;
+}
+
+/* Image Panels */
+.content img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 5px solid var(--color-comic-border);
+    box-shadow: 8px 8px 0 var(--color-comic-border);
+    background: #fff;
+    padding: 10px;
+    margin: 1rem 0;
+    transform: rotate(1deg);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    object-fit: cover;
+    max-height: 500px;
+}
+
+.content img:hover {
+    transform: rotate(-1deg) scale(1.02);
+    box-shadow: 12px 12px 0 var(--color-comic-border);
+    z-index: 5;
+}
+
+/* Tags Box */
+.tags {
+    margin-top: 5rem;
+    padding: 2rem;
+    background: #fff;
+    border: 4px solid var(--color-comic-border);
+    box-shadow: 8px 8px 0 var(--color-comic-border);
+    display: flex;
+    flex-wrap: wrap;
     gap: 1rem;
+    justify-content: center;
+    position: relative;
+    transform: rotate(-1deg);
+}
+
+.tags::before {
+    content: 'TAGS:';
+    position: absolute;
+    top: -15px;
+    left: 20px;
+    background: var(--color-comic-red);
+    color: #fff;
+    font-family: var(--font-bangers, cursive);
+    padding: 2px 10px;
+    border: 3px solid var(--color-comic-border);
+    font-size: 1.2rem;
+    transform: rotate(-5deg);
 }
 
 .tags span {
-    color: var(--accent-secondary);
-    font-size: 0.9rem;
+    font-family: var(--font-bangers, cursive);
+    font-size: 1.2rem;
+    padding: 0.4rem 1rem;
+    background: var(--color-comic-yellow);
+    color: #111;
+    border: 3px solid var(--color-comic-border);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    box-shadow: 3px 3px 0 var(--color-comic-border);
+    transition: transform 0.2s;
+}
+
+.tags span:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0 var(--color-comic-border);
+}
+
+/* To Be Continued Box */
+.tbcBox {
+    margin-top: 4rem;
+    text-align: center;
+    font-family: var(--font-bangers, cursive);
+    font-size: 3rem;
+    color: #fff;
+    background: var(--color-comic-red);
+    border: 4px solid var(--color-comic-border);
+    padding: 1rem 2rem;
+    -webkit-text-stroke: 2px var(--color-comic-border);
+    text-shadow: 4px 4px 0 var(--color-comic-border);
+    box-shadow: 8px 8px 0 var(--color-comic-border);
+    transform: rotate(2deg);
+    display: inline-block;
+    width: 100%;
 }

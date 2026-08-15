@@ -1,124 +1,90 @@
 "use client";
+
+import React from "react";
 import { motion } from "framer-motion";
 import styles from "./Services.module.css";
-import { Palette, Users, Sparkles, Code, Layers, Zap } from "lucide-react";
 
-const services = [
-    {
-        icon: Palette,
-        title: "UI Design",
-        description: "Creating visually stunning interfaces that balance aesthetics with usability.",
-        featured: true,
-        color: "#6C8CFF"
-    },
-    {
-        icon: Users,
-        title: "UX Research",
-        description: "Understanding user needs through research, testing, and data-driven insights.",
-        featured: false,
-        color: "#00E5A8"
-    },
-    {
-        icon: Sparkles,
-        title: "Motion Design",
-        description: "Bringing interfaces to life with purposeful, delightful animations.",
-        featured: false,
-        color: "#FF6B9D"
-    },
-    {
-        icon: Code,
-        title: "Frontend Dev",
-        description: "Translating designs into responsive, performant code.",
-        featured: true,
-        color: "#FFB86C"
-    },
-    {
-        icon: Layers,
-        title: "Design Systems",
-        description: "Building scalable component libraries and documentation.",
-        featured: false,
-        color: "#BD93F9"
-    },
-    {
-        icon: Zap,
-        title: "Prototyping",
-        description: "Rapid iteration with high-fidelity interactive prototypes.",
-        featured: false,
-        color: "#8BE9FD"
-    }
+const steps = [
+  {
+    id: 1,
+    title: "RESEARCH",
+    desc: "Understanding the problem.",
+  },
+  {
+    id: 2,
+    title: "IDEATION",
+    desc: "Exploring possibilities.",
+  },
+  {
+    id: 3,
+    title: "DESIGN",
+    desc: "Crafting interfaces.",
+  },
+  {
+    id: 4,
+    title: "INTERACTION",
+    desc: "Bringing it to life.",
+  },
+  {
+    id: 5,
+    title: "IMPACT",
+    desc: "Creating real impact.",
+  },
 ];
 
 const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-        opacity: 1,
-        transition: {
-            staggerChildren: 0.1
-        }
-    }
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
 };
 
 const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-        opacity: 1,
-        y: 0,
-        transition: { duration: 0.5 }
-    }
+  hidden: { opacity: 0, y: 30 },
+  show: { 
+    opacity: 1, 
+    y: 0,
+    transition: { type: "spring", stiffness: 80, damping: 15 }
+  },
 };
 
 export default function Services() {
-    return (
-        <section className={styles.section}>
-            <div className={styles.container}>
-                <motion.div
-                    className={styles.header}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                >
-                    <span className={styles.label}>What I Do</span>
-                    <h2 className={styles.title}>
-                        Designing experiences that
-                        <span className={styles.highlight}> matter</span>
-                    </h2>
-                    <p className={styles.subtitle}>
-                        From concept to launch, I help brands create digital products that users love.
-                    </p>
-                </motion.div>
+  return (
+    <section className={styles.servicesSection}>
+      <div className={styles.header}>
+        <span className={styles.sectionNumber}>3.</span>
+        <h2 className={styles.title}>SCROLL STORYTELLING</h2>
+        <p className={styles.subtitle}>Sections reveal like panels in a story.</p>
+      </div>
 
-                <motion.div
-                    className={styles.grid}
-                    variants={containerVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                >
-                    {services.map((service, index) => (
-                        <motion.div
-                            key={service.title}
-                            className={`${styles.card} ${service.featured ? styles.featured : ""}`}
-                            variants={itemVariants}
-                            whileHover={{
-                                y: -8,
-                                transition: { duration: 0.3 }
-                            }}
-                        >
-                            <div
-                                className={styles.iconWrapper}
-                                style={{ "--icon-color": service.color }}
-                            >
-                                <service.icon size={24} />
-                            </div>
-                            <h3 className={styles.cardTitle}>{service.title}</h3>
-                            <p className={styles.cardDescription}>{service.description}</p>
-
-                            {/* Decorative corner */}
-                            <div className={styles.corner}></div>
-                        </motion.div>
-                    ))}
-                </motion.div>
-            </div>
-        </section>
-    );
+      <motion.div
+        className={styles.processContainer}
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: "-100px" }}
+      >
+        {steps.map((step, index) => (
+          <React.Fragment key={step.id}>
+            <motion.div className={styles.panelWrapper} variants={itemVariants}>
+              <div className={styles.panel}>
+                <div className={styles.panelBox}>
+                  <span className={styles.stepName}>{step.title}</span>
+                </div>
+                <p className={styles.stepDesc}>{step.desc}</p>
+              </div>
+            </motion.div>
+            {index < steps.length - 1 && (
+              <motion.div className={styles.arrow} variants={itemVariants} aria-hidden="true">
+                →
+              </motion.div>
+            )}
+          </React.Fragment>
+        ))}
+      </motion.div>
+    </section>
+  );
 }

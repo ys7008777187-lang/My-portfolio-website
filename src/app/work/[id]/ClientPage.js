@@ -12,6 +12,7 @@ import MyrikCaseStudy from "../../../components/work/MyrikCaseStudy";
 import ADTCaseStudy from "../../../components/work/ADTCaseStudy";
 import WorqCaseStudy from "../../../components/work/WorqCaseStudy";
 import CampusBitesCaseStudy from "../../../components/work/CampusBitesCaseStudy";
+import BasecampCaseStudy from "../../../components/work/BasecampCaseStudy";
 
 export default function ProjectPage({ id }) {
     // Check if it's the ADT Solution
@@ -87,7 +88,19 @@ export default function ProjectPage({ id }) {
         );
     }
 
-    // Fallback for other projects
+    if (id === '9') {
+        return (
+            <main className={styles.main}>
+                <div style={{ padding: '20px 5%', maxWidth: '1200px', margin: '0 auto', paddingTop: '100px' }}>
+                    <Link href="/work" className={styles.backLink}>
+                        <ArrowLeft size={20} /> Back to Work
+                    </Link>
+                </div>
+                <BasecampCaseStudy />
+                <ContactCTA />
+            </main>
+        );
+    }
     const rawProject = projectsData.find(p => p.id.toString() === id) || projectsData[0];
     
     // Add fallback properties if they don't exist in the JSON
@@ -112,7 +125,7 @@ export default function ProjectPage({ id }) {
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
+                        transition={{ duration: 0.4 }}
                         className={styles.heroContent}
                     >
                         <span className={styles.category}>{project.category}</span>

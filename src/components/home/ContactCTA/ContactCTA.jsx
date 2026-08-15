@@ -1,54 +1,96 @@
 "use client";
+
 import { motion } from "framer-motion";
-import Button from "../../ui/Button/Button";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import styles from "./ContactCTA.module.css";
-import { Mail, ArrowRight } from "lucide-react";
 
 export default function ContactCTA() {
-    return (
-        <section className={styles.section}>
-            <div className={styles.container}>
-                {/* Background Elements */}
-                <div className={styles.bgPattern}></div>
-                <div className={styles.glowOrb}></div>
+  const containerVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { 
+        duration: 0.8, 
+        type: "spring",
+        bounce: 0.4,
+        staggerChildren: 0.2
+      }
+    }
+  };
 
-                <motion.div
-                    className={styles.content}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                >
-                    <motion.div
-                        className={styles.iconWrapper}
-                        animate={{ rotate: [0, 10, -10, 0] }}
-                        transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-                    >
-                        <Mail size={32} />
-                    </motion.div>
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { 
+        type: "spring",
+        stiffness: 100,
+        damping: 12
+      } 
+    }
+  };
 
-                    <h2 className={styles.title}>
-                        Have a project in mind?
-                        <br />
-                        <span className={styles.highlight}>Let's work together</span>
-                    </h2>
+  return (
+    <section className={styles.section} id="contact">
+      <div className={styles.container}>
+        <motion.div 
+          className={styles.header}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ type: "spring", bounce: 0.4 }}
+        >
+          <span className={styles.sectionNumber}>5.</span>
+          <h2 className={styles.title}>WHAT'S NEXT?</h2>
+          <div className={styles.badgeWrapper}>
+            <span className={styles.subtitleBadge}>The story ends here, but the conversation begins.</span>
+          </div>
+        </motion.div>
 
-                    <p className={styles.description}>
-                        I'm always excited to collaborate on interesting projects.
-                        Whether you need a complete redesign or a fresh perspective, let's chat!
-                    </p>
-
-                    <div className={styles.ctas}>
-                        <Button href="/contact">
-                            Get In Touch
-                        </Button>
-                        <a href="mailto:Yashsrivastava7008@gmail.com" className={styles.emailLink}>
-                            <span>Yashsrivastava7008@gmail.com</span>
-                            <ArrowRight size={16} />
-                        </a>
-                    </div>
-                </motion.div>
+        <motion.div 
+          className={styles.cardContainer}
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+        >
+          <div className={styles.card}>
+            <div className={styles.storyText}>
+              <motion.div variants={itemVariants} className={styles.theEndContainer}>
+                <h3 className={styles.theEnd}>THE END</h3>
+                <span className={styles.strike}></span>
+              </motion.div>
+              
+              <motion.div variants={itemVariants} className={styles.sfxContainer}>
+                <div className={styles.burst}></div>
+                <h4 className={styles.no}>NO.</h4>
+              </motion.div>
+              
+              <motion.h4 variants={itemVariants} className={styles.letsBuild}>
+                LET'S BUILD
+              </motion.h4>
+              
+              <motion.h4 variants={itemVariants} className={styles.nextStory}>
+                THE NEXT STORY
+              </motion.h4>
+              
+              <motion.h4 variants={itemVariants} className={styles.together}>
+                TOGETHER.
+              </motion.h4>
             </div>
-        </section>
-    );
+
+            <motion.div variants={itemVariants} className={styles.ctaWrapper}>
+              <Link href="/contact" className={styles.ctaButton}>
+                <span className={styles.btnText}>GET IN TOUCH</span> 
+                <ArrowRight className={styles.btnIcon} size={24} strokeWidth={3} />
+              </Link>
+            </motion.div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
 }

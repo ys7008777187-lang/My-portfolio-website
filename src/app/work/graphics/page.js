@@ -1,15 +1,73 @@
 "use client";
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, ArrowUpRight, X, ChevronDown } from "lucide-react";
 import ContactCTA from "../../../components/home/ContactCTA/ContactCTA";
 import CreativeBook from "../../../components/ui/CreativeBook/CreativeBook";
 import { getAssetUrl } from "../../../lib/assetUrl";
-import styles from "../uiux/page.module.css";
+import styles from "./page.module.css";
 
 const graphicsProjects = [
+    {
+        id: "political-posts",
+        title: "Political Posts",
+        category: "Artwork",
+        icon: "🎨",
+        image: "/images/artworks/political-posts/GANDHI FAMILY.png",
+        images: [
+            "/images/artworks/political-posts/1.png",
+            "/images/artworks/political-posts/2.png",
+            "/images/artworks/political-posts/3.png",
+            "/images/artworks/political-posts/4.png",
+            "/images/artworks/political-posts/5.png",
+            "/images/artworks/political-posts/GANDHI FAMILY.png"
+        ],
+        isNew: true,
+        tagline: "VISUAL PROPAGANDA, REDESIGNED!",
+        description: "Political Posts & Campaign Creatives"
+    },
+    {
+        id: "the-nexus-point-issue-3",
+        title: "The Nexus Point: Issue 3",
+        category: "Chitranga",
+        icon: "📖",
+        image: "/images/artworks/the-nexus-point-issue-3/0.png",
+        images: [
+            "/images/artworks/the-nexus-point-issue-3/0.png",
+            "/images/artworks/the-nexus-point-issue-3/1.png",
+            "/images/artworks/the-nexus-point-issue-3/2.png",
+            "/images/artworks/the-nexus-point-issue-3/3.png",
+            "/images/artworks/the-nexus-point-issue-3/4.png",
+            "/images/artworks/the-nexus-point-issue-3/5.png",
+            "/images/artworks/the-nexus-point-issue-3/6.png",
+            "/images/artworks/the-nexus-point-issue-3/7.png",
+            "/images/artworks/the-nexus-point-issue-3/8.png",
+            "/images/artworks/the-nexus-point-issue-3/9.png",
+            "/images/artworks/the-nexus-point-issue-3/10.png",
+            "/images/artworks/the-nexus-point-issue-3/11.png",
+            "/images/artworks/the-nexus-point-issue-3/12.png",
+            "/images/artworks/the-nexus-point-issue-3/13.png",
+            "/images/artworks/the-nexus-point-issue-3/14.png",
+            "/images/artworks/the-nexus-point-issue-3/15.png",
+            "/images/artworks/the-nexus-point-issue-3/16.png",
+            "/images/artworks/the-nexus-point-issue-3/17.png",
+            "/images/artworks/the-nexus-point-issue-3/18.png",
+            "/images/artworks/the-nexus-point-issue-3/19.png",
+            "/images/artworks/the-nexus-point-issue-3/20.png",
+            "/images/artworks/the-nexus-point-issue-3/21.png",
+            "/images/artworks/the-nexus-point-issue-3/22.png",
+            "/images/artworks/the-nexus-point-issue-3/23.png",
+            "/images/artworks/the-nexus-point-issue-2/Back Cover (2).png"
+        ],
+        isCarouselBook: true,
+        isComic: true,
+        isNew: true,
+        hidePageInfo: true,
+        tagline: "THE SAGA CONTINUES!",
+        description: "Issue 3 of The Nexus Point Chitranga"
+    },
     {
         id: "the-nexus-point-issue-2",
         title: "The Nexus Point: Issue 2",
@@ -42,7 +100,7 @@ const graphicsProjects = [
         ],
         isCarouselBook: true,
         isComic: true,
-        isNew: true,
+        tagline: "THE PLOT THICKENS!",
         description: "Issue 2 of The Nexus Point Chitranga"
     },
     {
@@ -88,6 +146,7 @@ const graphicsProjects = [
         ],
         isCarouselBook: true,
         isComic: true,
+        tagline: "WHERE IT ALL BEGAN!",
         description: "An interactive Chitranga / comic presentation"
     },
     {
@@ -109,6 +168,7 @@ const graphicsProjects = [
             "/images/artworks/fifth-layer/frame 10.png"
         ],
         isCarouselBook: true,
+        tagline: "STORIES THAT INSPIRE!",
         description: "An interactive editorial story book presentation"
     },
     {
@@ -137,6 +197,7 @@ const graphicsProjects = [
             "/images/artworks/comic-magazine/back-cover.png"
         ],
         isCarouselBook: true,
+        tagline: "PAGE AFTER PAGE OF FUN!",
         description: "An interactive comic book presentation"
     },
     {
@@ -149,6 +210,7 @@ const graphicsProjects = [
             "/images/artworks/fashion-1.jpg",
             "/images/artworks/fashion-2.jpg"
         ],
+        tagline: "STYLE MEETS DESIGN!",
         description: "Fashion Promotional Campaign Graphics"
     },
     {
@@ -168,6 +230,7 @@ const graphicsProjects = [
             "/images/artworks/Instagram 3.jpg",
             "/images/artworks/Instagram 4.jpg"
         ],
+        tagline: "BLOOMING CREATIVITY!",
         description: "Original artwork: White Lotus Gallery"
     },
     {
@@ -180,6 +243,7 @@ const graphicsProjects = [
             "/images/artworks/10154603.jpg",
             "/images/artworks/9938169.jpg"
         ],
+        tagline: "WRAP IT RIGHT!",
         description: "Original artwork: Packaging Design Gallery"
     },
     {
@@ -188,16 +252,16 @@ const graphicsProjects = [
         category: "Artwork",
         icon: "🎨",
         image: "/images/artworks/10818.jpg",
+        tagline: "IDENTITY CRAFTED!",
         description: "Original artwork: Branding"
     },
-
-
     {
         id: "og5",
         title: "Aaduri",
         category: "Artwork",
         icon: "🎨",
         image: "/images/artworks/Aaduri.jpg",
+        tagline: "ELEGANCE IN DETAIL!",
         description: "Original artwork: Aaduri"
     },
     {
@@ -206,6 +270,7 @@ const graphicsProjects = [
         category: "Artwork",
         icon: "🎨",
         image: "/images/artworks/Artwork.jpg",
+        tagline: "PURE EXPRESSION!",
         description: "Original artwork: Artwork"
     },
     {
@@ -219,6 +284,7 @@ const graphicsProjects = [
             "/images/artworks/Baishaki poster.jpg",
             "/images/artworks/Baishaki Postet.jpg"
         ],
+        tagline: "FESTIVE VIBES!",
         description: "Original artwork: Baisakhi Posters Collection"
     },
     {
@@ -237,15 +303,16 @@ const graphicsProjects = [
         ],
         isCarouselBook: true,
         bookFormat: "landscape",
+        tagline: "READ IN STYLE!",
         description: "Original artwork: Coffee Table Book (Multiple Pages)"
     },
-
     {
         id: "og18",
         title: "Hoarding",
         category: "Artwork",
         icon: "🎨",
         image: "/images/artworks/Hoarding.jpg",
+        tagline: "LARGER THAN LIFE!",
         description: "Original artwork: Hoarding"
     },
     {
@@ -254,6 +321,7 @@ const graphicsProjects = [
         category: "Artwork",
         icon: "🎨",
         image: "/images/artworks/Galleria Furniture 2.jpeg",
+        tagline: "DESIGNED TO IMPRESS!",
         description: "Original artwork: Galleria Furniture 2"
     },
     {
@@ -267,30 +335,30 @@ const graphicsProjects = [
             "/images/artworks/RCB.png",
             "/images/artworks/A4 - 2.jpg"
         ],
+        tagline: "GAME ON!",
         description: "Original artwork: IPL Posters Gallery"
     },
     {
         id: "og24",
-        title: "Naga Creatives (1005 x 1920)",
+        title: "Naga Creatives",
         category: "Artwork",
         icon: "🎨",
         image: "/images/artworks/Naga Creatives (1005 x 1920).png",
-        description: "Original artwork: Naga Creatives (1005 x 1920)"
+        tagline: "CULTURAL FIRE!",
+        description: "Original artwork: Naga Creatives"
     },
-
-
     {
         id: "og27",
-        title: "The park",
+        title: "The Park",
         category: "Artwork",
         icon: "🎨",
         image: "/images/artworks/The park.jpeg",
-        description: "Original artwork: The park"
+        tagline: "NATURE CAPTURED!",
+        description: "Original artwork: The Park"
     },
-
     {
         id: "og29",
-        title: "World Health Day Posters",
+        title: "World Health Day",
         category: "Artwork",
         icon: "🎨",
         image: "/images/artworks/World Health Day.jpg",
@@ -298,27 +366,65 @@ const graphicsProjects = [
             "/images/artworks/World Health Day.jpg",
             "/images/artworks/WHD.jpg"
         ],
+        tagline: "HEALTH IS WEALTH!",
         description: "Original artwork: World Health Day Collection"
     }
 ];
 
+/* ── Accent colors cycle ── */
+const panelColors = [
+    "#FFB86C", "#6C8CFF", "#FF6B9D", "#00E5A8",
+    "#8BE9FD", "#BD93F9", "#F1FA8C", "#FF79C6",
+    "#50FA7B", "#FF5555", "#6C8CFF", "#FFB86C",
+    "#00E5A8", "#BD93F9", "#FF6B9D", "#8BE9FD",
+    "#F1FA8C", "#FF79C6", "#50FA7B", "#FF5555",
+];
+
+/* ── Animations ── */
+const panelVariants = {
+    hidden: { opacity: 0, y: 40, scale: 0.96 },
+    visible: (i) => ({
+        opacity: 1,
+        scale: 1,
+        y: 0,
+        transition: {
+            delay: i * 0.06,
+            duration: 0.4,
+            ease: [0.22, 1, 0.36, 1],
+        },
+    }),
+};
+
 export default function GraphicsPage() {
     const [selectedProject, setSelectedProject] = useState(null);
     const [hasScrolledGallery, setHasScrolledGallery] = useState(false);
+    const [activeFilter, setActiveFilter] = useState("all");
 
-    // Reset scroll indicator when project changes
     useEffect(() => {
         if (selectedProject) setHasScrolledGallery(false);
     }, [selectedProject]);
 
+    const categories = ["all", "Chitranga", "Visual Storytelling", "Artwork"];
+    const filteredProjects = activeFilter === "all"
+        ? graphicsProjects
+        : graphicsProjects.filter(p => p.category === activeFilter);
+
     return (
         <main className={styles.main}>
+            {/* ═══ COMIC TOP STRIP ═══ */}
+            <div className={styles.topStrip}>
+                <span className={styles.stripLeft}>MEANWHILE, IN THE DESIGN MULTIVERSE...</span>
+                <span className={styles.stripCenter}>
+                    A COLLECTION OF <strong>CREATIVE ADVENTURES</strong>
+                </span>
+            </div>
+
             <div className={styles.container}>
                 {/* Back link */}
                 <motion.div
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5 }}
+                    transition={{ duration: 0.3 }}
                 >
                     <Link href="/work" className={styles.backLink}>
                         <ArrowLeft size={18} />
@@ -326,56 +432,99 @@ export default function GraphicsPage() {
                     </Link>
                 </motion.div>
 
-                {/* Header */}
+                {/* ═══ COMIC HERO HEADER ═══ */}
                 <motion.div
-                    className={styles.header}
+                    className={styles.comicHeader}
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.7, delay: 0.1 }}
+                    transition={{ duration: 0.45 }}
                 >
-                    <div className={styles.headerBadge}>
-                        <span className={styles.badgeDot} style={{ background: '#00E5A8' }} />
-                        <span>Visual Creations</span>
+                    <div className={styles.headerLeft}>
+                        <span className={styles.headerLabel}>VISUAL CREATIONS</span>
+                        <h1 className={styles.comicTitle}>
+                            GRAPHICS <span className={styles.ampersand}>&</span> ARTWORK
+                        </h1>
+                        <p className={styles.comicSubtitle}>
+                            Logos, branding, illustrations, comics, and artistic compositions — each piece crafted with passion and precision.
+                        </p>
                     </div>
-                    <h1 className={styles.title}>Graphics & Artwork</h1>
-                    <p className={styles.subtitle}>
-                        Logos, branding, illustrations, and artistic compositions — crafted with passion and precision.
-                    </p>
+                    <div className={styles.headerRight}>
+                        <div className={styles.speechBubble}>
+                            <span>EVERY PIXEL TELLS A STORY!</span>
+                        </div>
+                    </div>
                 </motion.div>
 
-                {/* Projects Grid */}
+                {/* ═══ FILTER TABS ═══ */}
                 <motion.div
-                    className={styles.grid}
-                    initial="hidden"
-                    animate="visible"
-                    variants={{
-                        hidden: {},
-                        visible: { transition: { staggerChildren: 0.12, delayChildren: 0.3 } }
-                    }}
+                    className={styles.filterBar}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.35, delay: 0.15 }}
                 >
-                    {graphicsProjects.map((project) => (
-                        <motion.article
-                            key={project.id}
-                            className={styles.card}
-                            variants={{
-                                hidden: { opacity: 0, y: 40, scale: 0.97 },
-                                visible: {
-                                    opacity: 1, y: 0, scale: 1,
-                                    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
-                                }
-                            }}
+                    {categories.map((cat) => (
+                        <button
+                            key={cat}
+                            className={`${styles.filterBtn} ${activeFilter === cat ? styles.filterBtnActive : ""}`}
+                            onClick={() => setActiveFilter(cat)}
                         >
-                            <div className={styles.cardLink} onClick={() => setSelectedProject(project)} style={{ cursor: "pointer" }}>
-                                <div className={styles.imageWrapper}>
-                                    <Image
-                                        src={getAssetUrl(project.image)}
-                                        alt={project.title}
-                                        fill
-                                        unoptimized
-                                        style={{ objectFit: "cover" }}
-                                        className={styles.image}
-                                    />
-                                    <div className={styles.imageOverlay}>
+                            {cat === "all" ? "All Works" : cat}
+                        </button>
+                    ))}
+                </motion.div>
+
+                {/* ═══ COMIC PANEL GRID ═══ */}
+                <motion.div
+                    className={styles.panelGrid}
+                    layout
+                >
+                    <AnimatePresence mode="popLayout">
+                        {filteredProjects.map((project, index) => {
+                            const color = panelColors[index % panelColors.length];
+                            return (
+                                <motion.article
+                                    key={project.id}
+                                    className={styles.panel}
+                                    style={{ "--panel-color": color }}
+                                    custom={index}
+                                    variants={panelVariants}
+                                    initial="hidden"
+                                    animate="visible"
+                                    exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.25 } }}
+                                    layout
+                                    onClick={() => setSelectedProject(project)}
+                                >
+                                    {/* Issue badge */}
+                                    <div className={styles.issueBadge} style={{ backgroundColor: color }}>
+                                        <span className={styles.issueLabel}>ISSUE</span>
+                                        <span className={styles.issueNum}>#{String(index + 1).padStart(2, "0")}</span>
+                                    </div>
+
+                                    {/* Tagline bubble */}
+                                    {project.tagline && (
+                                        <div className={styles.taglineBubble}>
+                                            <span>{project.tagline}</span>
+                                        </div>
+                                    )}
+
+                                    {/* NEW badge */}
+                                    {project.isNew && (
+                                        <span className={styles.newBadge}>NEW</span>
+                                    )}
+
+                                    {/* Image */}
+                                    <div className={styles.panelImageWrap}>
+                                        <Image
+                                            src={getAssetUrl(project.image)}
+                                            alt={project.title}
+                                            fill
+                                            unoptimized
+                                            style={{ objectFit: "cover" }}
+                                            className={styles.panelImage}
+                                        />
+                                        <div className={styles.panelOverlay} />
+
+                                        {/* Hover view button */}
                                         <motion.div
                                             className={styles.viewBtn}
                                             whileHover={{ scale: 1.1 }}
@@ -383,25 +532,32 @@ export default function GraphicsPage() {
                                             <ArrowUpRight size={22} />
                                         </motion.div>
                                     </div>
-                                    {project.isNew && (
-                                        <span className={styles.newBadge}>NEW</span>
-                                    )}
-                                </div>
 
-                                <div className={styles.cardContent}>
-                                    <span className={styles.cardCategory}>{project.category}</span>
-                                    <h3 className={styles.cardTitle}>{project.title}</h3>
-                                    <div className={styles.cardMeta}>
-                                        <span className={styles.cardIcon}>{project.icon}</span>
-                                        <span>{project.description}</span>
+                                    {/* Content */}
+                                    <div className={styles.panelContent}>
+                                        <h3 className={styles.panelTitle}>{project.title}</h3>
+                                        <span className={styles.panelCategory} style={{ color }}>
+                                            {project.category}
+                                        </span>
+                                        <p className={styles.panelDesc}>{project.description}</p>
                                     </div>
-                                </div>
-                            </div>
-                        </motion.article>
-                    ))}
+
+                                    {/* Bottom speed-line accent */}
+                                    <div className={styles.panelAccentBar} style={{ background: color }} />
+                                </motion.article>
+                            );
+                        })}
+                    </AnimatePresence>
                 </motion.div>
+
+                {/* ═══ BOTTOM QUOTE ═══ */}
+                <div className={styles.bottomQuote}>
+                    <span>DESIGN IS NOT JUST WHAT IT LOOKS LIKE...</span>
+                    <strong>IT&apos;S HOW IT WORKS!</strong>
+                </div>
             </div>
 
+            {/* ═══ LIGHTBOX ═══ */}
             <AnimatePresence>
                 {selectedProject && (
                     <motion.div
@@ -417,23 +573,31 @@ export default function GraphicsPage() {
                             animate={{ scale: 1, opacity: 1 }}
                             exit={{ scale: 0.9, opacity: 0 }}
                             onClick={(e) => e.stopPropagation()}
-                            transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                            transition={{ type: "spring", damping: 22, stiffness: 350 }}
                         >
                             <button className={styles.lightboxClose} onClick={() => setSelectedProject(null)}>
                                 <X size={24} />
                             </button>
 
-                            <div className={styles.lightboxHeader}>
-                                <h2>{selectedProject.title}</h2>
-                                {selectedProject.description && <p>{selectedProject.description}</p>}
-                            </div>
+                            {!selectedProject.hidePageInfo && (
+                                <div className={styles.lightboxHeader}>
+                                    <h2>{selectedProject.title}</h2>
+                                    {selectedProject.description && <p>{selectedProject.description}</p>}
+                                </div>
+                            )}
 
                             <div className={styles.lightboxBody}>
                                 {selectedProject.isCarouselBook ? (
-                                    <CreativeBook images={selectedProject.images} title={selectedProject.title} isComic={selectedProject.isComic} bookFormat={selectedProject.bookFormat || "square"} />
+                                    <CreativeBook
+                                        images={selectedProject.images}
+                                        title={selectedProject.title}
+                                        isComic={selectedProject.isComic}
+                                        bookFormat={selectedProject.bookFormat || "square"}
+                                        hidePageInfo={selectedProject.hidePageInfo}
+                                    />
                                 ) : selectedProject.images && selectedProject.images.length > 0 ? (
                                     <>
-                                        <div 
+                                        <div
                                             className={styles.lightboxGallery}
                                             onScroll={(e) => {
                                                 if (e.target.scrollTop > 50 && !hasScrolledGallery) {
@@ -453,10 +617,10 @@ export default function GraphicsPage() {
                                                 </div>
                                             ))}
                                         </div>
-                                        
+
                                         <AnimatePresence>
                                             {!hasScrolledGallery && selectedProject.images.length > 1 && (
-                                                <motion.div 
+                                                <motion.div
                                                     className={styles.scrollHint}
                                                     initial={{ opacity: 0, y: 10 }}
                                                     animate={{ opacity: 1, y: 0 }}

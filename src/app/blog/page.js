@@ -23,9 +23,16 @@ export default function Blog() {
                     className={styles.header}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 >
-                    <h1 className={styles.title}>Thoughts & Insights</h1>
+                    <div className={styles.issueBanner}>
+                        <span className={styles.issueLabel}>ISSUE</span>
+                        <span className={styles.issueNum}>#03</span>
+                        <span className={styles.issueSep}>—</span>
+                        <span className={styles.issueTitle}>THOUGHTS & INSIGHTS</span>
+                    </div>
+                    <h1 className={styles.title}>Blog</h1>
+                    <div className={styles.badge}>Thoughts & Insights</div>
                     <p className={styles.subtitle}>Writing about design, technology, and the creative process.</p>
                 </motion.div>
 
@@ -36,14 +43,14 @@ export default function Blog() {
                         {blogPosts.map((post, index) => (
                             <motion.article
                                 key={post.id}
-                                className={styles.card}
+                                className={styles.cardWrapper}
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ delay: index * 0.1, duration: 0.5 }}
+                                transition={{ type: "spring", stiffness: 300, damping: 20, delay: index * 0.1 }}
                                 viewport={{ once: true }}
                             >
-                                <Link href={`/blog/${post.id}`} className={styles.link}>
-                                    <div className={styles.imageWrapper} style={{ backgroundColor: post.imageColor || '#eee' }}>
+                                <Link href={`/blog/${post.id}`} className={styles.card}>
+                                    <div className={styles.imageWrapper} style={{ backgroundColor: post.imageColor || 'var(--color-bg-secondary)' }}>
                                         {post.image ? (
                                             <Image
                                                 src={post.image}
@@ -53,7 +60,7 @@ export default function Blog() {
                                                 className={styles.image}
                                             />
                                         ) : (
-                                            <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '2rem' }}>
+                                            <div className={styles.imagePlaceholder}>
                                                 {post.icon || '📝'}
                                             </div>
                                         )}

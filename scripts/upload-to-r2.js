@@ -21,6 +21,8 @@ const contentTypes = {
   '.jpeg': 'image/jpeg',
   '.png': 'image/png',
   '.gif': 'image/gif',
+  '.webp': 'image/webp',
+  '.svg': 'image/svg+xml',
 };
 
 const walkDir = (dir) => {

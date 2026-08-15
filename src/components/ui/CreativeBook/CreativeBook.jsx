@@ -12,7 +12,7 @@ const Page = forwardRef((props, ref) => {
     
     return (
         <div className={`${styles.pageItem} ${isLeft ? styles.pageLeft : styles.pageRight}`} ref={ref}>
-            <div className={styles.pageContent}>
+            <div className={`${styles.pageContent} ${props.hidePageInfo ? styles.cropPageInfo : ''}`}>
                 <Image
                     src={getAssetUrl(props.image)}
                     alt={`Page ${props.number + 1}`}
@@ -27,7 +27,7 @@ const Page = forwardRef((props, ref) => {
 
 Page.displayName = "Page";
 
-export default function CreativeBook({ images, title, isComic, bookFormat = "square" }) {
+export default function CreativeBook({ images, title, isComic, bookFormat = "square", hidePageInfo = false }) {
     const [isMounted, setIsMounted] = useState(false);
     const [dynamicMax, setDynamicMax] = useState({ width: 600, height: 700 });
     const bookRef = useRef(null);
@@ -72,7 +72,7 @@ export default function CreativeBook({ images, title, isComic, bookFormat = "squ
                 <span>Grab and drag the corner of the page to flip</span>
             </div>
 
-            <div className={styles.bookViewport}>
+            <div className={`${styles.bookViewport} ${hidePageInfo ? styles.hidePageInfo : ''}`}>
                 <HTMLFlipBook
                     width={baseWidth}
                     height={baseHeight}
@@ -89,7 +89,7 @@ export default function CreativeBook({ images, title, isComic, bookFormat = "squ
                     ref={bookRef}
                 >
                     {images.map((src, i) => (
-                        <Page key={i} number={i} image={src} isLastPage={i === images.length - 1} />
+                        <Page key={i} number={i} image={src} isLastPage={i === images.length - 1} hidePageInfo={hidePageInfo} />
                     ))}
                 </HTMLFlipBook>
             </div>

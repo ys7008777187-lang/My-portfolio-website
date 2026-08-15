@@ -1,33 +1,36 @@
+/* ============================================================
+   THEME TOGGLE — Comic / Neobrutalist
+   ============================================================ */
 .toggle {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 44px;
     height: 44px;
-    border-radius: 50%;
-    background: var(--color-bg-glass);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0;
+    background: var(--color-bg-secondary);
+    border: var(--border-width) solid var(--color-comic-border);
     color: var(--color-text-primary);
     cursor: pointer;
-    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-fast) ease;
     overflow: hidden;
     margin-left: 0.5rem;
 }
 
 .toggle:hover {
     background: var(--color-bg-secondary);
-    color: var(--color-accent);
-    border-color: var(--color-accent);
-    transform: translateY(-2px);
+    color: var(--color-comic-yellow);
+    transform: translate(-1px, -1px);
     box-shadow: var(--shadow-md);
 }
 
-.icon {
-    position: absolute;
-    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+.toggle:active {
+    transform: translate(1px, 1px);
+    box-shadow: none;
 }
 
 /* Light Mode specific styles override */
 [data-theme='light'] .toggle {
-    border-color: rgba(0, 0, 0, 0.1);
+    border-color: var(--color-comic-border);
 }

@@ -1,23 +1,37 @@
 .card {
     width: 100%;
+    border-radius: 0;
+    border: var(--border-width, 3px) solid var(--color-comic-border, #000);
+    box-shadow: var(--shadow-sm, 3px 3px 0 #000);
+    transition: transform var(--transition-base, 200ms), box-shadow var(--transition-base, 200ms);
+    background: var(--color-bg-primary, #1A1A1A);
+}
+
+.card:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: var(--shadow-lg, 8px 8px 0 #000);
 }
 
 .link {
     display: block;
     text-decoration: none;
-    transition: opacity 0.3s ease;
-    /* Warning: Likely unused but keeping for structure intent logic if group-hover was needed */
+    color: inherit;
 }
 
 .imageContainer {
     position: relative;
     aspect-ratio: 4/3;
-    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    border-radius: 0;
     overflow: hidden;
+    border-bottom: var(--border-width, 3px) solid var(--color-comic-border, #000);
 }
 
 .image {
     transition: transform 0.5s ease;
+}
+
+.link:hover .image {
+    transform: scale(1.05);
 }
 
 .overlay {
@@ -33,12 +47,19 @@
 }
 
 .viewBtn {
-    background: white;
-    color: black;
+    background: var(--color-comic-yellow, #FFCC00);
+    color: #000;
     padding: 0.8rem 1.5rem;
-    border-radius: 100px;
-    font-weight: 500;
-    font-size: 0.9rem;
+    border-radius: 0;
+    border: var(--border-width, 3px) solid var(--color-comic-border, #000);
+    box-shadow: var(--shadow-sm, 3px 3px 0 #000);
+    font-family: var(--font-bangers, cursive);
+    font-size: 1.2rem;
+    font-weight: normal;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transform: skewX(-6deg);
+    transition: transform var(--transition-fast, 120ms);
 }
 
 .link:hover .overlay {
@@ -46,31 +67,49 @@
     transform: translateY(0);
 }
 
+.link:hover .viewBtn {
+    transform: skewX(-6deg) translate(-2px, -2px);
+    box-shadow: var(--shadow-lg, 8px 8px 0 #000);
+}
+
 .info {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    padding: 1.5rem;
 }
 
 .text {
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
+    gap: 1rem;
+    align-items: flex-start;
 }
 
 .title {
-    font-size: 1.5rem;
-    color: var(--text-primary);
-    font-weight: 600;
+    font-size: 1.8rem;
+    color: var(--text-primary, #fff);
+    font-family: var(--font-bangers, cursive);
+    -webkit-text-stroke: 1px var(--color-comic-border, #000);
+    text-shadow: 2px 2px 0px var(--color-comic-border, #000);
+    margin: 0;
+    letter-spacing: 1px;
 }
 
 .category {
-    color: var(--text-secondary);
-    font-size: 0.95rem;
+    background: var(--color-comic-yellow, #FFCC00);
+    color: #000;
+    border: var(--border-width, 3px) solid var(--color-comic-border, #000);
+    padding: 0.3rem 0.8rem;
+    font-family: var(--font-bangers, cursive);
+    font-size: 1rem;
+    display: inline-block;
+    transform: rotate(-1deg);
+    box-shadow: var(--shadow-sm, 3px 3px 0 #000);
 }
 
 .icon {
-    color: var(--text-primary);
+    color: var(--text-primary, #fff);
     opacity: 0;
     transform: translate(-10px, 10px);
     transition: all 0.3s ease;

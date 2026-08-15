@@ -1,166 +1,230 @@
 "use client";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
+import { ArrowRight, ArrowDown, Layers, Palette, Film } from "lucide-react";
 import styles from "./page.module.css";
 import ContactCTA from "../../components/home/ContactCTA/ContactCTA";
-import { Palette, Layers, Film, ArrowRight } from "lucide-react";
 
 const categories = [
     {
         id: "uiux",
-        title: "UI/UX Projects",
-        subtitle: "Digital Experiences",
-        description: "Crafting intuitive interfaces and seamless user experiences for web and mobile platforms.",
-        icon: Layers,
+        num: "01",
+        title: "UI/UX\nProjects",
+        category: "DIGITAL EXPERIENCES",
+        tagline: "CRAFTING DIGITAL MAGIC!",
+        description: "Intuitive interfaces & seamless user experiences for web and mobile.",
         href: "/work/uiux",
+        image: "/images/anime-uiux_v2.jpg",
         color: "#6C8CFF",
-        gradient: "linear-gradient(135deg, #6C8CFF 0%, #4A6CF7 50%, #3B5CE4 100%)",
-        glowColor: "rgba(108, 140, 255, 0.3)",
+        icon: Layers,
         projectCount: "6+",
-        tags: ["Web Apps", "Mobile", "SaaS", "Product Design"]
+        sfx: "POW!"
     },
     {
         id: "graphics",
-        title: "Graphics & Artwork",
-        subtitle: "Visual Creations",
-        description: "Logos, branding, illustrations, and artistic compositions that tell powerful visual stories.",
-        icon: Palette,
+        num: "02",
+        title: "Graphics &\nArtwork",
+        category: "VISUAL CREATIONS",
+        tagline: "EVERY PIXEL TELLS A STORY!",
+        description: "Logos, branding, illustrations, and artistic visual stories.",
         href: "/work/graphics",
+        image: "/images/anime-graphics_v2.jpg",
         color: "#00E5A8",
-        gradient: "linear-gradient(135deg, #00E5A8 0%, #00C896 50%, #00A87C 100%)",
-        glowColor: "rgba(0, 229, 168, 0.3)",
+        icon: Palette,
         projectCount: "10+",
-        tags: ["Branding", "Illustrations", "Logos", "Art"]
+        sfx: "BAM!"
     },
     {
         id: "video",
-        title: "Video Edits",
-        subtitle: "Motion Stories",
-        description: "Dynamic video editing, motion graphics, and visual storytelling that captivates audiences.",
-        icon: Film,
+        num: "03",
+        title: "Video\nEdits",
+        category: "MOTION STORIES",
+        tagline: "LIGHTS, CAMERA, ACTION!",
+        description: "Dynamic video editing, motion graphics & visual storytelling.",
         href: "/work/video-edits",
+        image: "/images/anime-video_v2.jpg",
         color: "#FF6C8C",
-        gradient: "linear-gradient(135deg, #FF6C8C 0%, #F74A6C 50%, #E43B5C 100%)",
-        glowColor: "rgba(255, 108, 140, 0.3)",
+        icon: Film,
         projectCount: "5+",
-        tags: ["Motion Graphics", "Editing", "Reels", "Animation"]
+        sfx: "BOOM!"
     }
 ];
 
 const containerVariants = {
     hidden: {},
     visible: {
-        transition: {
-            staggerChildren: 0.15,
-            delayChildren: 0.3,
-        }
+        transition: { staggerChildren: 0.2, delayChildren: 0.4 }
     }
 };
 
-const cardVariants = {
-    hidden: { opacity: 0, y: 60, scale: 0.95 },
+const panelVariants = {
+    hidden: { opacity: 0, y: 60, rotateZ: -2 },
     visible: {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        transition: {
-            duration: 0.7,
-            ease: [0.22, 1, 0.36, 1]
-        }
+        opacity: 1, y: 0, rotateZ: 0,
+        transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] }
     }
 };
 
 export default function Work() {
+    const [hoveredId, setHoveredId] = useState(null);
+
     return (
         <main className={styles.main}>
-            <div className={styles.container}>
-                {/* Background decorations */}
-                <div className={styles.bgGlow1} />
-                <div className={styles.bgGlow2} />
+            {/* Hero Background */}
+            <div className={styles.heroBackground}>
+                <Image
+                    src="/images/work-page-bg.jpg"
+                    alt="Cyberpunk work background"
+                    fill
+                    priority
+                    quality={85}
+                    className={styles.heroImage}
+                />
+                <div className={styles.heroOverlay} />
+                <div className={styles.halftoneOverlay} />
+            </div>
 
-                <motion.div
-                    className={styles.header}
-                    initial={{ opacity: 0, y: 30 }}
+            <div className={styles.container}>
+                {/* ═══ COMIC MASTHEAD ═══ */}
+                <motion.header
+                    className={styles.masthead}
+                    initial={{ opacity: 0, y: 40 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                 >
-                    <span className={styles.label}>My Work</span>
-                    <h1 className={styles.title}>Creative Portfolio</h1>
-                    <p className={styles.subtitle}>
-                        Explore my work across design, art, and motion — each category
-                        showcasing a unique facet of my creative journey.
-                    </p>
-                </motion.div>
+                    <div className={styles.mastheadLeft}>
+                        <div className={styles.issueBanner}>
+                            <span className={styles.issueLabel}>ISSUE</span>
+                            <span className={styles.issueNum}>#02</span>
+                            <span className={styles.issueSep}>—</span>
+                            <span className={styles.issueTitle}>MY WORKS</span>
+                        </div>
+                        <span className={styles.jpLabel}>私の作品</span>
+                        <h1 className={styles.comicTitle}>
+                            <span className={styles.titleLine1}>MY</span>
+                            <span className={styles.titleLine2}>WORKS</span>
+                        </h1>
+                        <p className={styles.comicSubtitle}>
+                            A collection of design adventures,<br />
+                            where ideas meet imagination.
+                        </p>
+                        <div className={styles.scrollHint}>
+                            <div className={styles.scrollCircle}>
+                                <ArrowDown size={14} />
+                            </div>
+                            <span>SCROLL TO EXPLORE</span>
+                        </div>
+                    </div>
 
+                    <div className={styles.mastheadRight}>
+                        <div className={styles.speechBubble}>
+                            <span>WELCOME TO THE<br /><strong>CREATIVE UNIVERSE!</strong></span>
+                        </div>
+                        <div className={styles.kanjiBlock}>
+                            <span>創</span>
+                            <span>造</span>
+                        </div>
+                    </div>
+                </motion.header>
+
+                {/* ═══ 3 COMIC PANELS ═══ */}
                 <motion.div
-                    className={styles.cardsContainer}
+                    className={styles.panelsRow}
                     variants={containerVariants}
                     initial="hidden"
                     animate="visible"
                 >
-                    {categories.map((cat, index) => {
-                        const IconComponent = cat.icon;
+                    {categories.map((cat) => {
+                        const IconComp = cat.icon;
+                        const isHovered = hoveredId === cat.id;
+
                         return (
                             <motion.div
                                 key={cat.id}
-                                variants={cardVariants}
-                                className={styles.cardWrapper}
+                                variants={panelVariants}
+                                className={styles.panelWrapper}
+                                onHoverStart={() => setHoveredId(cat.id)}
+                                onHoverEnd={() => setHoveredId(null)}
                             >
-                                <Link href={cat.href} className={styles.cardLink}>
+                                <Link href={cat.href} className={styles.panelLink}>
                                     <div
-                                        className={styles.card}
-                                        style={{
-                                            '--card-color': cat.color,
-                                            '--card-gradient': cat.gradient,
-                                            '--card-glow': cat.glowColor,
-                                        }}
+                                        className={styles.panel}
+                                        style={{ '--panel-color': cat.color }}
                                     >
-                                        {/* Card glow effect */}
-                                        <div className={styles.cardGlow} />
+                                        {/* Speed lines on hover */}
+                                        <div className={styles.speedLines} />
 
-                                        {/* Top section with icon and count */}
-                                        <div className={styles.cardTop}>
-                                            <div className={styles.iconWrapper}>
-                                                <IconComponent size={28} strokeWidth={1.5} />
-                                            </div>
-                                            <div className={styles.projectCount}>
-                                                <span className={styles.countNumber}>{cat.projectCount}</span>
-                                                <span className={styles.countLabel}>Projects</span>
+                                        {/* Top numbering */}
+                                        <div className={styles.panelTop}>
+                                            <span className={styles.panelNum}>{cat.num}</span>
+                                            <div className={styles.panelBadge} style={{ background: cat.color }}>
+                                                <IconComp size={16} strokeWidth={2} />
+                                                <span>{cat.projectCount}</span>
                                             </div>
                                         </div>
 
-                                        {/* Card content */}
-                                        <div className={styles.cardContent}>
-                                            <span className={styles.cardSubtitle}>{cat.subtitle}</span>
-                                            <h2 className={styles.cardTitle}>{cat.title}</h2>
-                                            <p className={styles.cardDescription}>{cat.description}</p>
+                                        {/* Image */}
+                                        <div className={styles.panelImageWrap}>
+                                            <Image
+                                                src={cat.image}
+                                                alt={cat.title}
+                                                fill
+                                                unoptimized
+                                                className={styles.panelImage}
+                                            />
+                                            <div className={styles.panelImageOverlay} />
+
+                                            {/* SFX burst */}
+                                            <div className={styles.sfxBurst} style={{ color: cat.color }}>
+                                                {cat.sfx}
+                                            </div>
                                         </div>
 
-                                        {/* Tags */}
-                                        <div className={styles.cardTags}>
-                                            {cat.tags.map(tag => (
-                                                <span key={tag} className={styles.tag}>{tag}</span>
-                                            ))}
+                                        {/* Tagline bubble on hover */}
+                                        <div className={styles.taglineBubble}>
+                                            {cat.tagline}
                                         </div>
 
-                                        {/* CTA */}
-                                        <div className={styles.cardCta}>
-                                            <span className={styles.ctaText}>Explore Work</span>
-                                            <div className={styles.ctaArrow}>
+                                        {/* Content */}
+                                        <div className={styles.panelContent}>
+                                            <span className={styles.panelCategory} style={{ color: cat.color }}>
+                                                {cat.category}
+                                            </span>
+                                            <h2 className={styles.panelTitle}>{cat.title}</h2>
+                                            <p className={styles.panelDesc}>{cat.description}</p>
+                                            <div className={styles.panelCta}>
+                                                <span>Explore</span>
                                                 <ArrowRight size={18} />
                                             </div>
                                         </div>
 
-                                        {/* Decorative border gradient */}
-                                        <div className={styles.cardBorder} />
+                                        {/* Bottom accent bar */}
+                                        <div className={styles.panelAccent} style={{ background: cat.color }} />
                                     </div>
                                 </Link>
                             </motion.div>
                         );
                     })}
                 </motion.div>
+
+                {/* Bottom strip */}
+                <motion.div
+                    className={styles.bottomStrip}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 1.2, duration: 0.6 }}
+                >
+                    <span>PORTFOLIO × YASH SRIVASTAVA</span>
+                    <span className={styles.stripQuote}>Designing Experiences. Crafting Impact.</span>
+                    <span>© 2025</span>
+                </motion.div>
             </div>
-            <ContactCTA />
+
+            <div className={styles.ctaSection}>
+                <ContactCTA />
+            </div>
         </main>
     );
 }

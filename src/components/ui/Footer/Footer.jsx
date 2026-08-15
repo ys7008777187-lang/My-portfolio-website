@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import styles from "./Footer.module.css";
 import { Linkedin, Instagram, Facebook, Mail, MessageCircle, ArrowUpRight } from "lucide-react";
+import Logo from "../Logo/Logo";
 
 const footerLinks = {
     navigation: [
@@ -32,13 +33,12 @@ export default function Footer() {
                 <div className={styles.top}>
                     <div className={styles.brand}>
                         <Link href="/" className={styles.logo}>
-                            <motion.span
-                                className={styles.logoIcon}
-                                whileHover={{ rotate: 360, scale: 1.1 }}
-                                transition={{ duration: 0.6 }}
+                            <motion.div
+                                whileHover={{ scale: 1.05 }}
+                                transition={{ duration: 0.2 }}
                             >
-                                YS
-                            </motion.span>
+                                <Logo size={32} disableLink hideText />
+                            </motion.div>
                             <span className={styles.logoText}>Yash Srivastava</span>
                         </Link>
                         <p className={styles.tagline}>

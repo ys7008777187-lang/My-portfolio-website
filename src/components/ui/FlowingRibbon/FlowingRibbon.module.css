@@ -1,0 +1,73 @@
+/* ===== FLOWING RIBBON — Persistent floating Indian characters ===== */
+
+.ribbon {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.floatingChar {
+    position: absolute;
+    left: var(--x);
+    bottom: -5%;
+    font-size: var(--size);
+    opacity: 0;
+    color: var(--color-comic-blue, #007AFF);
+    font-family:
+        var(--font-devanagari),
+        'Noto Sans Devanagari',
+        'Noto Sans Bengali',
+        'Noto Sans Tamil',
+        'Noto Sans Telugu',
+        sans-serif;
+    will-change: transform;
+    animation: floatUp var(--duration) linear var(--delay) infinite;
+    user-select: none;
+}
+
+@keyframes floatUp {
+    0% {
+        transform:
+            translateY(0)
+            translateX(0)
+            rotate(var(--rotation));
+        opacity: 0;
+    }
+    5% {
+        opacity: var(--opacity);
+    }
+    90% {
+        opacity: var(--opacity);
+    }
+    100% {
+        transform:
+            translateY(-115vh)
+            translateX(var(--sway))
+            rotate(calc(var(--rotation) + 180deg));
+        opacity: 0;
+    }
+}
+
+/* Light theme — even more subtle */
+[data-theme='light'] .floatingChar {
+    color: var(--color-comic-blue, #007AFF);
+    opacity: 0;
+    /* Override via animation — the --opacity custom prop handles it,
+       but in light mode we want even less. Scale down via filter. */
+}
+
+/* Reduced motion — hide entirely */
+@media (prefers-reduced-motion: reduce) {
+    .ribbon {
+        display: none;
+    }
+}
+
+/* Mobile — fewer visible characters (via opacity reduction) */
+@media (max-width: 768px) {
+    .floatingChar {
+        --opacity: calc(var(--opacity) * 0.6);
+    }
+}
