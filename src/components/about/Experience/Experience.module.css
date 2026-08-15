@@ -68,7 +68,7 @@
         12px 12px 0 rgba(0,0,0,0.15); 
     overflow: hidden;
     /* Cinematic City Background */
-    background-image: url('https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/comic-city-bg.jpg');
+    background-image: url('/images/comic-city-bg.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

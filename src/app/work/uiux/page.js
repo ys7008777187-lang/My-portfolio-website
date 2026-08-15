@@ -137,7 +137,7 @@ export default function UIUXPage() {
                                         {/* Image */}
                                         <div className={styles.panelImageWrap}>
                                             <Image
-                                                src={getAssetUrl(project.image || 'https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/placeholder.jpg')}
+                                                src={getAssetUrl(project.image || '/images/placeholder.jpg')}
                                                 alt={project.title}
                                                 fill
                                                 unoptimized

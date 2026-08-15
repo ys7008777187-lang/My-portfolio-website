@@ -5,17 +5,17 @@
     "category": "UX Case Study",
     "icon": "🍔",
     "status": "Published",
-    "image": "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/campusbites/thumbnail.png",
+    "image": "/images/campusbites/thumbnail.png",
     "link": "",
     "mangaGallery": [
       { "type": "text", "colSpan": 12, "title": "THE CHALLENGE", "content": "<p>A real-time campus food ordering system that eliminates crowd, wait time, and chaos.</p>" },
-      { "type": "image", "colSpan": 8, "src": "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/campusbites/Store Dashboard.png", "caption": "Real-time kanban view of all incoming orders with live status updates" },
+      { "type": "image", "colSpan": 8, "src": "/images/campusbites/Store Dashboard.png", "caption": "Real-time kanban view of all incoming orders with live status updates" },
       { "type": "quote", "colSpan": 4, "content": "No more chaos at the counter!" },
-      { "type": "image", "colSpan": 12, "src": "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/campusbites/Store Order.png", "caption": "Manage individual orders — mark as preparing, ready, or completed" },
-      { "type": "image", "colSpan": 6, "src": "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/campusbites/Menu Store Dashboard.png", "caption": "Toggle item availability instantly during peak hours" },
+      { "type": "image", "colSpan": 12, "src": "/images/campusbites/Store Order.png", "caption": "Manage individual orders — mark as preparing, ready, or completed" },
+      { "type": "image", "colSpan": 6, "src": "/images/campusbites/Menu Store Dashboard.png", "caption": "Toggle item availability instantly during peak hours" },
       { "type": "text", "colSpan": 6, "title": "MENU MASTERY", "content": "<p>Peak hours demand quick adjustments. We designed a toggle system allowing vendors to disable items instantly when ingredients run out.</p>" },
-      { "type": "image", "colSpan": 6, "src": "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/campusbites/Analytics Store Dashboard.png", "caption": "Revenue trends, peak hours heatmap, and performance metrics" },
-      { "type": "image", "colSpan": 6, "src": "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/campusbites/Admin Dashboard.png", "caption": "System-wide metrics, alerts, and platform health at a glance" }
+      { "type": "image", "colSpan": 6, "src": "/images/campusbites/Analytics Store Dashboard.png", "caption": "Revenue trends, peak hours heatmap, and performance metrics" },
+      { "type": "image", "colSpan": 6, "src": "/images/campusbites/Admin Dashboard.png", "caption": "System-wide metrics, alerts, and platform health at a glance" }
     ]
   },
   {
@@ -24,17 +24,17 @@
     "category": "UI/UX Design",
     "icon": "🏢",
     "status": "Published",
-    "image": "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/projects/adt.jpg",
+    "image": "/images/projects/adt.jpg",
     "link": "",
     "mangaGallery": [
       { "type": "text", "colSpan": 12, "title": "THE CHALLENGE", "content": "<p>ADT Solution possessed a robust global HR and payroll platform, but their digital storefront was failing to communicate value. Conversion rate for 'Book a Demo' was severely underperforming.</p>" },
-      { "type": "image", "colSpan": 12, "src": "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/ADT/Home.jpg", "caption": "Engineering Trust & Conversion in B2B SaaS" },
+      { "type": "image", "colSpan": 12, "src": "/images/ADT/Home.jpg", "caption": "Engineering Trust & Conversion in B2B SaaS" },
       { "type": "quote", "colSpan": 6, "content": "If a Director of HR cannot immediately verify compliance, security, and ease-of-use within the first 10 seconds, they bounce." },
-      { "type": "image", "colSpan": 6, "src": "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/ADT/Payroll.jpg", "caption": "Global Payroll UI: High-stakes decision making made clear" },
-      { "type": "image", "colSpan": 6, "src": "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/ADT/EOR.jpg", "caption": "Employer of Record UI: Verifying compliance at a glance" },
-      { "type": "image", "colSpan": 6, "src": "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/ADT/Immigration.jpg", "caption": "Immigration Flow: Removing cognitive overload" },
+      { "type": "image", "colSpan": 6, "src": "/images/ADT/Payroll.jpg", "caption": "Global Payroll UI: High-stakes decision making made clear" },
+      { "type": "image", "colSpan": 6, "src": "/images/ADT/EOR.jpg", "caption": "Employer of Record UI: Verifying compliance at a glance" },
+      { "type": "image", "colSpan": 6, "src": "/images/ADT/Immigration.jpg", "caption": "Immigration Flow: Removing cognitive overload" },
       { "type": "text", "colSpan": 4, "title": "THE FIX", "content": "<p>Replaced text-heavy feature blocks with an 'outcome-driven' F-pattern layout. Utilized iconography, short descriptors, and ample white space.</p>" },
-      { "type": "image", "colSpan": 8, "src": "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/ADT/Pricing.jpg", "caption": "Pricing Tables Redesigned: Clear, outcome-driven features" }
+      { "type": "image", "colSpan": 8, "src": "/images/ADT/Pricing.jpg", "caption": "Pricing Tables Redesigned: Clear, outcome-driven features" }
     ]
   },
   {
@@ -43,16 +43,16 @@
     "category": "Mobile App",
     "icon": "🚗",
     "status": "Published",
-    "image": "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/projects/myrik.png",
+    "image": "/images/projects/myrik.png",
     "link": "",
     "mangaGallery": [
       { "type": "text", "colSpan": 12, "title": "SUPER APP", "content": "<p>A unified super app aiming to combine home services, grocery delivery, and logistics into a single cohesive interface.</p>" },
-      { "type": "image", "colSpan": 8, "src": "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/myrik/screens/home.png", "caption": "A Unified App for Home Services, Groceries, and Deliveries" },
+      { "type": "image", "colSpan": 8, "src": "/images/myrik/screens/home.png", "caption": "A Unified App for Home Services, Groceries, and Deliveries" },
       { "type": "quote", "colSpan": 4, "content": "How do we map user context across diverse services without friction?" },
-      { "type": "image", "colSpan": 6, "src": "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/myrik/screens/onboarding.png", "caption": "Mapping user context across diverse services" },
-      { "type": "image", "colSpan": 6, "src": "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/myrik/screens/home_map.png", "caption": "Seamless checkout and service booking flows" },
+      { "type": "image", "colSpan": 6, "src": "/images/myrik/screens/onboarding.png", "caption": "Mapping user context across diverse services" },
+      { "type": "image", "colSpan": 6, "src": "/images/myrik/screens/home_map.png", "caption": "Seamless checkout and service booking flows" },
       { "type": "text", "colSpan": 12, "title": "TRUST & CLARITY", "content": "<p>Building trust through transparent pricing, localized reviews, and clear service tracking.</p>" },
-      { "type": "image", "colSpan": 12, "src": "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/myrik/screens/verification.png", "caption": "Building trust through transparent pricing and reviews" }
+      { "type": "image", "colSpan": 12, "src": "/images/myrik/screens/verification.png", "caption": "Building trust through transparent pricing and reviews" }
     ]
   },
   {
@@ -61,7 +61,7 @@
     "category": "Mobile App",
     "icon": "📦",
     "status": "Published",
-    "image": "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/projects/bhaiyaa.png",
+    "image": "/images/projects/bhaiyaa.png",
     "link": "",
     "mangaGallery": [
       "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=80",
@@ -75,7 +75,7 @@
     "category": "Mobile App",
     "icon": "📱",
     "status": "Published",
-    "image": "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/worq/worq-thumbnail.png",
+    "image": "/images/worq/worq-thumbnail.png",
     "link": "",
     "mangaGallery": [
       "https://images.unsplash.com/photo-1542838132-92c53300491e?w=800&q=80",
@@ -89,7 +89,7 @@
     "category": "UX Case Study",
     "icon": "🏕️",
     "status": "Published",
-    "image": "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/basecamp/hero.webp",
+    "image": "/images/basecamp/hero.webp",
     "link": "",
     "mangaGallery": [
       "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80",
@@ -103,7 +103,7 @@
     "category": "Product Design",
     "icon": "🎸",
     "status": "Published",
-    "image": "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/projects/guitar.png",
+    "image": "/images/projects/guitar.png",
     "link": "https://www.behance.net/gallery/178477625/UI-UX-and-Product-Design-of-a-futuristic-Guitar",
     "mangaGallery": [
       "https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=800&q=80",
@@ -117,7 +117,7 @@
     "category": "Product Design",
     "icon": "⌚",
     "status": "Published",
-    "image": "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/projects/wearables.png",
+    "image": "/images/projects/wearables.png",
     "link": "https://www.behance.net/gallery/190424241/An-innovative-Wearables-Tech",
     "mangaGallery": [
       "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=800&q=80",
@@ -131,7 +131,7 @@
     "category": "Web Design",
     "icon": "🦁",
     "status": "Published",
-    "image": "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/projects/zoo.png",
+    "image": "/images/projects/zoo.png",
     "link": "https://www.behance.net/gallery/178140831/UI-and-UX-Design-of-Dehradun-Zoo-(Malsi-Deer-Park)",
     "mangaGallery": [
       "https://images.unsplash.com/photo-1517409010188-d6fb7444c82b?w=800&q=80",

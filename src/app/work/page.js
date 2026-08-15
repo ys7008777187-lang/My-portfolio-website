@@ -16,7 +16,7 @@ const categories = [
         tagline: "CRAFTING DIGITAL MAGIC!",
         description: "Intuitive interfaces & seamless user experiences for web and mobile.",
         href: "/work/uiux",
-        image: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/anime-uiux_v2.jpg",
+        image: "/images/anime-uiux_v2.jpg",
         color: "#6C8CFF",
         icon: Layers,
         projectCount: "6+",
@@ -30,7 +30,7 @@ const categories = [
         tagline: "EVERY PIXEL TELLS A STORY!",
         description: "Logos, branding, illustrations, and artistic visual stories.",
         href: "/work/graphics",
-        image: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/anime-graphics_v2.jpg",
+        image: "/images/anime-graphics_v2.jpg",
         color: "#00E5A8",
         icon: Palette,
         projectCount: "10+",
@@ -44,7 +44,7 @@ const categories = [
         tagline: "LIGHTS, CAMERA, ACTION!",
         description: "Dynamic video editing, motion graphics & visual storytelling.",
         href: "/work/video-edits",
-        image: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/anime-video_v2.jpg",
+        image: "/images/anime-video_v2.jpg",
         color: "#FF6C8C",
         icon: Film,
         projectCount: "5+",
@@ -75,7 +75,7 @@ export default function Work() {
             {/* Hero Background */}
             <div className={styles.heroBackground}>
                 <Image
-                    src="https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/work-page-bg.jpg"
+                    src="/images/work-page-bg.jpg"
                     alt="Cyberpunk work background"
                     fill
                     priority

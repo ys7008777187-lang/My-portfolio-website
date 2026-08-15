@@ -56,9 +56,9 @@ export default function Skills() {
     const skillCategories = defaultCategories.map(catTitle => {
         let illustration = null;
         if (catTitle === "Design Tools") {
-            illustration = "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/skills/design_tools_v2.jpg";
+            illustration = "/images/skills/design_tools_v2.jpg";
         } else if (catTitle === "Analytics & QA") {
-            illustration = "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/skills/analytics_v2.jpg";
+            illustration = "/images/skills/analytics_v2.jpg";
         }
 
         return {

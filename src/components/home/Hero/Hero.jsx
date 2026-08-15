@@ -133,7 +133,7 @@ export default function Hero() {
                     preload="auto"
                     className={styles.bgVideo}
                 >
-                    <source src={getAssetUrl("https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/videos/hero-bg.mp4")} type="video/mp4" />
+                    <source src={getAssetUrl("/videos/hero-bg.mp4")} type="video/mp4" />
                 </video>
 
                 {/* Ambient portal glow that tracks mouse */}
