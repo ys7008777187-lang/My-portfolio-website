@@ -831,8 +831,13 @@
         padding: 90px 4% 20px;
     }
 
+    .contentWrapper {
+        width: 100%;
+        max-width: 100vw;
+    }
+
     .headline {
-        font-size: clamp(2.4rem, 11vw, 3.8rem);
+        font-size: clamp(1.8rem, 10vw, 3rem);
         line-height: 0.92;
     }
 

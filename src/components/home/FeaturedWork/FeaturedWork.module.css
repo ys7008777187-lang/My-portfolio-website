@@ -174,4 +174,10 @@
   .section {
     padding: var(--spacing-3xl) 0;
   }
+  .title {
+    font-size: clamp(1.8rem, 7vw, 4rem);
+  }
+  .sectionNumber {
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+  }
 }
