@@ -14,8 +14,8 @@ const videoProjects = [
         category: 'Video Editing',
         icon: '🎬',
         description: 'Comprehensive product demonstration and feature highlight',
-        videoSrc: '/videos/adt-video.mp4',
-        thumbnail: '/images/projects/adt.jpg',
+        videoSrc: 'https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/videos/adt-video.mp4',
+        thumbnail: 'https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/projects/adt.jpg',
         tagline: 'THE FULL EXPERIENCE!'
     },
     {
@@ -24,8 +24,8 @@ const videoProjects = [
         category: 'Motion Graphics',
         icon: '✨',
         description: 'Smooth, stylized animated logo sequence',
-        videoSrc: '/videos/logo-loader.gif',
-        thumbnail: '/videos/logo-loader.gif',
+        videoSrc: 'https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/videos/logo-loader.gif',
+        thumbnail: 'https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/videos/logo-loader.gif',
         tagline: 'SMOOTH MOVES!'
     },
     {
@@ -34,8 +34,8 @@ const videoProjects = [
         category: 'Motion Graphics',
         icon: '📦',
         description: 'Dynamic product packaging animation',
-        videoSrc: '/videos/packaging-motion.mp4',
-        thumbnail: '/videos/packaging-motion.mp4',
+        videoSrc: 'https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/videos/packaging-motion.mp4',
+        thumbnail: 'https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/videos/packaging-motion.mp4',
         tagline: 'UNBOX THE MAGIC!'
     },
     {
@@ -44,8 +44,8 @@ const videoProjects = [
         category: 'Motion Graphics',
         icon: '👟',
         description: 'Stylish footwear motion presentation',
-        videoSrc: '/videos/shoes-motion.mp4',
-        thumbnail: '/videos/shoes-motion.mp4',
+        videoSrc: 'https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/videos/shoes-motion.mp4',
+        thumbnail: 'https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/videos/shoes-motion.mp4',
         tagline: 'STEP INTO STYLE!'
     }
 ];

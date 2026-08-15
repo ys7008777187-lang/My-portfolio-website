@@ -3,6 +3,7 @@
 import { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { getAssetUrl } from "@/lib/assetUrl";
 import styles from "./Hero.module.css";
 import {
     ArrowRight,
@@ -125,7 +126,7 @@ export default function Hero() {
                 }}
             >
                 <video
-                    src="/videos/hero-bg.mp4"
+                    src={getAssetUrl("https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/videos/hero-bg.mp4")}
                     autoPlay
                     loop
                     muted

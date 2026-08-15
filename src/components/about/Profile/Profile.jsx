@@ -84,7 +84,7 @@ export default function Profile() {
                     {/* Full-bleed background image */}
                     <div className={styles.heroBg}>
                         <Image
-                            src="/images/about-me-section-bg.png"
+                            src="https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/about-me-section-bg.png"
                             alt="Yash Srivastava — Comic Art Portrait"
                             fill
                             style={{ objectFit: "cover", objectPosition: "center top" }}

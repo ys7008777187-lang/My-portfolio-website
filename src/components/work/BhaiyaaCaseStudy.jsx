@@ -51,10 +51,10 @@ export default function BhaiyaaCaseStudy() {
                     className={styles.heroMockupWrapper}
                 >
                     <div className={`${styles.heroMockup} ${styles.mockupBack}`}>
-                        <img src={getAssetUrl("/images/bhaiyaa/new_screen_3.jpg")} alt="Bhaiyaa Mart Screen" />
+                        <img src={getAssetUrl("https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/bhaiyaa/new_screen_3.jpg")} alt="Bhaiyaa Mart Screen" />
                     </div>
                     <div className={`${styles.heroMockup} ${styles.mockupFront}`}>
-                        <img src={getAssetUrl("/images/bhaiyaa/new_screen_1.jpg")} alt="Bhaiyaa Home Screen" />
+                        <img src={getAssetUrl("https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/bhaiyaa/new_screen_1.jpg")} alt="Bhaiyaa Home Screen" />
                     </div>
                 </motion.div>
             </section>
@@ -247,9 +247,9 @@ export default function BhaiyaaCaseStudy() {
 
                     <div className={styles.mockupGrid} style={{ marginTop: '40px' }}>
                         {[
-                            { src: '/images/bhaiyaa/new_screen_1.jpg', alt: 'Discovery' },
-                            { src: '/images/bhaiyaa/new_screen_3.jpg', alt: 'Service Selection' },
-                            { src: '/images/bhaiyaa/new_screen_5.jpg', alt: 'Checkout' },
+                            { src: 'https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/bhaiyaa/new_screen_1.jpg', alt: 'Discovery' },
+                            { src: 'https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/bhaiyaa/new_screen_3.jpg', alt: 'Service Selection' },
+                            { src: 'https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/bhaiyaa/new_screen_5.jpg', alt: 'Checkout' },
                         ].map((screen, i) => (
                             <div key={i} className={styles.mockupCard}>
                                 <img src={getAssetUrl(screen.src)} alt={screen.alt} className={styles.mockupImage} />
