@@ -5,7 +5,7 @@
     "category": "UX Case Study",
     "icon": "🍔",
     "status": "Published",
-    "image": "/images/campusbites/thumbnail.png",
+    "image": "/images/campusbites/Store Dashboard.png",
     "link": "",
     "mangaGallery": [
       {
@@ -63,7 +63,7 @@
     "category": "UI/UX Design",
     "icon": "🏢",
     "status": "Published",
-    "image": "/images/projects/adt.jpg",
+    "image": "/images/ADT/Home.jpg",
     "link": "",
     "mangaGallery": [
       {
@@ -187,7 +187,7 @@
     "category": "Mobile App",
     "icon": "📱",
     "status": "Published",
-    "image": "/images/worq/worq-thumbnail.png",
+    "image": "/Worq/Feed or Landing screen.jpeg",
     "link": "",
     "mangaGallery": [
       "/Worq/Feed or Landing screen.jpeg",
@@ -204,9 +204,9 @@
     "image": "/images/basecamp/hero.webp",
     "link": "",
     "mangaGallery": [
-      "/Basecamp Assignment/hero.webp",
-      "/Basecamp Assignment/dashboard.webp",
-      "/Basecamp Assignment/feature-campfire-chat.png"
+      "/images/basecamp/hero.webp",
+      "/images/basecamp/dashboard.webp",
+      "/images/basecamp/feature-campfire-chat.png"
     ]
   },
   {

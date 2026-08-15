@@ -5,6 +5,7 @@ import ScrollVaporText from "../../ui/ScrollVaporText/ScrollVaporText";
 import styles from "./Experience.module.css";
 import { MapPin, Calendar, X } from "lucide-react";
 import experienceData from "../../../data/experience.json";
+import { getAssetUrl } from "../../../lib/assetUrl";
 
 /* ── Wind sway presets ── */
 const SWAY = [
@@ -74,7 +75,10 @@ export default function Experience() {
                 </motion.div>
 
                 {/* ═══ PHYSICAL WINDOW + CARDS ═══ */}
-                <div className={styles.physicalWindow}>
+                <div 
+                    className={styles.physicalWindow}
+                    style={{ backgroundImage: `url(${getAssetUrl('/images/comic-city-bg.jpg')})` }}
+                >
                     <div className={styles.wireSection}>
                         <div className={styles.scrollTrack} ref={scrollRef}>
                             <div className={styles.wire}>

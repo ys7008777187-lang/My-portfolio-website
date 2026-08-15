@@ -48,8 +48,7 @@ const walkDir = (dir) => {
 };
 
 const files = [
-  ...walkDir('public/videos'),
-  ...walkDir('public/images'),
+  ...walkDir('public'),
 ];
 
 const uploadFile = async ({ localPath, r2Key }) => {

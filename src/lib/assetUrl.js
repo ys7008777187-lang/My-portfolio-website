@@ -11,7 +11,6 @@ export function getAssetUrl(path) {
   if (processedPath.startsWith("http://") || processedPath.startsWith("https://")) return processedPath;
   
   // Disable CDN to avoid ISP blocking issues
-  // if (!assetCDN) return processedPath;
-  // return `${assetCDN.replace(/\/$/, "")}${processedPath}`;
-  return processedPath;
+  if (!assetCDN) return processedPath;
+  return `${assetCDN.replace(/\/$/, "")}${processedPath}`;
 }

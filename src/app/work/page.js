@@ -76,7 +76,7 @@ export default function Work() {
             {/* Hero Background */}
             <div className={styles.heroBackground}>
                 <Image
-                    src="/images/work-page-bg.jpg"
+                    src={getAssetUrl("/images/work-page-bg.jpg")}
                     alt="Cyberpunk work background"
                     fill
                     priority
@@ -169,7 +169,7 @@ export default function Work() {
                                         {/* Image */}
                                         <div className={styles.panelImageWrap}>
                                             <img
-                                                src={cat.image}
+                                                src={getAssetUrl(cat.image)}
                                                 alt={cat.title.replace(/\n/g, ' ')}
                                                 className={styles.panelImage}
                                                 loading="eager"
