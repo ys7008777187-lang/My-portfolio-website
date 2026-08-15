@@ -144,7 +144,7 @@ export default function Journey() {
               <div className={styles.rightColumn}>
                 <div className={`${styles.imageWrapper} ${currentProject.title.includes("BHAIYAA") || currentProject.title.includes("CAMPUS BITES") ? styles.mockupWrapper : ''}`}>
                   <Image
-                    src={currentProject.image}
+                    src={getAssetUrl(currentProject.image)}
                     alt={currentProject.title}
                     width={600}
                     height={800}

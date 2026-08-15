@@ -1,0 +1,55 @@
+/* ================================================
+   Badge Component Styles
+   ================================================ */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.4;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.badge--success {
+  background-color: var(--color-primary-light);
+  color: #15803D;
+}
+
+.badge--warning {
+  background-color: #FEF3C7;
+  color: #92400E;
+}
+
+.badge--accent {
+  background-color: var(--color-accent-light);
+  color: var(--color-accent);
+}
+
+.badge--neutral {
+  background-color: var(--color-background);
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border);
+}
+
+.badge__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: currentColor;
+}
+
+/* ---- Dark Mode Overrides ---- */
+html[data-theme="dark"] .badge--success {
+  background-color: rgba(74, 222, 128, 0.12);
+  color: #4ADE80;
+}
+
+html[data-theme="dark"] .badge--warning {
+  background-color: rgba(251, 191, 36, 0.12);
+  color: #FBBF24;
+}

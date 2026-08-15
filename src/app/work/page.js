@@ -6,6 +6,7 @@ import Image from "next/image";
 import { ArrowRight, ArrowDown, Layers, Palette, Film } from "lucide-react";
 import styles from "./page.module.css";
 import ContactCTA from "../../components/home/ContactCTA/ContactCTA";
+import { getAssetUrl } from "../../lib/assetUrl";
 
 const categories = [
     {
@@ -79,7 +80,7 @@ export default function Work() {
                     alt="Cyberpunk work background"
                     fill
                     priority
-                    quality={85}
+                    unoptimized
                     className={styles.heroImage}
                 />
                 <div className={styles.heroOverlay} />
@@ -167,12 +168,11 @@ export default function Work() {
 
                                         {/* Image */}
                                         <div className={styles.panelImageWrap}>
-                                            <Image
+                                            <img
                                                 src={cat.image}
-                                                alt={cat.title}
-                                                fill
-                                                unoptimized
+                                                alt={cat.title.replace(/\n/g, ' ')}
                                                 className={styles.panelImage}
+                                                loading="eager"
                                             />
                                             <div className={styles.panelImageOverlay} />
 
