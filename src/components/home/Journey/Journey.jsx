@@ -26,7 +26,7 @@ export default function Journey() {
       role: "UI/UX Design",
       year: "2024",
       focus: ["Ps", "Ae", "Figma"],
-      image: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/projects/bhaiyaa.png", // Newly uploaded local file
+      image: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/projects/bhaiyaa.png", // Newly uploaded local file
       annotations: [
         { text: "Personalized Dashboard", position: "top" },
         { text: "Easy Access to Services", position: "middle" },
@@ -39,7 +39,7 @@ export default function Journey() {
       role: "UX Case Study",
       year: "2023",
       focus: ["Figma", "Prototyping"],
-      image: getAssetUrl("https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/campusbites/Store Dashboard.png"),
+      image: getAssetUrl("https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/campusbites/Store Dashboard.png"),
       annotations: [
         { text: "Streamlined Ordering", position: "top" },
         { text: "Live Order Tracking", position: "middle" },
@@ -52,7 +52,7 @@ export default function Journey() {
       role: "UI/UX Redesign",
       year: "2023",
       focus: ["Figma", "Wireframing"],
-      image: getAssetUrl("https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/basecamp/dashboard.webp"),
+      image: getAssetUrl("https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/basecamp/dashboard.webp"),
       annotations: [
         { text: "Clean Interface", position: "top" },
         { text: "Improved Navigation", position: "middle" },
@@ -65,7 +65,7 @@ export default function Journey() {
       role: "UI/UX Design",
       year: "2022",
       focus: ["Ps", "Figma"],
-      image: getAssetUrl("https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/ADT/Home.jpg"),
+      image: getAssetUrl("https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/ADT/Home.jpg"),
       annotations: [
         { text: "Data Visualization", position: "top" },
         { text: "Real-time Alerts", position: "middle" },

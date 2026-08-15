@@ -5,7 +5,7 @@
         "degree": "Masters in Design",
         "duration": "Sept 2022 – May 2024",
         "location": "Dehradun, Uttarakhand",
-        "image": "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/dit_university.jpg",
+        "image": "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/dit_university.jpg",
         "coursework": [
             "Fundamentals of Design",
             "Cognitive Design and Ethnography",
@@ -21,7 +21,7 @@
         "degree": "Bachelors in Arts",
         "duration": "Jul 2018 – Apr 2021",
         "location": "Sundargarh, Odisha",
-        "image": "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/sambalpur_university.jpg",
+        "image": "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/sambalpur_university.jpg",
         "coursework": []
     }
 ]

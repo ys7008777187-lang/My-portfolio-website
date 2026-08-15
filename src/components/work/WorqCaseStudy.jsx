@@ -69,9 +69,9 @@ export default function WorqCaseStudy() {
                     transition={{ duration: 0.8, delay: 0.4 }}
                     className={styles.heroMockupStack}
                 >
-                    <PhoneMockup src="https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/worq/Feed_or_Landing_screen.jpeg" alt="WORQ Feed" />
-                    <PhoneMockup src="https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/worq/Networking_profiles_.jpeg" alt="WORQ Network" />
-                    <PhoneMockup src="https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/worq/Wallet.jpeg" alt="WORQ Wallet" />
+                    <PhoneMockup src="https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/worq/Feed_or_Landing_screen.jpeg" alt="WORQ Feed" />
+                    <PhoneMockup src="https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/worq/Networking_profiles_.jpeg" alt="WORQ Network" />
+                    <PhoneMockup src="https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/worq/Wallet.jpeg" alt="WORQ Wallet" />
                 </motion.div>
             </section>
 
@@ -424,12 +424,12 @@ export default function WorqCaseStudy() {
                         <p className={styles.walkthroughDesc}>Progressive disclosure guides users from role selection to a complete profile in under 2 minutes.</p>
                         <div className={styles.mockupGallery}>
                             {[
-                                { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/worq/Get_started.jpeg", label: "Get Started", desc: "Clear value proposition with instant CTA" },
-                                { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/worq/Select_Profile_type.jpeg", label: "Role Selection", desc: "Freelancer / Client / Hybrid path" },
-                                { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/worq/Select_Skills.jpeg", label: "Skills", desc: "Tag-based skill selection for matching" },
-                                { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/worq/Create_Account.jpeg", label: "Create Account", desc: "Minimal fields, fast registration" },
-                                { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/worq/Add_profile_image.jpeg", label: "Profile Photo", desc: "Trust signal — faces build credibility" },
-                                { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/worq/Add_portfolio.jpeg", label: "Portfolio", desc: "Showcase work immediately" },
+                                { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/worq/Get_started.jpeg", label: "Get Started", desc: "Clear value proposition with instant CTA" },
+                                { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/worq/Select_Profile_type.jpeg", label: "Role Selection", desc: "Freelancer / Client / Hybrid path" },
+                                { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/worq/Select_Skills.jpeg", label: "Skills", desc: "Tag-based skill selection for matching" },
+                                { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/worq/Create_Account.jpeg", label: "Create Account", desc: "Minimal fields, fast registration" },
+                                { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/worq/Add_profile_image.jpeg", label: "Profile Photo", desc: "Trust signal — faces build credibility" },
+                                { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/worq/Add_portfolio.jpeg", label: "Portfolio", desc: "Showcase work immediately" },
                             ].map((item, i) => (
                                 <div key={i} className={styles.mockupItem}>
                                     <PhoneMockup src={item.src} alt={item.label} />
@@ -448,11 +448,11 @@ export default function WorqCaseStudy() {
                         <p className={styles.walkthroughDesc}>The social feed makes every freelancer visible. Quality content drives discovery organically.</p>
                         <div className={styles.mockupGallery}>
                             {[
-                                { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/worq/Feed_or_Landing_screen.jpeg", label: "Feed Home", desc: "Trending content + stories at the top" },
-                                { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/worq/Feed.jpeg", label: "Feed Posts", desc: "Project showcases with engagement metrics" },
-                                { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/worq/Story.jpeg", label: "Stories", desc: "Ephemeral updates for quick visibility" },
-                                { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/worq/Create_Story.jpeg", label: "Create Story", desc: "Easy media upload with overlays" },
-                                { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/worq/Create_post_blog__thoughts.jpeg", label: "Create Post", desc: "Project / Blog / Thought post types" },
+                                { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/worq/Feed_or_Landing_screen.jpeg", label: "Feed Home", desc: "Trending content + stories at the top" },
+                                { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/worq/Feed.jpeg", label: "Feed Posts", desc: "Project showcases with engagement metrics" },
+                                { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/worq/Story.jpeg", label: "Stories", desc: "Ephemeral updates for quick visibility" },
+                                { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/worq/Create_Story.jpeg", label: "Create Story", desc: "Easy media upload with overlays" },
+                                { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/worq/Create_post_blog__thoughts.jpeg", label: "Create Post", desc: "Project / Blog / Thought post types" },
                             ].map((item, i) => (
                                 <div key={i} className={styles.mockupItem}>
                                     <PhoneMockup src={item.src} alt={item.label} />
@@ -471,8 +471,8 @@ export default function WorqCaseStudy() {
                         <p className={styles.walkthroughDesc}>The core USP — swipe-based professional networking that's fast, engaging, and converts.</p>
                         <div className={styles.mockupGallery}>
                             {[
-                                { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/worq/Networking_profiles_.jpeg", label: "Swipe Cards", desc: "Tinder-style discovery by skill & budget" },
-                                { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/worq/Freelancer_profile.jpeg", label: "Full Profile", desc: "Portfolio, reviews, pricing — all visible" },
+                                { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/worq/Networking_profiles_.jpeg", label: "Swipe Cards", desc: "Tinder-style discovery by skill & budget" },
+                                { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/worq/Freelancer_profile.jpeg", label: "Full Profile", desc: "Portfolio, reviews, pricing — all visible" },
                             ].map((item, i) => (
                                 <div key={i} className={styles.mockupItem}>
                                     <PhoneMockup src={item.src} alt={item.label} />
@@ -491,10 +491,10 @@ export default function WorqCaseStudy() {
                         <p className={styles.walkthroughDesc}>From conversation to confirmed booking — seamless conversion within minutes.</p>
                         <div className={styles.mockupGallery}>
                             {[
-                                { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/worq/Message.jpeg", label: "Chat List", desc: "All conversations in one place" },
-                                { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/worq/Chat.jpeg", label: "Conversation", desc: "Rich messaging with file attachments" },
-                                { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/worq/Schedule_Booking.jpeg", label: "Schedule", desc: "Calendar-based booking flow" },
-                                { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/worq/Review_and_booking.jpeg", label: "Review & Book", desc: "Confirm scope, rate, and timeline" },
+                                { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/worq/Message.jpeg", label: "Chat List", desc: "All conversations in one place" },
+                                { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/worq/Chat.jpeg", label: "Conversation", desc: "Rich messaging with file attachments" },
+                                { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/worq/Schedule_Booking.jpeg", label: "Schedule", desc: "Calendar-based booking flow" },
+                                { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/worq/Review_and_booking.jpeg", label: "Review & Book", desc: "Confirm scope, rate, and timeline" },
                             ].map((item, i) => (
                                 <div key={i} className={styles.mockupItem}>
                                     <PhoneMockup src={item.src} alt={item.label} />
@@ -513,9 +513,9 @@ export default function WorqCaseStudy() {
                         <p className={styles.walkthroughDesc}>Escrow-protected payments build trust. Both parties know the money is safe.</p>
                         <div className={styles.mockupGallery}>
                             {[
-                                { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/worq/Wallet.jpeg", label: "Wallet", desc: "Balance, escrow status, quick actions" },
-                                { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/worq/Recent_transaction.jpeg", label: "Transactions", desc: "Payment history with status indicators" },
-                                { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/worq/All_trascation.jpeg", label: "All Transactions", desc: "Complete financial audit trail" },
+                                { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/worq/Wallet.jpeg", label: "Wallet", desc: "Balance, escrow status, quick actions" },
+                                { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/worq/Recent_transaction.jpeg", label: "Transactions", desc: "Payment history with status indicators" },
+                                { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/worq/All_trascation.jpeg", label: "All Transactions", desc: "Complete financial audit trail" },
                             ].map((item, i) => (
                                 <div key={i} className={styles.mockupItem}>
                                     <PhoneMockup src={item.src} alt={item.label} />
@@ -534,10 +534,10 @@ export default function WorqCaseStudy() {
                         <p className={styles.walkthroughDesc}>Supporting screens that complete the ecosystem.</p>
                         <div className={styles.mockupGallery}>
                             {[
-                                { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/worq/User_Profile.jpeg", label: "Profile", desc: "Public identity with achievements" },
-                                { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/worq/Saved.jpeg", label: "Saved", desc: "Bookmarked posts, people, projects" },
-                                { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/worq/Notification.jpeg", label: "Notifications", desc: "Priority-based alert system" },
-                                { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/worq/Settings.jpeg", label: "Settings", desc: "Account, privacy, and preferences" },
+                                { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/worq/User_Profile.jpeg", label: "Profile", desc: "Public identity with achievements" },
+                                { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/worq/Saved.jpeg", label: "Saved", desc: "Bookmarked posts, people, projects" },
+                                { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/worq/Notification.jpeg", label: "Notifications", desc: "Priority-based alert system" },
+                                { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/worq/Settings.jpeg", label: "Settings", desc: "Account, privacy, and preferences" },
                             ].map((item, i) => (
                                 <div key={i} className={styles.mockupItem}>
                                     <PhoneMockup src={item.src} alt={item.label} />

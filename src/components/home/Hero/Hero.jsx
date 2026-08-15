@@ -126,7 +126,7 @@ export default function Hero() {
                 }}
             >
                 <video
-                    src={getAssetUrl("https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/videos/hero-bg.mp4")}
+                    src={getAssetUrl("https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/videos/hero-bg.mp4")}
                     autoPlay
                     loop
                     muted

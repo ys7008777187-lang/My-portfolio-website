@@ -24,24 +24,24 @@ const stagger = {
    STORE DASHBOARD TAB DATA
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 const storeTabs = [
-    { id: "dashboard", label: "Dashboard", src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/campusbites/Store Dashboard.png", desc: "Real-time kanban view of all incoming orders with live status updates" },
-    { id: "orders", label: "Orders", src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/campusbites/Store Order.png", desc: "Manage individual orders — mark as preparing, ready, or completed" },
-    { id: "menu", label: "Menu", src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/campusbites/Menu Store Dashboard.png", desc: "Toggle item availability instantly during peak hours" },
-    { id: "payments", label: "Payments", src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/campusbites/Payements Store Dashboard.png", desc: "Track settled and pending transactions with detailed breakdowns" },
-    { id: "analytics", label: "Analytics", src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/campusbites/Analytics Store Dashboard.png", desc: "Revenue trends, peak hours heatmap, and performance metrics" },
-    { id: "settings", label: "Settings", src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/campusbites/Stote setting dashboard.png", desc: "Configure operating hours, notifications, and store preferences" },
+    { id: "dashboard", label: "Dashboard", src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/campusbites/Store Dashboard.png", desc: "Real-time kanban view of all incoming orders with live status updates" },
+    { id: "orders", label: "Orders", src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/campusbites/Store Order.png", desc: "Manage individual orders — mark as preparing, ready, or completed" },
+    { id: "menu", label: "Menu", src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/campusbites/Menu Store Dashboard.png", desc: "Toggle item availability instantly during peak hours" },
+    { id: "payments", label: "Payments", src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/campusbites/Payements Store Dashboard.png", desc: "Track settled and pending transactions with detailed breakdowns" },
+    { id: "analytics", label: "Analytics", src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/campusbites/Analytics Store Dashboard.png", desc: "Revenue trends, peak hours heatmap, and performance metrics" },
+    { id: "settings", label: "Settings", src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/campusbites/Stote setting dashboard.png", desc: "Configure operating hours, notifications, and store preferences" },
 ];
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    ADMIN DASHBOARD TAB DATA
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 const adminTabs = [
-    { id: "overview", label: "Overview", src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/campusbites/Admin Dashboard.png", desc: "System-wide metrics, alerts, and platform health at a glance" },
-    { id: "stores", label: "Stores", src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/campusbites/Admin activate , deactivate store.png", desc: "Activate, suspend, or manage vendor accounts with one toggle" },
-    { id: "orders", label: "Orders", src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/campusbites/All order.png", desc: "Global table view of all orders across every food court" },
-    { id: "fees", label: "Platform Fees", src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/campusbites/Platform fees.png", desc: "Set and adjust per-order platform commission fees" },
-    { id: "requests", label: "Requests", src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/campusbites/Credential Request.png", desc: "Handle store credential recovery and onboarding requests" },
-    { id: "settings", label: "Settings", src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/campusbites/Setting.png", desc: "Platform-level configuration and notification preferences" },
+    { id: "overview", label: "Overview", src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/campusbites/Admin Dashboard.png", desc: "System-wide metrics, alerts, and platform health at a glance" },
+    { id: "stores", label: "Stores", src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/campusbites/Admin activate , deactivate store.png", desc: "Activate, suspend, or manage vendor accounts with one toggle" },
+    { id: "orders", label: "Orders", src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/campusbites/All order.png", desc: "Global table view of all orders across every food court" },
+    { id: "fees", label: "Platform Fees", src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/campusbites/Platform fees.png", desc: "Set and adjust per-order platform commission fees" },
+    { id: "requests", label: "Requests", src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/campusbites/Credential Request.png", desc: "Handle store credential recovery and onboarding requests" },
+    { id: "settings", label: "Settings", src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/campusbites/Setting.png", desc: "Platform-level configuration and notification preferences" },
 ];
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -179,17 +179,17 @@ export default function CampusBitesCaseStudy() {
 
                     {/* Laptop — Admin Dashboard */}
                     <div className={styles.deviceLaptop}>
-                        <img src={getAssetUrl("https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/campusbites/Admin Dashboard.png")} alt="Admin Dashboard" />
+                        <img src={getAssetUrl("https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/campusbites/Admin Dashboard.png")} alt="Admin Dashboard" />
                     </div>
 
                     {/* Tablet — Store Dashboard */}
                     <div className={styles.deviceTablet}>
-                        <img src={getAssetUrl("https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/campusbites/Store Dashboard.png")} alt="Store Dashboard" />
+                        <img src={getAssetUrl("https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/campusbites/Store Dashboard.png")} alt="Store Dashboard" />
                     </div>
 
                     {/* Phone — User App */}
                     <div className={styles.devicePhone}>
-                        <img src={getAssetUrl("https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/campusbites/Food cout listing .png")} alt="Mobile App" />
+                        <img src={getAssetUrl("https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/campusbites/Food cout listing .png")} alt="Mobile App" />
                     </div>
                 </motion.div>
             </section>
@@ -338,12 +338,12 @@ export default function CampusBitesCaseStudy() {
 
                     <div className={styles.mobileShowcase}>
                         {[
-                            { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/campusbites/Food cout listing .png", label: "Food Courts", annotation: "Location-aware" },
-                            { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/campusbites/Store and food listing.png", label: "Store & Menu", annotation: "Dynamic pricing" },
-                            { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/campusbites/View Cart.png", label: "Cart", annotation: "Quick checkout" },
-                            { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/campusbites/Payment .png", label: "Checkout", annotation: "UPI or Pay on Pickup" },
-                            { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/campusbites/Token Number.png", label: "Token", annotation: "Live tracking" },
-                            { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/images/campusbites/Otp.png", label: "OTP Pickup", annotation: "Token-based pickup" },
+                            { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/campusbites/Food cout listing .png", label: "Food Courts", annotation: "Location-aware" },
+                            { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/campusbites/Store and food listing.png", label: "Store & Menu", annotation: "Dynamic pricing" },
+                            { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/campusbites/View Cart.png", label: "Cart", annotation: "Quick checkout" },
+                            { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/campusbites/Payment .png", label: "Checkout", annotation: "UPI or Pay on Pickup" },
+                            { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/campusbites/Token Number.png", label: "Token", annotation: "Live tracking" },
+                            { src: "https://pub-5595d92cf36742b8a68ec73826bbecab.r2.dev/public/images/campusbites/Otp.png", label: "OTP Pickup", annotation: "Token-based pickup" },
                         ].map((item, i) => (
                             <motion.div
                                 key={i}
