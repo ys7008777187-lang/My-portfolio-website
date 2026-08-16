@@ -73,9 +73,9 @@ const graphicsProjects = [
         title: "The Nexus Point: Issue 2",
         category: "Chitranga",
         icon: "📖",
-        image: "/images/artworks/the-nexus-point-issue-2/Cover.png",
+        image: "/images/artworks/the-nexus-point-issue-2/Cover-v2.png",
         images: [
-            "/images/artworks/the-nexus-point-issue-2/Cover.png",
+            "/images/artworks/the-nexus-point-issue-2/Cover-v2.png",
             "/images/artworks/the-nexus-point-issue-2/1.png",
             "/images/artworks/the-nexus-point-issue-2/2.png",
             "/images/artworks/the-nexus-point-issue-2/3.png",
@@ -176,9 +176,9 @@ const graphicsProjects = [
         title: "Comic Magazine",
         category: "Visual Storytelling",
         icon: "📖",
-        image: "/images/artworks/comic-magazine/cover.png",
+        image: "/images/artworks/comic-magazine/cover-v2.png",
         images: [
-            "/images/artworks/comic-magazine/cover.png",
+            "/images/artworks/comic-magazine/cover-v2.png",
             "/images/artworks/comic-magazine/Page 1.png",
             "/images/artworks/comic-magazine/Page 2.png",
             "/images/artworks/comic-magazine/Page 3.png",
@@ -205,9 +205,9 @@ const graphicsProjects = [
         title: "Fashion",
         category: "Artwork",
         icon: "🎨",
-        image: "/images/artworks/fashion-1.jpg",
+        image: "/images/artworks/fashion-1-v2.jpg",
         images: [
-            "/images/artworks/fashion-1.jpg",
+            "/images/artworks/fashion-1-v2.jpg",
             "/images/artworks/fashion-2.jpg"
         ],
         tagline: "STYLE MEETS DESIGN!",
