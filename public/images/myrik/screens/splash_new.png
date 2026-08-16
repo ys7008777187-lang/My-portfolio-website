@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="844" viewBox="0 0 390 844">
+  <defs>
+    <pattern id="diag" width="20" height="20" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="20" stroke="hsl(0,0%,18%)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="390" height="844" fill="hsl(0,0%,13%)"/>
+  <rect width="390" height="844" fill="url(#diag)" opacity="0.4"/>
+  <g transform="translate(195,402)" fill="none" stroke="hsl(0,0%,35%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="-24" y="-24" width="48" height="48" rx="4"/>
+    <circle cx="-10" cy="-10" r="4"/>
+    <polyline points="24,8 14,-4 -24,24"/>
+  </g>
+  <text x="195" y="462" text-anchor="middle" fill="hsl(0,0%,40%)" font-family="system-ui,sans-serif" font-size="14" letter-spacing="1">Myrik Splash</text>
+</svg>
