@@ -69,9 +69,9 @@ export default function WorqCaseStudy() {
                     transition={{ duration: 0.8, delay: 0.4 }}
                     className={styles.heroMockupStack}
                 >
-                    <PhoneMockup src="/images/worq/Feed_or_Landing_screen.jpeg" alt="WORQ Feed" />
-                    <PhoneMockup src="/images/worq/Networking_profiles_.jpeg" alt="WORQ Network" />
-                    <PhoneMockup src="/images/worq/Wallet.jpeg" alt="WORQ Wallet" />
+                    <PhoneMockup src={getAssetUrl("/images/worq/Feed_or_Landing_screen.jpeg")} alt="WORQ Feed" />
+                    <PhoneMockup src={getAssetUrl("/images/worq/Networking_profiles_.jpeg")} alt="WORQ Network" />
+                    <PhoneMockup src={getAssetUrl("/images/worq/Wallet.jpeg")} alt="WORQ Wallet" />
                 </motion.div>
             </section>
 
