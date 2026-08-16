@@ -1,4 +1,7 @@
-const assetCDN = process.env.NODE_ENV === "development" ? (process.env.NEXT_PUBLIC_ASSET_CDN || "") : (process.env.NEXT_PUBLIC_ASSET_CDN || "https://cdn.yashsrivastava.co.in");
+// Only use a CDN prefix when NEXT_PUBLIC_ASSET_CDN is explicitly provided.
+// This avoids forcing a default CDN that may not host the public assets
+// (e.g., when deploying to Cloudflare Pages without setting env vars).
+const assetCDN = process.env.NEXT_PUBLIC_ASSET_CDN || "";
 
 /**
  * Resolves an asset path to a full CDN URL when available.
