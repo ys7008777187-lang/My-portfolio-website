@@ -1,4 +1,4 @@
-const assetCDN = process.env.NEXT_PUBLIC_ASSET_CDN || "";
+const assetCDN = process.env.NODE_ENV === "development" ? (process.env.NEXT_PUBLIC_ASSET_CDN || "") : (process.env.NEXT_PUBLIC_ASSET_CDN || "https://cdn.yashsrivastava.co.in");
 
 /**
  * Resolves an asset path to a full CDN URL when available.
