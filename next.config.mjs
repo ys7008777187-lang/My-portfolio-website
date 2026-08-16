@@ -24,6 +24,11 @@ const nextConfig = {
         hostname: 'pub-5595d92cf36742b8a68ec73826bbecab.r2.dev',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'cdn.yashsrivastava.co.in',
+        pathname: '/**',
+      },
     ],
   },
 };
