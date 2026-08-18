@@ -12,7 +12,7 @@
     justify-content: space-between;
     padding: 100px 4% 30px;
     background-color: var(--color-bg-primary);
-    color: var(--color-text-primary);
+    color: #FFFFFF;
     overflow: hidden;
     font-family: var(--font-inter, sans-serif);
     user-select: none;
@@ -135,7 +135,7 @@
     display: inline-block;
     padding: 10px 20px;
     background: rgba(10, 10, 15, 0.88);
-    border: var(--border-width, 3px) solid var(--color-text-primary);
+    border: var(--border-width, 3px) solid #FFFFFF;
     border-radius: 0;
     margin-bottom: 22px;
     transform: skewX(-8deg);
@@ -158,7 +158,7 @@
     font-size: 0.88rem;
     line-height: 1.3;
     letter-spacing: 2px;
-    color: var(--color-text-primary);
+    color: #FFFFFF;
     text-transform: uppercase;
 }
 
@@ -170,7 +170,7 @@
     height: 0;
     border-style: solid;
     border-width: 10px 10px 0 0;
-    border-color: var(--color-text-primary) transparent transparent transparent;
+    border-color: #FFFFFF transparent transparent transparent;
 }
 
 .bubbleTail::after {
@@ -211,7 +211,7 @@
 
 .headlineLine {
     display: block;
-    color: var(--color-text-primary);
+    color: #FFFFFF;
     transition: transform 0.2s ease;
     position: relative;
 }
@@ -671,7 +671,7 @@
     font-size: 0.78rem;
     line-height: 1.15;
     letter-spacing: 1.5px;
-    color: var(--color-text-primary);
+    color: #FFFFFF;
     text-align: center;
 }
 

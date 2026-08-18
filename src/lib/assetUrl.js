@@ -22,7 +22,7 @@ export function getAssetUrl(path) {
   // External URLs pass through unchanged
   if (processedPath.startsWith("http://") || processedPath.startsWith("https://")) return processedPath;
 
-  // Use CDN prefix when configured
-  if (!assetCDN) return processedPath;
+  // Use CDN prefix when configured and not in development mode
+  if (!assetCDN || process.env.NODE_ENV === 'development') return processedPath;
   return `${assetCDN.replace(/\/$/, "")}${processedPath}`;
 }

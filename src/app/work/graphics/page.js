@@ -11,6 +11,37 @@ import styles from "./page.module.css";
 
 const graphicsProjects = [
     {
+        id: "are-we-free",
+        title: "Are We Free?",
+        category: "Chitranga",
+        icon: "📖",
+        image: "/images/artworks/are-we-free/cover.jpg",
+        images: [
+            "/images/artworks/are-we-free/cover.jpg",
+            "/images/artworks/are-we-free/00.png",
+            "/images/artworks/are-we-free/1.png",
+            "/images/artworks/are-we-free/2.png",
+            "/images/artworks/are-we-free/3.png",
+            "/images/artworks/are-we-free/4.png",
+            "/images/artworks/are-we-free/5.png",
+            "/images/artworks/are-we-free/6.png",
+            "/images/artworks/are-we-free/7.png",
+            "/images/artworks/are-we-free/8.png",
+            "/images/artworks/are-we-free/9.png",
+            "/images/artworks/are-we-free/10.png",
+            "/images/artworks/are-we-free/11.png",
+            "/images/artworks/are-we-free/12.png",
+            "/images/artworks/are-we-free/13.png",
+            "/images/artworks/are-we-free/14.png",
+            "/images/artworks/are-we-free/15.png"
+        ],
+        isCarouselBook: true,
+        isComic: true,
+        isNew: true,
+        tagline: "A THOUGHT-PROVOKING TALE!",
+        description: "An original Chitranga exploring freedom"
+    },
+    {
         id: "political-posts",
         title: "Political Posts",
         category: "Artwork",
@@ -208,8 +239,18 @@ const graphicsProjects = [
         image: "/images/artworks/fashion-1-v2.jpg",
         images: [
             "/images/artworks/fashion-1-v2.jpg",
-            "/images/artworks/fashion-2.jpg"
+            "/images/artworks/fashion-2.jpg",
+            "/images/artworks/fashion-campaign/1.png",
+            "/images/artworks/fashion-campaign/2.png",
+            "/images/artworks/fashion-campaign/3.png",
+            "/images/artworks/fashion-campaign/4.png",
+            "/images/artworks/fashion-campaign/5.png",
+            "/images/artworks/fashion-campaign/6.png",
+            "/images/artworks/fashion-campaign/8.png",
+            "/images/artworks/fashion-campaign/9.png",
+            "/images/artworks/fashion-campaign/10.png"
         ],
+        isNew: true,
         tagline: "STYLE MEETS DESIGN!",
         description: "Fashion Promotional Campaign Graphics"
     },
@@ -405,9 +446,16 @@ export default function GraphicsPage() {
     }, [selectedProject]);
 
     const categories = ["all", "Chitranga", "Visual Storytelling", "Artwork"];
-    const filteredProjects = activeFilter === "all"
+    const baseProjects = activeFilter === "all"
         ? graphicsProjects
         : graphicsProjects.filter(p => p.category === activeFilter);
+
+    // Sort projects so that those with isNew: true appear at the top
+    const filteredProjects = [...baseProjects].sort((a, b) => {
+        if (a.isNew && !b.isNew) return -1;
+        if (!a.isNew && b.isNew) return 1;
+        return 0;
+    });
 
     return (
         <main className={styles.main}>
@@ -605,17 +653,18 @@ export default function GraphicsPage() {
                                                 }
                                             }}
                                         >
-                                            {selectedProject.images.map((imgSrc, i) => (
-                                                <div key={i} className={styles.lightboxGalleryItem}>
-                                                    <Image
-                                                        src={getAssetUrl(imgSrc)}
-                                                        alt={`${selectedProject.title} ${i + 1}`}
-                                                        fill
-                                                        unoptimized
-                                                        className={styles.lightboxImage}
-                                                    />
-                                                </div>
-                                            ))}
+                                            <div className={styles.mangaGrid}>
+                                                {selectedProject.images.map((imgSrc, i) => (
+                                                    <div key={i} className={styles.lightboxGalleryItem}>
+                                                        <img
+                                                            src={getAssetUrl(imgSrc)}
+                                                            alt={`${selectedProject.title} ${i + 1}`}
+                                                            className={styles.lightboxImage}
+                                                            loading="lazy"
+                                                        />
+                                                    </div>
+                                                ))}
+                                            </div>
                                         </div>
 
                                         <AnimatePresence>

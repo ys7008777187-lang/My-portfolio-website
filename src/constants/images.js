@@ -1,7 +1,7 @@
 export const IMAGES = {
   PROFILE: "/images/yash-comic-profile.jpg",
   THUMBNAILS: {
-    MYRIK: "/images/thumbnails/myrik.png",
+    MYRIK: "/images/myrik/screens/home.png",
     ZOO: "/images/thumbnails/zoo.png",
     GUITAR: "/images/thumbnails/guitar.png",
     WEARABLES: "/images/thumbnails/wearables.png"

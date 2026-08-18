@@ -118,52 +118,70 @@
   {
     "id": 2,
     "title": "Myrik",
-    "category": "Mobile App",
+    "category": "UX Case Study",
     "icon": "🚗",
     "status": "Published",
-    "image": "/images/projects/myrik.png",
+    "image": "/images/myrik/screens/splash_new.png",
     "link": "",
     "mangaGallery": [
       {
         "type": "text",
         "colSpan": 12,
-        "title": "SUPER APP",
-        "content": "<p>A unified super app aiming to combine home services, grocery delivery, and logistics into a single cohesive interface.</p>"
+        "title": "DESIGNING FOR BHARAT",
+        "content": "<p>Designing the end-to-end experience for an EV ride-hailing platform that brings affordable, reliable transport to India's Tier 2–4 cities.</p>"
       },
       {
         "type": "image",
-        "colSpan": 8,
+        "colSpan": 6,
         "src": "/images/myrik/screens/home.png",
-        "caption": "A Unified App for Home Services, Groceries, and Deliveries"
+        "caption": "Card-based UI over complex navigation"
+      },
+      {
+        "type": "image",
+        "colSpan": 6,
+        "src": "/images/myrik/screens/splash_new.png",
+        "caption": "Clean branding and instant load times"
       },
       {
         "type": "quote",
+        "colSpan": 12,
+        "content": "Design literacy exists, but only for patterns they already know."
+      },
+      {
+        "type": "image",
         "colSpan": 4,
-        "content": "How do we map user context across diverse services without friction?"
+        "src": "/images/myrik/screens/booking.png",
+        "caption": "Transparent pricing upfront"
       },
       {
         "type": "image",
-        "colSpan": 6,
-        "src": "/images/myrik/screens/onboarding.png",
-        "caption": "Mapping user context across diverse services"
+        "colSpan": 4,
+        "src": "/images/myrik/screens/searching.png",
+        "caption": "Clear matching states"
       },
       {
         "type": "image",
-        "colSpan": 6,
-        "src": "/images/myrik/screens/home_map.png",
-        "caption": "Seamless checkout and service booking flows"
+        "colSpan": 4,
+        "src": "/images/myrik/screens/tracking.png",
+        "caption": "Real-time tracking to build trust"
       },
       {
         "type": "text",
         "colSpan": 12,
-        "title": "TRUST & CLARITY",
-        "content": "<p>Building trust through transparent pricing, localized reviews, and clear service tracking.</p>"
+        "title": "UTILITY STACKING",
+        "content": "<p>The same fleet that moves people can move goods. I designed a unified platform where ride-hailing and delivery share the same driver network.</p>"
       },
       {
         "type": "image",
-        "colSpan": 12,
-        "src": "/images/myrik/screens/verification.png",
-        "caption": "Building trust through transparent pricing and reviews"
+        "colSpan": 6,
+        "src": "/images/myrik/screens/delivery_welcome.png",
+        "caption": "Extending the platform to hyperlocal delivery"
+      },
+      {
+        "type": "image",
+        "colSpan": 6,
+        "src": "/images/myrik/screens/delivery_tracking.png",
+        "caption": "Track parcels with the exact same fleet"
       }
     ]
   },
