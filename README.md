@@ -1,36 +1,27 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Yash Srivastava — Comic Book Design Portfolio
 
-## Getting Started
+Personal UI/UX design and creative engineering portfolio website for **Yash Srivastava** ([yashsrivastava.co.in](https://yashsrivastava.co.in)).
 
-First, run the development server:
+## Tech Stack
+- **Framework**: Next.js (App Router, Static Export `output: 'export'`)
+- **Styling**: CSS Modules, Neobrutalist Comic Design System
+- **Typography**: 3-Font Comic Stack (`Bangers`, `Comic Neue`, `Inter`)
+- **Motion**: Framer Motion, Lenis Smooth Scroll
+- **3D / Canvas**: Three.js / React Three Fiber
+- **CDN / Storage**: Cloudflare R2 & Custom Domain CDN (`cdn.yashsrivastava.co.in`)
+
+## Development
 
 ```bash
+# Install dependencies
+npm install
+
+# Start local dev server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Build static production export (out/)
+npm run build
+
+# Sync assets to Cloudflare R2 CDN
+npm run sync-cdn
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
