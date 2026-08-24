@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import { textVariants, COMIC_EASE } from "../../../lib/animationPresets";
 import styles from "./Services.module.css";
 
 const steps = [
@@ -54,11 +55,17 @@ const itemVariants = {
 export default function Services() {
   return (
     <section className={styles.servicesSection}>
-      <div className={styles.header}>
+      <motion.div 
+        className={styles.header}
+        variants={textVariants.headerEntrance}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-50px" }}
+      >
         <span className={styles.sectionNumber}>3.</span>
         <h2 className={styles.title}>SCROLL STORYTELLING</h2>
         <p className={styles.subtitle}>Sections reveal like panels in a story.</p>
-      </div>
+      </motion.div>
 
       <motion.div
         className={styles.processContainer}

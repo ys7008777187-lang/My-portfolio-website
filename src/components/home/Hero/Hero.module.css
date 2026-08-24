@@ -190,16 +190,15 @@
 .headline {
     display: flex;
     flex-direction: column;
-    font-family: var(--font-anton, Impact, sans-serif);
-    font-size: clamp(2.4rem, min(4.6vw, 5.8vh), 4.8rem);
-    font-weight: 900;
-    line-height: 0.98;
-    letter-spacing: 3px;
+    font-family: var(--font-bangers, cursive);
+    font-size: clamp(2.6rem, min(5vw, 6vh), 5.2rem);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
     transform: skewX(-8deg);
     margin-bottom: clamp(20px, 3vh, 32px);
     text-shadow:
-        2px 2px 0 #000,
         3px 3px 0 #000,
         4px 4px 0 #000,
         5px 5px 0 #000,

@@ -1,587 +1,800 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import styles from "./Journey.module.css";
-import { 
-  Compass, 
-  Utensils, 
-  CreditCard, 
-  QrCode, 
-  ChevronRight, 
-  ChevronLeft, 
-  Play, 
+import { motion, AnimatePresence } from "framer-motion";
+import { textVariants } from "../../../lib/animationPresets";
+import {
+  Clock,
+  Filter,
+  BarChart3,
+  MapPin,
+  ShoppingCart,
+  CreditCard,
+  Bell,
+  Users,
+  Package,
+  Car,
+  Shield,
+  ChevronLeft,
+  ChevronRight,
+  Play,
   Pause,
   ExternalLink,
-  Sparkles,
-  CheckCircle2,
   Zap,
+  Smartphone,
+  Utensils,
+  Search,
+  Navigation,
+  CheckCircle2,
+  Sliders,
   Layers,
-  Car,
-  Package,
-  MapPin,
-  ShieldCheck,
-  Smartphone
+  Award
 } from "lucide-react";
 import { getOptimizedUrl } from "../../../lib/assetUrl";
+import styles from "./Journey.module.css";
 
-const projectsData = [
+const projects = [
   {
-    id: "campus-bites",
-    title: "CAMPUS BITES",
-    category: "Food Delivery UX",
-    badge: "CAMPUS BITES • UX CASE STUDY",
-    caseStudyUrl: "/work/8",
+    id: 8,
+    name: "CAMPUS BITES",
     icon: Utensils,
-    screens: [
+    steps: [
       {
-        stepNumber: "01",
-        tabLabel: "Discovery",
-        icon: Compass,
-        screenTitle: "FOOD COURT & OUTLET HUB",
-        phase: "STEP 1: DISCOVERY & SELECTION",
-        tagline: "Explore all campus food courts with real-time wait times and live open status.",
+        stepNum: 1,
+        stepLabel: "DISCOVERY",
+        stepSub: "Find what you need",
+        tag: "STEP 1: DISCOVERY",
+        title: "FOOD COURT & OUTLET HUB",
+        description: "Explore all campus food courts with real-time wait times and live open status.",
+        features: [
+          {
+            icon: Clock,
+            title: "Live Outlet Availability",
+            description: "Instantly see which food court counters are open."
+          },
+          {
+            icon: Filter,
+            title: "Smart Dietary Filters",
+            description: "Filter by Vegetarian, Quick Bites, and Student Budget."
+          },
+          {
+            icon: BarChart3,
+            title: "Queue-Load Indicators",
+            description: "Color-coded rush indicators for every food counter."
+          }
+        ],
+        tags: [
+          { icon: MapPin, text: "Campus Hub", color: "#FFCC00" },
+          { icon: BarChart3, text: "Live Wait Times", color: "#34C759" },
+          { icon: Filter, text: "Dietary Tags", color: "#32ADE6" }
+        ],
         image: "/images/campusbites/Food cout listing .png",
-        annotation: {
-          title: "Real-Time Wait Times",
-          text: "Dynamic preparation estimates prevent students from arriving during peak congestion.",
-          position: "top"
-        },
-        features: [
-          { title: "Live Outlet Availability", desc: "Instantly see which food court counters are open." },
-          { title: "Smart Dietary Filters", desc: "Filter by Vegetarian, Quick Bites, and Student Budget." },
-          { title: "Queue-Load Indicators", desc: "Color-coded rush indicators for every food counter." }
-        ],
-        tags: ["Campus Hub", "Live Wait Times", "Dietary Tags"]
+        callout: {
+          title: "REAL-TIME WAIT TIMES",
+          desc: "Dynamic preparation estimates prevent students from arriving during peak congestion."
+        }
       },
       {
-        stepNumber: "02",
-        tabLabel: "Menu & Customize",
-        icon: Utensils,
-        screenTitle: "INTERACTIVE MENU & CUSTOMIZATION",
-        phase: "STEP 2: MENU EXPLORATION",
-        tagline: "High-contrast visual menu with rapid variant selection and instant stock updates.",
+        stepNum: 2,
+        stepLabel: "MENU & CUSTOMIZE",
+        stepSub: "Choose your meal",
+        tag: "STEP 2: MENU & CUSTOMIZE",
+        title: "INTERACTIVE MENU & CUSTOMIZATION",
+        description: "High-contrast visual menu with rapid variant selection and instant stock updates.",
+        features: [
+          {
+            icon: Smartphone,
+            title: "Visual Menu Cards",
+            description: "High-quality food images with instant transparent pricing."
+          },
+          {
+            icon: Sliders,
+            title: "1-Tap Variant Selection",
+            description: "Choose sizes, spice levels, and combos in seconds."
+          },
+          {
+            icon: ShoppingCart,
+            title: "Sticky Smart Cart",
+            description: "Real-time item count and subtotal preview."
+          }
+        ],
+        tags: [
+          { icon: Search, text: "Dynamic Menu", color: "#FFCC00" },
+          { icon: Zap, text: "1-Tap Add", color: "#34C759" },
+          { icon: ShoppingCart, text: "Smart Cart", color: "#32ADE6" }
+        ],
         image: "/images/campusbites/Store and food listing.png",
-        annotation: {
-          title: "Live Inventory Sync",
-          text: "Sold-out items grey out automatically to eliminate ordering disappointment.",
-          position: "middle"
-        },
-        features: [
-          { title: "1-Tap Variant Selection", desc: "Choose sizes, spice levels, and combos in seconds." },
-          { title: "Live Counter Sync", desc: "Menu syncs directly with vendor POS tablets." },
-          { title: "Sticky Cart Drawer", desc: "Real-time item count and subtotal preview." }
-        ],
-        tags: ["Dynamic Menu", "1-Tap Add", "Combos & Add-ons"]
+        callout: {
+          title: "LIVE INVENTORY SYNC",
+          desc: "Sold-out items grey out automatically to eliminate ordering disappointment."
+        }
       },
       {
-        stepNumber: "03",
-        tabLabel: "Instant Checkout",
-        icon: CreditCard,
-        screenTitle: "FRICTIONLESS DIGITAL PAYMENT",
-        phase: "STEP 3: CHECKOUT & WALLET",
-        tagline: "Zero-contact digital payment integrating Student ID wallet, UPI, and split billing.",
+        stepNum: 3,
+        stepLabel: "INSTANT CHECKOUT",
+        stepSub: "Quick & easy checkout",
+        tag: "STEP 3: INSTANT CHECKOUT",
+        title: "FRICTIONLESS DIGITAL PAYMENT",
+        description: "Zero-contact digital payment integrating Student ID wallet, UPI, and split billing.",
+        features: [
+          {
+            icon: CreditCard,
+            title: "Student Campus Wallet",
+            description: "Instant tap payment with zero gateway drop-offs."
+          },
+          {
+            icon: Clock,
+            title: "Lecture-Break Scheduler",
+            description: "Pre-order 15 minutes before classes end for immediate collection."
+          },
+          {
+            icon: Users,
+            title: "Smart Bill Splitting",
+            description: "Split food bills between friends seamlessly."
+          }
+        ],
+        tags: [
+          { icon: CreditCard, text: "Student Wallet", color: "#FFCC00" },
+          { icon: Zap, text: "UPI / Cards", color: "#34C759" },
+          { icon: Clock, text: "Break Scheduler", color: "#32ADE6" }
+        ],
         image: "/images/campusbites/View Cart.png",
-        annotation: {
-          title: "Lecture-Break Scheduler",
-          text: "Pre-order 15 minutes before classes end for immediate collection.",
-          position: "bottom"
-        },
-        features: [
-          { title: "Student Campus Wallet", desc: "Instant tap payment with zero gateway drop-offs." },
-          { title: "Pickup Time Slots", desc: "Schedule pickup for immediate or future class breaks." },
-          { title: "Automated Digital Invoice", desc: "Itemized receipts stored directly in user history." }
-        ],
-        tags: ["Student Wallet", "UPI / Cards", "Pickup Scheduling"]
+        callout: {
+          title: "30-SECOND CHECKOUT",
+          desc: "Pre-order 15 minutes before classes end for zero-friction immediate collection."
+        }
       },
       {
-        stepNumber: "04",
-        tabLabel: "Live Token",
-        icon: QrCode,
-        screenTitle: "DIGITAL TOKEN & QUEUE-FREE PICKUP",
-        phase: "STEP 4: LIVE TRACKING & PICKUP",
-        tagline: "Say goodbye to crowded physical queues with real-time digital token callouts.",
+        stepNum: 4,
+        stepLabel: "LIVE TOKEN",
+        stepSub: "Track your order live",
+        tag: "STEP 4: LIVE TOKEN",
+        title: "DIGITAL TOKEN & QUEUE-FREE PICKUP",
+        description: "Say goodbye to crowded physical queues with real-time digital token callouts.",
+        features: [
+          {
+            icon: Navigation,
+            title: "High-Contrast Token Display",
+            description: "Large readable token verified at counter in under 3 seconds."
+          },
+          {
+            icon: Bell,
+            title: "3-Stage Live Status",
+            description: "Received → Preparing → Ready for Pickup updates."
+          },
+          {
+            icon: Zap,
+            title: "Haptic Ready Alerts",
+            description: "Vibration and push notification the moment food is plated."
+          }
+        ],
+        tags: [
+          { icon: Smartphone, text: "100% Queue-Free", color: "#FFCC00" },
+          { icon: Bell, text: "QR Token", color: "#34C759" },
+          { icon: Zap, text: "Haptic Alerts", color: "#32ADE6" }
+        ],
         image: "/images/campusbites/Token Number.png",
-        annotation: {
-          title: "Scan & Grab Token",
-          text: "Unique animated token verified at counter in under 3 seconds.",
-          position: "middle"
-        },
-        features: [
-          { title: "High-Contrast Token", desc: "Large readable token number for counter collection." },
-          { title: "3-Stage Live Status", desc: "Received → Preparing → Ready for Pickup updates." },
-          { title: "Haptic Ready Alerts", desc: "Vibration and push notification the moment food is plated." }
-        ],
-        tags: ["100% Queue-Free", "QR Token", "Haptic Alerts"]
+        callout: {
+          title: "SCAN & GRAB TOKEN",
+          desc: "Unique animated token verified at counter in under 3 seconds with zero queues."
+        }
       }
     ]
   },
   {
-    id: "bhaiyaa",
-    title: "BHAIYAA SUPER APP",
-    category: "Super App Ecosystem",
-    badge: "BHAIYAA • MULTI-SERVICE UI/UX",
-    caseStudyUrl: "/work/3",
+    id: 3,
+    name: "BHAIYAA SUPER APP",
     icon: Package,
-    screens: [
+    steps: [
       {
-        stepNumber: "01",
-        tabLabel: "Home Hub",
-        icon: Compass,
-        screenTitle: "INTEGRATED COMMUNITY DASHBOARD",
-        phase: "STEP 1: SUPER APP HUB",
-        tagline: "All-in-one super app uniting neighborhood utilities, hyperlocal deliveries, and instant rides.",
+        stepNum: 1,
+        stepLabel: "HOME HUB",
+        stepSub: "Unified dashboard",
+        tag: "STEP 1: SUPER APP HUB",
+        title: "INTEGRATED COMMUNITY DASHBOARD",
+        description: "All-in-one super app uniting neighborhood utilities, hyperlocal deliveries, and instant rides.",
+        features: [
+          {
+            icon: Layers,
+            title: "Multi-Service Grid",
+            description: "Dynamic widgets adapt to morning & evening commute habits."
+          },
+          {
+            icon: Bell,
+            title: "Contextual Action Feed",
+            description: "Live service notifications and active booking updates."
+          },
+          {
+            icon: Shield,
+            title: "1-Tap Emergency SOS",
+            description: "Instant emergency trigger with trusted contact notification."
+          }
+        ],
+        tags: [
+          { icon: Layers, text: "Super App", color: "#FFCC00" },
+          { icon: Users, text: "Multi-Service", color: "#34C759" },
+          { icon: MapPin, text: "Community Hub", color: "#32ADE6" }
+        ],
         image: "/images/bhaiyaa/new_screen_1.jpg",
-        annotation: {
-          title: "Unified Hub",
-          text: "Access 10+ everyday services in one tap without cognitive overload.",
-          position: "top"
-        },
-        features: [
-          { title: "Multi-Service Grid", desc: "Dynamic widgets adapt to morning & evening commute habits." },
-          { title: "Contextual Action Feed", desc: "Live service notifications and active booking updates." },
-          { title: "1-Tap Emergency SOS", desc: "Instant emergency trigger with trusted contact notification." }
-        ],
-        tags: ["Super App", "Multi-Service", "Community Hub"]
+        callout: {
+          title: "UNIFIED HUB",
+          desc: "Access 10+ everyday services in one tap without cognitive overload."
+        }
       },
       {
-        stepNumber: "02",
-        tabLabel: "Services",
-        icon: Layers,
-        screenTitle: "HYPERLOCAL ON-DEMAND BOOKING",
-        phase: "STEP 2: SERVICE BOOKING",
-        tagline: "Book verified local home services and trusted handymen with upfront transparent pricing.",
+        stepNum: 2,
+        stepLabel: "SERVICES",
+        stepSub: "On-demand booking",
+        tag: "STEP 2: SERVICE BOOKING",
+        title: "HYPERLOCAL ON-DEMAND BOOKING",
+        description: "Book verified local home services and trusted handymen with upfront transparent pricing.",
+        features: [
+          {
+            icon: Award,
+            title: "Price Transparency",
+            description: "Fixed rate cards eliminate awkward counter-negotiations."
+          },
+          {
+            icon: Shield,
+            title: "Verified Profiles",
+            description: "Browse customer reviews and verified past service photos."
+          },
+          {
+            icon: Clock,
+            title: "Real-Time Slot Booking",
+            description: "Select exact arrival windows down to 30-minute slots."
+          }
+        ],
+        tags: [
+          { icon: Award, text: "Fixed Rates", color: "#FFCC00" },
+          { icon: Shield, text: "Verified Pros", color: "#34C759" },
+          { icon: Clock, text: "Slot Booking", color: "#32ADE6" }
+        ],
         image: "/images/bhaiyaa/new_screen_2.jpg",
-        annotation: {
-          title: "Verified Partners",
-          text: "Strict background audits and rating badges protect homeowners.",
-          position: "middle"
-        },
-        features: [
-          { title: "Price Transparency", desc: "Fixed rate cards eliminate awkward counter-negotiations." },
-          { title: "Verified Profiles", desc: "Browse customer reviews and past service photos." },
-          { title: "Real-Time Slot Booking", desc: "Select exact arrival windows down to 30-minute slots." }
-        ],
-        tags: ["Transparent Rates", "Verified Pros", "Slot Booking"]
+        callout: {
+          title: "VERIFIED PARTNERS",
+          desc: "Strict background audits and rating badges protect homeowners."
+        }
       },
       {
-        stepNumber: "03",
-        tabLabel: "Community",
-        icon: MapPin,
-        screenTitle: "NEIGHBORHOOD SOCIAL & RIDE SHARE",
-        phase: "STEP 3: LOCAL CONNECT",
-        tagline: "Carpool with trusted verified neighbors and share community event updates safely.",
+        stepNum: 3,
+        stepLabel: "COMMUNITY",
+        stepSub: "Local connect",
+        tag: "STEP 3: LOCAL CONNECT",
+        title: "NEIGHBORHOOD SOCIAL & RIDE SHARE",
+        description: "Carpool with trusted verified neighbors and share community event updates safely.",
+        features: [
+          {
+            icon: Car,
+            title: "Community Carpooling",
+            description: "Share rides along daily office and campus commute routes."
+          },
+          {
+            icon: Bell,
+            title: "Local Notice Board",
+            description: "Stay updated on neighborhood announcements and alerts."
+          },
+          {
+            icon: Users,
+            title: "Group Chat Moderation",
+            description: "Verified-resident exclusive forums and discussions."
+          }
+        ],
+        tags: [
+          { icon: Car, text: "Carpooling", color: "#FFCC00" },
+          { icon: Shield, text: "Verified Neighbors", color: "#34C759" },
+          { icon: Users, text: "Local Connect", color: "#32ADE6" }
+        ],
         image: "/images/bhaiyaa/new_screen_3.jpg",
-        annotation: {
-          title: "Safe Local Rides",
-          text: "Neighborhood badges ensure verified carpool groups.",
-          position: "bottom"
-        },
-        features: [
-          { title: "Community Carpooling", desc: "Share rides along daily office and campus commute routes." },
-          { title: "Local Notice Board", desc: "Stay updated on neighborhood announcements and alerts." },
-          { title: "Group Chat Moderation", desc: "Verified-resident exclusive forums and discussions." }
-        ],
-        tags: ["Carpooling", "Verified Neighbors", "Local Connect"]
+        callout: {
+          title: "SAFE LOCAL RIDES",
+          desc: "Neighborhood badges ensure verified carpool groups and trusted journeys."
+        }
       },
       {
-        stepNumber: "04",
-        tabLabel: "Tracking",
-        icon: QrCode,
-        screenTitle: "LIVE ORDER & DISPATCH TIMELINE",
-        phase: "STEP 4: TRACKING & DISPATCH",
-        tagline: "Unified tracking dashboard for deliveries, service workers, and ride arrivals.",
-        image: "/images/bhaiyaa/new_screen_4.jpg",
-        annotation: {
-          title: "Live Timeline",
-          text: "End-to-end milestone tracker with OTP security handshake.",
-          position: "middle"
-        },
+        stepNum: 4,
+        stepLabel: "TRACKING",
+        stepSub: "Live timeline",
+        tag: "STEP 4: TRACKING & DISPATCH",
+        title: "LIVE ORDER & DISPATCH TIMELINE",
+        description: "Unified tracking dashboard for deliveries, service workers, and ride arrivals.",
         features: [
-          { title: "Real-Time GPS Tracking", desc: "Watch service provider arrival on live map view." },
-          { title: "OTP Handshake Security", desc: "Ensure services begin and complete with verified pins." },
-          { title: "In-App VoIP & Chat", desc: "Masked private phone calls protect user personal numbers." }
+          {
+            icon: MapPin,
+            title: "Real-Time GPS Tracking",
+            description: "Watch service provider arrival on live map view."
+          },
+          {
+            icon: Shield,
+            title: "OTP Handshake Security",
+            description: "Ensure services begin and complete with verified PINs."
+          },
+          {
+            icon: Smartphone,
+            title: "In-App Masked Calls",
+            description: "Masked private phone calls protect user personal numbers."
+          }
         ],
-        tags: ["Live GPS", "OTP Security", "Private VoIP"]
+        tags: [
+          { icon: MapPin, text: "Live GPS", color: "#FFCC00" },
+          { icon: Shield, text: "OTP Security", color: "#34C759" },
+          { icon: Smartphone, text: "Private VoIP", color: "#32ADE6" }
+        ],
+        image: "/images/bhaiyaa/new_screen_4.jpg",
+        callout: {
+          title: "LIVE TIMELINE",
+          desc: "End-to-end milestone tracker with OTP security handshake for guaranteed safety."
+        }
       }
     ]
   },
   {
-    id: "myrik",
-    title: "MYRIK EV MOBILITY",
-    category: "EV Mobility UX",
-    badge: "MYRIK • ON-DEMAND EV PLATFORM",
-    caseStudyUrl: "/work/2",
+    id: 2,
+    name: "MYRIK EV MOBILITY",
     icon: Car,
-    screens: [
+    steps: [
       {
-        stepNumber: "01",
-        tabLabel: "Ride Map",
-        icon: Compass,
-        screenTitle: "TIER 2/3 EV RIDE DISCOVERY",
-        phase: "STEP 1: LOCATION & BOOKING",
-        tagline: "Card-based spatial interface designed for Bharat with minimal cognitive friction.",
+        stepNum: 1,
+        stepLabel: "RIDE MAP",
+        stepSub: "Spatial discovery",
+        tag: "STEP 1: DISCOVERY",
+        title: "TIER 2/3 EV RIDE DISCOVERY",
+        description: "Card-based spatial interface designed for Bharat with minimal cognitive friction.",
+        features: [
+          {
+            icon: MapPin,
+            title: "Location-First Pin Drop",
+            description: "Accurate landmark-based pickups for unmapped alleys."
+          },
+          {
+            icon: CreditCard,
+            title: "Dynamic Fare Calculator",
+            description: "Instant transparent fare breakdown before booking."
+          },
+          {
+            icon: Smartphone,
+            title: "Bilingual UI Support",
+            description: "Hindi & English voice-assisted navigation options."
+          }
+        ],
+        tags: [
+          { icon: MapPin, text: "EV Mobility", color: "#FFCC00" },
+          { icon: Users, text: "Design for Bharat", color: "#34C759" },
+          { icon: Smartphone, text: "Bilingual UI", color: "#32ADE6" }
+        ],
         image: "/images/myrik/screens/home.png",
-        annotation: {
-          title: "Simplified Map UI",
-          text: "Large touch targets tailored for emerging smartphone users.",
-          position: "top"
-        },
-        features: [
-          { title: "Location-First Pin Drop", desc: "Accurate landmark-based pickups for unmapped alleys." },
-          { title: "Dynamic Fare Calculator", desc: "Instant transparent fare breakdown before booking." },
-          { title: "Bilingual UI Support", desc: "Hindi & English voice-assisted navigation options." }
-        ],
-        tags: ["EV Mobility", "Design for Bharat", "Bilingual UI"]
+        callout: {
+          title: "SIMPLIFIED MAP UI",
+          desc: "Large touch targets tailored for emerging smartphone users across India."
+        }
       },
       {
-        stepNumber: "02",
-        tabLabel: "Upfront Fare",
-        icon: CreditCard,
-        screenTitle: "TRANSPARENT UPFRONT FARES",
-        phase: "STEP 2: FARE & FLEET SELECTION",
-        tagline: "Zero-surge pricing with clear EV cost savings breakdowns before booking.",
+        stepNum: 2,
+        stepLabel: "UPFRONT FARE",
+        stepSub: "Zero-surge fares",
+        tag: "STEP 2: FARE ESTIMATE",
+        title: "TRANSPARENT UPFRONT FARES",
+        description: "Zero-surge pricing with clear EV cost savings breakdowns before booking.",
+        features: [
+          {
+            icon: Zap,
+            title: "Green Eco-Savings Meter",
+            description: "Visual CO2 emission reduction tally per ride."
+          },
+          {
+            icon: Shield,
+            title: "Fixed Price Lock",
+            description: "Fare never increases regardless of peak traffic."
+          },
+          {
+            icon: CreditCard,
+            title: "Flexible Cash & UPI",
+            description: "Supports digital QR and cash payments seamlessly."
+          }
+        ],
+        tags: [
+          { icon: Shield, text: "Zero-Surge", color: "#FFCC00" },
+          { icon: Zap, text: "CO2 Meter", color: "#34C759" },
+          { icon: CreditCard, text: "Cash & UPI", color: "#32ADE6" }
+        ],
         image: "/images/myrik/screens/booking.png",
-        annotation: {
-          title: "Zero-Surge Guarantee",
-          text: "Fixed predictable fares build long-term commuter trust.",
-          position: "middle"
-        },
-        features: [
-          { title: "Green Eco-Savings Meter", desc: "Visual CO2 emission reduction tally per ride." },
-          { title: "Fixed Price Lock", desc: "Fare never increases regardless of peak traffic." },
-          { title: "Flexible Cash & UPI", desc: "Supports digital QR and cash payments seamlessly." }
-        ],
-        tags: ["Zero-Surge", "CO2 Meter", "Cash & UPI"]
+        callout: {
+          title: "ZERO-SURGE GUARANTEE",
+          desc: "Fixed predictable fares build long-term commuter trust and transparency."
+        }
       },
       {
-        stepNumber: "03",
-        tabLabel: "Matching",
-        icon: Zap,
-        screenTitle: "RAPID DRIVER MATCHING",
-        phase: "STEP 3: SMART DISPATCH",
-        tagline: "Fast nearest-driver dispatch algorithm reducing average wait times by 40%.",
+        stepNum: 3,
+        stepLabel: "MATCHING",
+        stepSub: "Rapid dispatch",
+        tag: "STEP 3: SMART DISPATCH",
+        title: "RAPID DRIVER MATCHING",
+        description: "Fast nearest-driver dispatch algorithm reducing average wait times by 40%.",
+        features: [
+          {
+            icon: Zap,
+            title: "Pulse Matching Radar",
+            description: "Visual feedback keeping users engaged during search."
+          },
+          {
+            icon: Clock,
+            title: "ETA Confidence Score",
+            description: "High-accuracy pickup countdown timer."
+          },
+          {
+            icon: Shield,
+            title: "Cancel Without Penalty",
+            description: "Zero cancellation fees within 2 minutes."
+          }
+        ],
+        tags: [
+          { icon: Zap, text: "40% Faster", color: "#FFCC00" },
+          { icon: Clock, text: "Live Radar", color: "#34C759" },
+          { icon: Shield, text: "Zero Penalty", color: "#32ADE6" }
+        ],
         image: "/images/myrik/screens/searching.png",
-        annotation: {
-          title: "Rapid Dispatch",
-          text: "Algorithmic clustering pairs nearest EV drivers in seconds.",
-          position: "bottom"
-        },
-        features: [
-          { title: "Pulse Matching Radar", desc: "Visual feedback keeping users engaged during search." },
-          { title: "ETA Confidence Score", desc: "High-accuracy pickup countdown timer." },
-          { title: "Cancel Without Penalty", desc: "Zero cancellation fees within 2 minutes." }
-        ],
-        tags: ["40% Faster", "Live Radar", "Zero Penalty"]
+        callout: {
+          title: "RAPID DISPATCH",
+          desc: "Algorithmic clustering pairs nearest EV drivers in seconds."
+        }
       },
       {
-        stepNumber: "04",
-        tabLabel: "Live Route",
-        icon: QrCode,
-        screenTitle: "LIVE GPS ROUTE & SAFETY",
-        phase: "STEP 4: ACTIVE RIDE & SAFETY",
-        tagline: "Turn-by-turn route visualization with 1-tap live location sharing for family.",
-        image: "/images/myrik/screens/tracking.png",
-        annotation: {
-          title: "Safety Shield",
-          text: "Live route sharing and 24/7 SOS helpline integration.",
-          position: "middle"
-        },
+        stepNum: 4,
+        stepLabel: "LIVE ROUTE",
+        stepSub: "Safety & GPS",
+        tag: "STEP 4: LIVE ROUTE",
+        title: "LIVE GPS ROUTE & SAFETY",
+        description: "Turn-by-turn route visualization with 1-tap live location sharing for family.",
         features: [
-          { title: "Live Turn-by-Turn GPS", desc: "High-frequency position updates along verified route." },
-          { title: "Emergency Safety Shield", desc: "1-tap SMS location broadcast to emergency contacts." },
-          { title: "Direct Driver Chat", desc: "Quick canned audio messages for pickup coordination." }
+          {
+            icon: MapPin,
+            title: "Live Turn-by-Turn GPS",
+            description: "High-frequency position updates along verified route."
+          },
+          {
+            icon: Shield,
+            title: "Emergency Safety Shield",
+            description: "1-tap SMS location broadcast to emergency contacts."
+          },
+          {
+            icon: Smartphone,
+            title: "Direct Driver Audio Chat",
+            description: "Quick canned audio messages for pickup coordination."
+          }
         ],
-        tags: ["Safety Shield", "Live GPS", "Family Sharing"]
+        tags: [
+          { icon: Shield, text: "Safety Shield", color: "#FFCC00" },
+          { icon: MapPin, text: "Live GPS", color: "#34C759" },
+          { icon: Users, text: "Family Sharing", color: "#32ADE6" }
+        ],
+        image: "/images/myrik/screens/tracking.png",
+        callout: {
+          title: "SAFETY FIRST",
+          desc: "Built-in SOS with automatic location sharing to emergency contacts."
+        }
       }
     ]
   }
 ];
 
 export default function Journey() {
-  const [activeProjectIndex, setActiveProjectIndex] = useState(0);
-  const [activeStep, setActiveStep] = useState(0);
+  const [activeProjectIdx, setActiveProjectIdx] = useState(0);
+  const [activeStepIdx, setActiveStepIdx] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [direction, setDirection] = useState(1);
 
-  const activeProject = projectsData[activeProjectIndex];
-  const prototypePages = activeProject.screens;
-
-  const selectProject = (idx) => {
-    setActiveProjectIndex(idx);
-    setActiveStep(0);
-    setDirection(1);
-  };
-
-  const goToStep = useCallback((newIndex) => {
-    setDirection(newIndex > activeStep ? 1 : -1);
-    setActiveStep(newIndex);
-  }, [activeStep]);
+  const currentProject = projects[activeProjectIdx];
+  const currentStep = currentProject.steps[activeStepIdx];
 
   const handleNext = useCallback(() => {
-    setDirection(1);
-    setActiveStep((prev) => (prev + 1) % prototypePages.length);
-  }, [prototypePages.length]);
+    setActiveStepIdx((prev) => (prev + 1) % currentProject.steps.length);
+  }, [currentProject.steps.length]);
 
   const handlePrev = useCallback(() => {
-    setDirection(-1);
-    setActiveStep((prev) => (prev - 1 + prototypePages.length) % prototypePages.length);
-  }, [prototypePages.length]);
+    setActiveStepIdx((prev) => (prev - 1 + currentProject.steps.length) % currentProject.steps.length);
+  }, [currentProject.steps.length]);
 
-  // Optional Auto-play
-  useEffect(() => {
-    if (!isPlaying) return;
-    const timer = setInterval(() => {
-      handleNext();
-    }, 4000);
-    return () => clearInterval(timer);
-  }, [isPlaying, handleNext]);
-
-  const current = prototypePages[activeStep];
-
-  const pageVariants = {
-    enter: (dir) => ({
-      x: dir > 0 ? 30 : -30,
-      opacity: 0,
-      scale: 0.97
-    }),
-    center: {
-      x: 0,
-      opacity: 1,
-      scale: 1,
-      transition: { duration: 0.35, ease: [0.22, 1, 0.36, 1] }
-    },
-    exit: (dir) => ({
-      x: dir > 0 ? -30 : 30,
-      opacity: 0,
-      scale: 0.97,
-      transition: { duration: 0.25, ease: "easeIn" }
-    })
+  const handleProjectSwitch = (idx) => {
+    setActiveProjectIdx(idx);
+    setActiveStepIdx(0);
   };
 
+  // Autoplay functionality
+  useEffect(() => {
+    if (!isPlaying) return;
+    const interval = setInterval(() => {
+      handleNext();
+    }, 3800);
+    return () => clearInterval(interval);
+  }, [isPlaying, handleNext]);
+
   return (
-    <section className={styles.section} id="journey">
+    <section className={styles.journeySection} id="journey">
       <div className={styles.container}>
-        {/* ═══ SECTION HEADER ═══ */}
-        <motion.div
+        {/* Top Header */}
+        <motion.div 
           className={styles.header}
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          variants={textVariants.headerEntrance}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
         >
           <div className={styles.headerTop}>
-            <span className={styles.sectionNumber}>04.</span>
-            <span className={styles.headerBadge}>{activeProject.badge}</span>
+            <span className={styles.sectionNumber}>4.</span>
+            <h2 className={styles.mainTitle}>4-PAGE INTERACTIVE PROTOTYPES</h2>
           </div>
-          <h2 className={styles.title}>4-PAGE INTERACTIVE PROTOTYPES</h2>
           <p className={styles.subtitle}>
             Switch projects below and click through the 4-step mobile UI flows.
           </p>
         </motion.div>
 
-        {/* ═══ MAIN PROTOTYPE CONTAINER CARD ═══ */}
-        <motion.div
-          className={styles.card}
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          {/* Top Bar: Project Switcher Tabs */}
-          <div className={styles.projectSwitcher}>
-            {projectsData.map((proj, idx) => {
-              const ProjIcon = proj.icon;
-              const isSelected = activeProjectIndex === idx;
+        {/* The Enclosing Comic Showcase Panel Box */}
+        <div className={styles.showcaseBox}>
+          {/* Project Switcher Bar */}
+          <div className={styles.projectTabsRow}>
+            {projects.map((proj, idx) => {
+              const Icon = proj.icon;
+              const isActive = activeProjectIdx === idx;
               return (
                 <button
                   key={proj.id}
                   type="button"
-                  onClick={() => selectProject(idx)}
-                  className={`${styles.projTab} ${isSelected ? styles.projTabActive : ""}`}
+                  onClick={() => handleProjectSwitch(idx)}
+                  className={`${styles.projectTab} ${isActive ? styles.projectTabActive : ""}`}
                 >
-                  <ProjIcon size={14} className={styles.projTabIcon} />
-                  <span>{proj.title}</span>
+                  <Icon size={16} className={styles.tabIcon} />
+                  <span>{proj.name}</span>
                 </button>
               );
             })}
           </div>
 
-          {/* Step Navigation Tabs */}
-          <div className={styles.stepTabs}>
-            {prototypePages.map((page, index) => {
-              const Icon = page.icon;
-              const isActive = activeStep === index;
+          {/* Thin Divider Line */}
+          <div className={styles.horizontalDivider} />
+
+          {/* Stepper Navigation Progress Bar */}
+          <div className={styles.stepperBar}>
+            {currentProject.steps.map((step, idx) => {
+              const isActive = activeStepIdx === idx;
               return (
-                <button
-                  key={page.stepNumber}
-                  className={`${styles.stepTab} ${isActive ? styles.stepTabActive : ""}`}
-                  onClick={() => goToStep(index)}
-                  type="button"
-                >
-                  <span className={styles.stepTabNum}>{page.stepNumber}</span>
-                  <Icon size={13} className={styles.stepTabIcon} />
-                  <span className={styles.stepTabLabel}>{page.tabLabel}</span>
-                  {isActive && (
-                    <motion.div
-                      layoutId="activeTabGlow"
-                      className={styles.stepTabIndicator}
-                      transition={{ type: "spring", stiffness: 350, damping: 30 }}
-                    />
+                <div key={idx} className={styles.stepperItemWrap}>
+                  <button
+                    type="button"
+                    onClick={() => setActiveStepIdx(idx)}
+                    className={`${styles.stepperItem} ${isActive ? styles.stepperActive : ""}`}
+                  >
+                    <div className={styles.stepNumberCircle}>
+                      {step.stepNum}
+                    </div>
+                    <div className={styles.stepTextGroup}>
+                      <span className={styles.stepTitleText}>{step.stepLabel}</span>
+                      <span className={styles.stepSubText}>{step.stepSub}</span>
+                    </div>
+                  </button>
+
+                  {idx < currentProject.steps.length - 1 && (
+                    <span className={styles.chevronDivider}>&gt;</span>
                   )}
-                </button>
+                </div>
               );
             })}
           </div>
 
-          {/* Card Content: 2-Column Responsive Layout */}
-          <div className={styles.cardContent}>
-            {/* ─── LEFT COLUMN: UX Insights & Features ─── */}
+          {/* Thin Divider Line */}
+          <div className={styles.horizontalDivider} />
+
+          {/* Main 2-Column Showcase Area */}
+          <div className={styles.showcaseGrid}>
+            {/* LEFT COLUMN: UX Highlights & Features */}
             <div className={styles.leftColumn}>
-              <div className={styles.stepMetaRow}>
-                <span className={styles.phaseBadge}>{current.phase}</span>
-                <div className={styles.roleTag}>{activeProject.category}</div>
-              </div>
-
-              <AnimatePresence mode="wait" custom={direction}>
+              <AnimatePresence mode="wait">
                 <motion.div
-                  key={`${activeProject.id}-${activeStep}`}
-                  custom={direction}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.3 }}
-                  className={styles.textDetails}
+                  key={`${activeProjectIdx}-${activeStepIdx}-content`}
+                  variants={textVariants.stepContentSwitch}
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                  className={styles.stepDetailsWrap}
                 >
-                  <h3 className={styles.projectTitle}>{current.screenTitle}</h3>
-                  <p className={styles.projectDesc}>{current.tagline}</p>
-
-                  <div className={styles.featuresList}>
-                    {current.features.map((feat, idx) => (
-                      <div key={idx} className={styles.featureItem}>
-                        <CheckCircle2 size={15} className={styles.featureCheck} />
-                        <div>
-                          <strong className={styles.featureTitle}>{feat.title}: </strong>
-                          <span className={styles.featureDesc}>{feat.desc}</span>
-                        </div>
-                      </div>
-                    ))}
+                  {/* Step Pill */}
+                  <div className={styles.stepTagPill}>
+                    {currentStep.tag}
                   </div>
 
-                  {/* Pills / Tags */}
+                  {/* Main Screen Title */}
+                  <h3 className={styles.screenHeading}>
+                    {currentStep.title}
+                  </h3>
+
+                  {/* Subtitle / Paragraph */}
+                  <p className={styles.screenDescription}>
+                    {currentStep.description}
+                  </p>
+
+                  {/* Divider Line */}
+                  <div className={styles.contentDivider} />
+
+                  {/* 3 Feature Bullets with Yellow Circle Badges */}
+                  <div className={styles.featuresList}>
+                    {currentStep.features.map((feat, fIdx) => {
+                      const FeatIcon = feat.icon;
+                      return (
+                        <div key={fIdx} className={styles.featureRow}>
+                          <div className={styles.yellowIconBadge}>
+                            <FeatIcon size={18} strokeWidth={2.4} />
+                          </div>
+                          <div className={styles.featureCopy}>
+                            <h4 className={styles.featureTitle}>{feat.title}</h4>
+                            <p className={styles.featureDesc}>{feat.description}</p>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+
+                  {/* Bottom Tags */}
                   <div className={styles.tagsRow}>
-                    {current.tags.map((tag, idx) => (
-                      <span key={idx} className={styles.tagPill}>
-                        <Zap size={11} className={styles.tagIcon} />
-                        {tag}
-                      </span>
-                    ))}
+                    {currentStep.tags.map((tag, tIdx) => {
+                      const TagIcon = tag.icon;
+                      return (
+                        <div key={tIdx} className={styles.tagPill}>
+                          <TagIcon size={13} style={{ color: tag.color }} />
+                          <span>{tag.text}</span>
+                        </div>
+                      );
+                    })}
                   </div>
                 </motion.div>
               </AnimatePresence>
 
-              {/* Bottom Actions & Controls */}
-              <div className={styles.controlBar}>
-                <div className={styles.navButtons}>
-                  <button 
-                    onClick={handlePrev} 
-                    className={styles.ctrlBtn}
-                    aria-label="Previous Screen"
+              {/* Bottom Controls Bar */}
+              <div className={styles.controlsBar}>
+                <div className={styles.navGroup}>
+                  <button
+                    type="button"
+                    onClick={handlePrev}
+                    disabled={activeStepIdx === 0}
+                    className={styles.prevButton}
                   >
                     <ChevronLeft size={16} />
-                    <span>Prev</span>
+                    <span>PREV</span>
                   </button>
-                  <button 
-                    onClick={handleNext} 
-                    className={`${styles.ctrlBtn} ${styles.ctrlBtnPrimary}`}
-                    aria-label="Next Screen"
+
+                  <button
+                    type="button"
+                    onClick={handleNext}
+                    className={styles.nextButton}
                   >
-                    <span>Next Step</span>
+                    <span>NEXT STEP</span>
                     <ChevronRight size={16} />
                   </button>
+
                   <button
+                    type="button"
                     onClick={() => setIsPlaying(!isPlaying)}
-                    className={`${styles.ctrlBtn} ${isPlaying ? styles.ctrlBtnActive : ""}`}
-                    title={isPlaying ? "Pause Flow" : "Auto-Play Flow"}
+                    className={`${styles.playButton} ${isPlaying ? styles.playButtonActive : ""}`}
+                    title={isPlaying ? "Pause autoplay" : "Auto play steps"}
                   >
                     {isPlaying ? <Pause size={14} /> : <Play size={14} />}
                   </button>
                 </div>
 
-                <Link href={activeProject.caseStudyUrl} className={styles.caseStudyLink}>
-                  <span>Full Case Study</span>
-                  <ExternalLink size={13} />
+                <Link
+                  href={`/work/${currentProject.id}`}
+                  className={styles.fullCaseStudyLink}
+                >
+                  <span>FULL CASE STUDY</span>
+                  <ExternalLink size={14} />
                 </Link>
               </div>
             </div>
 
-            {/* ─── RIGHT COLUMN: Miniature Interactive Phone Device Frame ─── */}
+            {/* RIGHT COLUMN: Modern Phone Mockup + Floating Comic Callout */}
             <div className={styles.rightColumn}>
-              <div className={styles.phoneMockupContainer}>
-                <div className={styles.phoneFrame} onClick={handleNext} title="Click to advance to next prototype screen">
-                  {/* Miniature Dynamic Island Notch */}
-                  <div className={styles.dynamicIsland}>
-                    <div className={styles.cameraLens} />
-                    <div className={styles.speaker} />
+              <div className={styles.phoneAndCalloutWrapper}>
+                {/* iPhone Mockup Frame */}
+                <div
+                  className={styles.phoneDevice}
+                  onClick={handleNext}
+                  title="Click phone to go to next step"
+                >
+                  {/* Dynamic Island Notch */}
+                  <div className={styles.dynamicIslandPill}>
+                    <div className={styles.islandCamera} />
                   </div>
 
-                  {/* Active Screen View — 100% uncropped */}
-                  <div className={styles.screenViewport}>
-                    <AnimatePresence mode="wait" custom={direction}>
+                  {/* Screen Viewport */}
+                  <div className={styles.phoneScreen}>
+                    <AnimatePresence mode="wait">
                       <motion.div
-                        key={`${activeProject.id}-${activeStep}`}
-                        custom={direction}
-                        variants={pageVariants}
-                        initial="enter"
-                        animate="center"
-                        exit="exit"
+                        key={`${activeProjectIdx}-${activeStepIdx}-phone`}
+                        initial={{ opacity: 0, scale: 0.98 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 1.02 }}
+                        transition={{ duration: 0.28, ease: "easeOut" }}
                         className={styles.screenImageWrapper}
                       >
                         <Image
-                          src={getOptimizedUrl(current.image, { thumbnail: true })}
-                          alt={`${activeProject.title} - ${current.screenTitle}`}
+                          src={getOptimizedUrl(currentStep.image, { thumbnail: true })}
+                          alt={currentStep.title}
                           fill
-                          sizes="(max-width: 768px) 180px, 220px"
-                          className={styles.screenImage}
-                          priority={true}
+                          priority
                           unoptimized
+                          sizes="(max-width: 768px) 260px, 320px"
+                          className={styles.screenImg}
                         />
                       </motion.div>
                     </AnimatePresence>
                   </div>
 
-                  {/* Miniature Interactive Hotspot Indicator */}
-                  <div className={styles.tapIndicator}>
-                    <span className={styles.tapText}>Tap Next →</span>
-                  </div>
-
-                  {/* Phone Home Indicator Bar */}
-                  <div className={styles.homeBar} />
+                  {/* Home Indicator Bar */}
+                  <div className={styles.homeIndicator} />
                 </div>
 
-                {/* Floating UX Annotation */}
-                <motion.div
-                  key={`anno-${activeProject.id}-${activeStep}`}
-                  className={`${styles.floatingAnnotation} ${styles[current.annotation.position]}`}
-                  initial={{ opacity: 0, x: 15, scale: 0.92 }}
-                  animate={{ opacity: 1, x: 0, scale: 1 }}
-                  transition={{ duration: 0.3, delay: 0.1 }}
-                >
-                  <div className={styles.annoHeader}>
-                    <Sparkles size={12} className={styles.annoSparkle} />
-                    <strong>{current.annotation.title}</strong>
-                  </div>
-                  <p className={styles.annoBody}>{current.annotation.text}</p>
-                </motion.div>
+                {/* Comic Callout Box on the Right */}
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={`${activeProjectIdx}-${activeStepIdx}-callout`}
+                    initial={{ opacity: 0, scale: 0.9, y: 10 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.9, y: -10 }}
+                    transition={{ duration: 0.3 }}
+                    className={styles.comicCalloutCard}
+                  >
+                    {/* Top Left Sparkle Star */}
+                    <svg className={styles.sparkleStar} viewBox="0 0 24 24" width="20" height="20">
+                      <path
+                        d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5L12 0Z"
+                        fill="#FFCC00"
+                        stroke="#000"
+                        strokeWidth="1.5"
+                      />
+                    </svg>
+
+                    {/* Top Right Action Mark Lines */}
+                    <div className={styles.actionLines}>
+                      <span className={styles.actionLine1} />
+                      <span className={styles.actionLine2} />
+                      <span className={styles.actionLine3} />
+                    </div>
+
+                    <h4 className={styles.calloutHeading}>
+                      {currentStep.callout.title}
+                    </h4>
+                    <p className={styles.calloutBody}>
+                      {currentStep.callout.desc}
+                    </p>
+
+                    {/* Hand-drawn Curly Arrow pointing towards Phone */}
+                    <svg
+                      className={styles.curlyArrowSvg}
+                      viewBox="0 0 80 50"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M65 8 C 45 42, 25 45, 8 28"
+                        stroke="#FFFFFF"
+                        strokeWidth="2.5"
+                        strokeLinecap="round"
+                        strokeDasharray="4 2"
+                      />
+                      <path
+                        d="M14 24 L 6 28 L 12 36"
+                        stroke="#FFFFFF"
+                        strokeWidth="2.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </motion.div>
+                </AnimatePresence>
               </div>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
 }
-
-

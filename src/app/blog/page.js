@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { textVariants } from "../../lib/animationPresets";
 import styles from "./page.module.css";
 import ContactCTA from "../../components/home/ContactCTA/ContactCTA";
 import postsData from "../../data/posts.json";
@@ -22,9 +23,9 @@ export default function Blog() {
             <div className={styles.container}>
                 <motion.div
                     className={styles.header}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    variants={textVariants.headerEntrance}
+                    initial="hidden"
+                    animate="visible"
                 >
                     <div className={styles.issueBanner}>
                         <span className={styles.issueLabel}>ISSUE</span>

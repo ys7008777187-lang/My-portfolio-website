@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { textVariants } from "../../lib/animationPresets";
 import styles from "./page.module.css";
 import { Mail, MapPin, Phone, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
 
@@ -55,9 +56,9 @@ export default function Contact() {
                 <div className={styles.grid}>
                     <motion.div
                         className={styles.info}
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.4 }}
+                        variants={textVariants.headerEntrance}
+                        initial="hidden"
+                        animate="visible"
                     >
                         <div className={styles.issueBanner}>
                             <span className={styles.issueLabel}>ISSUE</span>
@@ -91,7 +92,7 @@ export default function Contact() {
                                 <Phone className={styles.icon} />
                                 <div className={styles.detailText}>
                                     <span className={styles.label}>Phone</span>
-                                    <a href="tel:+917032690291" className={styles.value}>+91 7032690291</a>
+                                    <a href="tel:+917008777187" className={styles.value}>+91 7008777187</a>
                                 </div>
                             </div>
                         </div>

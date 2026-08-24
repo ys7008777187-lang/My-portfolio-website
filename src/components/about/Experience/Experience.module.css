@@ -263,7 +263,7 @@
     text-align: center;
     line-height: 1.1;
     z-index: 2;
-    font-family: var(--font-anton, sans-serif);
+    font-family: var(--font-bangers, cursive);
     letter-spacing: 0.05em;
     text-transform: uppercase;
 }

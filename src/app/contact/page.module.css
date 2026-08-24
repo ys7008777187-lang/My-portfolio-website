@@ -21,15 +21,15 @@
 }
 
 .title {
-    font-family: var(--font-bangers, cursive);
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    color: var(--color-text-primary);
+    font-family: var(--font-bangers), cursive;
+    font-size: clamp(2.8rem, 5.5vw, 4.5rem);
+    color: #FFFFFF;
     margin-bottom: 1.5rem;
-    line-height: 1.1;
+    line-height: 1.05;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    -webkit-text-stroke: 1px var(--color-comic-border);
-    text-shadow: 3px 3px 0px var(--color-comic-border);
+    text-shadow: 4px 4px 0px var(--color-comic-border, #000000);
+    font-style: normal;
 }
 
 .issueBanner {

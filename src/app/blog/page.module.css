@@ -61,15 +61,15 @@
 }
 
 .title {
-    font-family: var(--font-bangers), cursive;
-    font-size: clamp(3rem, 6vw, 5rem);
-    color: var(--color-bg-primary);
-    -webkit-text-stroke: 2px var(--color-comic-border);
-    text-shadow: 4px 4px 0px var(--color-comic-border);
-    letter-spacing: 0.05em;
+    font-family: var(--font-bangers, cursive);
+    font-size: clamp(3.5rem, 8vw, 6.5rem);
+    color: #FFFFFF;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
+    text-shadow: 4px 4px 0px var(--color-comic-border, #000000);
     line-height: 1;
     margin: 0;
+    display: inline-block;
 }
 
 .badge {

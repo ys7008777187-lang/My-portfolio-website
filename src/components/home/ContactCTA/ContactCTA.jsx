@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { textVariants } from "../../../lib/animationPresets";
 import { 
   ArrowRight, 
   Mail, 
@@ -35,10 +36,10 @@ export default function ContactCTA() {
         {/* ═══ SECTION HEADER ═══ */}
         <motion.div 
           className={styles.header}
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          variants={textVariants.headerEntrance}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
         >
           <div className={styles.headerTop}>
             <span className={styles.sectionNumber}>05.</span>
@@ -152,7 +153,7 @@ export default function ContactCTA() {
             {/* Direct Connect Quick Links */}
             <div className={styles.quickLinksGrid}>
               <a 
-                href="https://linkedin.com/in/yourprofile" 
+                href="https://www.linkedin.com/in/yashsrivastavaa035/" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className={styles.socialPill}
@@ -161,7 +162,7 @@ export default function ContactCTA() {
                 <span>LinkedIn</span>
               </a>
               <a 
-                href="https://wa.me/917032690291" 
+                href="https://wa.me/917008777187" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className={styles.socialPill}

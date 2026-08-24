@@ -1,4 +1,4 @@
-import { Inter, Bangers, Comic_Neue, Anton, Permanent_Marker } from "next/font/google";
+import { Inter, Bangers, Comic_Neue, Permanent_Marker } from "next/font/google";
 import "./globals.css";
 import Navbar from "../components/ui/Navbar/Navbar";
 import Footer from "../components/ui/Footer/Footer";
@@ -24,13 +24,6 @@ const comicNeue = Comic_Neue({
   variable: "--font-comic-neue",
   subsets: ["latin"],
   weight: ["300", "400", "700"],
-  display: "swap",
-});
-
-const anton = Anton({
-  variable: "--font-anton",
-  subsets: ["latin"],
-  weight: "400",
   display: "swap",
 });
 
@@ -139,7 +132,7 @@ export default function RootLayout({ children }) {
         <link rel="preload" as="video" href="/videos/hero-bg.mp4" type="video/mp4" />
         <link rel="dns-prefetch" href="https://cdn.yashsrivastava.co.in" />
       </head>
-      <body className={`${inter.variable} ${bangers.variable} ${comicNeue.variable} ${anton.variable} ${permanentMarker.variable}`} suppressHydrationWarning>
+      <body className={`${inter.variable} ${bangers.variable} ${comicNeue.variable} ${permanentMarker.variable}`} suppressHydrationWarning>
         <ThemeProvider>
           <FlowingRibbon />
           <Navbar />

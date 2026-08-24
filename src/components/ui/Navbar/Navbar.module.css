@@ -82,10 +82,10 @@
 }
 
 .logoText {
-    font-family: var(--font-anton), var(--font-bangers), 'Impact', sans-serif;
-    font-size: 1.35rem;
-    font-weight: 900;
-    letter-spacing: 1px;
+    font-family: var(--font-bangers, cursive);
+    font-size: 1.45rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
     color: var(--color-comic-yellow);
     text-shadow: 2px 2px 0 var(--color-comic-border);
     transform: skewX(-4deg);

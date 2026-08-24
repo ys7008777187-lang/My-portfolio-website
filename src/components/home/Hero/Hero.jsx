@@ -375,7 +375,7 @@ export default function Hero() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 1.5 }}
             >
-                <a href="https://www.linkedin.com/in/yash-srivastava-7008777187/" target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="LinkedIn">
+                <a href="https://www.linkedin.com/in/yashsrivastavaa035/" target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="LinkedIn">
                     <Linkedin size={20} />
                 </a>
                 <a href="https://www.instagram.com/yash_srivastava_/" target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="Instagram">

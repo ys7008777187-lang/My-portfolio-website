@@ -15,11 +15,10 @@ const footerLinks = {
         { href: "/contact", label: "Contact" },
     ],
     social: [
-        { href: "https://linkedin.com/in/yourprofile", label: "LinkedIn", icon: Linkedin },
-        { href: "https://instagram.com/yourprofile", label: "Instagram", icon: Instagram },
-        { href: "https://facebook.com/yourprofile", label: "Facebook", icon: Facebook },
-        { href: "mailto:Yashsrivastava7008@gmail.com", label: "Gmail", icon: Mail },
-        { href: "https://wa.me/919876543210", label: "WhatsApp", icon: MessageCircle },
+        { href: "https://www.linkedin.com/in/yashsrivastavaa035/", label: "LinkedIn", icon: Linkedin },
+        { href: "https://www.instagram.com/yash_srivastava_/", label: "Instagram", icon: Instagram },
+        { href: "mailto:yashsrivastava7008@gmail.com", label: "Gmail", icon: Mail },
+        { href: "https://wa.me/917008777187", label: "WhatsApp", icon: MessageCircle },
     ]
 };
 

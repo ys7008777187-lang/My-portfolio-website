@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { textVariants, COMIC_EASE, COMIC_SPRING } from "../../../lib/animationPresets";
 import styles from "./Profile.module.css";
 import { MapPin, Mail, Briefcase } from "lucide-react";
 import profileData from "../../../data/profile.json";
@@ -35,31 +36,16 @@ const stats = [
 ];
 
 const comicEntrance = {
-    hidden: { opacity: 0, scale: 0.5, rotate: -8 },
+    hidden: { opacity: 0, scale: 0.7, rotate: -6 },
     visible: (i) => ({
         opacity: 1, scale: 1, rotate: 0,
-        transition: { delay: 0.3 + i * 0.15, duration: 0.5, ease: [0.34, 1.56, 0.64, 1] }
+        transition: { delay: 0.25 + i * 0.12, ...COMIC_SPRING }
     })
 };
 
-const textStagger = {
-    hidden: { opacity: 0 },
-    visible: { 
-        opacity: 1, 
-        transition: { 
-            staggerChildren: 0.15,
-            delayChildren: 0.2
-        } 
-    }
-};
+const textStagger = textVariants.staggerContainer;
 
-const textFadeIn = {
-    hidden: { opacity: 0, x: -40 },
-    visible: { 
-        opacity: 1, x: 0, 
-        transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } 
-    }
-};
+const textFadeIn = textVariants.staggerItem;
 
 export default function Profile() {
     const [profile, setProfile] = useState(null);
