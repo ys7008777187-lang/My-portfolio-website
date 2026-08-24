@@ -3,7 +3,7 @@
 
 const config = {
     // Use environment variable if available, otherwise use production URL
-    dashboardApi: process.env.NEXT_PUBLIC_DASHBOARD_API || 'https://yash-dashboard.netlify.app',
+    dashboardApi: process.env.NEXT_PUBLIC_DASHBOARD_API || '',
 
     // For local development, uncomment this line:
     // dashboardApi: 'http://localhost:3001',
