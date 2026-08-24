@@ -135,6 +135,9 @@ export default function RootLayout({ children }) {
         <script src="https://t.contentsquare.net/uxa/f9a941e68d4ba.js" async></script>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://cdn.yashsrivastava.co.in" />
+        <link rel="preload" as="video" href="/videos/hero-bg.mp4" type="video/mp4" />
+        <link rel="dns-prefetch" href="https://cdn.yashsrivastava.co.in" />
       </head>
       <body className={`${inter.variable} ${bangers.variable} ${comicNeue.variable} ${anton.variable} ${permanentMarker.variable}`} suppressHydrationWarning>
         <ThemeProvider>

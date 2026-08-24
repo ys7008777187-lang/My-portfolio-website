@@ -6,7 +6,7 @@ import Image from "next/image";
 import { ArrowRight, ArrowDown, Layers, Palette, Film } from "lucide-react";
 import styles from "./page.module.css";
 import ContactCTA from "../../components/home/ContactCTA/ContactCTA";
-import { getAssetUrl } from "../../lib/assetUrl";
+import { getAssetUrl, getOptimizedUrl } from "../../lib/assetUrl";
 
 const categories = [
     {
@@ -169,7 +169,7 @@ export default function Work() {
                                         {/* Image */}
                                         <div className={styles.panelImageWrap}>
                                             <img
-                                                src={getAssetUrl(cat.image)}
+                                                src={getOptimizedUrl(cat.image)}
                                                 alt={cat.title.replace(/\n/g, ' ')}
                                                 className={styles.panelImage}
                                                 loading="eager"

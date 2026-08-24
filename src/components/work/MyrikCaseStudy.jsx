@@ -7,7 +7,7 @@ import {
     AlertTriangle, Clock, Truck, Eye, Lightbulb, Layers, ArrowRight,
     MessageSquare, Search, Smartphone, Shield, RefreshCw, Star, Compass
 } from 'lucide-react';
-import { getAssetUrl } from "../../lib/assetUrl";
+import { getOptimizedUrl } from "../../lib/assetUrl";
 import { IMAGES } from "../../constants/images";
 import styles from "./MyrikCaseStudy.module.css";
 
@@ -63,10 +63,10 @@ export default function MyrikCaseStudy() {
                     className={styles.heroMockupWrapper}
                 >
                     <div className={`${styles.heroMockup} ${styles.mockupBack}`}>
-                        <img src={getAssetUrl(IMAGES.PROJECTS.MYRIK.SCREENS.HOME)} alt="Myrik Home Screen" />
+                        <img src={getOptimizedUrl(IMAGES.PROJECTS.MYRIK.SCREENS.HOME)} alt="Myrik Home Screen" />
                     </div>
                     <div className={`${styles.heroMockup} ${styles.mockupFront}`}>
-                        <img src={getAssetUrl(IMAGES.PROJECTS.MYRIK.SCREENS.SPLASH_NEW)} alt="Myrik Splash Screen" />
+                        <img src={getOptimizedUrl(IMAGES.PROJECTS.MYRIK.SCREENS.SPLASH_NEW)} alt="Myrik Splash Screen" />
                     </div>
                 </motion.div>
             </section>
@@ -322,7 +322,7 @@ export default function MyrikCaseStudy() {
                     <div className={styles.deliveryMockupGallery}>
                         <div className={styles.deliveryMockupItem}>
                             <div className={styles.deliveryPhone}>
-                                <img src={getAssetUrl(IMAGES.PROJECTS.MYRIK.SCREENS.ONBOARDING)} alt="Step 1: Welcome" />
+                                <img src={getOptimizedUrl(IMAGES.PROJECTS.MYRIK.SCREENS.ONBOARDING)} alt="Step 1: Welcome" />
                             </div>
                             <div className={styles.deliveryPhoneLabel}>01. WELCOME</div>
                             <p className={styles.flowDesc} style={{ maxWidth: '160px' }}>
@@ -334,7 +334,7 @@ export default function MyrikCaseStudy() {
 
                         <div className={styles.deliveryMockupItem}>
                             <div className={styles.deliveryPhone}>
-                                <img src={getAssetUrl(IMAGES.PROJECTS.MYRIK.SCREENS.LOGIN)} alt="Step 2: Phone Login" />
+                                <img src={getOptimizedUrl(IMAGES.PROJECTS.MYRIK.SCREENS.LOGIN)} alt="Step 2: Phone Login" />
                             </div>
                             <div className={styles.deliveryPhoneLabel}>02. PHONE LOGIN</div>
                             <p className={styles.flowDesc} style={{ maxWidth: '160px' }}>
@@ -346,7 +346,7 @@ export default function MyrikCaseStudy() {
 
                         <div className={styles.deliveryMockupItem}>
                             <div className={styles.deliveryPhone}>
-                                <img src={getAssetUrl(IMAGES.PROJECTS.MYRIK.SCREENS.VERIFICATION)} alt="Step 3: OTP" />
+                                <img src={getOptimizedUrl(IMAGES.PROJECTS.MYRIK.SCREENS.VERIFICATION)} alt="Step 3: OTP" />
                             </div>
                             <div className={styles.deliveryPhoneLabel}>03. OTP VERIFY</div>
                             <p className={styles.flowDesc} style={{ maxWidth: '160px' }}>
@@ -358,7 +358,7 @@ export default function MyrikCaseStudy() {
 
                         <div className={styles.deliveryMockupItem}>
                             <div className={styles.deliveryPhone}>
-                                <img src={getAssetUrl(IMAGES.PROJECTS.MYRIK.SCREENS.PERMISSIONS)} alt="Step 4: Permissions" />
+                                <img src={getOptimizedUrl(IMAGES.PROJECTS.MYRIK.SCREENS.PERMISSIONS)} alt="Step 4: Permissions" />
                             </div>
                             <div className={styles.deliveryPhoneLabel}>04. PERMISSIONS</div>
                             <p className={styles.flowDesc} style={{ maxWidth: '160px' }}>
@@ -370,7 +370,7 @@ export default function MyrikCaseStudy() {
 
                         <div className={styles.deliveryMockupItem}>
                             <div className={styles.deliveryPhone}>
-                                <img src={getAssetUrl(IMAGES.PROJECTS.MYRIK.SCREENS.HOME_MAP)} alt="Step 5: Ready to Ride" />
+                                <img src={getOptimizedUrl(IMAGES.PROJECTS.MYRIK.SCREENS.HOME_MAP)} alt="Step 5: Ready to Ride" />
                             </div>
                             <div className={styles.deliveryPhoneLabel}>05. READY TO RIDE</div>
                             <p className={styles.flowDesc} style={{ maxWidth: '160px' }}>
@@ -401,15 +401,15 @@ export default function MyrikCaseStudy() {
                         </div>
                         <div className={styles.mockupSideBySide} style={{ alignItems: 'center' }}>
                             <div className={styles.heroMockup} style={{ position: 'relative', width: '150px', height: '320px', transform: 'none', animation: 'none', border: '5px solid #1a1a1a', background: '#0a0a0a', margin: 0 }}>
-                                <img src={getAssetUrl(IMAGES.PROJECTS.MYRIK.SCREENS.BOOKING)} alt="Booking Screen" />
+                                <img src={getOptimizedUrl(IMAGES.PROJECTS.MYRIK.SCREENS.BOOKING)} alt="Booking Screen" />
                                 <div style={{ position: 'absolute', bottom: '-22px', left: 0, width: '100%', textAlign: 'center', fontSize: '8px', color: 'var(--color-text-muted)' }}>1. BOOKING</div>
                             </div>
                             <div className={styles.heroMockup} style={{ position: 'relative', width: '150px', height: '320px', transform: 'none', animation: 'none', border: '5px solid var(--color-accent)', background: '#111', margin: 0 }}>
-                                <img src={getAssetUrl(IMAGES.PROJECTS.MYRIK.SCREENS.SEARCHING)} alt="Searching State" />
+                                <img src={getOptimizedUrl(IMAGES.PROJECTS.MYRIK.SCREENS.SEARCHING)} alt="Searching State" />
                                 <div style={{ position: 'absolute', bottom: '-22px', left: 0, width: '100%', textAlign: 'center', fontSize: '8px', color: 'var(--color-accent)', fontWeight: 'bold' }}>2. MATCHING</div>
                             </div>
                             <div className={styles.heroMockup} style={{ position: 'relative', width: '150px', height: '320px', transform: 'none', animation: 'none', border: '5px solid #1a1a1a', background: '#0a0a0a', margin: 0 }}>
-                                <img src={getAssetUrl(IMAGES.PROJECTS.MYRIK.SCREENS.TRACKING)} alt="Tracking Screen" />
+                                <img src={getOptimizedUrl(IMAGES.PROJECTS.MYRIK.SCREENS.TRACKING)} alt="Tracking Screen" />
                                 <div style={{ position: 'absolute', bottom: '-22px', left: 0, width: '100%', textAlign: 'center', fontSize: '8px', color: 'var(--color-text-muted)' }}>3. TRACKING</div>
                             </div>
                         </div>
@@ -516,31 +516,31 @@ export default function MyrikCaseStudy() {
                     <div className={styles.deliveryMockupGallery}>
                         <div className={styles.deliveryMockupItem}>
                             <div className={styles.deliveryPhone}>
-                                <img src={getAssetUrl(IMAGES.PROJECTS.MYRIK.SCREENS.DELIVERY_WELCOME)} alt="Delivery Welcome" />
+                                <img src={getOptimizedUrl(IMAGES.PROJECTS.MYRIK.SCREENS.DELIVERY_WELCOME)} alt="Delivery Welcome" />
                             </div>
                             <span className={styles.deliveryPhoneLabel}>Welcome</span>
                         </div>
                         <div className={styles.deliveryMockupItem}>
                             <div className={styles.deliveryPhone}>
-                                <img src={getAssetUrl(IMAGES.PROJECTS.MYRIK.SCREENS.DELIVERY_PICKUP)} alt="Pickup & Drop" />
+                                <img src={getOptimizedUrl(IMAGES.PROJECTS.MYRIK.SCREENS.DELIVERY_PICKUP)} alt="Pickup & Drop" />
                             </div>
                             <span className={styles.deliveryPhoneLabel}>Book</span>
                         </div>
                         <div className={styles.deliveryMockupItem}>
                             <div className={styles.deliveryPhone}>
-                                <img src={getAssetUrl(IMAGES.PROJECTS.MYRIK.SCREENS.DELIVERY_SELECT_RIDE)} alt="Select Ride" />
+                                <img src={getOptimizedUrl(IMAGES.PROJECTS.MYRIK.SCREENS.DELIVERY_SELECT_RIDE)} alt="Select Ride" />
                             </div>
                             <span className={styles.deliveryPhoneLabel}>Match</span>
                         </div>
                         <div className={styles.deliveryMockupItem}>
                             <div className={styles.deliveryPhone}>
-                                <img src={getAssetUrl(IMAGES.PROJECTS.MYRIK.SCREENS.DELIVERY_TRACKING)} alt="Tracking" />
+                                <img src={getOptimizedUrl(IMAGES.PROJECTS.MYRIK.SCREENS.DELIVERY_TRACKING)} alt="Tracking" />
                             </div>
                             <span className={styles.deliveryPhoneLabel}>Track</span>
                         </div>
                         <div className={styles.deliveryMockupItem}>
                             <div className={styles.deliveryPhone}>
-                                <img src={getAssetUrl(IMAGES.PROJECTS.MYRIK.SCREENS.DELIVERY_ORDERS)} alt="Order History" />
+                                <img src={getOptimizedUrl(IMAGES.PROJECTS.MYRIK.SCREENS.DELIVERY_ORDERS)} alt="Order History" />
                             </div>
                             <span className={styles.deliveryPhoneLabel}>History</span>
                         </div>
@@ -567,7 +567,7 @@ export default function MyrikCaseStudy() {
                             <div className={styles.iterationSide}>
                                 <div className={styles.iterationLabel} style={{ color: '#f87171' }}>BEFORE</div>
                                 <div className={styles.deliveryPhone} style={{ width: '160px', height: '340px' }}>
-                                    <img src={getAssetUrl(IMAGES.PROJECTS.MYRIK.SCREENS.SPLASH_ORIGINAL)} alt="Original Splash Screen" />
+                                    <img src={getOptimizedUrl(IMAGES.PROJECTS.MYRIK.SCREENS.SPLASH_ORIGINAL)} alt="Original Splash Screen" />
                                 </div>
                                 <p className={styles.flowDesc}>Heavy illustration, slow load, unclear messaging</p>
                             </div>
@@ -577,7 +577,7 @@ export default function MyrikCaseStudy() {
                             <div className={styles.iterationSide}>
                                 <div className={styles.iterationLabel} style={{ color: 'var(--color-highlight)' }}>AFTER</div>
                                 <div className={styles.deliveryPhone} style={{ width: '160px', height: '340px' }}>
-                                    <img src={getAssetUrl("/images/myrik/screens/splash_new.png")} alt="Refined Splash Screen" />
+                                    <img src={getOptimizedUrl("/images/myrik/screens/splash_new.png")} alt="Refined Splash Screen" />
                                 </div>
                                 <p className={styles.flowDesc}>Clean branding, instant load, clear value prop</p>
                             </div>

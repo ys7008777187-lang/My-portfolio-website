@@ -235,8 +235,13 @@ button {
 }
 
 .section {
-  padding: clamp(4rem, 8vw, 6.5rem) 0;
+  padding: clamp(2rem, 6vh, 6.5rem) 0;
   width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 /* Comic Panel Card */
@@ -366,4 +371,19 @@ button {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-accent);
+}
+
+/* ─── Performance: Defer rendering of below-fold sections ─── */
+section:not(:first-of-type) {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 800px;
+}
+
+/* ─── Performance: Optimize image rendering ─── */
+img {
+  content-visibility: auto;
+}
+
+img[loading="lazy"] {
+  decoding: async;
 }

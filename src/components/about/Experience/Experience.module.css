@@ -3,15 +3,21 @@
 /* ═══════════════════════════════════════════════ */
 
 .section {
-    padding: clamp(4rem, 8vw, 6.5rem) 0;
+    padding: clamp(2rem, 6vh, 6.5rem) 0;
     position: relative;
     background-color: var(--color-bg-primary);
     overflow: hidden;
     z-index: 1;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .container {
-    max-width: 1200px;
+    width: 100%;
+    max-width: 1240px;
     margin: 0 auto;
     padding: 0 clamp(1rem, 4vw, 2rem);
     position: relative;
@@ -341,12 +347,14 @@
 /* ═══════════════════════════════════════════════ */
 .popupStage {
     perspective: 1500px;
+    padding: 16px;
+    max-width: 100vw;
 }
 
 .flipCard {
     position: relative;
-    width: 560px;
-    min-height: 480px;
+    width: min(720px, calc(100vw - 36px));
+    min-height: clamp(360px, 58vh, 480px);
     transform-style: preserve-3d;
     will-change: transform;
 }
@@ -424,132 +432,175 @@
 
 .popupCard {
     width: 100%;
-    min-height: 480px;
-    background-color: #fdfaf6; /* comic paper color */
-    background-image: radial-gradient(rgba(0,0,0,0.08) 1.5px, transparent 1.5px);
+    min-height: 100%;
+    max-height: 85vh;
+    background-color: #fdfbf7;
+    background-image: radial-gradient(rgba(0,0,0,0.06) 1.5px, transparent 1.5px);
     background-size: 8px 8px;
     border: var(--border-width, 3px) solid var(--color-comic-border);
     border-radius: 0px;
     position: relative;
-    overflow: hidden;
-    box-shadow: var(--shadow-xl, 12px 12px 0 var(--color-comic-border));
+    overflow-y: auto;
+    box-shadow: var(--shadow-xl, 10px 10px 0 var(--color-comic-border));
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header mission tape */
+.popupHeaderTape {
+    background: var(--color-comic-yellow);
+    border-bottom: 2.5px solid var(--color-comic-border);
+    padding: 7px 18px;
+    display: flex;
+    align-items: center;
+}
+
+.tapeText {
+    font-family: var(--font-bangers, cursive);
+    font-size: 0.84rem;
+    letter-spacing: 0.08em;
+    color: #000;
 }
 
 /* Close button */
 .closeBtn {
     position: absolute;
-    top: 16px;
-    right: 16px;
-    width: 36px;
-    height: 36px;
+    top: 5px;
+    right: 8px;
+    width: 32px;
+    height: 32px;
     border-radius: 0px;
-    border: var(--border-width, 3px) solid var(--color-comic-border);
-    background: var(--color-comic-yellow);
+    border: 2px solid var(--color-comic-border);
+    background: #fff;
     color: #111;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.15s ease;
     z-index: 10;
-    box-shadow: 3px 3px 0 var(--color-comic-border);
+    box-shadow: 2px 2px 0 var(--color-comic-border);
 }
 
 .closeBtn:hover {
     background: var(--color-comic-red);
-    transform: translate(-2px, -2px);
-    box-shadow: 5px 5px 0 var(--color-comic-border);
-}
-
-/* Accent bar at top */
-.popupAccent {
-    height: 16px;
-    width: 100%;
-    border-bottom: var(--border-width, 3px) solid var(--color-comic-border);
+    color: #fff;
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0 var(--color-comic-border);
 }
 
 /* Content */
 .popupContent {
-    padding: 32px 40px 40px;
+    padding: clamp(16px, 2.5vh, 26px) clamp(18px, 3vw, 32px);
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 12px;
 }
 
 .popupHeader {
     display: flex;
     align-items: flex-start;
-    gap: 16px;
+    gap: 14px;
 }
 
-.popupIcon {
-    font-size: 42px;
+.popupIconBox {
+    width: 48px;
+    height: 48px;
+    background: #fff;
+    border: 2px solid var(--color-comic-border);
+    box-shadow: 3px 3px 0 var(--color-comic-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
     flex-shrink: 0;
-    margin-top: 2px;
-    filter: drop-shadow(2px 2px 0px rgba(0,0,0,0.2));
+    transform: rotate(-2deg);
+}
+
+.popupTitleGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    flex: 1;
+}
+
+.companyRow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
 }
 
 .popupCompany {
-    font-size: 32px;
+    font-size: clamp(1.6rem, 2.6vw, 2.2rem);
     font-weight: 800;
-    line-height: 1.1;
+    line-height: 1.05;
     margin: 0;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    flex-wrap: wrap;
     font-family: var(--font-bangers, cursive);
-    letter-spacing: 0.05em;
+    letter-spacing: 0.04em;
     color: #111 !important;
-    text-shadow: 2px 2px 0px rgba(0,0,0,0.15);
 }
 
 .popupCurrentTag {
     display: inline-block;
-    padding: 2px 10px;
+    padding: 2px 8px;
     border-radius: 0px;
-    border: 2px solid var(--color-comic-border);
-    background: var(--color-comic-green);
-    font-size: 14px;
+    border: 1.5px solid var(--color-comic-border);
+    background: #22c55e;
+    font-size: 11px;
     font-weight: 800;
-    color: #111;
+    color: #fff;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    transform: rotate(-3deg) skewX(-5deg);
-    box-shadow: 2px 2px 0 var(--color-comic-border);
+    font-family: var(--font-bangers, cursive);
+    letter-spacing: 0.06em;
+    transform: rotate(-2deg);
+    box-shadow: 1.5px 1.5px 0 var(--color-comic-border);
 }
 
 .popupRole {
-    font-size: 18px;
-    color: #333;
-    margin: 8px 0 0;
-    font-family: var(--font-bangers, cursive);
-    letter-spacing: 0.04em;
+    font-size: 0.95rem;
+    color: var(--color-comic-red);
+    margin: 0;
+    font-family: var(--font-comic-neue, cursive);
+    font-weight: 700;
+    letter-spacing: 0.03em;
     text-transform: uppercase;
 }
 
 .popupMeta {
     display: flex;
-    gap: 20px;
+    gap: 8px;
     flex-wrap: wrap;
+    margin-top: 2px;
 }
 
-.popupMeta span {
-    display: flex;
+.metaChip {
+    display: inline-flex;
     align-items: center;
-    gap: 8px;
-    font-size: 15px;
+    gap: 5px;
+    background: #fff;
+    border: 1.5px solid var(--color-comic-border);
+    box-shadow: 1.5px 1.5px 0 var(--color-comic-border);
+    padding: 2px 8px;
+    font-family: var(--font-inter, sans-serif);
+    font-size: 0.76rem;
+    font-weight: 600;
     color: #444;
-    font-family: var(--font-comic-neue, cursive);
-    font-weight: 700;
-    letter-spacing: 0.05em;
 }
 
 .popupDivider {
-    height: var(--border-width, 3px);
+    height: 2px;
     width: 100%;
-    border-radius: 0px;
-    background: var(--color-comic-border) !important;
+    background: var(--color-comic-border);
+    opacity: 0.6;
+    margin: 2px 0;
+}
+
+.highlightsHeader {
+    font-family: var(--font-bangers, cursive);
+    font-size: 0.86rem;
+    color: #777;
+    letter-spacing: 0.06em;
 }
 
 .popupHighlights {
@@ -558,32 +609,34 @@
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 9px;
 }
 
 .popupHighlights li {
     display: flex;
     align-items: flex-start;
-    gap: 12px;
-    font-size: 16px;
-    color: #222;
-    line-height: 1.5;
-    font-family: var(--font-family, sans-serif);
-    font-weight: 600;
-    letter-spacing: 0.02em;
+    gap: 10px;
+    font-size: clamp(0.84rem, 1vw, 0.92rem);
+    color: #1a1a1a;
+    line-height: 1.48;
+    font-family: var(--font-inter, sans-serif);
+    font-weight: 500;
 }
 
 .bullet {
-    width: 14px;
-    height: 14px;
-    min-width: 14px;
+    width: 8px;
+    height: 8px;
+    min-width: 8px;
     border-radius: 0px;
-    border: 2px solid var(--color-comic-border);
-    margin-top: 4px;
-    opacity: 1;
+    border: 1.5px solid var(--color-comic-border);
+    margin-top: 5px;
     background: var(--color-comic-yellow);
     transform: rotate(45deg);
-    box-shadow: 2px 2px 0 var(--color-comic-border);
+    box-shadow: 1px 1px 0 var(--color-comic-border);
+}
+
+.bulletText {
+    flex: 1;
 }
 
 /* ═══════════════════════════════════════════════ */
@@ -601,20 +654,20 @@
     }
 
     .flipCard {
-        width: 340px;
-        min-height: 350px;
+        width: min(520px, calc(100vw - 32px));
+        min-height: 380px;
     }
 
     .popupContent {
-        padding: 22px 24px 24px;
+        padding: 16px 18px 20px;
     }
 
     .popupCompany {
-        font-size: 24px;
+        font-size: 1.6rem;
     }
 
     .popupHighlights li {
-        font-size: 14px;
+        font-size: 0.82rem;
     }
 }
 
@@ -630,11 +683,11 @@
     }
 
     .flipCard {
-        width: 300px;
-        min-height: 300px;
+        width: min(340px, calc(100vw - 24px));
+        min-height: 320px;
     }
 
     .popupContent {
-        padding: 18px 20px 20px;
+        padding: 14px 14px 18px;
     }
 }

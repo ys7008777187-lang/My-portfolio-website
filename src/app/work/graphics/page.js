@@ -6,7 +6,7 @@ import Image from "next/image";
 import { ArrowLeft, ArrowUpRight, X, ChevronDown } from "lucide-react";
 import ContactCTA from "../../../components/home/ContactCTA/ContactCTA";
 import CreativeBook from "../../../components/ui/CreativeBook/CreativeBook";
-import { getAssetUrl } from "../../../lib/assetUrl";
+import { getAssetUrl, getOptimizedUrl } from "../../../lib/assetUrl";
 import styles from "./page.module.css";
 
 const graphicsProjects = [
@@ -563,7 +563,7 @@ export default function GraphicsPage() {
                                     {/* Image */}
                                     <div className={styles.panelImageWrap}>
                                         <Image
-                                            src={getAssetUrl(project.image)}
+                                            src={getOptimizedUrl(project.image, { thumbnail: true })}
                                             alt={project.title}
                                             fill
                                             unoptimized
@@ -657,7 +657,7 @@ export default function GraphicsPage() {
                                                 {selectedProject.images.map((imgSrc, i) => (
                                                     <div key={i} className={styles.lightboxGalleryItem}>
                                                         <img
-                                                            src={getAssetUrl(imgSrc)}
+                                                            src={getOptimizedUrl(imgSrc)}
                                                             alt={`${selectedProject.title} ${i + 1}`}
                                                             className={styles.lightboxImage}
                                                             loading="lazy"
@@ -684,7 +684,7 @@ export default function GraphicsPage() {
                                 ) : (
                                     <div className={styles.lightboxSingleItem}>
                                         <Image
-                                            src={getAssetUrl(selectedProject.image)}
+                                            src={getOptimizedUrl(selectedProject.image)}
                                             alt={selectedProject.title}
                                             fill
                                             unoptimized

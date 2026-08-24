@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { ArrowLeft, Play, X } from "lucide-react";
 import ContactCTA from "../../../components/home/ContactCTA/ContactCTA";
-import { getAssetUrl } from "../../../lib/assetUrl";
+import { getAssetUrl, getOptimizedUrl } from "../../../lib/assetUrl";
 import styles from "./page.module.css";
 
 const videoProjects = [
@@ -151,7 +151,7 @@ export default function VideoEditsPage() {
                                     <div className={styles.panelImageWrap}>
                                         {project.thumbnail && project.thumbnail.endsWith('.mp4') ? (
                                             <video
-                                                src={getAssetUrl(project.thumbnail)}
+                                                src={getOptimizedUrl(project.thumbnail)}
                                                 autoPlay
                                                 loop
                                                 muted
@@ -167,7 +167,7 @@ export default function VideoEditsPage() {
                                             />
                                         ) : (
                                             <img
-                                                src={getAssetUrl(project.thumbnail)}
+                                                src={getOptimizedUrl(project.thumbnail)}
                                                 alt={project.title}
                                                 style={{
                                                     width: '100%',

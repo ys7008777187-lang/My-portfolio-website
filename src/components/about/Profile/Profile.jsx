@@ -5,7 +5,7 @@ import Image from "next/image";
 import styles from "./Profile.module.css";
 import { MapPin, Mail, Briefcase } from "lucide-react";
 import profileData from "../../../data/profile.json";
-import { getAssetUrl } from "../../../lib/assetUrl";
+import { getOptimizedUrl } from "../../../lib/assetUrl";
 
 const stats = [
     { 
@@ -85,7 +85,7 @@ export default function Profile() {
                     {/* Full-bleed background image */}
                     <div className={styles.heroBg}>
                         <img
-                            src={getAssetUrl(profile.image)}
+                            src={getOptimizedUrl(profile.image)}
                             alt="Yash Srivastava - Comic Art Portrait"
                             style={{ 
                                 position: "absolute",

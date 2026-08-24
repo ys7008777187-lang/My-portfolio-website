@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import styles from "./ProjectCard.module.css";
-import { getAssetUrl } from "../../lib/assetUrl";
+import { getOptimizedUrl } from "../../lib/assetUrl";
 
 export default function ProjectCard({ project }) {
     const linkProps = project.externalUrl
@@ -27,7 +27,7 @@ export default function ProjectCard({ project }) {
                 >
                     {project.image && (
                         <Image
-                            src={getAssetUrl(project.image)}
+                            src={getOptimizedUrl(project.image)}
                             alt={project.title}
                             fill
                             unoptimized

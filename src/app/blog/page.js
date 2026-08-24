@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import styles from "./page.module.css";
 import ContactCTA from "../../components/home/ContactCTA/ContactCTA";
 import postsData from "../../data/posts.json";
-import { getAssetUrl } from "../../lib/assetUrl";
+import { getOptimizedUrl } from "../../lib/assetUrl";
 
 export default function Blog() {
     const [blogPosts, setBlogPosts] = useState([]);
@@ -54,7 +54,7 @@ export default function Blog() {
                                     <div className={styles.imageWrapper} style={{ backgroundColor: post.imageColor || 'var(--color-bg-secondary)' }}>
                                         {post.image ? (
                                             <Image
-                                                src={getAssetUrl(post.image)}
+                                                src={getOptimizedUrl(post.image)}
                                                 alt={post.title}
                                                 fill
                                                 style={{ objectFit: "cover" }}

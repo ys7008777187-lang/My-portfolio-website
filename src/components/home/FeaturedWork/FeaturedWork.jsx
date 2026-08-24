@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { getAssetUrl } from "../../../lib/assetUrl";
+import { getAssetUrl, getOptimizedUrl } from "../../../lib/assetUrl";
 import projectsData from "../../../data/projects.json";
 import styles from "./FeaturedWork.module.css";
 
@@ -66,7 +66,7 @@ const FeaturedWork = () => {
                   
                   <div className={styles.imageWrapper}>
                     <Image
-                      src={getAssetUrl(project.image)}
+                      src={getOptimizedUrl(project.image, { thumbnail: true })}
                       alt={project.title}
                       fill
                       className={styles.image}

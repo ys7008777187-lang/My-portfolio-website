@@ -8,7 +8,7 @@ import {
     Settings, UserCheck, CreditCard, FileText, Filter, Award,
     TrendingUp, Heart, Send, Calendar, Globe, Compass
 } from 'lucide-react';
-import { getAssetUrl } from "../../lib/assetUrl";
+import { getOptimizedUrl } from "../../lib/assetUrl";
 import styles from "./WorqCaseStudy.module.css";
 
 const fadeInUp = {
@@ -22,7 +22,7 @@ const stagger = {
 
 const PhoneMockup = ({ src, alt }) => (
     <div className={styles.phoneMockup}>
-        <img src={getAssetUrl(src)} alt={alt} />
+        <img src={getOptimizedUrl(src)} alt={alt} />
     </div>
 );
 
@@ -69,9 +69,9 @@ export default function WorqCaseStudy() {
                     transition={{ duration: 0.8, delay: 0.4 }}
                     className={styles.heroMockupStack}
                 >
-                    <PhoneMockup src={getAssetUrl("/images/worq/Feed_or_Landing_screen.jpeg")} alt="WORQ Feed" />
-                    <PhoneMockup src={getAssetUrl("/images/worq/Networking_profiles_.jpeg")} alt="WORQ Network" />
-                    <PhoneMockup src={getAssetUrl("/images/worq/Wallet.jpeg")} alt="WORQ Wallet" />
+                    <PhoneMockup src={getOptimizedUrl("/images/worq/Feed_or_Landing_screen.jpeg")} alt="WORQ Feed" />
+                    <PhoneMockup src={getOptimizedUrl("/images/worq/Networking_profiles_.jpeg")} alt="WORQ Network" />
+                    <PhoneMockup src={getOptimizedUrl("/images/worq/Wallet.jpeg")} alt="WORQ Wallet" />
                 </motion.div>
             </section>
 

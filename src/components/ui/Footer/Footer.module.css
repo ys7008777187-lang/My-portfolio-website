@@ -5,9 +5,9 @@
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1240px;
     margin: 0 auto;
-    padding: 0 var(--spacing-xl);
+    padding: 0 clamp(1rem, 4vw, 2rem);
 }
 
 /* Top Section */
@@ -203,5 +203,17 @@
     .bottom {
         flex-direction: column;
         text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .linksGrid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-xl);
+    }
+
+    .linksGrid a,
+    .linksGrid span {
+        word-break: break-all;
     }
 }

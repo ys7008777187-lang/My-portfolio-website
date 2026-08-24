@@ -5,7 +5,8 @@
 
 .main {
     min-height: 100vh;
-    padding-top: 100px;
+    min-height: 100dvh;
+    padding-top: clamp(70px, 12vh, 100px);
     position: relative;
     background: var(--color-bg-primary);
 }
@@ -714,7 +715,8 @@
 
     .filterBtn {
         font-size: 0.7rem;
-        padding: 0.35rem 0.8rem;
+        padding: 0.5rem 1rem;
+        min-height: 38px;
     }
 
     .lightboxOverlay {

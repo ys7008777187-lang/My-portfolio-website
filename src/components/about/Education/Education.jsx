@@ -5,7 +5,7 @@ import Image from "next/image";
 import styles from "./Education.module.css";
 import { GraduationCap, BookOpen, Calendar, MapPin } from "lucide-react";
 import educationDataRaw from "../../../data/education.json";
-import { getAssetUrl } from "../../../lib/assetUrl";
+import { getOptimizedUrl } from "../../../lib/assetUrl";
 
 export default function Education() {
     const [educationData, setEducationData] = useState([]);
@@ -45,7 +45,7 @@ export default function Education() {
                                 <div className={styles.imageBlock} style={{ '--theme-color': themeColor }}>
                                     {edu.image ? (
                                         <Image
-                                            src={getAssetUrl(edu.image)}
+                                            src={getOptimizedUrl(edu.image)}
                                             alt={edu.institution}
                                             fill
                                             className={styles.uniImage}

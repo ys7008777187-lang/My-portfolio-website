@@ -10,7 +10,9 @@
     "sync-cdn": "node scripts/sync-to-r2.js",
     "sync-cdn:dry": "node scripts/sync-to-r2.js --dry-run",
     "sync-cdn:force": "node scripts/sync-to-r2.js --force",
-    "check-assets": "node scripts/check_assets.js"
+    "check-assets": "node scripts/check_assets.js",
+    "optimize-images": "node scripts/optimize-images.js",
+    "optimize-images:force": "node scripts/optimize-images.js --force"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.1111.0",

@@ -2,7 +2,7 @@
 import React, { useState, useEffect, forwardRef, useRef } from "react";
 import Image from "next/image";
 import { Hand } from "lucide-react";
-import { getAssetUrl } from "../../../lib/assetUrl";
+import { getOptimizedUrl } from "../../../lib/assetUrl";
 import styles from "./CreativeBook.module.css";
 import HTMLFlipBook from "react-pageflip";
 
@@ -14,7 +14,7 @@ const Page = forwardRef((props, ref) => {
         <div className={`${styles.pageItem} ${isLeft ? styles.pageLeft : styles.pageRight}`} ref={ref}>
             <div className={`${styles.pageContent} ${props.hidePageInfo ? styles.cropPageInfo : ''}`}>
                 <Image
-                    src={getAssetUrl(props.image)}
+                    src={getOptimizedUrl(props.image)}
                     alt={`Page ${props.number + 1}`}
                     fill
                     unoptimized

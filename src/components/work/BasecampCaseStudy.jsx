@@ -14,7 +14,7 @@ import {
     Accessibility,
     ExternalLink
 } from 'lucide-react';
-import { getAssetUrl } from "../../lib/assetUrl";
+import { getOptimizedUrl } from "../../lib/assetUrl";
 import styles from "./BasecampCaseStudy.module.css";
 
 const fadeInUp = {
@@ -67,7 +67,7 @@ export default function BasecampCaseStudy() {
                             <div className={styles.urlBar}>basecamp.com/redesign</div>
                         </div>
                         <img 
-                            src={getAssetUrl('/images/basecamp/hero.webp')}
+                            src={getOptimizedUrl('/images/basecamp/hero.webp')}
                             alt="Basecamp Hero Redesign"
                             className={styles.heroImage}
                         />
@@ -182,7 +182,7 @@ export default function BasecampCaseStudy() {
                             <h3>Dashboard Overview</h3>
                             <p>A bird's eye view of all projects and activity.</p>
                         </div>
-                        <img src={getAssetUrl('/images/basecamp/dashboard.webp')} alt="Dashboard" className={styles.bentoImage} />
+                        <img src={getOptimizedUrl('/images/basecamp/dashboard.webp')} alt="Dashboard" className={styles.bentoImage} />
                     </motion.div>
                     
                     <motion.div variants={fadeInUp} className={styles.bentoItem}>
@@ -190,7 +190,7 @@ export default function BasecampCaseStudy() {
                             <h3>Campfire Chat</h3>
                             <p>Real-time team communication.</p>
                         </div>
-                        <img src={getAssetUrl('/images/basecamp/feature-campfire-chat.png')} alt="Campfire" className={styles.bentoImage} />
+                        <img src={getOptimizedUrl('/images/basecamp/feature-campfire-chat.png')} alt="Campfire" className={styles.bentoImage} />
                     </motion.div>
 
                     <motion.div variants={fadeInUp} className={styles.bentoItem}>
@@ -198,7 +198,7 @@ export default function BasecampCaseStudy() {
                             <h3>Message Board</h3>
                             <p>Long-form announcements and discussions.</p>
                         </div>
-                        <img src={getAssetUrl('/images/basecamp/feature-message-board.png')} alt="Message Board" className={styles.bentoImage} />
+                        <img src={getOptimizedUrl('/images/basecamp/feature-message-board.png')} alt="Message Board" className={styles.bentoImage} />
                     </motion.div>
 
                     <motion.div variants={fadeInUp} className={styles.bentoItem}>
@@ -206,7 +206,7 @@ export default function BasecampCaseStudy() {
                             <h3>To-do Lists</h3>
                             <p>Track work that needs getting done.</p>
                         </div>
-                        <img src={getAssetUrl('/images/basecamp/feature-todo-list.png')} alt="Todo List" className={styles.bentoImage} />
+                        <img src={getOptimizedUrl('/images/basecamp/feature-todo-list.png')} alt="Todo List" className={styles.bentoImage} />
                     </motion.div>
 
                     <motion.div variants={fadeInUp} className={styles.bentoItem}>
@@ -214,7 +214,7 @@ export default function BasecampCaseStudy() {
                             <h3>Schedule</h3>
                             <p>Important dates and milestones.</p>
                         </div>
-                        <img src={getAssetUrl('/images/basecamp/feature-schedule.png')} alt="Schedule" className={styles.bentoImage} />
+                        <img src={getOptimizedUrl('/images/basecamp/feature-schedule.png')} alt="Schedule" className={styles.bentoImage} />
                     </motion.div>
                 </div>
             </motion.section>

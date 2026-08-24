@@ -1,11 +1,11 @@
 'use client';
 import { useState, useCallback } from 'react';
-import { getAssetUrl } from '@/lib/assetUrl';
+import { getAssetUrl, getOptimizedUrl } from '@/lib/assetUrl';
 import styles from './ImageWithFallback.module.css';
 
 /**
- * Image component with automatic CDN resolution and graceful fallback.
- * Falls back to a styled placeholder if the image fails to load.
+ * Image component with automatic WebP optimization, CDN resolution, and graceful fallback.
+ * Uses <picture> element to serve WebP with original format fallback.
  */
 export default function ImageWithFallback({
   src,
@@ -13,6 +13,9 @@ export default function ImageWithFallback({
   className = '',
   fill = false,
   priority = false,
+  thumbnail = false,
+  width,
+  height,
   style = {},
   ...props
 }) {
@@ -20,6 +23,8 @@ export default function ImageWithFallback({
   const [isLoading, setIsLoading] = useState(true);
 
   const resolvedSrc = getAssetUrl(src);
+  const webpSrc = getOptimizedUrl(src, { thumbnail });
+  const hasWebpVariant = webpSrc !== resolvedSrc;
 
   const handleError = useCallback(() => {
     setHasError(true);
@@ -52,19 +57,30 @@ export default function ImageWithFallback({
     );
   }
 
+  const imgProps = {
+    alt,
+    className: `${className} ${isLoading ? styles.hidden : ''}`,
+    style,
+    onError: handleError,
+    onLoad: handleLoad,
+    loading: priority ? 'eager' : 'lazy',
+    decoding: priority ? 'sync' : 'async',
+    ...(width && { width }),
+    ...(height && { height }),
+    ...props,
+  };
+
   return (
     <>
       {isLoading && <div className={`${styles.skeleton} ${className}`} style={style} />}
-      <img
-        src={resolvedSrc}
-        alt={alt}
-        className={`${className} ${isLoading ? styles.hidden : ''}`}
-        style={style}
-        onError={handleError}
-        onLoad={handleLoad}
-        loading={priority ? 'eager' : 'lazy'}
-        {...props}
-      />
+      {hasWebpVariant ? (
+        <picture>
+          <source srcSet={webpSrc} type="image/webp" />
+          <img src={resolvedSrc} {...imgProps} />
+        </picture>
+      ) : (
+        <img src={resolvedSrc} {...imgProps} />
+      )}
     </>
   );
 }

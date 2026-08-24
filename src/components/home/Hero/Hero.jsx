@@ -232,7 +232,12 @@ export default function Hero() {
                         transform: `perspective(1200px) rotateY(${mousePos.x * -5 - 14}deg) rotateX(${mousePos.y * 4 + 3}deg) translate3d(${mousePos.x * -8}px, ${mousePos.y * -6}px, 0)`,
                     }}
                 >
-                    {["STRATEGY", "WIREFRAMES", "UI DESIGN", "RESEARCH"].map((label, idx) => (
+                    {[
+                        { step: "01", label: "STRATEGY" },
+                        { step: "02", label: "WIREFRAMES" },
+                        { step: "03", label: "UI DESIGN" },
+                        { step: "04", label: "RESEARCH" }
+                    ].map(({ step, label }, idx) => (
                         <motion.div
                             key={label}
                             className={styles.floatingPanel}
@@ -312,8 +317,11 @@ export default function Hero() {
                                 )}
                                 <div className={styles.panelShine} />
                             </div>
-                            {/* Golden Tag */}
-                            <div className={styles.panelTag}>{label}</div>
+                            {/* Unified High-Contrast Comic Paper Tag */}
+                            <div className={styles.panelTag}>
+                                <span className={styles.tagStep}>{step}</span>
+                                <span className={styles.tagLabel}>{label}</span>
+                            </div>
                         </motion.div>
                     ))}
                 </div>

@@ -5,7 +5,7 @@ import ScrollVaporText from "../../ui/ScrollVaporText/ScrollVaporText";
 import styles from "./Experience.module.css";
 import { MapPin, Calendar, X } from "lucide-react";
 import experienceData from "../../../data/experience.json";
-import { getAssetUrl } from "../../../lib/assetUrl";
+import { getOptimizedUrl } from "../../../lib/assetUrl";
 
 /* ── Wind sway presets ── */
 const SWAY = [
@@ -77,7 +77,7 @@ export default function Experience() {
                 {/* ═══ PHYSICAL WINDOW + CARDS ═══ */}
                 <div 
                     className={styles.physicalWindow}
-                    style={{ backgroundImage: `url(${getAssetUrl('/images/comic-city-bg.jpg')})` }}
+                    style={{ backgroundImage: `url(${getOptimizedUrl('/images/comic-city-bg.jpg')})` }}
                 >
                     <div className={styles.wireSection}>
                         <div className={styles.scrollTrack} ref={scrollRef}>
@@ -242,62 +242,61 @@ export default function Experience() {
                                         <button
                                             className={styles.closeBtn}
                                             onClick={() => setActiveIndex(-1)}
+                                            aria-label="Close"
                                         >
-                                            <X size={18} />
+                                            <X size={20} />
                                         </button>
 
-                                        {/* Accent top bar */}
-                                        <div
-                                            className={styles.popupAccent}
-                                            style={{ background: activeFill.accent }}
-                                        />
+                                        {/* Top comic mission tape */}
+                                        <div className={styles.popupHeaderTape}>
+                                            <span className={styles.tapeText}>
+                                                MISSION LOG // EXPERIENCE • #{String(activeIndex + 1).padStart(2, '0')}
+                                            </span>
+                                        </div>
 
                                         <div className={styles.popupContent}>
                                             <div className={styles.popupHeader}>
-                                                <span className={styles.popupIcon}>
-                                                    {activeExp.role.includes("Professor") ? "🎓" : "💼"}
-                                                </span>
-                                                <div>
-                                                    <h3
-                                                        className={styles.popupCompany}
-                                                        style={{ color: activeFill.accent }}
-                                                    >
-                                                        {activeExp.company}
+                                                <div className={styles.popupIconBox}>
+                                                    <span className={styles.popupIcon}>
+                                                        {activeExp.role.includes("Professor") ? "🎓" : "💼"}
+                                                    </span>
+                                                </div>
+                                                <div className={styles.popupTitleGroup}>
+                                                    <div className={styles.companyRow}>
+                                                        <h3 className={styles.popupCompany}>
+                                                            {activeExp.company}
+                                                        </h3>
                                                         {activeExp.current && (
-                                                            <span
-                                                                className={styles.popupCurrentTag}
-                                                            >
-                                                                Current
+                                                            <span className={styles.popupCurrentTag}>
+                                                                CURRENT
                                                             </span>
                                                         )}
-                                                    </h3>
+                                                    </div>
                                                     <p className={styles.popupRole}>{activeExp.role}</p>
+
+                                                    <div className={styles.popupMeta}>
+                                                        <span className={styles.metaChip}><Calendar size={13} /> {activeExp.duration}</span>
+                                                        <span className={styles.metaChip}><MapPin size={13} /> {activeExp.location}</span>
+                                                    </div>
                                                 </div>
                                             </div>
 
-                                            <div className={styles.popupMeta}>
-                                                <span><Calendar size={14} /> {activeExp.duration}</span>
-                                                <span><MapPin size={14} /> {activeExp.location}</span>
-                                            </div>
+                                            <div className={styles.popupDivider} />
 
-                                            <div
-                                                className={styles.popupDivider}
-                                                style={{ background: `${activeFill.accent}22` }}
-                                            />
+                                            <div className={styles.highlightsHeader}>
+                                                KEY ACHIEVEMENTS &amp; IMPACT
+                                            </div>
 
                                             <ul className={styles.popupHighlights}>
                                                 {activeExp.highlights.map((h, hi) => (
                                                     <motion.li
                                                         key={hi}
-                                                        initial={{ opacity: 0, x: -12 }}
+                                                        initial={{ opacity: 0, x: -10 }}
                                                         animate={{ opacity: 1, x: 0 }}
-                                                        transition={{ delay: 0.25 + hi * 0.04 }}
+                                                        transition={{ delay: 0.18 + hi * 0.04 }}
                                                     >
-                                                        <span
-                                                            className={styles.bullet}
-                                                            style={{ background: activeFill.accent }}
-                                                        />
-                                                        {h}
+                                                        <span className={styles.bullet} />
+                                                        <span className={styles.bulletText}>{h}</span>
                                                     </motion.li>
                                                 ))}
                                             </ul>

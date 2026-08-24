@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import ContactCTA from "../../../components/home/ContactCTA/ContactCTA";
-import { getAssetUrl } from "../../../lib/assetUrl";
+import { getOptimizedUrl } from "../../../lib/assetUrl";
 import styles from "./page.module.css";
 import projectsData from "../../../data/projects.json";
 
@@ -137,7 +137,7 @@ export default function UIUXPage() {
                                         {/* Image */}
                                         <div className={styles.panelImageWrap}>
                                             <Image
-                                                src={getAssetUrl(project.image || '/images/placeholder.jpg')}
+                                                src={getOptimizedUrl(project.image || '/images/placeholder.jpg')}
                                                 alt={project.title}
                                                 fill
                                                 unoptimized

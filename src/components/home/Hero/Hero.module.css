@@ -4,13 +4,13 @@
 
 .hero {
     position: relative;
-    min-height: 100vh;
-    min-height: 100dvh;
+    height: 100vh;
+    height: 100dvh;
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 100px 4% 30px;
+    padding: clamp(70px, 10vh, 100px) 4% clamp(16px, 3vh, 30px);
     background-color: var(--color-bg-primary);
     color: #FFFFFF;
     overflow: hidden;
@@ -105,14 +105,15 @@
     position: relative;
     z-index: 10;
     flex: 1;
+    min-height: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
     max-width: 1240px;
     margin: 0 auto;
-    padding: 20px 0;
-    gap: 40px;
+    padding: clamp(8px, 2vh, 20px) 0;
+    gap: clamp(20px, 3vw, 40px);
 }
 
 /* ============================================================
@@ -133,11 +134,11 @@
 .speechBubble {
     position: relative;
     display: inline-block;
-    padding: 10px 20px;
+    padding: clamp(6px, 1vh, 9px) clamp(12px, 1.5vw, 18px);
     background: rgba(10, 10, 15, 0.88);
     border: var(--border-width, 3px) solid #FFFFFF;
     border-radius: 0;
-    margin-bottom: 22px;
+    margin-bottom: clamp(6px, 1.2vh, 14px);
     transform: skewX(-8deg);
     backdrop-filter: blur(8px);
     box-shadow:
@@ -155,21 +156,21 @@
     display: block;
     font-family: var(--font-bangers, cursive);
     font-weight: 400;
-    font-size: 0.88rem;
-    line-height: 1.3;
-    letter-spacing: 2px;
+    font-size: clamp(0.78rem, 0.95vw, 0.86rem);
+    line-height: 1.25;
+    letter-spacing: 1.5px;
     color: #FFFFFF;
     text-transform: uppercase;
 }
 
 .bubbleTail {
     position: absolute;
-    bottom: -10px;
-    left: 24px;
+    bottom: -8px;
+    left: 20px;
     width: 0;
     height: 0;
     border-style: solid;
-    border-width: 10px 10px 0 0;
+    border-width: 8px 8px 0 0;
     border-color: #FFFFFF transparent transparent transparent;
 }
 
@@ -181,7 +182,7 @@
     width: 0;
     height: 0;
     border-style: solid;
-    border-width: 8px 8px 0 0;
+    border-width: 6px 6px 0 0;
     border-color: rgba(10, 10, 15, 0.95) transparent transparent transparent;
 }
 
@@ -190,21 +191,19 @@
     display: flex;
     flex-direction: column;
     font-family: var(--font-anton, Impact, sans-serif);
-    font-size: clamp(3.4rem, 6.5vw, 7rem);
+    font-size: clamp(2.4rem, min(4.6vw, 5.8vh), 4.8rem);
     font-weight: 900;
-    line-height: 1.05;
-    letter-spacing: 4px;
+    line-height: 0.98;
+    letter-spacing: 3px;
     text-transform: uppercase;
     transform: skewX(-8deg);
-    margin-bottom: 26px;
+    margin-bottom: clamp(20px, 3vh, 32px);
     text-shadow:
         2px 2px 0 #000,
         3px 3px 0 #000,
         4px 4px 0 #000,
         5px 5px 0 #000,
-        6px 6px 0 #000,
-        7px 7px 0 #000,
-        9px 9px 18px rgba(0, 0, 0, 0.95);
+        6px 6px 14px rgba(0, 0, 0, 0.95);
     -webkit-text-stroke: 1px #000;
     transform-style: preserve-3d;
 }
@@ -234,12 +233,12 @@
 
 .impactUnderline {
     position: absolute;
-    bottom: -4px;
+    bottom: -3px;
     left: 0;
     width: 100%;
-    height: 7px;
+    height: 5px;
     background: var(--color-comic-yellow);
-    opacity: 0.3;
+    opacity: 0.35;
     transform: skewX(-15deg);
 }
 
@@ -250,10 +249,10 @@
     justify-content: space-between;
     border: var(--border-width, 3px) solid rgba(var(--color-bg-primary-rgb), 0.35);
     border-radius: 0;
-    padding: 14px 24px;
-    margin-bottom: 28px;
+    padding: clamp(6px, 1vh, 10px) clamp(12px, 1.4vw, 18px);
+    margin-bottom: clamp(10px, 1.8vh, 18px);
     width: 100%;
-    max-width: 500px;
+    max-width: 440px;
     transform: skewX(-6deg);
     background: rgba(10, 12, 16, 0.78);
     backdrop-filter: blur(12px);
@@ -273,12 +272,12 @@
 .infoContent {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 2px;
 }
 
 .name {
     font-family: var(--font-inter, sans-serif);
-    font-size: 1.05rem;
+    font-size: clamp(0.92rem, 1.1vw, 1.02rem);
     font-weight: 800;
     color: var(--color-text-secondary);
     letter-spacing: 0.5px;
@@ -292,9 +291,9 @@
 
 .role {
     font-family: var(--font-comic-neue, cursive);
-    font-size: 0.72rem;
+    font-size: 0.68rem;
     font-weight: 700;
-    letter-spacing: 1.5px;
+    letter-spacing: 1.2px;
     color: var(--color-text-muted);
     margin: 0;
     text-transform: uppercase;
@@ -302,7 +301,7 @@
 
 .signature {
     font-family: var(--font-permanent-marker, cursive);
-    font-size: 2.4rem;
+    font-size: clamp(1.6rem, 2.2vw, 2rem);
     font-weight: 900;
     color: var(--color-comic-yellow);
     transform: rotate(-10deg) skewX(6deg);
@@ -318,15 +317,15 @@
 .ctaButton {
     display: inline-flex;
     align-items: center;
-    gap: 14px;
+    gap: 10px;
     background-color: var(--color-comic-yellow);
     color: var(--color-bg-primary);
     font-family: var(--font-bangers, cursive);
     font-weight: 400;
-    font-size: 1.25rem;
-    letter-spacing: 2px;
-    padding: 14px 30px;
-    border: var(--border-width, 3px) solid #000000;
+    font-size: clamp(1.05rem, 1.2vw, 1.18rem);
+    letter-spacing: 1.8px;
+    padding: clamp(9px, 1.3vh, 12px) clamp(18px, 1.8vw, 24px);
+    border: var(--border-width, 2.5px) solid #000000;
     border-radius: 0;
     transform: skewX(-10deg);
     cursor: pointer;
@@ -334,17 +333,17 @@
     position: relative;
     transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
     box-shadow:
-        5px 5px 0 #000000,
-        0 0 20px rgba(226, 183, 20, 0.3);
+        4px 4px 0 #000000,
+        0 0 18px rgba(226, 183, 20, 0.3);
     text-transform: uppercase;
 }
 
 .ctaButton::after {
     content: '';
     position: absolute;
-    inset: -6px;
-    border: 2px solid var(--color-comic-yellow);
-    transform: translate(4px, 4px);
+    inset: -5px;
+    border: 1.5px solid var(--color-comic-yellow);
+    transform: translate(3px, 3px);
     pointer-events: none;
     transition: all 0.2s ease;
 }
@@ -353,12 +352,12 @@
     transform: skewX(-10deg) translate(-2px, -2px);
     background-color: #f7ca27;
     box-shadow:
-        7px 7px 0 #000000,
-        0 0 30px rgba(226, 183, 20, 0.55);
+        6px 6px 0 #000000,
+        0 0 26px rgba(226, 183, 20, 0.55);
 }
 
 .ctaButton:hover::after {
-    transform: translate(6px, 6px);
+    transform: translate(5px, 5px);
     border-color: #ffffff;
 }
 
@@ -378,16 +377,16 @@
 }
 
 /* ============================================================
-   RIGHT COLUMN — 3D Floating Process Panels
+   RIGHT COLUMN — 3D Floating Process Panels (Laptop Optimized)
    ============================================================ */
 .rightColumn {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: clamp(8px, 1.4vh, 14px);
     perspective: 1200px;
     position: relative;
     z-index: 15;
-    margin-right: 2%;
+    margin-right: clamp(44px, 4.5vw, 64px);
     transform-style: preserve-3d;
     transition: transform 0.12s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
@@ -397,18 +396,18 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    background: rgba(15, 18, 24, 0.65);
+    background: rgba(15, 18, 24, 0.7);
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 0;
-    padding: 10px;
-    width: 215px;
+    padding: clamp(5px, 0.8vh, 8px) clamp(7px, 0.9vw, 9px);
+    width: clamp(160px, 13.5vw, 185px);
     backdrop-filter: blur(12px);
     box-shadow:
-        -12px 14px 28px rgba(0, 0, 0, 0.7),
-        inset 0 0 15px rgba(255, 255, 255, 0.02);
+        -8px 10px 20px rgba(0, 0, 0, 0.7),
+        inset 0 0 10px rgba(255, 255, 255, 0.02);
     cursor: pointer;
     transform-origin: right center;
-    transform: rotateY(-18deg) rotateZ(2deg) rotateX(4deg);
+    transform: rotateY(-16deg) rotateZ(1.5deg) rotateX(3deg);
     transition:
         transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
         border-color 0.3s ease,
@@ -419,8 +418,8 @@
 .floatingPanel:hover {
     border-color: var(--color-comic-yellow);
     box-shadow:
-        -16px 20px 36px rgba(0, 0, 0, 0.85),
-        0 0 25px rgba(226, 183, 20, 0.3);
+        -12px 16px 28px rgba(0, 0, 0, 0.85),
+        0 0 20px rgba(226, 183, 20, 0.3);
     z-index: 25;
 }
 
@@ -428,11 +427,11 @@
 .panelVisual {
     position: relative;
     width: 100%;
-    height: 90px;
+    height: clamp(36px, 5.2vh, 48px);
     background: linear-gradient(135deg, rgba(20, 24, 32, 0.95), rgba(8, 10, 14, 0.98));
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 0;
-    margin-bottom: 8px;
+    margin-bottom: 3px;
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -623,19 +622,46 @@
     color: var(--color-comic-yellow);
 }
 
-/* Panel Golden Tag Label */
+/* Panel Unified High-Contrast Comic Paper Tag */
 .panelTag {
-    background-color: var(--color-comic-yellow);
-    color: var(--color-bg-primary);
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: #FFFFFF;
+    color: #000000;
     font-family: var(--font-bangers, cursive);
     font-weight: 400;
-    font-size: 0.82rem;
-    letter-spacing: 1.5px;
-    padding: 4px 12px;
+    font-size: clamp(0.72rem, 0.88vw, 0.8rem);
+    letter-spacing: 1.2px;
+    padding: 2px 8px;
+    border: 1.5px solid var(--color-comic-border);
     transform: skewX(-10deg);
-    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.6);
+    box-shadow: 2px 2px 0 var(--color-comic-border);
     text-transform: uppercase;
     align-self: flex-end;
+    transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.tagStep {
+    font-size: 0.65rem;
+    font-weight: 900;
+    background: #000000;
+    color: var(--color-comic-yellow);
+    padding: 1px 4px;
+    letter-spacing: 0.04em;
+    font-family: var(--font-inter, sans-serif);
+    display: inline-block;
+}
+
+.tagLabel {
+    color: #000000;
+    transition: color 0.15s ease;
+}
+
+.floatingPanel:hover .panelTag {
+    background: var(--color-comic-yellow);
+    box-shadow: 3px 3px 0 var(--color-comic-border);
+    transform: skewX(-10deg) scale(1.04);
 }
 
 /* ============================================================
@@ -648,29 +674,29 @@
     justify-content: space-between;
     align-items: flex-end;
     width: 100%;
-    max-width: 1440px;
+    max-width: 1240px;
     margin: 0 auto;
-    padding-top: 10px;
+    padding-top: clamp(2px, 0.8vh, 8px);
 }
 
 .toolsArea {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: clamp(8px, 1vw, 12px);
 }
 
 .toolsLabel {
     position: relative;
-    padding: 8px 14px;
+    padding: clamp(4px, 0.8vh, 6px) clamp(8px, 1vw, 12px);
     background: rgba(10, 12, 16, 0.85);
-    border: 2px dashed rgba(255, 255, 255, 0.5);
+    border: 1.5px dashed rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(8px);
-    box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.6);
+    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.6);
     transform: skewX(-6deg);
     font-family: var(--font-bangers, cursive);
-    font-size: 0.78rem;
+    font-size: clamp(0.7rem, 0.85vw, 0.76rem);
     line-height: 1.15;
-    letter-spacing: 1.5px;
+    letter-spacing: 1.2px;
     color: #FFFFFF;
     text-align: center;
 }
@@ -678,24 +704,24 @@
 .toolsList {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     background: rgba(10, 12, 16, 0.78);
-    padding: 8px 14px;
+    padding: clamp(4px, 0.8vh, 6px) clamp(8px, 1vw, 12px);
     border: 1px solid rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(12px);
-    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
 }
 
 .toolIcon {
-    width: 36px;
-    height: 36px;
+    width: clamp(28px, 3.2vh, 32px);
+    height: clamp(28px, 3.2vh, 32px);
     display: flex;
     align-items: center;
     justify-content: center;
     background: rgba(18, 22, 28, 0.9);
     border: 1px solid rgba(255, 255, 255, 0.2);
     font-family: var(--font-inter, sans-serif);
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     font-weight: 900;
     color: var(--color-text-muted);
     cursor: default;
@@ -747,13 +773,13 @@
    ============================================================ */
 .socialBar {
     position: absolute;
-    right: 2%;
+    right: clamp(10px, 1.2vw, 18px);
     top: 50%;
     transform: translateY(-50%);
     display: flex;
     flex-direction: column;
-    gap: 18px;
-    padding: 22px 10px;
+    gap: clamp(12px, 1.6vh, 18px);
+    padding: clamp(14px, 1.8vh, 20px) clamp(7px, 0.8vw, 10px);
     border: 2px dashed rgba(255, 255, 255, 0.22);
     background: rgba(10, 12, 16, 0.6);
     backdrop-filter: blur(10px);
@@ -828,7 +854,7 @@
 
 @media (max-width: 640px) {
     .hero {
-        padding: 90px 4% 20px;
+        padding: clamp(70px, 12vh, 90px) 4% clamp(12px, 2vh, 20px);
     }
 
     .contentWrapper {
@@ -859,5 +885,59 @@
     .toolsList {
         flex-wrap: wrap;
         justify-content: center;
+    }
+}
+
+/* ============================================================
+   LAPTOP HEIGHT OPTIMIZATION (13"–15" Screens: 700px–860px)
+   ============================================================ */
+@media (max-height: 860px) and (min-width: 1025px) {
+    .hero {
+        padding: clamp(60px, 8.5vh, 78px) 3% clamp(6px, 1.5vh, 14px);
+    }
+
+    .contentWrapper {
+        padding: 4px 0;
+        gap: clamp(16px, 2.5vw, 32px);
+    }
+
+    .headline {
+        font-size: clamp(2.2rem, 3.8vw, 3.8rem);
+        line-height: 0.95;
+        margin-bottom: clamp(18px, 2.5vh, 26px);
+    }
+
+    .speechBubble {
+        margin-bottom: 6px;
+        padding: 4px 12px;
+    }
+
+    .infoBox {
+        padding: 5px 12px;
+        margin-bottom: 8px;
+        max-width: 400px;
+    }
+
+    .signature {
+        font-size: 1.5rem;
+    }
+
+    .floatingPanel {
+        width: 160px;
+        padding: 5px 7px;
+    }
+
+    .panelVisual {
+        height: 36px;
+        margin-bottom: 2px;
+    }
+
+    .rightColumn {
+        margin-right: clamp(40px, 4vw, 55px);
+        gap: clamp(6px, 1.1vh, 10px);
+    }
+
+    .bottomArea {
+        padding-top: 4px;
     }
 }

@@ -6,7 +6,7 @@ import { ArrowLeft } from "lucide-react";
 import Image from "next/image";
 import ContactCTA from "../../../components/home/ContactCTA/ContactCTA";
 import styles from "./page.module.css";
-import { getAssetUrl } from "../../../lib/assetUrl";
+import { getOptimizedUrl } from "../../../lib/assetUrl";
 
 export default function ClientPage({ project }) {
     // We will use the mangaGallery array, or default to the main image if it doesn't exist
@@ -86,7 +86,7 @@ export default function ClientPage({ project }) {
                                     <>
                                         <div className={styles.imageWrapper}>
                                             <Image
-                                                src={getAssetUrl(src)}
+                                                src={getOptimizedUrl(src)}
                                                 alt={caption || `${project.title} panel`}
                                                 fill
                                                 className={styles.image}
