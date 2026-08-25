@@ -68,6 +68,15 @@
   box-shadow: var(--shadow-sm, 3px 3px 0 #000);
 }
 
+.summaryLine {
+  font-family: var(--font-inter, sans-serif);
+  font-size: clamp(0.88rem, 1.05vw, 0.98rem);
+  font-weight: 500;
+  color: #CCCCCC;
+  margin: 0.4rem 0 0;
+  max-width: 600px;
+}
+
 /* ═══════════ THE ENCLOSING SHOWCASE BOX ═══════════ */
 .showcaseBox {
   background: #181818;
@@ -85,23 +94,21 @@
 /* ═══════════ PROJECT TABS ROW ═══════════ */
 .projectTabsRow {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   gap: clamp(0.4rem, 0.8vw, 0.65rem);
   flex-wrap: wrap;
 }
 
 .projectTab {
   display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
   background: #202020;
   color: #B0B0B0;
   border: 1.5px solid #383838;
   border-radius: 4px;
-  padding: clamp(0.35rem, 0.7vh, 0.45rem) clamp(0.75rem, 1.2vw, 1rem);
-  font-family: var(--font-bangers, cursive);
-  font-size: clamp(1rem, 1.15vw, 1.15rem);
-  letter-spacing: 0.05em;
+  padding: clamp(0.4rem, 0.8vh, 0.55rem) clamp(0.85rem, 1.2vw, 1.1rem);
   cursor: pointer;
   transition: all 0.2s ease;
 }
@@ -123,6 +130,32 @@
 .projectTabActive:hover {
   background: #E03126;
   border-color: #000000;
+}
+
+.tabMainRow {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.tabName {
+  font-family: var(--font-bangers, cursive);
+  font-size: clamp(1rem, 1.15vw, 1.15rem);
+  letter-spacing: 0.05em;
+  color: inherit;
+}
+
+.tabMeta {
+  display: block;
+  font-family: var(--font-comic-neue, cursive);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.04em;
+}
+
+.projectTabActive .tabMeta {
+  color: #FFE5E5;
 }
 
 .tabIcon {
@@ -278,14 +311,86 @@
   text-shadow: 2px 2px 0px #000000;
 }
 
-.screenDescription {
-  font-family: var(--font-comic-neue, cursive);
-  font-size: clamp(0.85rem, 0.95vw, 0.94rem);
-  font-weight: 700;
-  color: #B4B4B4;
+/* ═══════════ PROJECT METADATA STRIP ═══════════ */
+.projectMetaStrip {
+  display: flex;
+  align-items: center;
+  gap: clamp(6px, 0.8vw, 10px);
+  flex-wrap: wrap;
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 4px 10px;
+  border-radius: 4px;
+  margin: 2px 0 4px;
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.metaLabel {
+  font-family: var(--font-bangers, cursive);
+  font-size: 0.76rem;
+  letter-spacing: 0.06em;
+  color: var(--color-comic-yellow, #FFCC00);
+}
+
+.metaVal {
+  font-family: var(--font-inter, sans-serif);
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: #E2E2E2;
+}
+
+.metaDivider {
+  color: rgba(255, 255, 255, 0.25);
+  font-size: 0.7rem;
+}
+
+/* ═══════════ OUTCOME PROBLEM & SOLUTION ═══════════ */
+.problemSolutionBox {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 2px 0 4px;
+}
+
+.psBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: rgba(255, 255, 255, 0.03);
+  border-left: 3px solid #FF3B30;
+  padding: 4px 10px;
+  border-radius: 0 4px 4px 0;
+}
+
+.psBlock:nth-child(2) {
+  border-left-color: #34C759;
+}
+
+.psBadgeProblem {
+  font-family: var(--font-bangers, cursive);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  color: #FF3B30;
+}
+
+.psBadgeSolution {
+  font-family: var(--font-bangers, cursive);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  color: #34C759;
+}
+
+.psText {
+  font-family: var(--font-inter, sans-serif);
+  font-size: clamp(0.78rem, 0.88vw, 0.86rem);
   line-height: 1.4;
+  color: #D6D6D6;
   margin: 0;
-  max-width: 540px;
 }
 
 .contentDivider {

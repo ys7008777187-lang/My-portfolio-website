@@ -42,7 +42,6 @@
     letter-spacing: 0.03em;
     color: var(--color-text-primary);
     font-family: var(--font-bangers, cursive);
-    text-shadow: 4px 4px 0 var(--color-comic-border);
 }
 
 /* Manga Page Grid */

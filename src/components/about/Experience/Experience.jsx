@@ -1,7 +1,6 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import ScrollVaporText from "../../ui/ScrollVaporText/ScrollVaporText";
 import styles from "./Experience.module.css";
 import { MapPin, Calendar, X } from "lucide-react";
 import experienceData from "../../../data/experience.json";
@@ -70,7 +69,7 @@ export default function Experience() {
                     viewport={{ once: true }}
                 >
                     <span className={styles.label}>Experience</span>
-                    <ScrollVaporText text="Moments Captured" as="h2" className={styles.title} />
+                    <h2 className={styles.title}>Moments Captured</h2>
                     <p className={styles.subtitle}>Each instant holds a story — tap to flip &amp; reveal</p>
                 </motion.div>
 

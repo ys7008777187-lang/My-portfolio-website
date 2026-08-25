@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { textVariants, COMIC_EASE, COMIC_SPRING } from "../../../lib/animationPresets";
+import { COMIC_SPRING } from "../../../lib/animationPresets";
 import styles from "./Profile.module.css";
 import { MapPin, Mail, Briefcase } from "lucide-react";
 import profileData from "../../../data/profile.json";
@@ -42,10 +42,6 @@ const comicEntrance = {
         transition: { delay: 0.25 + i * 0.12, ...COMIC_SPRING }
     })
 };
-
-const textStagger = textVariants.staggerContainer;
-
-const textFadeIn = textVariants.staggerItem;
 
 export default function Profile() {
     const [profile, setProfile] = useState(null);
@@ -110,37 +106,29 @@ export default function Profile() {
                             <span className={styles.issueTitle}>ORIGIN STORY</span>
                         </motion.div>
 
-                        <motion.div
-                            className={styles.textBlock}
-                            variants={textStagger}
-                            initial="hidden"
-                            animate="visible"
-                        >
-                            <motion.span variants={textFadeIn} className={styles.aboutLabel}>ABOUT ME</motion.span>
+                        <div className={styles.textBlock}>
+                            <span className={styles.aboutLabel}>ABOUT ME</span>
 
-                            <motion.h1 variants={textFadeIn} className={styles.tagline}>
+                            <h1 className={styles.tagline}>
                                 <span className={styles.taglineSmall}>DESIGNING WITH</span>
                                 <span className={styles.taglineRow}>
                                     <span className={styles.taglineHeart}>HEART</span>
                                     <span className={styles.taglineSmall}> AND</span>
                                 </span>
                                 <span className={styles.taglineCuriosity}>CURIOSITY.</span>
-                            </motion.h1>
+                            </h1>
 
                             {/* Speech bubble */}
-                            <motion.div
-                                className={styles.speechBubble}
-                                variants={textFadeIn}
-                            >
+                            <div className={styles.speechBubble}>
                                 EVERY PIXEL HAS A <strong>PURPOSE!</strong>
-                            </motion.div>
+                            </div>
 
                             {/* Bio */}
-                            <motion.p variants={textFadeIn} className={styles.bio}>{profile.bio1}</motion.p>
-                            <motion.p variants={textFadeIn} className={styles.bio}>{profile.bio2}</motion.p>
+                            <p className={styles.bio}>{profile.bio1}</p>
+                            <p className={styles.bio}>{profile.bio2}</p>
 
                             {/* Info badges */}
-                            <motion.div variants={textFadeIn} className={styles.infoBadges}>
+                            <div className={styles.infoBadges}>
                                 <div className={styles.infoBadge}>
                                     <MapPin size={13} />
                                     <span>{profile.location}</span>
@@ -149,14 +137,14 @@ export default function Profile() {
                                     <Briefcase size={13} />
                                     <span>{profile.workingAt}</span>
                                 </div>
-                            </motion.div>
-                            <motion.div variants={textFadeIn} className={styles.infoBadges}>
+                            </div>
+                            <div className={styles.infoBadges}>
                                 <div className={styles.infoBadge}>
                                     <Mail size={13} />
                                     <a href={`mailto:${profile.email}`}>{profile.email}</a>
                                 </div>
-                            </motion.div>
-                        </motion.div>
+                            </div>
+                        </div>
                     </div>
 
                     {/* Name tag — bottom right */}

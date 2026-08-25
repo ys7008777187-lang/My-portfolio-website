@@ -31,11 +31,10 @@ export default function Blog() {
                         <span className={styles.issueLabel}>ISSUE</span>
                         <span className={styles.issueNum}>#03</span>
                         <span className={styles.issueSep}>—</span>
-                        <span className={styles.issueTitle}>THOUGHTS & INSIGHTS</span>
+                        <span className={styles.issueTitle}>THOUGHTS &amp; INSIGHTS</span>
                     </div>
-                    <h1 className={styles.title}>Blog</h1>
-                    <div className={styles.badge}>Thoughts & Insights</div>
-                    <p className={styles.subtitle}>Writing about design, technology, and the creative process.</p>
+                    <h1 className={styles.title}>DESIGN BLOG</h1>
+                    <p className={styles.subtitle}>Writing about product design, design systems, accessibility, and user research.</p>
                 </motion.div>
 
                 {isLoading ? (

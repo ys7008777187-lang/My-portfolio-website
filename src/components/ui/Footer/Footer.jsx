@@ -9,8 +9,8 @@ import Logo from "../Logo/Logo";
 const footerLinks = {
     navigation: [
         { href: "/", label: "Home" },
-        { href: "/about", label: "About" },
         { href: "/work", label: "Work" },
+        { href: "/about", label: "About" },
         { href: "/blog", label: "Blog" },
         { href: "/contact", label: "Contact" },
     ],
@@ -41,7 +41,7 @@ export default function Footer() {
                             <span className={styles.logoText}>Yash Srivastava</span>
                         </Link>
                         <p className={styles.tagline}>
-                            Designing digital experiences that inspire and delight.
+                            Product Designer · UX · Interaction
                         </p>
                     </div>
 

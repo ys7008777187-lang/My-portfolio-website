@@ -12,15 +12,46 @@
     background-size: auto, 10px 10px;
 }
 
-.heading {
-    font-size: 2rem;
-    margin-bottom: 3rem;
-    color: #fff;
+.header {
+    margin-bottom: clamp(2rem, 4vh, 3.5rem);
     text-align: center;
+}
+
+.label {
+    display: inline-block;
+    font-size: clamp(0.78rem, 0.9vw, 0.88rem);
+    color: var(--color-comic-yellow, #FFCC00);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
     font-family: var(--font-bangers, cursive);
+    background: rgba(10, 12, 16, 0.9);
+    padding: 3px 10px;
+    border: 1.5px solid var(--color-comic-border);
+    box-shadow: 2px 2px 0 #000;
+    transform: skewX(-6deg);
+}
+
+.sectionTitle {
+    font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+    font-weight: 400;
+    font-style: normal;
     letter-spacing: 0.05em;
-    -webkit-text-stroke: 1px var(--color-comic-border);
-    text-shadow: 3px 3px 0px var(--color-comic-border);
+    color: #FFFFFF;
+    font-family: var(--font-bangers, cursive);
+    text-transform: uppercase;
+    margin: 0;
+    line-height: 1.1;
+}
+
+.subtitle {
+    font-size: clamp(0.92rem, 1.1vw, 1.05rem);
+    color: #CCCCCC;
+    margin-top: 0.6rem;
+    font-family: var(--font-comic-neue, cursive);
+    font-weight: 700;
+    font-style: normal;
 }
 
 .grid {
@@ -76,7 +107,7 @@
     transform: rotate(-3deg);
 }
 
-.title {
+.cardTitle {
     font-size: 1.8rem;
     color: #111;
     font-family: var(--font-bangers, cursive);

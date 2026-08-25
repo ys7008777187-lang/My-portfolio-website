@@ -1,6 +1,5 @@
 "use client";
 import { motion } from "framer-motion";
-import ScrollVaporText from "../../ui/ScrollVaporText/ScrollVaporText";
 import styles from "./Skills.module.css";
 import {
     Figma, Code, Search, Palette, Layers, Accessibility,
@@ -80,8 +79,8 @@ export default function Skills() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
                 >
-                    <span className={styles.label}>Skills & Tools</span>
-                    <ScrollVaporText text="What I Work With" as="h2" className={styles.title} />
+                    <span className={styles.label}>Skills &amp; Tools</span>
+                    <h2 className={styles.title}>What I Work With</h2>
                 </motion.div>
 
                 <motion.div

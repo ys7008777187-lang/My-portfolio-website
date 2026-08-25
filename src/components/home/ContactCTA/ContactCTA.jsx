@@ -42,10 +42,9 @@ export default function ContactCTA() {
           viewport={{ once: true, margin: "-50px" }}
         >
           <div className={styles.headerTop}>
-            <span className={styles.sectionNumber}>05.</span>
-            <span className={styles.headerBadge}>ISSUE #05 • THE FINALE</span>
+            <span className={styles.sectionNumber}>5.</span>
+            <h2 className={styles.title}>WHAT&apos;S NEXT?</h2>
           </div>
-          <h2 className={styles.title}>WHAT'S NEXT?</h2>
           <p className={styles.subtitle}>
             THE STORY ENDS HERE, BUT THE COLLABORATION BEGINS.
           </p>
@@ -78,11 +77,11 @@ export default function ContactCTA() {
 
             <div className={styles.headlineBlock}>
               <h3 className={styles.mainHeadline}>
-                LET'S BUILD <br />
+                LET&apos;S BUILD <br />
                 <span className={styles.highlightYellow}>THE NEXT STORY</span> TOGETHER.
               </h3>
               <p className={styles.descriptionText}>
-                Have a bold product vision, a 0-to-1 startup, or a complex interface that needs high-craft UI/UX and rapid prototyping? I'm always excited to team up on high-impact projects.
+                Available for product design, UX/UI and interaction design roles.
               </p>
             </div>
 
@@ -90,11 +89,11 @@ export default function ContactCTA() {
             <div className={styles.statusChipsRow}>
               <div className={styles.statusChip}>
                 <span className={styles.statusDot} />
-                <span>Available for Freelance & Full-time Roles</span>
+                <span>Available for Full-time &amp; Freelance</span>
               </div>
               <div className={styles.locationChip}>
                 <MapPin size={13} className={styles.chipIcon} />
-                <span>Bangalore, India (UTC+5:30)</span>
+                <span>Bangalore, India</span>
               </div>
               <div className={styles.responseTimeChip}>
                 <Clock size={13} className={styles.chipIcon} />

@@ -38,7 +38,6 @@
     letter-spacing: 0.03em;
     color: var(--color-text-primary);
     font-family: var(--font-bangers, cursive);
-    text-shadow: 3px 3px 0 var(--color-comic-border);
 }
 
 /* ── Grid & Card ── */

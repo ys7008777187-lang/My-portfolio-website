@@ -197,7 +197,7 @@
     letter-spacing: 0.04em;
     text-transform: uppercase;
     transform: skewX(-8deg);
-    margin-bottom: clamp(20px, 3vh, 32px);
+    margin-bottom: clamp(14px, 2vh, 18px);
     text-shadow:
         3px 3px 0 #000,
         4px 4px 0 #000,
@@ -249,7 +249,7 @@
     border: var(--border-width, 3px) solid rgba(var(--color-bg-primary-rgb), 0.35);
     border-radius: 0;
     padding: clamp(6px, 1vh, 10px) clamp(12px, 1.4vw, 18px);
-    margin-bottom: clamp(10px, 1.8vh, 18px);
+    margin-bottom: clamp(14px, 2vh, 18px);
     width: 100%;
     max-width: 440px;
     transform: skewX(-6deg);
@@ -290,10 +290,10 @@
 
 .role {
     font-family: var(--font-comic-neue, cursive);
-    font-size: 0.68rem;
-    font-weight: 700;
-    letter-spacing: 1.2px;
-    color: var(--color-text-muted);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: var(--color-comic-yellow);
     margin: 0;
     text-transform: uppercase;
 }
@@ -306,6 +306,52 @@
     transform: rotate(-10deg) skewX(6deg);
     text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.8), 0 0 12px rgba(226, 183, 20, 0.4);
     line-height: 1;
+}
+
+/* ===== AVAILABILITY BADGE ===== */
+.availabilityBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(12, 16, 20, 0.92);
+    border: 2px solid #34C759;
+    padding: 4px 12px;
+    margin-bottom: clamp(14px, 2vh, 18px);
+    box-shadow: 3px 3px 0 #000000;
+    transform: skewX(-6deg);
+    backdrop-filter: blur(8px);
+}
+
+.statusPulseDot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #34C759;
+    box-shadow: 0 0 8px #34C759;
+    display: inline-block;
+    animation: statusPulse 2s infinite ease-in-out;
+}
+
+@keyframes statusPulse {
+    0% { transform: scale(0.9); opacity: 0.7; }
+    50% { transform: scale(1.2); opacity: 1; box-shadow: 0 0 12px #34C759; }
+    100% { transform: scale(0.9); opacity: 0.7; }
+}
+
+.statusBadgeText {
+    font-family: var(--font-bangers, cursive);
+    font-size: 0.88rem;
+    letter-spacing: 0.08em;
+    color: #34C759;
+    transform: skewX(6deg);
+}
+
+.statusLocation {
+    font-family: var(--font-comic-neue, cursive);
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #CCCCCC;
+    transform: skewX(6deg);
 }
 
 /* ===== CTA BUTTON ===== */
@@ -678,59 +724,124 @@
     padding-top: clamp(2px, 0.8vh, 8px);
 }
 
-.toolsArea {
+.capabilitiesArea {
     display: flex;
-    align-items: center;
-    gap: clamp(8px, 1vw, 12px);
-}
-
-.toolsLabel {
-    position: relative;
-    padding: clamp(4px, 0.8vh, 6px) clamp(8px, 1vw, 12px);
-    background: rgba(10, 12, 16, 0.85);
-    border: 1.5px dashed rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(8px);
-    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.6);
-    transform: skewX(-6deg);
-    font-family: var(--font-bangers, cursive);
-    font-size: clamp(0.7rem, 0.85vw, 0.76rem);
-    line-height: 1.15;
-    letter-spacing: 1.2px;
-    color: #FFFFFF;
-    text-align: center;
-}
-
-.toolsList {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    background: rgba(10, 12, 16, 0.78);
-    padding: clamp(4px, 0.8vh, 6px) clamp(8px, 1vw, 12px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    background: rgba(10, 12, 16, 0.92);
+    padding: 10px 16px;
+    border: 2px solid var(--color-comic-border);
+    border-radius: 0;
+    box-shadow: 3px 3px 0 #000000;
     backdrop-filter: blur(12px);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+    max-width: 680px;
 }
 
-.toolIcon {
-    width: clamp(28px, 3.2vh, 32px);
-    height: clamp(28px, 3.2vh, 32px);
+.capabilitiesPills {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 6px;
+    flex-wrap: wrap;
+    font-family: var(--font-bangers, cursive);
+    font-size: clamp(0.72rem, 0.85vw, 0.82rem);
+    letter-spacing: 0.06em;
+    color: var(--color-comic-yellow);
+    text-shadow: 1px 1px 0 #000000;
+    width: 100%;
+}
+
+.capPill {
+    display: inline-block;
+    transition: color 0.15s ease;
+}
+
+.pillDot {
+    color: rgba(255, 255, 255, 0.35);
+    font-size: 0.65rem;
+}
+
+.toolsListRow {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.toolsTextLabel {
+    color: var(--color-comic-red);
+    font-family: var(--font-bangers, cursive);
+    font-size: clamp(0.78rem, 0.92vw, 0.88rem);
+    letter-spacing: 0.08em;
+    margin: 0;
+    line-height: 1;
+}
+
+.toolIconsContainer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.toolIconCard {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(18, 22, 28, 0.9);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    font-family: var(--font-inter, sans-serif);
-    font-size: 0.75rem;
-    font-weight: 900;
-    color: var(--color-text-muted);
-    cursor: default;
-    transition: all 0.15s ease;
+    width: 28px;
+    height: 28px;
+    background: rgba(14, 18, 24, 0.95);
+    border: 1.5px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 2px 2px 0px #000000;
+    cursor: pointer;
+    transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
-.toolIcon:hover {
+.toolIconCard:hover {
+    transform: translateY(-2px) scale(1.1);
     border-color: var(--color-comic-yellow);
+    box-shadow: 2px 4px 0px #000000;
+    z-index: 10;
+}
+
+.toolNameTooltip {
+    position: absolute;
+    bottom: calc(100% + 7px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: #000000;
     color: var(--color-comic-yellow);
-    box-shadow: 0 0 14px rgba(226, 183, 20, 0.4);
+    font-family: var(--font-bangers, cursive);
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    padding: 2px 6px;
+    border: 1px solid var(--color-comic-border);
+    box-shadow: 2px 2px 0 #000;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.toolNameTooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 4px;
+    border-style: solid;
+    border-color: #000000 transparent transparent transparent;
+}
+
+.toolIconCard:hover .toolNameTooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(-2px);
 }
 
 /* Scroll Indicator */

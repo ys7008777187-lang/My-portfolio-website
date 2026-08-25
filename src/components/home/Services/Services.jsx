@@ -6,31 +6,11 @@ import { textVariants, COMIC_EASE } from "../../../lib/animationPresets";
 import styles from "./Services.module.css";
 
 const steps = [
-  {
-    id: 1,
-    title: "RESEARCH",
-    desc: "Understanding the problem.",
-  },
-  {
-    id: 2,
-    title: "IDEATION",
-    desc: "Exploring possibilities.",
-  },
-  {
-    id: 3,
-    title: "DESIGN",
-    desc: "Crafting interfaces.",
-  },
-  {
-    id: 4,
-    title: "INTERACTION",
-    desc: "Bringing it to life.",
-  },
-  {
-    id: 5,
-    title: "IMPACT",
-    desc: "Creating real impact.",
-  },
+  { id: 1, title: "RESEARCH" },
+  { id: 2, title: "IDEATION" },
+  { id: 3, title: "DESIGN" },
+  { id: 4, title: "INTERACTION" },
+  { id: 5, title: "IMPACT" },
 ];
 
 const containerVariants = {
@@ -63,8 +43,8 @@ export default function Services() {
         viewport={{ once: true, margin: "-50px" }}
       >
         <span className={styles.sectionNumber}>3.</span>
-        <h2 className={styles.title}>SCROLL STORYTELLING</h2>
-        <p className={styles.subtitle}>Sections reveal like panels in a story.</p>
+        <h2 className={styles.title}>MY DESIGN APPROACH</h2>
+        <p className={styles.subtitle}>From initial discovery to shipped user impact.</p>
       </motion.div>
 
       <motion.div
@@ -81,7 +61,6 @@ export default function Services() {
                 <div className={styles.panelBox}>
                   <span className={styles.stepName}>{step.title}</span>
                 </div>
-                <p className={styles.stepDesc}>{step.desc}</p>
               </div>
             </motion.div>
             {index < steps.length - 1 && (

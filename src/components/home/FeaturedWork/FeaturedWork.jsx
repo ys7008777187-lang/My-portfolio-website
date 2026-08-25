@@ -84,7 +84,7 @@ const FeaturedWork = () => {
             <h2 className={styles.title}>PROJECTS AS COMIC CHAPTERS</h2>
           </div>
           <p className={styles.subtitle}>
-            Each project feels like a comic issue.
+            Digital products designed across mobility, food, commerce and community.
           </p>
         </motion.div>
 

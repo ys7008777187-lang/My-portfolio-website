@@ -22,6 +22,7 @@ import {
   Play,
   Pause,
   ExternalLink,
+  ArrowRight,
   Zap,
   Smartphone,
   Utensils,
@@ -40,6 +41,11 @@ const projects = [
     id: 8,
     name: "CAMPUS BITES",
     icon: Utensils,
+    meta: "PRODUCT DESIGN · UX · MOBILE",
+    role: "Product Designer",
+    contribution: "Research · UX · UI · Prototyping",
+    timeline: "6 Weeks",
+    platform: "Mobile (iOS / Android)",
     steps: [
       {
         stepNum: 1,
@@ -47,6 +53,8 @@ const projects = [
         stepSub: "Find what you need",
         tag: "STEP 1: DISCOVERY",
         title: "FOOD COURT & OUTLET HUB",
+        problem: "Students waste critical break time navigating crowded campus food outlets with zero queue visibility.",
+        solution: "A real-time campus food discovery experience designed around live counter availability, queue visibility, and faster meal decisions.",
         description: "Explore all campus food courts with real-time wait times and live open status.",
         features: [
           {
@@ -82,6 +90,8 @@ const projects = [
         stepSub: "Choose your meal",
         tag: "STEP 2: MENU & CUSTOMIZE",
         title: "INTERACTIVE MENU & CUSTOMIZATION",
+        problem: "Unclear menu variants, hidden add-on costs, and outdated sold-out listings trigger ordering friction.",
+        solution: "High-contrast visual menu cards with instant 1-tap customization, live inventory sync, and upfront price transparency.",
         description: "High-contrast visual menu with rapid variant selection and instant stock updates.",
         features: [
           {
@@ -117,6 +127,8 @@ const projects = [
         stepSub: "Quick & easy checkout",
         tag: "STEP 3: INSTANT CHECKOUT",
         title: "FRICTIONLESS DIGITAL PAYMENT",
+        problem: "Payment gateway drop-offs and slow individual billing cause congestion at food checkout counters.",
+        solution: "1-tap Campus Student Wallet, instant UPI integration, and automated smart bill splitting that cuts checkout to under 30 seconds.",
         description: "Zero-contact digital payment integrating Student ID wallet, UPI, and split billing.",
         features: [
           {
@@ -152,6 +164,8 @@ const projects = [
         stepSub: "Track your order live",
         tag: "STEP 4: LIVE TOKEN",
         title: "DIGITAL TOKEN & QUEUE-FREE PICKUP",
+        problem: "Physical counter crowding and missed verbal token callouts create chaos and delayed pickups.",
+        solution: "Digital animated token tracking with 3-stage live preparation milestones and haptic ready alerts.",
         description: "Say goodbye to crowded physical queues with real-time digital token callouts.",
         features: [
           {
@@ -187,6 +201,11 @@ const projects = [
     id: 3,
     name: "BHAIYAA SUPER APP",
     icon: Package,
+    meta: "SUPER APP · PRODUCT SYSTEM · UX/UI",
+    role: "Lead Product Designer",
+    contribution: "System Architecture · UX Strategy · UI Design",
+    timeline: "10 Weeks",
+    platform: "Multi-Platform Mobile",
     steps: [
       {
         stepNum: 1,
@@ -194,6 +213,8 @@ const projects = [
         stepSub: "Unified dashboard",
         tag: "STEP 1: SUPER APP HUB",
         title: "INTEGRATED COMMUNITY DASHBOARD",
+        problem: "Fragmented neighborhood services force users to switch between 4+ disconnected apps with inconsistent trust.",
+        solution: "A unified hyperlocal super app integrating commerce, community trust, and door-to-door delivery in a single cohesive design system.",
         description: "All-in-one super app uniting neighborhood utilities, hyperlocal deliveries, and instant rides.",
         features: [
           {
@@ -229,6 +250,8 @@ const projects = [
         stepSub: "On-demand booking",
         tag: "STEP 2: SERVICE BOOKING",
         title: "HYPERLOCAL ON-DEMAND BOOKING",
+        problem: "Unregulated service fees and unverified worker profiles lead to safety doubts and price disputes.",
+        solution: "Transparent upfront fixed rate cards with verified background-checked technician badges and exact slot booking.",
         description: "Book verified local home services and trusted handymen with upfront transparent pricing.",
         features: [
           {
@@ -264,6 +287,8 @@ const projects = [
         stepSub: "Local connect",
         tag: "STEP 3: LOCAL CONNECT",
         title: "NEIGHBORHOOD SOCIAL & RIDE SHARE",
+        problem: "Isolated neighborhood communities lack a verified, safe platform to carpool or share urgent local alerts.",
+        solution: "Resident-verified community forum with daily commute carpooling and moderated hyper-local updates.",
         description: "Carpool with trusted verified neighbors and share community event updates safely.",
         features: [
           {
@@ -299,6 +324,8 @@ const projects = [
         stepSub: "Live timeline",
         tag: "STEP 4: TRACKING & DISPATCH",
         title: "LIVE ORDER & DISPATCH TIMELINE",
+        problem: "Opaque delivery arrivals and unmasked phone numbers compromise user privacy and ETA certainty.",
+        solution: "Live GPS timeline with OTP security verification handshakes and in-app masked VoIP calls.",
         description: "Unified tracking dashboard for deliveries, service workers, and ride arrivals.",
         features: [
           {
@@ -334,6 +361,11 @@ const projects = [
     id: 2,
     name: "MYRIK EV MOBILITY",
     icon: Car,
+    meta: "MOBILITY · UX RESEARCH · MOBILE",
+    role: "Product Designer & Researcher",
+    contribution: "User Research · Spatial UI · Interaction Design",
+    timeline: "8 Weeks",
+    platform: "Mobile App",
     steps: [
       {
         stepNum: 1,
@@ -341,6 +373,8 @@ const projects = [
         stepSub: "Spatial discovery",
         tag: "STEP 1: DISCOVERY",
         title: "TIER 2/3 EV RIDE DISCOVERY",
+        problem: "Unpredictable dynamic pricing and poor range transparency create commuter anxiety in tier-2 EV adoption.",
+        solution: "A transparent, map-first EV booking platform with landmark-based pin drops and bilingual voice assistance.",
         description: "Card-based spatial interface designed for Bharat with minimal cognitive friction.",
         features: [
           {
@@ -376,6 +410,8 @@ const projects = [
         stepSub: "Zero-surge fares",
         tag: "STEP 2: FARE ESTIMATE",
         title: "TRANSPARENT UPFRONT FARES",
+        problem: "Surge multipliers during peak commute times alienate price-sensitive tier-2 daily commuters.",
+        solution: "Fixed upfront pricing locks that never increase mid-trip, paired with tangible CO2 carbon-saving meters.",
         description: "Zero-surge pricing with clear EV cost savings breakdowns before booking.",
         features: [
           {
@@ -411,6 +447,8 @@ const projects = [
         stepSub: "Rapid dispatch",
         tag: "STEP 3: SMART DISPATCH",
         title: "RAPID DRIVER MATCHING",
+        problem: "High ride-cancellation rates and endless searching screens cause user drop-offs.",
+        solution: "Nearest-driver algorithmic clustering pairing EV drivers in seconds with 0 cancellation penalty within 2 minutes.",
         description: "Fast nearest-driver dispatch algorithm reducing average wait times by 40%.",
         features: [
           {
@@ -446,33 +484,35 @@ const projects = [
         stepSub: "Safety & GPS",
         tag: "STEP 4: LIVE ROUTE",
         title: "LIVE GPS ROUTE & SAFETY",
+        problem: "Night-time safety concerns and route deviations are major barriers for women commuters.",
+        solution: "Real-time route deviations alerts, automatic family tracking links, and a dedicated 1-tap SOS emergency trigger.",
         description: "Turn-by-turn route visualization with 1-tap live location sharing for family.",
         features: [
           {
             icon: MapPin,
-            title: "Live Turn-by-Turn GPS",
-            description: "High-frequency position updates along verified route."
+            title: "Live Breadcrumb Route",
+            description: "Real-time turn-by-turn navigation with delay alerts."
           },
           {
             icon: Shield,
-            title: "Emergency Safety Shield",
-            description: "1-tap SMS location broadcast to emergency contacts."
+            title: "1-Tap Family Link",
+            description: "Share live vehicle telemetry directly on WhatsApp."
           },
           {
-            icon: Smartphone,
-            title: "Direct Driver Audio Chat",
-            description: "Quick canned audio messages for pickup coordination."
+            icon: Zap,
+            title: "Emergency SOS Trigger",
+            description: "Instant dispatch to local emergency teams if route deviates."
           }
         ],
         tags: [
-          { icon: Shield, text: "Safety Shield", color: "#FFCC00" },
-          { icon: MapPin, text: "Live GPS", color: "#34C759" },
-          { icon: Users, text: "Family Sharing", color: "#32ADE6" }
+          { icon: Shield, text: "1-Tap SOS", color: "#FFCC00" },
+          { icon: Users, text: "Share Trip", color: "#34C759" },
+          { icon: MapPin, text: "Live GPS", color: "#32ADE6" }
         ],
         image: "/images/myrik/screens/tracking.png",
         callout: {
-          title: "SAFETY FIRST",
-          desc: "Built-in SOS with automatic location sharing to emergency contacts."
+          title: "SAFETY ASSURANCE",
+          desc: "Live route monitoring with automatic family link sharing and instant emergency SOS."
         }
       }
     ]
@@ -522,16 +562,19 @@ export default function Journey() {
         >
           <div className={styles.headerTop}>
             <span className={styles.sectionNumber}>4.</span>
-            <h2 className={styles.mainTitle}>4-PAGE INTERACTIVE PROTOTYPES</h2>
+            <h2 className={styles.mainTitle}>SELECTED PRODUCT WORK</h2>
           </div>
           <p className={styles.subtitle}>
-            Switch projects below and click through the 4-step mobile UI flows.
+            Explore selected products through interactive flows and case studies.
+          </p>
+          <p className={styles.summaryLine}>
+            Digital products I&apos;ve designed across mobility, food, commerce and community.
           </p>
         </motion.div>
 
         {/* The Enclosing Comic Showcase Panel Box */}
         <div className={styles.showcaseBox}>
-          {/* Project Switcher Bar */}
+          {/* Project Switcher Bar with Metadata */}
           <div className={styles.projectTabsRow}>
             {projects.map((proj, idx) => {
               const Icon = proj.icon;
@@ -543,8 +586,11 @@ export default function Journey() {
                   onClick={() => handleProjectSwitch(idx)}
                   className={`${styles.projectTab} ${isActive ? styles.projectTabActive : ""}`}
                 >
-                  <Icon size={16} className={styles.tabIcon} />
-                  <span>{proj.name}</span>
+                  <div className={styles.tabMainRow}>
+                    <Icon size={16} className={styles.tabIcon} />
+                    <span className={styles.tabName}>{proj.name}</span>
+                  </div>
+                  <span className={styles.tabMeta}>{proj.meta}</span>
                 </button>
               );
             })}
@@ -607,10 +653,35 @@ export default function Journey() {
                     {currentStep.title}
                   </h3>
 
-                  {/* Subtitle / Paragraph */}
-                  <p className={styles.screenDescription}>
-                    {currentStep.description}
-                  </p>
+                  {/* Project Metadata Strip */}
+                  <div className={styles.projectMetaStrip}>
+                    <div className={styles.metaItem}>
+                      <span className={styles.metaLabel}>ROLE</span>
+                      <span className={styles.metaVal}>{currentProject.role}</span>
+                    </div>
+                    <div className={styles.metaDivider}>•</div>
+                    <div className={styles.metaItem}>
+                      <span className={styles.metaLabel}>CONTRIBUTION</span>
+                      <span className={styles.metaVal}>{currentProject.contribution}</span>
+                    </div>
+                    <div className={styles.metaDivider}>•</div>
+                    <div className={styles.metaItem}>
+                      <span className={styles.metaLabel}>TIMELINE</span>
+                      <span className={styles.metaVal}>{currentProject.timeline}</span>
+                    </div>
+                  </div>
+
+                  {/* Outcome-Oriented Problem & Solution Framing */}
+                  <div className={styles.problemSolutionBox}>
+                    <div className={styles.psBlock}>
+                      <span className={styles.psBadgeProblem}>THE PROBLEM</span>
+                      <p className={styles.psText}>{currentStep.problem || currentStep.description}</p>
+                    </div>
+                    <div className={styles.psBlock}>
+                      <span className={styles.psBadgeSolution}>THE SOLUTION</span>
+                      <p className={styles.psText}>{currentStep.solution || currentStep.description}</p>
+                    </div>
+                  </div>
 
                   {/* Divider Line */}
                   <div className={styles.contentDivider} />
@@ -684,8 +755,8 @@ export default function Journey() {
                   href={`/work/${currentProject.id}`}
                   className={styles.fullCaseStudyLink}
                 >
-                  <span>FULL CASE STUDY</span>
-                  <ExternalLink size={14} />
+                  <span>READ FULL CASE STUDY</span>
+                  <ArrowRight size={16} />
                 </Link>
               </div>
             </div>
