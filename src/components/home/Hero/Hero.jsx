@@ -338,37 +338,22 @@ export default function Hero() {
                 </div>
             </div>
 
-            {/* === BOTTOM AREA — Capabilities Snapshot + Scroll === */}
+            {/* === BOTTOM AREA — Stack Snapshot (Left) + Scroll Indicator (Right) === */}
             <div className={styles.bottomArea}>
                 <motion.div
-                    className={styles.capabilitiesArea}
+                    className={styles.stackBox}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1.1 }}
+                    transition={{ delay: 0.9 }}
                 >
-                    <div className={styles.capabilitiesPills}>
-                        <span className={styles.capPill}>PRODUCT STRATEGY</span>
-                        <span className={styles.pillDot}>•</span>
-                        <span className={styles.capPill}>UX RESEARCH</span>
-                        <span className={styles.pillDot}>•</span>
-                        <span className={styles.capPill}>INTERACTION DESIGN</span>
-                        <span className={styles.pillDot}>•</span>
-                        <span className={styles.capPill}>UI DESIGN</span>
-                        <span className={styles.pillDot}>•</span>
-                        <span className={styles.capPill}>PROTOTYPING</span>
-                        <span className={styles.pillDot}>•</span>
-                        <span className={styles.capPill}>DESIGN SYSTEMS</span>
-                    </div>
-                    <div className={styles.toolsListRow}>
-                        <span className={styles.toolsTextLabel}>STACK:</span>
-                        <div className={styles.toolIconsContainer}>
-                            {stackTools.map((tool) => (
-                                <div key={tool.name} className={styles.toolIconCard} aria-label={tool.name}>
-                                    <tool.Icon />
-                                    <span className={styles.toolNameTooltip}>{tool.name}</span>
-                                </div>
-                            ))}
-                        </div>
+                    <span className={styles.toolsTextLabel}>STACK:</span>
+                    <div className={styles.toolIconsContainer}>
+                        {stackTools.map((tool) => (
+                            <div key={tool.name} className={styles.toolIconCard} aria-label={tool.name}>
+                                <tool.Icon />
+                                <span className={styles.toolNameTooltip}>{tool.name}</span>
+                            </div>
+                        ))}
                     </div>
                 </motion.div>
 
@@ -376,7 +361,7 @@ export default function Hero() {
                     className={styles.scrollArea}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ delay: 1.3 }}
+                    transition={{ delay: 1.1 }}
                 >
                     <span className={styles.scrollText}>SCROLL TO EXPLORE</span>
                     <motion.div
