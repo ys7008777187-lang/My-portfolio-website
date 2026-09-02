@@ -589,6 +589,48 @@
         gap: 0.25rem;
         font-size: 0.75rem;
     }
+
+    .igProfileCard {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+    }
+
+    .igProfileActions {
+        width: 100%;
+    }
+
+    .igPrimaryBtn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .igGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.25rem;
+    }
+
+    .igBannerCta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.25rem;
+    }
+
+    .igBannerBtn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .igGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .igProfileLeft {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }
 
 @media (max-width: 480px) {
@@ -608,4 +650,431 @@
     .comicTitle {
         font-size: 2.2rem;
     }
+
+    .igHeadline {
+        font-size: 1.6rem;
+    }
 }
+
+/* ═══════════════════════════════════════════
+   INSTAGRAM REELS SPOTLIGHT SECTION
+   ═══════════════════════════════════════════ */
+
+.igSection {
+    margin-top: 5rem;
+    padding-top: 3.5rem;
+    border-top: 3px dashed var(--color-comic-border, #333);
+    position: relative;
+}
+
+.igSection::before {
+    content: '🎬 INSTAGRAM REELS SPOTLIGHT ⚡';
+    position: absolute;
+    top: -0.9rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--font-bangers, cursive);
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    color: var(--color-accent);
+    background: var(--color-bg-primary);
+    padding: 0.2rem 1.2rem;
+    border: 2px solid var(--color-comic-border, #333);
+    box-shadow: 3px 3px 0 #000;
+    white-space: nowrap;
+}
+
+/* Profile Card */
+.igProfileCard {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    background: var(--color-bg-secondary);
+    border: 3px solid var(--color-comic-border, #333);
+    box-shadow: 6px 6px 0 #000;
+    padding: 1.8rem 2.2rem;
+    margin-bottom: 2.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.igProfileCard::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 6px;
+    height: 100%;
+    background: linear-gradient(180deg, #E1306C, #F77737, #FCAF45);
+}
+
+.igProfileLeft {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.igAvatarWrap {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.igAvatarGlow {
+    position: absolute;
+    inset: -3px;
+    background: linear-gradient(135deg, #E1306C, #F77737, #833AB4);
+    border-radius: 50%;
+    opacity: 0.7;
+    filter: blur(4px);
+}
+
+.igAvatar {
+    position: relative;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #833AB4, #E1306C, #F77737);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #000;
+    box-shadow: 3px 3px 0 #000;
+}
+
+.igProfileMeta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.igHandleRow {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.igHandle {
+    font-family: var(--font-bangers, cursive);
+    font-size: 1.25rem;
+    letter-spacing: 0.05em;
+    color: var(--color-accent);
+}
+
+.igVerifiedBadge {
+    font-family: var(--font-bangers, cursive);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    padding: 0.15rem 0.5rem;
+    background: #50FA7B;
+    color: #000;
+    border: 1px solid #000;
+    box-shadow: 2px 2px 0 #000;
+}
+
+.igHeadline {
+    font-family: var(--font-bangers, cursive);
+    font-size: 1.9rem;
+    letter-spacing: 0.04em;
+    color: var(--color-text-primary);
+    margin: 0;
+    line-height: 1.1;
+}
+
+.igBio {
+    font-family: var(--font-comic, sans-serif);
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+    margin: 0;
+}
+
+.igProfileActions {
+    flex-shrink: 0;
+}
+
+.igPrimaryBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.85rem 1.6rem;
+    background: linear-gradient(135deg, #E1306C, #F77737);
+    color: #fff;
+    font-family: var(--font-bangers, cursive);
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    border: 3px solid #000;
+    box-shadow: 4px 4px 0 #000;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.igPrimaryBtn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 7px 7px 0 #000;
+    background: linear-gradient(135deg, #F77737, #E1306C);
+}
+
+/* Reels Grid */
+.igGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.8rem;
+    margin-bottom: 3rem;
+}
+
+.reelCard {
+    background: var(--color-bg-secondary);
+    border: 3px solid var(--color-comic-border, #333);
+    box-shadow: 5px 5px 0 #000;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.reelCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 8px 8px 0 var(--color-accent);
+}
+
+.reelMediaWrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    max-height: 380px;
+    background: #0a0a0a;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.reelVideo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.reelOverlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, transparent 40%, rgba(0,0,0,0.7) 100%);
+    pointer-events: none;
+}
+
+.reelTagBadge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    padding: 0.25rem 0.65rem;
+    color: #000;
+    font-family: var(--font-bangers, cursive);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    border: 2px solid #000;
+    box-shadow: 2px 2px 0 #000;
+    z-index: 2;
+}
+
+.reelPlayBtn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.7);
+    border: 2px solid #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.8;
+    transition: all 0.25s ease;
+    z-index: 2;
+}
+
+.reelMediaWrap:hover .reelPlayBtn {
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 1;
+    background: var(--color-accent);
+    border-color: #000;
+}
+
+.reelMediaWrap:hover .reelPlayBtn svg {
+    fill: #000;
+    stroke: #000;
+}
+
+.reelWatermark {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: #fff;
+    font-family: var(--font-bangers, cursive);
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    background: rgba(0, 0, 0, 0.65);
+    padding: 0.2rem 0.6rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(4px);
+    z-index: 2;
+}
+
+.reelInfo {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    border-top: 3px solid var(--color-comic-border, #333);
+}
+
+.reelCategoryRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.35rem;
+}
+
+.reelCategory {
+    font-family: var(--font-bangers, cursive);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    color: var(--color-accent);
+}
+
+.reelHeart {
+    color: #FF6B9D;
+}
+
+.reelTitle {
+    font-family: var(--font-bangers, cursive);
+    font-size: 1.25rem;
+    letter-spacing: 0.03em;
+    color: var(--color-text-primary);
+    margin: 0 0 0.35rem;
+    line-height: 1.2;
+}
+
+.reelDesc {
+    font-family: var(--font-comic, sans-serif);
+    font-size: 0.82rem;
+    color: var(--color-text-secondary);
+    line-height: 1.4;
+    margin: 0 0 1rem;
+    flex: 1;
+}
+
+.reelActions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: auto;
+}
+
+.reelPreviewBtn {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    padding: 0.5rem 0.75rem;
+    background: var(--color-bg-tertiary);
+    border: 2px solid var(--color-comic-border, #333);
+    color: var(--color-text-primary);
+    font-family: var(--font-bangers, cursive);
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.reelPreviewBtn:hover {
+    background: var(--color-accent);
+    color: #000;
+    border-color: #000;
+}
+
+.reelDirectLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.5rem 0.75rem;
+    background: transparent;
+    border: 2px solid #E1306C;
+    color: #E1306C;
+    font-family: var(--font-bangers, cursive);
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.reelDirectLink:hover {
+    background: #E1306C;
+    color: #fff;
+}
+
+/* Banner CTA */
+.igBannerCta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 1.5rem 2rem;
+    background: linear-gradient(135deg, rgba(225, 48, 108, 0.12), rgba(247, 119, 55, 0.12));
+    border: 3px solid var(--color-comic-border, #333);
+    box-shadow: 5px 5px 0 #000;
+}
+
+.igBannerContent {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.igSparkle {
+    color: #FCAF45;
+    flex-shrink: 0;
+}
+
+.igBannerTitle {
+    font-family: var(--font-bangers, cursive);
+    font-size: 1.35rem;
+    letter-spacing: 0.05em;
+    color: var(--color-text-primary);
+    margin: 0 0 0.2rem;
+}
+
+.igBannerSubtitle {
+    font-family: var(--font-comic, sans-serif);
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+    margin: 0;
+}
+
+.igBannerBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, #E1306C, #F77737);
+    color: #fff;
+    font-family: var(--font-bangers, cursive);
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    border: 2px solid #000;
+    box-shadow: 3px 3px 0 #000;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.igBannerBtn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 #000;
+}
+

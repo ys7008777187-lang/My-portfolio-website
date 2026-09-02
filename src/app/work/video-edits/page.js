@@ -1,8 +1,8 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { ArrowLeft, Play, X } from "lucide-react";
+import { ArrowLeft, Play, X, Instagram, ExternalLink, Sparkles, Film, Heart } from "lucide-react";
 import ContactCTA from "../../../components/home/ContactCTA/ContactCTA";
 import { getAssetUrl, getOptimizedUrl } from "../../../lib/assetUrl";
 import styles from "./page.module.css";
@@ -13,7 +13,7 @@ const videoProjects = [
         title: 'ADT Solution Showcase',
         category: 'Video Editing',
         icon: '🎬',
-        description: 'Comprehensive product demonstration and feature highlight',
+        description: 'Comprehensive product demonstration and feature highlight with dynamic transitions',
         videoSrc: '/videos/adt-video.mp4',
         thumbnail: '/images/projects/adt.jpg',
         tagline: 'THE FULL EXPERIENCE!'
@@ -23,34 +23,124 @@ const videoProjects = [
         title: 'Logo Motion Loader',
         category: 'Motion Graphics',
         icon: '✨',
-        description: 'Smooth, stylized animated logo sequence',
+        description: 'Smooth, stylized animated logo sequence crafted for digital products',
         videoSrc: '/videos/logo-loader.gif',
         thumbnail: '/videos/logo-loader.gif',
         tagline: 'SMOOTH MOVES!'
     },
     {
         id: 'v3',
-        title: 'Packaging Motion',
-        category: 'Motion Graphics',
+        title: 'Packaging 3D Motion',
+        category: '3D & Motion',
         icon: '📦',
-        description: 'Dynamic product packaging animation',
+        description: 'Dynamic product packaging animation highlighting textures and form',
         videoSrc: '/videos/packaging-motion.mp4',
         thumbnail: '/videos/packaging-motion.mp4',
         tagline: 'UNBOX THE MAGIC!'
     },
     {
         id: 'v4',
-        title: 'Shoe Motion',
-        category: 'Motion Graphics',
+        title: 'Footwear Motion Story',
+        category: 'Commercial Motion',
         icon: '👟',
-        description: 'Stylish footwear motion presentation',
+        description: 'Stylish footwear presentation blending bold typography with kinetic rhythm',
         videoSrc: '/videos/shoes-motion.mp4',
         thumbnail: '/videos/shoes-motion.mp4',
         tagline: 'STEP INTO STYLE!'
+    },
+    {
+        id: 'v5',
+        title: 'Character Motion & VFX',
+        category: 'Animation & VFX',
+        icon: '💥',
+        description: 'Expressive character motion study featuring stylized visual physics',
+        videoSrc: '/videos/character-motion.mp4',
+        thumbnail: '/videos/character-motion.mp4',
+        tagline: 'ACTION PACKED!'
+    },
+    {
+        id: 'v6',
+        title: 'Kinetic Motion Graphic',
+        category: 'Motion Design',
+        icon: '⚡',
+        description: 'High-energy typographic sequence with bold timing and impact frames',
+        videoSrc: '/videos/do-it-motion.mp4',
+        thumbnail: '/videos/do-it-motion.mp4',
+        tagline: 'HIGH ENERGY!'
+    },
+    {
+        id: 'v7',
+        title: 'Brand Identity Animation',
+        category: 'Brand Motion',
+        icon: '🎨',
+        description: 'Fluid corporate identity motion showcase designed for modern web apps',
+        videoSrc: '/videos/bhaiyaa-animation.mp4',
+        thumbnail: '/videos/bhaiyaa-animation.mp4',
+        tagline: 'BRAND IN MOTION!'
     }
 ];
 
-const panelColors = ['#FF6B9D', '#8BE9FD', '#FFB86C', '#50FA7B'];
+const INSTAGRAM_HANDLE = "chitranga420";
+const INSTAGRAM_PROFILE_URL = `https://www.instagram.com/${INSTAGRAM_HANDLE}/`;
+
+const instagramReels = [
+    {
+        id: 'ig1',
+        title: '3D Kinetic Motion Study',
+        category: 'Reel • Motion Design',
+        tag: 'TRENDING REEL',
+        videoSrc: '/videos/packaging-motion.mp4',
+        description: 'Exploring isometric lighting and dynamic camera transitions.',
+        instagramUrl: `https://www.instagram.com/${INSTAGRAM_HANDLE}/`
+    },
+    {
+        id: 'ig2',
+        title: 'Character Animation Loop',
+        category: 'Reel • Character Animation',
+        tag: 'VIRAL DROP',
+        videoSrc: '/videos/character-motion.mp4',
+        description: 'Custom character rigging and expressive timing test.',
+        instagramUrl: `https://www.instagram.com/${INSTAGRAM_HANDLE}/`
+    },
+    {
+        id: 'ig3',
+        title: 'Commercial Sneaker Reel',
+        category: 'Reel • Product Video',
+        tag: 'FEATURED EDIT',
+        videoSrc: '/videos/shoes-motion.mp4',
+        description: 'Fast-paced product breakdown with kinetic rhythm.',
+        instagramUrl: `https://www.instagram.com/${INSTAGRAM_HANDLE}/`
+    },
+    {
+        id: 'ig4',
+        title: 'Impact Typography Sequence',
+        category: 'Reel • Kinetic Type',
+        tag: 'SOUND ON',
+        videoSrc: '/videos/do-it-motion.mp4',
+        description: 'Bold typography edit timed to beat drops.',
+        instagramUrl: `https://www.instagram.com/${INSTAGRAM_HANDLE}/`
+    },
+    {
+        id: 'ig5',
+        title: 'Brand Identity Reveal',
+        category: 'Reel • Brand Motion',
+        tag: 'LOGO REVEAL',
+        videoSrc: '/videos/bhaiyaa-animation.mp4',
+        description: 'Sleek logo animation crafted in After Effects.',
+        instagramUrl: `https://www.instagram.com/${INSTAGRAM_HANDLE}/`
+    },
+    {
+        id: 'ig6',
+        title: 'Logo Motion Micro-Interaction',
+        category: 'Reel • UI Motion',
+        tag: 'UI MOTION',
+        videoSrc: '/videos/logo-loader.gif',
+        description: 'Smooth loading sequence for web and mobile interfaces.',
+        instagramUrl: `https://www.instagram.com/${INSTAGRAM_HANDLE}/`
+    }
+];
+
+const panelColors = ['#FF6B9D', '#8BE9FD', '#FFB86C', '#50FA7B', '#FF79C6', '#BD93F9', '#F1FA8C'];
 
 const panelVariants = {
     hidden: { opacity: 0, y: 40, scale: 0.96 },
@@ -75,7 +165,7 @@ export default function VideoEditsPage() {
             <div className={styles.topStrip}>
                 <span className={styles.stripLeft}>MEANWHILE, IN THE DESIGN MULTIVERSE...</span>
                 <span className={styles.stripCenter}>
-                    A COLLECTION OF <strong>MOTION STORIES</strong>
+                    A COLLECTION OF <strong>MOTION STORIES &amp; REELS</strong>
                 </span>
             </div>
 
@@ -207,6 +297,156 @@ export default function VideoEditsPage() {
                     </AnimatePresence>
                 </motion.div>
 
+                {/* ═══ INSTAGRAM REELS SPOTLIGHT SECTION ═══ */}
+                <motion.section
+                    className={styles.igSection}
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
+                >
+                    {/* Instagram Profile Spotlight Card */}
+                    <div className={styles.igProfileCard}>
+                        <div className={styles.igProfileLeft}>
+                            <div className={styles.igAvatarWrap}>
+                                <div className={styles.igAvatarGlow} />
+                                <div className={styles.igAvatar}>
+                                    <Instagram size={36} color="#fff" />
+                                </div>
+                            </div>
+                            <div className={styles.igProfileMeta}>
+                                <div className={styles.igHandleRow}>
+                                    <span className={styles.igHandle}>@{INSTAGRAM_HANDLE}</span>
+                                    <span className={styles.igVerifiedBadge}>✓ CREATOR</span>
+                                </div>
+                                <h2 className={styles.igHeadline}>INSTAGRAM REELS &amp; SHORTS</h2>
+                                <p className={styles.igBio}>
+                                    Motion Graphics • VFX • 3D Loops • Kinetic Typography • Process Breakdowns
+                                </p>
+                            </div>
+                        </div>
+
+                        <div className={styles.igProfileActions}>
+                            <a
+                                href={INSTAGRAM_PROFILE_URL}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={styles.igPrimaryBtn}
+                            >
+                                <Instagram size={18} />
+                                <span>FOLLOW ON INSTAGRAM</span>
+                                <ExternalLink size={14} />
+                            </a>
+                        </div>
+                    </div>
+
+                    {/* Reels Grid Showcase */}
+                    <div className={styles.igGrid}>
+                        {instagramReels.map((reel, index) => {
+                            const color = panelColors[(index + 2) % panelColors.length];
+                            return (
+                                <motion.div
+                                    key={reel.id}
+                                    className={styles.reelCard}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: index * 0.08, duration: 0.4 }}
+                                >
+                                    <div className={styles.reelMediaWrap} onClick={() => setSelectedProject(reel)}>
+                                        {reel.videoSrc.endsWith('.mp4') ? (
+                                            <video
+                                                src={getOptimizedUrl(reel.videoSrc)}
+                                                autoPlay
+                                                loop
+                                                muted
+                                                playsInline
+                                                className={styles.reelVideo}
+                                            />
+                                        ) : (
+                                            <img
+                                                src={getOptimizedUrl(reel.videoSrc)}
+                                                alt={reel.title}
+                                                className={styles.reelVideo}
+                                            />
+                                        )}
+                                        <div className={styles.reelOverlay} />
+                                        
+                                        {/* Tag badge */}
+                                        <div className={styles.reelTagBadge} style={{ background: color }}>
+                                            <span>{reel.tag}</span>
+                                        </div>
+
+                                        {/* Play icon */}
+                                        <div className={styles.reelPlayBtn}>
+                                            <Play size={20} fill="#fff" style={{ marginLeft: '2px' }} />
+                                        </div>
+
+                                        {/* Instagram watermark */}
+                                        <div className={styles.reelWatermark}>
+                                            <Instagram size={13} />
+                                            <span>@{INSTAGRAM_HANDLE}</span>
+                                        </div>
+                                    </div>
+
+                                    <div className={styles.reelInfo}>
+                                        <div className={styles.reelCategoryRow}>
+                                            <span className={styles.reelCategory}>{reel.category}</span>
+                                            <Heart size={14} className={styles.reelHeart} />
+                                        </div>
+                                        <h3 className={styles.reelTitle}>{reel.title}</h3>
+                                        <p className={styles.reelDesc}>{reel.description}</p>
+                                        
+                                        <div className={styles.reelActions}>
+                                            <button
+                                                type="button"
+                                                className={styles.reelPreviewBtn}
+                                                onClick={() => setSelectedProject(reel)}
+                                            >
+                                                <Play size={13} />
+                                                <span>Watch Preview</span>
+                                            </button>
+                                            <a
+                                                href={INSTAGRAM_PROFILE_URL}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className={styles.reelDirectLink}
+                                            >
+                                                <Instagram size={13} />
+                                                <span>Instagram</span>
+                                                <ExternalLink size={11} />
+                                            </a>
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            );
+                        })}
+                    </div>
+
+                    {/* Bottom Instagram Banner CTA */}
+                    <div className={styles.igBannerCta}>
+                        <div className={styles.igBannerContent}>
+                            <Sparkles size={24} className={styles.igSparkle} />
+                            <div>
+                                <h3 className={styles.igBannerTitle}>CATCH THE LATEST EDITS ON INSTAGRAM</h3>
+                                <p className={styles.igBannerSubtitle}>
+                                    New reels, creative workflows, and motion breakdowns posted regularly on @{INSTAGRAM_HANDLE}
+                                </p>
+                            </div>
+                        </div>
+                        <a
+                            href={INSTAGRAM_PROFILE_URL}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={styles.igBannerBtn}
+                        >
+                            <Instagram size={18} />
+                            <span>VIEW @{INSTAGRAM_HANDLE}</span>
+                            <ExternalLink size={14} />
+                        </a>
+                    </div>
+                </motion.section>
+
                 {/* ═══ BOTTOM QUOTE ═══ */}
                 <div className={styles.bottomQuote}>
                     <span>DESIGN IS NOT JUST WHAT IT LOOKS LIKE...</span>
@@ -271,3 +511,5 @@ export default function VideoEditsPage() {
         </main>
     );
 }
+
+
