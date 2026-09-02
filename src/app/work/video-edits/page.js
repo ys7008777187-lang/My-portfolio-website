@@ -86,56 +86,92 @@ const INSTAGRAM_PROFILE_URL = `https://www.instagram.com/${INSTAGRAM_HANDLE}/`;
 const instagramReels = [
     {
         id: 'ig1',
-        title: '3D Kinetic Motion Study',
-        category: 'Reel • Motion Design',
-        tag: 'TRENDING REEL',
-        videoSrc: '/videos/packaging-motion.mp4',
-        description: 'Exploring isometric lighting and dynamic camera transitions.',
+        title: 'AZAAD — The Cage',
+        category: 'Short Film • Storytelling',
+        tag: '📌 PINNED FILM',
+        thumbnail: '/images/instagram/azaad-the-cage.jpg',
+        videoSrc: '/videos/character-motion.mp4',
+        description: 'A Chitranga original short film exploring societal conditioning, mental cages, and the quest for true creative freedom.',
         instagramUrl: `https://www.instagram.com/${INSTAGRAM_HANDLE}/`
     },
     {
         id: 'ig2',
-        title: 'Character Animation Loop',
-        category: 'Reel • Character Animation',
-        tag: 'VIRAL DROP',
-        videoSrc: '/videos/character-motion.mp4',
-        description: 'Custom character rigging and expressive timing test.',
+        title: '1 House Survived. Why?',
+        category: 'Explainer • Disaster Analysis',
+        tag: '📌 PINNED POST',
+        thumbnail: '/images/instagram/flood-survival.jpg',
+        videoSrc: '/videos/packaging-motion.mp4',
+        description: 'High-retention visual analysis breaking down how architectural engineering survived catastrophic flash floods.',
         instagramUrl: `https://www.instagram.com/${INSTAGRAM_HANDLE}/`
     },
     {
         id: 'ig3',
-        title: 'Commercial Sneaker Reel',
-        category: 'Reel • Product Video',
-        tag: 'FEATURED EDIT',
+        title: 'Site 007: Visual Geo-Tracking',
+        category: 'VFX • Motion Graphics',
+        tag: 'MOTION GRAPHICS',
+        thumbnail: '/images/instagram/site-007-evacuated.jpg',
         videoSrc: '/videos/shoes-motion.mp4',
-        description: 'Fast-paced product breakdown with kinetic rhythm.',
+        description: 'Aerial telemetry tracking, 3D boundary line integration, and dynamic visual telemetry effects.',
         instagramUrl: `https://www.instagram.com/${INSTAGRAM_HANDLE}/`
     },
     {
         id: 'ig4',
-        title: 'Impact Typography Sequence',
-        category: 'Reel • Kinetic Type',
-        tag: 'SOUND ON',
-        videoSrc: '/videos/do-it-motion.mp4',
-        description: 'Bold typography edit timed to beat drops.',
+        title: 'Mountain Avalanche Impact',
+        category: 'Cinematic • Environmental VFX',
+        tag: '📌 PINNED REEL',
+        thumbnail: '/images/instagram/avalanche.jpg',
+        videoSrc: '/videos/character-motion.mp4',
+        description: 'Extreme alpine physics and massive avalanche dynamics captured with high-impact sound design.',
         instagramUrl: `https://www.instagram.com/${INSTAGRAM_HANDLE}/`
     },
     {
         id: 'ig5',
-        title: 'Brand Identity Reveal',
-        category: 'Reel • Brand Motion',
-        tag: 'LOGO REVEAL',
-        videoSrc: '/videos/bhaiyaa-animation.mp4',
-        description: 'Sleek logo animation crafted in After Effects.',
+        title: 'Geo-Targeting HUD & Radar Tracking',
+        category: 'Sci-Fi UI • HUD Motion',
+        tag: 'HUD VFX',
+        thumbnail: '/images/instagram/mountain-hud-tracking.jpg',
+        videoSrc: '/videos/do-it-motion.mp4',
+        description: 'Tactical HUD motion design with concentric reticle animation, telemetry data streams, and 3D lock-on markers.',
         instagramUrl: `https://www.instagram.com/${INSTAGRAM_HANDLE}/`
     },
     {
         id: 'ig6',
-        title: 'Logo Motion Micro-Interaction',
-        category: 'Reel • UI Motion',
-        tag: 'UI MOTION',
-        videoSrc: '/videos/logo-loader.gif',
-        description: 'Smooth loading sequence for web and mobile interfaces.',
+        title: '5 Days Trapped: Rescue Story',
+        category: 'Documentary • Fast Paced',
+        tag: 'VIRAL STORY',
+        thumbnail: '/images/instagram/rescue-operation.jpg',
+        videoSrc: '/videos/adt-video.mp4',
+        description: 'Fast-paced documentary narrative edit capturing real-time emergency rescue operations under debris.',
+        instagramUrl: `https://www.instagram.com/${INSTAGRAM_HANDLE}/`
+    },
+    {
+        id: 'ig7',
+        title: 'Bihar Paper Leak: The Truth',
+        category: 'Investigative • Explainer',
+        tag: 'INVESTIGATION',
+        thumbnail: '/images/instagram/bihar-paper-leak.jpg',
+        videoSrc: '/videos/do-it-motion.mp4',
+        description: 'Journalistic investigation video utilizing kinetic typography, newspaper collage VFX, and fast pacing.',
+        instagramUrl: `https://www.instagram.com/${INSTAGRAM_HANDLE}/`
+    },
+    {
+        id: 'ig8',
+        title: 'Cinematic Dog Portrait',
+        category: 'Cinematic • Color Grade',
+        tag: 'COLOR GRADING',
+        thumbnail: '/images/instagram/dog-cinematic.jpg',
+        videoSrc: '/videos/bhaiyaa-animation.mp4',
+        description: 'Moody monochrome textures, high-contrast lighting isolation, and cinematic character framing.',
+        instagramUrl: `https://www.instagram.com/${INSTAGRAM_HANDLE}/`
+    },
+    {
+        id: 'ig9',
+        title: 'Festival Celebration Visual',
+        category: 'Commercial • Warm Grade',
+        tag: 'FESTIVE REEL',
+        thumbnail: '/images/instagram/raksha-bandhan.jpg',
+        videoSrc: '/videos/bhaiyaa-animation.mp4',
+        description: 'Warm celebratory moment edit with bokeh glow, soft transitions, and traditional storytelling.',
         instagramUrl: `https://www.instagram.com/${INSTAGRAM_HANDLE}/`
     }
 ];
@@ -354,22 +390,11 @@ export default function VideoEditsPage() {
                                     transition={{ delay: index * 0.08, duration: 0.4 }}
                                 >
                                     <div className={styles.reelMediaWrap} onClick={() => setSelectedProject(reel)}>
-                                        {reel.videoSrc.endsWith('.mp4') ? (
-                                            <video
-                                                src={getOptimizedUrl(reel.videoSrc)}
-                                                autoPlay
-                                                loop
-                                                muted
-                                                playsInline
-                                                className={styles.reelVideo}
-                                            />
-                                        ) : (
-                                            <img
-                                                src={getOptimizedUrl(reel.videoSrc)}
-                                                alt={reel.title}
-                                                className={styles.reelVideo}
-                                            />
-                                        )}
+                                        <img
+                                            src={getOptimizedUrl(reel.thumbnail || reel.videoSrc)}
+                                            alt={reel.title}
+                                            className={styles.reelVideo}
+                                        />
                                         <div className={styles.reelOverlay} />
                                         
                                         {/* Tag badge */}
