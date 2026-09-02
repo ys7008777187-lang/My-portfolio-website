@@ -383,7 +383,7 @@ export default function Hero() {
                 <a href="https://www.linkedin.com/in/yashsrivastavaa035/" target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="LinkedIn">
                     <Linkedin size={20} />
                 </a>
-                <a href="https://www.instagram.com/yash_srivastava_/" target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="Instagram">
+                <a href="https://www.instagram.com/chitranga420/" target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="Instagram">
                     <Instagram size={20} />
                 </a>
                 <a href="https://dribbble.com" target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="Dribbble">

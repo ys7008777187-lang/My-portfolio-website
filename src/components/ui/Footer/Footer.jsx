@@ -16,7 +16,7 @@ const footerLinks = {
     ],
     social: [
         { href: "https://www.linkedin.com/in/yashsrivastavaa035/", label: "LinkedIn", icon: Linkedin },
-        { href: "https://www.instagram.com/yash_srivastava_/", label: "Instagram", icon: Instagram },
+        { href: "https://www.instagram.com/chitranga420/", label: "Instagram", icon: Instagram },
         { href: "mailto:yashsrivastava7008@gmail.com", label: "Gmail", icon: Mail },
         { href: "https://wa.me/917008777187", label: "WhatsApp", icon: MessageCircle },
     ]
