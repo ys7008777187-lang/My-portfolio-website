@@ -11,94 +11,134 @@ const INSTAGRAM_HANDLE = "chitranga420";
 const INSTAGRAM_PROFILE_URL = `https://www.instagram.com/${INSTAGRAM_HANDLE}/`;
 
 // ══════════════════════════════════════════════════════════════
-// ALL Instagram posts from @chitranga420 — ordered as on profile
+// ALL 12 REAL INSTAGRAM REELS FROM @chitranga420
+// Each reel maps to its actual downloaded video file & poster
 // ══════════════════════════════════════════════════════════════
 const instagramPosts = [
     {
-        id: 'ig1',
-        title: 'Mountain Avalanche — Raw Power',
-        category: 'Cinematic • Environmental VFX',
-        tag: '📌 PINNED',
-        thumbnail: '/images/instagram/avalanche.jpg',
-        videoSrc: '/videos/character-motion.mp4',
-        description: 'Extreme alpine physics and massive avalanche dynamics captured with high-impact sound design and cinematic scale.',
+        id: 'ig-azaad',
+        title: 'AZAAD — The Cage (Short Film)',
+        category: 'Short Film • Psychological Sci-Fi',
+        tag: '📌 PINNED FILM',
+        thumbnail: '/images/instagram/DcNpPhtRD_X.jpg',
+        videoSrc: '/videos/instagram/DcNpPhtRD_X.mp4',
+        instagramUrl: 'https://www.instagram.com/chitranga420/reel/DcNpPhtRD_X/',
+        description: 'A Chitranga original short film written & created by Yash Srivastava. Exploring societal conditioning, identity, and free will.',
     },
     {
-        id: 'ig2',
-        title: '1 House Survived. Why?',
-        category: 'Explainer • Disaster Analysis',
-        tag: '📌 PINNED',
-        thumbnail: '/images/instagram/flood-survival.jpg',
-        videoSrc: '/videos/packaging-motion.mp4',
-        description: 'High-retention visual analysis breaking down how architectural engineering survived catastrophic flash floods.',
+        id: 'ig-house-survived',
+        title: 'Why Did This House Survive Nepal\'s Floods?',
+        category: 'Structural Engineering • Explainer',
+        tag: '📌 PINNED POST',
+        thumbnail: '/images/instagram/Dcsc3kRx5K7.jpg',
+        videoSrc: '/videos/instagram/Dcsc3kRx5K7.mp4',
+        instagramUrl: 'https://www.instagram.com/chitranga420/reel/Dcsc3kRx5K7/',
+        description: 'Everything around it was swept away, yet this house stood. Visual analysis of deep pile foundations anchored into stable soil.',
     },
     {
-        id: 'ig3',
-        title: 'AZAAD — The Cage',
-        category: 'Short Film • Storytelling',
-        tag: '📌 PINNED',
-        thumbnail: '/images/instagram/azaad-the-cage.jpg',
-        videoSrc: '/videos/character-motion.mp4',
-        description: 'A Chitranga original short film exploring societal conditioning, mental cages, and the quest for true creative freedom.',
+        id: 'ig-volcano',
+        title: 'Volcanic Eruption: Earth\'s Terrifying Power',
+        category: 'Cinematic VFX • Simulation',
+        tag: 'CINEMATIC VFX',
+        thumbnail: '/images/instagram/DdD5dl8qWFH.jpg',
+        videoSrc: '/videos/instagram/DdD5dl8qWFH.mp4',
+        instagramUrl: 'https://www.instagram.com/chitranga420/reel/DdD5dl8qWFH/',
+        description: 'Massive volcanic eruption, glowing lava flows, smoke, and ash recreated with cinematic visual effects and sound design.',
     },
     {
-        id: 'ig4',
-        title: 'Cinematic Dog Portrait',
-        category: 'Cinematic • Color Grade',
-        tag: 'COLOR GRADING',
-        thumbnail: '/images/instagram/dog-cinematic.jpg',
-        videoSrc: '/videos/bhaiyaa-animation.mp4',
-        description: 'Moody monochrome textures, high-contrast lighting isolation, and cinematic character framing techniques.',
+        id: 'ig-dog',
+        title: 'Loyal Dog Waiting in Flood Debris',
+        category: 'Cinematic • Emotional Story',
+        tag: 'VIRAL REEL',
+        thumbnail: '/images/instagram/DcxYRrsxig9.jpg',
+        videoSrc: '/videos/instagram/DcxYRrsxig9.mp4',
+        instagramUrl: 'https://www.instagram.com/chitranga420/reel/DcxYRrsxig9/',
+        description: 'Nepal\'s flood took everything — except his loyalty. A heartbreaking visual story capturing true devotion amid tragedy.',
     },
     {
-        id: 'ig5',
-        title: 'Site 007: Evacuated — Geo Tracking',
-        category: 'VFX • Motion Graphics',
-        tag: 'MOTION GRAPHICS',
-        thumbnail: '/images/instagram/site-007-evacuated.jpg',
-        videoSrc: '/videos/shoes-motion.mp4',
-        description: 'Aerial telemetry tracking, 3D boundary line integration, and dynamic visual geo-tracking effects.',
+        id: 'ig-twin-cyclones',
+        title: 'Two Coasts. Two Cyclones. Same Day',
+        category: 'Satellite Telemetry • Storm Watch',
+        tag: 'HUD TELEMETRY',
+        thumbnail: '/images/instagram/Dc2vwX7Rw9P.jpg',
+        videoSrc: '/videos/instagram/Dc2vwX7Rw9P.mp4',
+        instagramUrl: 'https://www.instagram.com/chitranga420/reel/Dc2vwX7Rw9P/',
+        description: 'Twin cyclones in the Arabian Sea and Bay of Bengal simultaneously putting Mumbai and Kolkata in the crosshairs.',
     },
     {
-        id: 'ig6',
-        title: '5 Days Trapped — Rescue Story',
-        category: 'Documentary • Fast Paced',
+        id: 'ig-typhoon-dolphin',
+        title: 'Typhoon Dolphin — Mass Evacuation',
+        category: 'Extreme Weather • Satellite Breakdown',
+        tag: 'CLIMATE CRISIS',
+        thumbnail: '/images/instagram/Dc0pwKLRBtn.jpg',
+        videoSrc: '/videos/instagram/Dc0pwKLRBtn.mp4',
+        instagramUrl: 'https://www.instagram.com/chitranga420/reel/Dc0pwKLRBtn/',
+        description: 'China\'s strongest typhoon of the year. Red alert in Zhejiang with winds over 150 km/h and over 1,000,000 people evacuated.',
+    },
+    {
+        id: 'ig-kailasa',
+        title: 'Kailasa Temple: Carved Top-Down',
+        category: 'Architecture • Ancient Engineering',
+        tag: 'ANCIENT TECH',
+        thumbnail: '/images/instagram/Ddlm8CjxTFs.jpg',
+        videoSrc: '/videos/instagram/Ddlm8CjxTFs.mp4',
+        instagramUrl: 'https://www.instagram.com/chitranga420/reel/Ddlm8CjxTFs/',
+        description: 'Kailasa Temple, Ellora — one giant monolithic rock hollowed out from top down. Decades of work with zero room for error.',
+    },
+    {
+        id: 'ig-trapped-girl',
+        title: 'Nepal Flash Flood — Girl Trapped 3 Days, Survives',
+        category: 'Survival • Disaster Rescue',
         tag: 'VIRAL STORY',
-        thumbnail: '/images/instagram/rescue-operation.jpg',
-        videoSrc: '/videos/do-it-motion.mp4',
-        description: 'Fast-paced documentary narrative edit capturing real-time emergency rescue operations under debris.',
+        thumbnail: '/images/instagram/Dcus3FZxMq2.jpg',
+        videoSrc: '/videos/instagram/Dcus3FZxMq2.mp4',
+        instagramUrl: 'https://www.instagram.com/chitranga420/reel/Dcus3FZxMq2/',
+        description: 'Trapped for 3 days under rubble in Rasuwa district with no food or water. The Triangle of Life technique that saved her.',
     },
     {
-        id: 'ig7',
-        title: 'Geo-Targeting HUD & Radar Tracking',
-        category: 'Sci-Fi UI • HUD Motion',
-        tag: 'HUD VFX',
-        thumbnail: '/images/instagram/mountain-hud-tracking.jpg',
-        videoSrc: '/videos/do-it-motion.mp4',
-        description: 'Tactical HUD motion design with concentric reticle animation, telemetry data streams, and 3D lock-on markers.',
+        id: 'ig-timure-glof',
+        title: 'Timure GLOF Disaster & Helicopter Rescue',
+        category: 'Himalayas • Rescue Operation',
+        tag: 'REAL FOOTAGE',
+        thumbnail: '/images/instagram/DcvKhpcxP5Z.jpg',
+        videoSrc: '/videos/instagram/DcvKhpcxP5Z.mp4',
+        instagramUrl: 'https://www.instagram.com/chitranga420/reel/DcvKhpcxP5Z/',
+        description: 'Glacial lake outburst flood buries Timure village under mud and rock. Real army rescue helicopter footage from the Himalayas.',
     },
     {
-        id: 'ig8',
-        title: 'Happy Raksha Bandhan',
-        category: 'Festival • Warm Grade',
-        tag: 'FESTIVE REEL',
-        thumbnail: '/images/instagram/raksha-bandhan.jpg',
-        videoSrc: '/videos/bhaiyaa-animation.mp4',
-        description: 'Warm celebratory moment edit with bokeh glow, soft transitions, and traditional storytelling.',
+        id: 'ig-hanuman',
+        title: 'Hidden Hanuman Idol — 170 Years Underground',
+        category: 'Heritage • Archaeological Discovery',
+        tag: 'ANCIENT HISTORY',
+        thumbnail: '/images/instagram/DdBfi8EBeyq.jpg',
+        videoSrc: '/videos/instagram/DdBfi8EBeyq.mp4',
+        instagramUrl: 'https://www.instagram.com/chitranga420/reel/DdBfi8EBeyq/',
+        description: 'Sat buried beneath the earth for 170 years. Untouched and unseen until 150kN of force brought centuries of history back to light.',
     },
     {
-        id: 'ig9',
-        title: 'Bihar Paper Leak — The Truth',
-        category: 'Investigative • Explainer',
-        tag: 'INVESTIGATION',
-        thumbnail: '/images/instagram/bihar-paper-leak.jpg',
-        videoSrc: '/videos/do-it-motion.mp4',
-        description: 'Journalistic investigation video with kinetic typography, newspaper collage VFX, and fast-paced storytelling.',
+        id: 'ig-pilot-hero',
+        title: 'Captain Smit Machchhar: Pilot Hero',
+        category: 'Aviation • Real Emergency',
+        tag: 'HERO STORY',
+        thumbnail: '/images/instagram/DeQ5zTnxh5B.jpg',
+        videoSrc: '/videos/instagram/DeQ5zTnxh5B.mp4',
+        instagramUrl: 'https://www.instagram.com/chitranga420/reel/DeQ5zTnxh5B/',
+        description: 'Boeing 737 MAX 8 emergency diversion to Tabuk, Saudi Arabia. Courageous flight deck handling by an Indian captain.',
+    },
+    {
+        id: 'ig-wall-of-water',
+        title: 'Nepal — When the River Turned Into a Wall of Water',
+        category: 'Disaster • Documentary',
+        tag: 'DOCUMENTARY',
+        thumbnail: '/images/instagram/DcijJPdxJQ_.jpg',
+        videoSrc: '/videos/instagram/DcijJPdxJQ_.mp4',
+        instagramUrl: 'https://www.instagram.com/chitranga420/reel/DcijJPdxJQ_/',
+        description: 'Bhotekoshi River flash flood overwhelming entire settlements, bridges, and highways in minutes.',
     },
 ];
 
 // ══════════════════════════════════════════════════════════════
-// Local motion-design work (actual portfolio video files)
+// Local motion-design work (portfolio video files)
 // ══════════════════════════════════════════════════════════════
 const motionWork = [
     {
@@ -252,7 +292,7 @@ export default function VideoEditsPage() {
                                 </div>
                                 <h2 className={styles.igHeadline}>INSTAGRAM REELS &amp; SHORTS</h2>
                                 <p className={styles.igBio}>
-                                    VFX • Cinematic Edits • Motion Graphics • Short Films • Visual Storytelling
+                                    VFX • Disaster Science • Ancient Architecture • Short Films • Visual Storytelling
                                 </p>
                             </div>
                         </div>
@@ -275,6 +315,8 @@ export default function VideoEditsPage() {
                     <div className={styles.igGrid}>
                         {instagramPosts.map((reel, index) => {
                             const color = panelColors[(index + 2) % panelColors.length];
+                            const igUrl = reel.instagramUrl || INSTAGRAM_PROFILE_URL;
+
                             return (
                                 <motion.div
                                     key={reel.id}
@@ -282,7 +324,7 @@ export default function VideoEditsPage() {
                                     initial={{ opacity: 0, y: 20 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
-                                    transition={{ delay: index * 0.08, duration: 0.4 }}
+                                    transition={{ delay: index * 0.05, duration: 0.35 }}
                                 >
                                     <div className={styles.reelMediaWrap} onClick={() => setSelectedProject(reel)}>
                                         <img
@@ -324,10 +366,10 @@ export default function VideoEditsPage() {
                                                 onClick={() => setSelectedProject(reel)}
                                             >
                                                 <Play size={13} />
-                                                <span>Watch Preview</span>
+                                                <span>Watch Video</span>
                                             </button>
                                             <a
-                                                href={INSTAGRAM_PROFILE_URL}
+                                                href={igUrl}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                                 className={styles.reelDirectLink}
@@ -380,7 +422,7 @@ export default function VideoEditsPage() {
                     <div className={styles.sectionDivider}>
                         <Film size={20} />
                         <h2 className={styles.sectionDividerTitle}>MOTION DESIGN WORK</h2>
-                        <span className={styles.sectionDividerSub}>Portfolio pieces & motion graphics reels</span>
+                        <span className={styles.sectionDividerSub}>Portfolio pieces &amp; motion graphics reels</span>
                     </div>
 
                     <motion.div className={styles.panelGrid} layout>
@@ -530,17 +572,17 @@ export default function VideoEditsPage() {
                                 </div>
                             </div>
 
-                            {/* Instagram link in lightbox for Instagram posts */}
+                            {/* Direct Instagram link for specific reel or profile */}
                             {selectedProject.id?.startsWith('ig') && (
                                 <div className={styles.lightboxFooter}>
                                     <a
-                                        href={INSTAGRAM_PROFILE_URL}
+                                        href={selectedProject.instagramUrl || INSTAGRAM_PROFILE_URL}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className={styles.lightboxIgLink}
                                     >
                                         <Instagram size={16} />
-                                        <span>View on Instagram @{INSTAGRAM_HANDLE}</span>
+                                        <span>View this Reel on Instagram</span>
                                         <ExternalLink size={13} />
                                     </a>
                                 </div>
