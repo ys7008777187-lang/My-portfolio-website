@@ -1,179 +1,166 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { ArrowLeft, Play, X, Instagram, ExternalLink, Sparkles, Film, Heart } from "lucide-react";
+import { ArrowLeft, Play, X, Instagram, ExternalLink, Sparkles, Heart, Film } from "lucide-react";
 import ContactCTA from "../../../components/home/ContactCTA/ContactCTA";
 import { getAssetUrl, getOptimizedUrl } from "../../../lib/assetUrl";
 import styles from "./page.module.css";
 
-const videoProjects = [
-    {
-        id: 'v1',
-        title: 'ADT Solution Showcase',
-        category: 'Video Editing',
-        icon: '🎬',
-        description: 'Comprehensive product demonstration and feature highlight with dynamic transitions',
-        videoSrc: '/videos/adt-video.mp4',
-        thumbnail: '/images/projects/adt.jpg',
-        tagline: 'THE FULL EXPERIENCE!'
-    },
-    {
-        id: 'v2',
-        title: 'Logo Motion Loader',
-        category: 'Motion Graphics',
-        icon: '✨',
-        description: 'Smooth, stylized animated logo sequence crafted for digital products',
-        videoSrc: '/videos/logo-loader.gif',
-        thumbnail: '/videos/logo-loader.gif',
-        tagline: 'SMOOTH MOVES!'
-    },
-    {
-        id: 'v3',
-        title: 'Packaging 3D Motion',
-        category: '3D & Motion',
-        icon: '📦',
-        description: 'Dynamic product packaging animation highlighting textures and form',
-        videoSrc: '/videos/packaging-motion.mp4',
-        thumbnail: '/videos/packaging-motion.mp4',
-        tagline: 'UNBOX THE MAGIC!'
-    },
-    {
-        id: 'v4',
-        title: 'Footwear Motion Story',
-        category: 'Commercial Motion',
-        icon: '👟',
-        description: 'Stylish footwear presentation blending bold typography with kinetic rhythm',
-        videoSrc: '/videos/shoes-motion.mp4',
-        thumbnail: '/videos/shoes-motion.mp4',
-        tagline: 'STEP INTO STYLE!'
-    },
-    {
-        id: 'v5',
-        title: 'Character Motion & VFX',
-        category: 'Animation & VFX',
-        icon: '💥',
-        description: 'Expressive character motion study featuring stylized visual physics',
-        videoSrc: '/videos/character-motion.mp4',
-        thumbnail: '/videos/character-motion.mp4',
-        tagline: 'ACTION PACKED!'
-    },
-    {
-        id: 'v6',
-        title: 'Kinetic Motion Graphic',
-        category: 'Motion Design',
-        icon: '⚡',
-        description: 'High-energy typographic sequence with bold timing and impact frames',
-        videoSrc: '/videos/do-it-motion.mp4',
-        thumbnail: '/videos/do-it-motion.mp4',
-        tagline: 'HIGH ENERGY!'
-    },
-    {
-        id: 'v7',
-        title: 'Brand Identity Animation',
-        category: 'Brand Motion',
-        icon: '🎨',
-        description: 'Fluid corporate identity motion showcase designed for modern web apps',
-        videoSrc: '/videos/bhaiyaa-animation.mp4',
-        thumbnail: '/videos/bhaiyaa-animation.mp4',
-        tagline: 'BRAND IN MOTION!'
-    }
-];
-
 const INSTAGRAM_HANDLE = "chitranga420";
 const INSTAGRAM_PROFILE_URL = `https://www.instagram.com/${INSTAGRAM_HANDLE}/`;
 
-const instagramReels = [
+// ══════════════════════════════════════════════════════════════
+// ALL Instagram posts from @chitranga420 — ordered as on profile
+// ══════════════════════════════════════════════════════════════
+const instagramPosts = [
     {
         id: 'ig1',
-        title: 'AZAAD — The Cage',
-        category: 'Short Film • Storytelling',
-        tag: '📌 PINNED FILM',
-        thumbnail: '/images/instagram/azaad-the-cage.jpg',
+        title: 'Mountain Avalanche — Raw Power',
+        category: 'Cinematic • Environmental VFX',
+        tag: '📌 PINNED',
+        thumbnail: '/images/instagram/avalanche.jpg',
         videoSrc: '/videos/character-motion.mp4',
-        description: 'A Chitranga original short film exploring societal conditioning, mental cages, and the quest for true creative freedom.',
-        instagramUrl: `https://www.instagram.com/${INSTAGRAM_HANDLE}/`
+        description: 'Extreme alpine physics and massive avalanche dynamics captured with high-impact sound design and cinematic scale.',
     },
     {
         id: 'ig2',
         title: '1 House Survived. Why?',
         category: 'Explainer • Disaster Analysis',
-        tag: '📌 PINNED POST',
+        tag: '📌 PINNED',
         thumbnail: '/images/instagram/flood-survival.jpg',
         videoSrc: '/videos/packaging-motion.mp4',
         description: 'High-retention visual analysis breaking down how architectural engineering survived catastrophic flash floods.',
-        instagramUrl: `https://www.instagram.com/${INSTAGRAM_HANDLE}/`
     },
     {
         id: 'ig3',
-        title: 'Site 007: Visual Geo-Tracking',
+        title: 'AZAAD — The Cage',
+        category: 'Short Film • Storytelling',
+        tag: '📌 PINNED',
+        thumbnail: '/images/instagram/azaad-the-cage.jpg',
+        videoSrc: '/videos/character-motion.mp4',
+        description: 'A Chitranga original short film exploring societal conditioning, mental cages, and the quest for true creative freedom.',
+    },
+    {
+        id: 'ig4',
+        title: 'Cinematic Dog Portrait',
+        category: 'Cinematic • Color Grade',
+        tag: 'COLOR GRADING',
+        thumbnail: '/images/instagram/dog-cinematic.jpg',
+        videoSrc: '/videos/bhaiyaa-animation.mp4',
+        description: 'Moody monochrome textures, high-contrast lighting isolation, and cinematic character framing techniques.',
+    },
+    {
+        id: 'ig5',
+        title: 'Site 007: Evacuated — Geo Tracking',
         category: 'VFX • Motion Graphics',
         tag: 'MOTION GRAPHICS',
         thumbnail: '/images/instagram/site-007-evacuated.jpg',
         videoSrc: '/videos/shoes-motion.mp4',
-        description: 'Aerial telemetry tracking, 3D boundary line integration, and dynamic visual telemetry effects.',
-        instagramUrl: `https://www.instagram.com/${INSTAGRAM_HANDLE}/`
+        description: 'Aerial telemetry tracking, 3D boundary line integration, and dynamic visual geo-tracking effects.',
     },
     {
-        id: 'ig4',
-        title: 'Mountain Avalanche Impact',
-        category: 'Cinematic • Environmental VFX',
-        tag: '📌 PINNED REEL',
-        thumbnail: '/images/instagram/avalanche.jpg',
-        videoSrc: '/videos/character-motion.mp4',
-        description: 'Extreme alpine physics and massive avalanche dynamics captured with high-impact sound design.',
-        instagramUrl: `https://www.instagram.com/${INSTAGRAM_HANDLE}/`
+        id: 'ig6',
+        title: '5 Days Trapped — Rescue Story',
+        category: 'Documentary • Fast Paced',
+        tag: 'VIRAL STORY',
+        thumbnail: '/images/instagram/rescue-operation.jpg',
+        videoSrc: '/videos/do-it-motion.mp4',
+        description: 'Fast-paced documentary narrative edit capturing real-time emergency rescue operations under debris.',
     },
     {
-        id: 'ig5',
+        id: 'ig7',
         title: 'Geo-Targeting HUD & Radar Tracking',
         category: 'Sci-Fi UI • HUD Motion',
         tag: 'HUD VFX',
         thumbnail: '/images/instagram/mountain-hud-tracking.jpg',
         videoSrc: '/videos/do-it-motion.mp4',
         description: 'Tactical HUD motion design with concentric reticle animation, telemetry data streams, and 3D lock-on markers.',
-        instagramUrl: `https://www.instagram.com/${INSTAGRAM_HANDLE}/`
-    },
-    {
-        id: 'ig6',
-        title: '5 Days Trapped: Rescue Story',
-        category: 'Documentary • Fast Paced',
-        tag: 'VIRAL STORY',
-        thumbnail: '/images/instagram/rescue-operation.jpg',
-        videoSrc: '/videos/adt-video.mp4',
-        description: 'Fast-paced documentary narrative edit capturing real-time emergency rescue operations under debris.',
-        instagramUrl: `https://www.instagram.com/${INSTAGRAM_HANDLE}/`
-    },
-    {
-        id: 'ig7',
-        title: 'Bihar Paper Leak: The Truth',
-        category: 'Investigative • Explainer',
-        tag: 'INVESTIGATION',
-        thumbnail: '/images/instagram/bihar-paper-leak.jpg',
-        videoSrc: '/videos/do-it-motion.mp4',
-        description: 'Journalistic investigation video utilizing kinetic typography, newspaper collage VFX, and fast pacing.',
-        instagramUrl: `https://www.instagram.com/${INSTAGRAM_HANDLE}/`
     },
     {
         id: 'ig8',
-        title: 'Cinematic Dog Portrait',
-        category: 'Cinematic • Color Grade',
-        tag: 'COLOR GRADING',
-        thumbnail: '/images/instagram/dog-cinematic.jpg',
-        videoSrc: '/videos/bhaiyaa-animation.mp4',
-        description: 'Moody monochrome textures, high-contrast lighting isolation, and cinematic character framing.',
-        instagramUrl: `https://www.instagram.com/${INSTAGRAM_HANDLE}/`
-    },
-    {
-        id: 'ig9',
-        title: 'Festival Celebration Visual',
-        category: 'Commercial • Warm Grade',
+        title: 'Happy Raksha Bandhan',
+        category: 'Festival • Warm Grade',
         tag: 'FESTIVE REEL',
         thumbnail: '/images/instagram/raksha-bandhan.jpg',
         videoSrc: '/videos/bhaiyaa-animation.mp4',
         description: 'Warm celebratory moment edit with bokeh glow, soft transitions, and traditional storytelling.',
-        instagramUrl: `https://www.instagram.com/${INSTAGRAM_HANDLE}/`
-    }
+    },
+    {
+        id: 'ig9',
+        title: 'Bihar Paper Leak — The Truth',
+        category: 'Investigative • Explainer',
+        tag: 'INVESTIGATION',
+        thumbnail: '/images/instagram/bihar-paper-leak.jpg',
+        videoSrc: '/videos/do-it-motion.mp4',
+        description: 'Journalistic investigation video with kinetic typography, newspaper collage VFX, and fast-paced storytelling.',
+    },
+];
+
+// ══════════════════════════════════════════════════════════════
+// Local motion-design work (actual portfolio video files)
+// ══════════════════════════════════════════════════════════════
+const motionWork = [
+    {
+        id: 'mw1',
+        title: '3D Kinetic Motion Study',
+        category: 'Reel • Motion Design',
+        icon: '📦',
+        videoSrc: '/videos/packaging-motion.mp4',
+        thumbnail: '/videos/packaging-motion.mp4',
+        tagline: 'TRENDING REEL',
+        description: 'Exploring isometric lighting and dynamic camera transitions with 3D product packaging.',
+    },
+    {
+        id: 'mw2',
+        title: 'Character Animation Loop',
+        category: 'Reel • Character Animation',
+        icon: '💥',
+        videoSrc: '/videos/character-motion.mp4',
+        thumbnail: '/videos/character-motion.mp4',
+        tagline: 'VIRAL DROP',
+        description: 'Custom character rigging and expressive timing test with cyberpunk city environment.',
+    },
+    {
+        id: 'mw3',
+        title: 'Commercial Sneaker Reel',
+        category: 'Reel • Product Video',
+        icon: '👟',
+        videoSrc: '/videos/shoes-motion.mp4',
+        thumbnail: '/videos/shoes-motion.mp4',
+        tagline: 'FEATURED EDIT',
+        description: 'Fast-paced product breakdown with kinetic rhythm and bold typography.',
+    },
+    {
+        id: 'mw4',
+        title: 'Kinetic Typography — DO IT',
+        category: 'Motion Graphics',
+        icon: '⚡',
+        videoSrc: '/videos/do-it-motion.mp4',
+        thumbnail: '/videos/do-it-motion.mp4',
+        tagline: 'SOUND ON',
+        description: 'High-energy typographic sequence with bold timing and impact frames.',
+    },
+    {
+        id: 'mw5',
+        title: 'Logo Reveal Animation',
+        category: 'Brand Motion',
+        icon: '✨',
+        videoSrc: '/videos/logo-loader.gif',
+        thumbnail: '/videos/logo-loader.gif',
+        tagline: 'LOGO REVEAL',
+        description: 'Smooth, stylized animated logo sequence crafted for digital products.',
+    },
+    {
+        id: 'mw6',
+        title: 'Brand Identity — Bhaiyaa',
+        category: 'UI Motion',
+        icon: '🎨',
+        videoSrc: '/videos/bhaiyaa-animation.mp4',
+        thumbnail: '/videos/bhaiyaa-animation.mp4',
+        tagline: 'UI MOTION',
+        description: 'Fluid corporate identity motion showcase designed for modern web apps.',
+    },
 ];
 
 const panelColors = ['#FF6B9D', '#8BE9FD', '#FFB86C', '#50FA7B', '#FF79C6', '#BD93F9', '#F1FA8C'];
@@ -239,101 +226,9 @@ export default function VideoEditsPage() {
                     </div>
                 </motion.div>
 
-                {/* ═══ COMIC PANEL GRID ═══ */}
-                <motion.div
-                    className={styles.panelGrid}
-                    layout
-                >
-                    <AnimatePresence mode="popLayout">
-                        {videoProjects.map((project, index) => {
-                            const color = panelColors[index % panelColors.length];
-                            return (
-                                <motion.article
-                                    key={project.id}
-                                    className={styles.panel}
-                                    style={{ "--panel-color": color }}
-                                    custom={index}
-                                    variants={panelVariants}
-                                    initial="hidden"
-                                    animate="visible"
-                                    exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.25 } }}
-                                    layout
-                                    onClick={() => setSelectedProject(project)}
-                                >
-                                    {/* Issue badge */}
-                                    <div className={styles.issueBadge} style={{ backgroundColor: color }}>
-                                        <span className={styles.issueLabel}>ISSUE</span>
-                                        <span className={styles.issueNum}>#{String(index + 1).padStart(2, "0")}</span>
-                                    </div>
-
-                                    {/* Tagline bubble */}
-                                    {project.tagline && (
-                                        <div className={styles.taglineBubble}>
-                                            <span>{project.tagline}</span>
-                                        </div>
-                                    )}
-
-                                    {/* Image / Video */}
-                                    <div className={styles.panelImageWrap}>
-                                        {project.thumbnail && project.thumbnail.endsWith('.mp4') ? (
-                                            <video
-                                                src={getOptimizedUrl(project.thumbnail)}
-                                                autoPlay
-                                                loop
-                                                muted
-                                                playsInline
-                                                style={{
-                                                    width: '100%',
-                                                    height: '100%',
-                                                    objectFit: 'cover',
-                                                    position: 'absolute',
-                                                    inset: 0
-                                                }}
-                                                className={styles.panelImage}
-                                            />
-                                        ) : (
-                                            <img
-                                                src={getOptimizedUrl(project.thumbnail)}
-                                                alt={project.title}
-                                                style={{
-                                                    width: '100%',
-                                                    height: '100%',
-                                                    objectFit: 'cover',
-                                                    position: 'absolute',
-                                                    inset: 0
-                                                }}
-                                                className={styles.panelImage}
-                                            />
-                                        )}
-                                        <div className={styles.panelOverlay} />
-
-                                        {/* Hover play button */}
-                                        <motion.div
-                                            className={styles.playIcon}
-                                            whileHover={{ scale: 1.1 }}
-                                        >
-                                            <Play fill="currentColor" size={24} style={{ marginLeft: "3px" }} />
-                                        </motion.div>
-                                    </div>
-
-                                    {/* Content */}
-                                    <div className={styles.panelContent}>
-                                        <h3 className={styles.panelTitle}>{project.title}</h3>
-                                        <span className={styles.panelCategory} style={{ color }}>
-                                            {project.category}
-                                        </span>
-                                        <p className={styles.panelDesc}>{project.description}</p>
-                                    </div>
-
-                                    {/* Bottom speed-line accent */}
-                                    <div className={styles.panelAccentBar} style={{ background: color }} />
-                                </motion.article>
-                            );
-                        })}
-                    </AnimatePresence>
-                </motion.div>
-
-                {/* ═══ INSTAGRAM REELS SPOTLIGHT SECTION ═══ */}
+                {/* ═══════════════════════════════════════════════════════ */}
+                {/* INSTAGRAM REELS — PRIMARY SECTION                     */}
+                {/* ═══════════════════════════════════════════════════════ */}
                 <motion.section
                     className={styles.igSection}
                     initial={{ opacity: 0, y: 40 }}
@@ -357,7 +252,7 @@ export default function VideoEditsPage() {
                                 </div>
                                 <h2 className={styles.igHeadline}>INSTAGRAM REELS &amp; SHORTS</h2>
                                 <p className={styles.igBio}>
-                                    Motion Graphics • VFX • 3D Loops • Kinetic Typography • Process Breakdowns
+                                    VFX • Cinematic Edits • Motion Graphics • Short Films • Visual Storytelling
                                 </p>
                             </div>
                         </div>
@@ -378,7 +273,7 @@ export default function VideoEditsPage() {
 
                     {/* Reels Grid Showcase */}
                     <div className={styles.igGrid}>
-                        {instagramReels.map((reel, index) => {
+                        {instagramPosts.map((reel, index) => {
                             const color = panelColors[(index + 2) % panelColors.length];
                             return (
                                 <motion.div
@@ -391,7 +286,7 @@ export default function VideoEditsPage() {
                                 >
                                     <div className={styles.reelMediaWrap} onClick={() => setSelectedProject(reel)}>
                                         <img
-                                            src={getOptimizedUrl(reel.thumbnail || reel.videoSrc)}
+                                            src={getOptimizedUrl(reel.thumbnail)}
                                             alt={reel.title}
                                             className={styles.reelVideo}
                                         />
@@ -472,6 +367,113 @@ export default function VideoEditsPage() {
                     </div>
                 </motion.section>
 
+                {/* ═══════════════════════════════════════════════════════ */}
+                {/* MOTION DESIGN WORK — PORTFOLIO VIDEOS                 */}
+                {/* ═══════════════════════════════════════════════════════ */}
+                <motion.section
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
+                    style={{ marginTop: '3rem' }}
+                >
+                    <div className={styles.sectionDivider}>
+                        <Film size={20} />
+                        <h2 className={styles.sectionDividerTitle}>MOTION DESIGN WORK</h2>
+                        <span className={styles.sectionDividerSub}>Portfolio pieces & motion graphics reels</span>
+                    </div>
+
+                    <motion.div className={styles.panelGrid} layout>
+                        <AnimatePresence mode="popLayout">
+                            {motionWork.map((project, index) => {
+                                const color = panelColors[index % panelColors.length];
+                                return (
+                                    <motion.article
+                                        key={project.id}
+                                        className={styles.panel}
+                                        style={{ "--panel-color": color }}
+                                        custom={index}
+                                        variants={panelVariants}
+                                        initial="hidden"
+                                        animate="visible"
+                                        exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.25 } }}
+                                        layout
+                                        onClick={() => setSelectedProject(project)}
+                                    >
+                                        {/* Issue badge */}
+                                        <div className={styles.issueBadge} style={{ backgroundColor: color }}>
+                                            <span className={styles.issueLabel}>ISSUE</span>
+                                            <span className={styles.issueNum}>#{String(index + 1).padStart(2, "0")}</span>
+                                        </div>
+
+                                        {/* Tagline bubble */}
+                                        {project.tagline && (
+                                            <div className={styles.taglineBubble}>
+                                                <span>{project.tagline}</span>
+                                            </div>
+                                        )}
+
+                                        {/* Image / Video */}
+                                        <div className={styles.panelImageWrap}>
+                                            {project.thumbnail && project.thumbnail.endsWith('.mp4') ? (
+                                                <video
+                                                    src={getOptimizedUrl(project.thumbnail)}
+                                                    autoPlay
+                                                    loop
+                                                    muted
+                                                    playsInline
+                                                    style={{
+                                                        width: '100%',
+                                                        height: '100%',
+                                                        objectFit: 'cover',
+                                                        position: 'absolute',
+                                                        inset: 0
+                                                    }}
+                                                    className={styles.panelImage}
+                                                />
+                                            ) : (
+                                                <img
+                                                    src={getOptimizedUrl(project.thumbnail)}
+                                                    alt={project.title}
+                                                    style={{
+                                                        width: '100%',
+                                                        height: '100%',
+                                                        objectFit: 'cover',
+                                                        position: 'absolute',
+                                                        inset: 0
+                                                    }}
+                                                    className={styles.panelImage}
+                                                />
+                                            )}
+                                            <div className={styles.panelOverlay} />
+
+                                            {/* Hover play button */}
+                                            <motion.div
+                                                className={styles.playIcon}
+                                                whileHover={{ scale: 1.1 }}
+                                            >
+                                                <Play fill="currentColor" size={24} style={{ marginLeft: "3px" }} />
+                                            </motion.div>
+                                        </div>
+
+                                        {/* Content */}
+                                        <div className={styles.panelContent}>
+                                            <h3 className={styles.panelTitle}>{project.title}</h3>
+                                            <span className={styles.panelCategory} style={{ color }}>
+                                                {project.category}
+                                            </span>
+                                            <p className={styles.panelDesc}>{project.description}</p>
+                                        </div>
+
+                                        {/* Bottom speed-line accent */}
+                                        <div className={styles.panelAccentBar} style={{ background: color }} />
+                                    </motion.article>
+                                );
+                            })}
+                        </AnimatePresence>
+                    </motion.div>
+                </motion.section>
+
                 {/* ═══ BOTTOM QUOTE ═══ */}
                 <div className={styles.bottomQuote}>
                     <span>DESIGN IS NOT JUST WHAT IT LOOKS LIKE...</span>
@@ -527,6 +529,22 @@ export default function VideoEditsPage() {
                                     )}
                                 </div>
                             </div>
+
+                            {/* Instagram link in lightbox for Instagram posts */}
+                            {selectedProject.id?.startsWith('ig') && (
+                                <div className={styles.lightboxFooter}>
+                                    <a
+                                        href={INSTAGRAM_PROFILE_URL}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className={styles.lightboxIgLink}
+                                    >
+                                        <Instagram size={16} />
+                                        <span>View on Instagram @{INSTAGRAM_HANDLE}</span>
+                                        <ExternalLink size={13} />
+                                    </a>
+                                </div>
+                            )}
                         </motion.div>
                     </motion.div>
                 )}
@@ -536,5 +554,3 @@ export default function VideoEditsPage() {
         </main>
     );
 }
-
-

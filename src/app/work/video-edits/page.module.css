@@ -1078,3 +1078,87 @@
     box-shadow: 6px 6px 0 #000;
 }
 
+
+/* ═══════════════════════════════════════════
+   SECTION DIVIDER
+   ═══════════════════════════════════════════ */
+
+.sectionDivider {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+    padding: 1rem 1.5rem;
+    background: var(--color-bg-tertiary);
+    border: 2px solid var(--color-border);
+    border-left: 5px solid var(--color-accent);
+    color: var(--color-text-primary);
+    font-family: var(--font-bangers, cursive);
+}
+
+.sectionDividerTitle {
+    font-family: var(--font-bangers, cursive);
+    font-size: 1.4rem;
+    letter-spacing: 0.08em;
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.sectionDividerSub {
+    font-family: var(--font-comic, sans-serif);
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    letter-spacing: 0.04em;
+    margin-left: auto;
+}
+
+/* ═══════════════════════════════════════════
+   LIGHTBOX FOOTER — INSTAGRAM LINK
+   ═══════════════════════════════════════════ */
+
+.lightboxFooter {
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.lightboxIgLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.25rem;
+    background: linear-gradient(135deg, #E1306C, #F77737);
+    color: #fff;
+    font-family: var(--font-comic, sans-serif);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 6px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.2s ease;
+}
+
+.lightboxIgLink:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(225, 48, 108, 0.4);
+}
+
+/* ═══ RESPONSIVE — section divider ═══ */
+
+@media (max-width: 768px) {
+    .sectionDivider {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.3rem;
+        padding: 0.75rem 1rem;
+    }
+
+    .sectionDividerSub {
+        margin-left: 0;
+    }
+
+    .sectionDividerTitle {
+        font-size: 1.1rem;
+    }
+}
